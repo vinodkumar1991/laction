@@ -2,15 +2,15 @@
 <title><?php echo Yii::t('titles', 'laction.admin').Yii::t('titles', 'settings.roles'); ?></title>
 <div class="wraper container-fluid">
 	<div class="page-title">
-		<h3 class="title">List Of Roles</h3>
+		<h3 class="title"><?php echo Yii::t('breadcrumb','settings.page_heading'); ?></h3>
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a
 				href="<?php echo Yii::getAlias('@web').'/dashboard'?>"><i
-					class="fa fa-dashboard"></i> Home</a></li>
+					class="fa fa-dashboard"></i><?php echo Yii::t('breadcrumb', 'common.home'); ?> </a></li>
 			<li class="breadcrumb-item"><a
-				href="<?php echo Yii::getAlias('@web').'/roles'?>">Settings</a></li>
+				href="<?php echo Yii::getAlias('@web').'/roles'?>"><?php echo Yii::t('breadcrumb', 'settings.module_name'); ?></a></li>
 			<li class="breadcrumb-item active"><a
-				href="<?php echo Yii::getAlias('@web').'/roles'?>">Roles</a></li>
+				href="<?php echo Yii::getAlias('@web').'/roles'?>"><?php echo Yii::t('breadcrumb', 'settings.roles'); ?></a></li>
 		</ol>
 	</div>
 	<div class="row">
@@ -32,7 +32,7 @@
 									<?php
         if (! empty($roles)) {
             foreach ($roles as $arrRole) {
-                ?>
+                ?> 
                 <tr>
 											<td><?php echo $arrRole['name']; ?></td>
 											<td><?php echo $arrRole['status']; ?></td>
@@ -76,6 +76,7 @@
 			<div class="modal-body">
 
 				<div class="row">
+					<div class="success-color" id="role_message"></div>
 					<form role="form" class="p-20" method="post" action="">
 						<div class="form-group">
 							<label for="exampleInputEmail1">Role Name</label> <input
@@ -83,6 +84,7 @@
 								value="" /> <input type="hidden" name="role_id" id="role_id"
 								value="" />
 						</div>
+						<div class="err-color" id="err_name"></div>
 						<input type="button" class="btn btn-purple" name='edit_role'
 							id='edit_role' value='Update' onclick='updateRole()' />
 					</form>
@@ -108,10 +110,25 @@
                 objRole = {
                         id : $("#role_id").val(),
                         name : $("#name").val()};
+                $.post('<?php echo Yii::getAlias('@web').'/users/users/update-role'; ?>',objRole,function(response){
+                    makeEmpty();
+                	response = $.parseJSON(response);
+                	if(response.hasOwnProperty('errors')){
+                		if(undefined != response.errors.name && response.errors.name.length > 0){
+                 		   $("#err_name").html(response.errors.name);
+                 		   }
+                		return false;
+                	}else{
+                		$("#role_message").html(response.message);
+                        setTimeout(function(){location.reload()},3000);
+                        return true;
+                    	}
+                    });
                 return true;
                 }
 
             function getRole(role_id){
+                makeEmpty();
                 var objInputs = {};
                 objInputs = {
                 		_csrf: '<?=Yii::$app->request->csrfToken?>',
@@ -126,5 +143,12 @@
                     });
                 		return true;
             }
+
+  		  function makeEmpty(){
+  			  $("#err_name").empty();
+  			  $("#role_message").empty();
+  			  return true;
+      		  }
+
         </script>
 

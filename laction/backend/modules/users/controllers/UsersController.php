@@ -283,4 +283,28 @@ class UsersController extends GoController
         unset($arrInputs);
         echo Json::encode($arrRole);
     }
+
+    public function actionUpdateRole()
+    {
+        $arrResponse = [];
+        $arrInputs = Yii::$app->request->post();
+        $objRole = new Roles();
+        $arrDefaults = $objRole->getDefaults();
+        $arrInputs = array_merge($arrInputs, $arrDefaults);
+        $objRole->attributes = $arrInputs;
+        if ($objRole->validate()) {
+            $arrValidatedInputs = $objRole->getAttributes();
+            Roles::updateRole([
+                'name' => $arrValidatedInputs['name']
+            ], [
+                'id' => $arrValidatedInputs['id']
+            ]);
+            unset($arrValidatedInputs);
+            $arrResponse['message'] = 'Role updated successfully';
+        } else {
+            $arrResponse['errors'] = $objRole->errors;
+        }
+        unset($arrInputs, $arrDefaults);
+        echo Json::encode($arrResponse);
+    }
 }
