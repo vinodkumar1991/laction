@@ -99,34 +99,19 @@ class UsersController extends GoController
     public function actionCreateRolePermissions()
     {
         $arrErrors = $arrResponse = [];
-        $arrRoles = Roles::find()->select([
-            'id',
-            'name'
-        ])
-            ->asArray()
-            ->all();
-        $arrPermissions = Permissions::find()->select([
-            'id',
-            'name'
-        ])
-            ->asArray()
-            ->all();
+        $arrRoles = Roles::getRoles([
+            'role_ids' => [
+                1
+            ]
+        ]);
+        $arrPermissions = Permissions::getPermissions();
         $arrInputs = Yii::$app->request->post();
-        $arrInputs['role'] = 'superadmin';
-        $arrInputs['permission'] = [
-            0 => 'slots',
-            1 => 'reports',
-            2 => 'users',
-            3 => 'notifications'
-        ];
-        $arrInputs['status'] = 'active';
-        // $arrResponse = ! empty($arrInputs) ? $this->saveRolePermissions($arrInputs) : [];
-        // print_r($arrResponse);
-        // die();
+        $arrResponse = isset($arrInputs['create_role_permission']) ? $this->saveRolePermissions($arrInputs) : [];
         return $this->render('/users/CreateRolePermission', [
             'roles' => $arrRoles,
             'permissions' => $arrPermissions,
-            'errors' => isset($arrResponse['errors']) ? $arrResponse['errors'] : []
+            'errors' => isset($arrResponse['errors']) ? $arrResponse['errors'] : [],
+            'fields' => isset($arrResponse['fields']) ? $arrResponse['fields'] : []
         ]);
     }
 
@@ -151,9 +136,9 @@ class UsersController extends GoController
             }
         } else {
             $arrResponse['errors'] = $objRolePermissions->errors;
+            $arrResponse['fields'] = $objRolePermissions->getAttributes();
         }
         $intInsert = ! isset($arrResponse['errors']) ? $objRolePermissions->create($arrResponse['new']) : 0;
-        unset($arrResponse);
         $arrResponse['inserted_count'] = $intInsert;
         unset($arrInputs, $intInsert);
         return $arrResponse;
