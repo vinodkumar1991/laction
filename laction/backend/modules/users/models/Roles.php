@@ -60,7 +60,8 @@ class Roles extends ActiveRecord
     {
         return [
             'id' => 'Id',
-            'name' => 'Role Name'
+            'name' => 'Role Name',
+            'status' => 'Status'
         ];
     }
 

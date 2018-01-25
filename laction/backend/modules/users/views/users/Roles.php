@@ -2,7 +2,7 @@
 <title><?php echo Yii::t('titles', 'laction.admin').Yii::t('titles', 'settings.roles'); ?></title>
 <div class="wraper container-fluid">
 	<div class="page-title">
-		<h3 class="title"><?php echo Yii::t('breadcrumb','settings.page_heading'); ?></h3>
+		<h3 class="title"><?php echo Yii::t('breadcrumb','settings.roles_heading'); ?></h3>
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a
 				href="<?php echo Yii::getAlias('@web').'/dashboard'?>"><i
@@ -79,10 +79,9 @@
 					<div class="success-color" id="role_message"></div>
 					<form role="form" class="p-20" method="post" action="">
 						<div class="form-group">
-							<label for="exampleInputEmail1">Role Name</label> <input
-								type="textbox" class="form-control" id="name" name="name"
-								value="" /> <input type="hidden" name="role_id" id="role_id"
-								value="" />
+							<label for="role">Role Name</label> <input type="text"
+								class="form-control" id="name" name="name" value="" /> <input
+								type="hidden" name="role_id" id="role_id" value="" />
 						</div>
 						<div class="err-color" id="err_name"></div>
 						<input type="button" class="btn btn-purple" name='edit_role'
@@ -120,7 +119,7 @@
                 		return false;
                 	}else{
                 		$("#role_message").html(response.message);
-                        setTimeout(function(){location.reload()},3000);
+                        setTimeout(function(){location.reload()},1500);
                         return true;
                     	}
                     });

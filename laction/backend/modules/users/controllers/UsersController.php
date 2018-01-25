@@ -307,4 +307,39 @@ class UsersController extends GoController
         unset($arrInputs, $arrDefaults);
         echo Json::encode($arrResponse);
     }
+
+    public function actionGetPermissions()
+    {
+        $arrPermission = [];
+        $arrInputs = Yii::$app->request->post();
+        if (! empty($arrInputs)) {
+            $arrPermission = Permissions::getPermissions($arrInputs)[0];
+        }
+        unset($arrInputs);
+        echo Json::encode($arrPermission);
+    }
+
+    public function actionUpdatePermission()
+    {
+        $arrResponse = [];
+        $arrInputs = Yii::$app->request->post();
+        $objPermission = new Permissions();
+        $arrDefaults = $objPermission->getDefaults();
+        $arrInputs = array_merge($arrInputs, $arrDefaults);
+        $objPermission->attributes = $arrInputs;
+        if ($objPermission->validate()) {
+            $arrValidatedInputs = $objPermission->getAttributes();
+            Permissions::updatePermission([
+                'name' => $arrValidatedInputs['name']
+            ], [
+                'id' => $arrValidatedInputs['id']
+            ]);
+            unset($arrValidatedInputs);
+            $arrResponse['message'] = 'Permission updated successfully';
+        } else {
+            $arrResponse['errors'] = $objPermission->errors;
+        }
+        unset($arrInputs, $arrDefaults);
+        echo Json::encode($arrResponse);
+    }
 }
