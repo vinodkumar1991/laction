@@ -1,13 +1,16 @@
-
+<title><?php echo Yii::t('titles', 'laction.admin').Yii::t('titles', 'settings.role_permissions'); ?></title>
 <div class="wraper container-fluid">
 	<div class="page-title">
-		<h3 class="title">Role Permission</h3>
+		<h3 class="title"><?php echo Yii::t('breadcrumb','settings.role_permissions_heading');?></h3>
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a
 				href="<?php echo Yii::getAlias('@web').'/dashboard'?>"><i
-					class="fa fa-dashboard"></i> Home</a></li>
-			<li class="breadcrumb-item">Settings</li>
-			<li class="breadcrumb-item active">RolePermissions</li>
+					class="fa fa-dashboard"></i> <?php echo Yii::t('breadcrumb','common.home');?></a></li>
+			<li class="breadcrumb-item"><a
+				href="<?php echo Yii::getAlias('@web').'/roles'?>"><?php echo Yii::t('breadcrumb','settings.module_name');?></a></li>
+			<li class="breadcrumb-item active"><a
+				href="<?php echo Yii::getAlias('@web').'/role-permissions';?>"><?php echo Yii::t('breadcrumb','settings.role_permissions');?></a>
+			</li>
 		</ol>
 	</div>
 
@@ -31,20 +34,23 @@
 								<table id="datatable" class="table table-striped table-bordered">
 									<thead>
 										<tr>
-											<th>S.No</th>
+											<th>Role</th>
 											<th>Permissions</th>
-											<th>Status</th>
 											<th>Action</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>1</td>
+									<?php
+        if (! empty($roles)) {
+            foreach ($roles as $arrRole) {
+                ?>
+                <tr>
+											<td><?php echo $arrRole['name']; ?></td>
 											<td>
 												<button class="btn btn-primary" data-toggle="modal"
-													data-target=".bs-example-modal-sm">Permissions</button>
+													data-target=".bs-example-modal-sm"
+													onclick="getPermissions(<?php echo $arrRole['name'];?>)">Permissions</button>
 											</td>
-											<td>Active</td>
 											<td class="actions">
 												<button class="btn btn-primary" data-toggle="modal"
 													data-target="#con-close-modal">
@@ -52,6 +58,11 @@
 												</button>
 											</td>
 										</tr>
+									        <?php
+            }
+        }
+        ?>
+										
 										<div class="modal fade bs-example-modal-sm">
 											<div class="modal-dialog modal-sm">
 												<div class="modal-content">
@@ -61,24 +72,16 @@
 													</div>
 													<div class="modal-body">
 														<div class="form-group m-l-10">
-															<label class="cr-styled"> <input type="checkbox"> <i
-																class="fa"></i> Permission 1
-															</label>
+															<label class="cr-styled"> Permission 1 </label>
 														</div>
 														<div class="form-group m-l-10">
-															<label class="cr-styled"> <input type="checkbox"> <i
-																class="fa"></i> Permission 2
-															</label>
+															<label class="cr-styled"> Permission 2 </label>
 														</div>
 														<div class="form-group m-l-10">
-															<label class="cr-styled"> <input type="checkbox"> <i
-																class="fa"></i> Permission 3
-															</label>
+															<label class="cr-styled"> Permission 3 </label>
 														</div>
 														<div class="form-group m-l-10">
-															<label class="cr-styled"> <input type="checkbox"> <i
-																class="fa"></i> Permission 4
-															</label>
+															<label class="cr-styled"> Permission 4 </label>
 														</div>
 
 													</div>
@@ -93,12 +96,8 @@
 										</div>
 									</tbody>
 								</table>
-
-
 							</div>
 						</div>
-
-
 					</div>
 				</div>
 			</div>
@@ -114,4 +113,10 @@ $(document).ready(function() {
     var table = $('#datatable-fixed-header').DataTable( { fixedHeader: true } );
 } );
 TableManageButtons.init();
+
+function getPermissions(role_name){
+	var objRole = {};
+	objRole = {
+			role_name : role_name};
+}
 </script>

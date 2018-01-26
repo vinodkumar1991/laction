@@ -14,6 +14,7 @@ use yii\helpers\Json;
 use yii\helpers\ArrayHelper;
 use backend\modules\users\models\Login;
 use yii\web\Session;
+use yii\web\Response;
 
 class UsersController extends GoController
 {
@@ -99,14 +100,14 @@ class UsersController extends GoController
     public function actionCreateRolePermissions()
     {
         $arrErrors = $arrResponse = [];
-        $arrRoles = Roles::getRoles([
-            'role_ids' => [
-                1
-            ]
-        ]);
+        $arrRoles = Roles::getRoles();
         $arrPermissions = Permissions::getPermissions();
         $arrInputs = Yii::$app->request->post();
         $arrResponse = isset($arrInputs['create_role_permission']) ? $this->saveRolePermissions($arrInputs) : [];
+        if (isset($arrResponse['inserted_count']) && $arrResponse['inserted_count'] > 0) {
+            Yii::$app->session->setFlash('role_permission_success', "Permissions are mapped successfully");
+            return $this->refresh();
+        }
         return $this->render('/users/CreateRolePermission', [
             'roles' => $arrRoles,
             'permissions' => $arrPermissions,
@@ -128,7 +129,7 @@ class UsersController extends GoController
             foreach ($arrPermissions as $strKey => $strValue) {
                 $arrRecord = [
                     'role' => $arrValidatedInputs['role'],
-                    'permission' => $strKey,
+                    'permission' => $strValue,
                     'status' => $arrValidatedInputs['status']
                 ];
                 $arrRecord = array_merge($arrRecord, $arrDefaults);
@@ -255,7 +256,10 @@ class UsersController extends GoController
 
     public function actionRolePermissions()
     {
-        return $this->render('/users/RolePermission', []);
+        $arrRoles = Roles::getRoles();
+        return $this->render('/users/RolePermission', [
+            'roles' => $arrRoles
+        ]);
     }
 
     public function actionGetRoles()

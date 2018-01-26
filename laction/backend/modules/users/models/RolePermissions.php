@@ -33,6 +33,10 @@ class RolePermissions extends ActiveRecord
                     'last_modified_by'
                 ],
                 'safe'
+            ],
+            [
+                'role',
+                'isValidPermissionMap'
             ]
         ];
     }
@@ -86,5 +90,21 @@ class RolePermissions extends ActiveRecord
         }
         $arrResponse = $objQuery->all();
         return $arrResponse;
+    }
+
+    public function isValidPermissionMap($attribute, $params)
+    {
+        $arrRolePermission = [];
+        if (! empty($this->role)) {
+            $arrRolePermission = self::getRolePermissions([
+                'role' => $this->role
+            ]);
+        }
+        if (empty($arrRolePermission)) {
+            return true;
+        } else {
+            $this->addError($attribute, 'Permissions already mapped to this role');
+            return false;
+        }
     }
 }

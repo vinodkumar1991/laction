@@ -1,7 +1,7 @@
-<title><?php echo Yii::t('titles', 'laction.admin').Yii::t('titles', 'settings.role_permissions'); ?></title>
+<title><?php echo Yii::t('titles', 'laction.admin').Yii::t('titles', 'settings.create_role_permissions'); ?></title>
 <div class="wraper container-fluid">
 	<div class="page-title">
-		<h3 class="title"><?php echo Yii::t('titles','settings.create_role_permissions');?></h3>
+		<h3 class="title"><?php echo Yii::t('breadcrumb','settings.create_role_permissions_heading');?></h3>
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a
 				href="<?php echo Yii::getAlias('@web').'/dashboard'?>"><i
@@ -17,7 +17,11 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-default">
-
+             <?php
+            if (Yii::$app->session->hasFlash('role_permission_success')) {
+                echo Yii::$app->session->getFlash('role_permission_success');
+            }
+            ?>
 				<div class="panel-body">
 
 					<a href="<?php echo Yii::getAlias('@web').'/role-permissions'?>">
