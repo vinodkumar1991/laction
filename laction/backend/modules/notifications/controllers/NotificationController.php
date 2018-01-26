@@ -6,7 +6,6 @@ use Yii;
 use common\components\CommonComponent;
 use backend\modules\notifications\models\SenderIds;
 use backend\modules\notifications\models\Template;
-use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 
 class NotificationController extends Controller
@@ -21,37 +20,33 @@ class NotificationController extends Controller
     public function actionCreateSenderId()
     {
         $arrResponse = [];
-        $arrMessageTypes = CommonComponent::getMessageTypes();
-        $arrMessageCategoryTypes = CommonComponent::getMessageCategoryTypes();
         $arrInputs = Yii::$app->request->post();
-        $arrResponse = isset($arrInputs['create_sender_id']) ? $this->saveSenderId($arrInputs) : [];
-        isset($arrResponse['sender_id']) ? Yii::$app->session->setFlash('subject_success', 'Subject created Successfully.') : NULL;
-        return $this->render('/SenderId', [
-            'message_types' => $arrMessageTypes,
-            'category_types' => $arrMessageCategoryTypes,
-            'errors' => isset($arrResponse['errors']) ? $arrResponse['errors'] : [],
-            'fields' => isset($arrResponse['fields']) ? $arrResponse['fields'] : []
-        ]);
-    }
-
-    private function saveSenderId($arrInputs)
-    {
-        $arrResponse = [];
         $arrRoutes = CommonComponent::getRoutes();
         $arrInputs['route'] = isset($arrRoutes[$arrInputs['message_type']][$arrInputs['category_type']]) ? $arrRoutes[$arrInputs['message_type']][$arrInputs['category_type']] : NULL;
         $objSenderId = new SenderIds();
-        $arrDefaults = $objSenderId->getDefaults();
+        $arrDefaults = isset($arrInputs['id']) ? $objSenderId->getDefaults($arrInputs['id']) : $objSenderId->getDefaults();
         $arrInputs = array_merge($arrInputs, $arrDefaults);
         $objSenderId->attributes = $arrInputs;
         if ($objSenderId->validate()) {
-            $objSenderId->save();
-            $arrResponse['sender_id'] = $objSenderId->id;
+            $arrValidatedInputs = $objSenderId->getAttributes();
+            if (! empty($arrValidatedInputs['id'])) {
+                unset($arrValidatedInputs['created_date'], $arrValidatedInputs['created_by'], $arrValidatedInputs['last_modified_date']);
+                SenderIds::updateSubject($arrValidatedInputs, [
+                    'id' => $arrValidatedInputs['id']
+                ]);
+                $arrResponse['message'] = 'Subject updated successfully';
+            } else {
+                
+                $objSenderId->save();
+                $arrResponse['sender_id'] = $objSenderId->id;
+                $arrResponse['message'] = 'Subject created successfully';
+            }
         } else {
             $arrResponse['errors'] = $objSenderId->errors;
             $arrResponse['fields'] = $objSenderId->getAttributes();
         }
         unset($arrInputs, $arrDefaults);
-        return $arrResponse;
+        echo Json::encode($arrResponse);
     }
 
     public function actionCreateTemplate()
@@ -86,41 +81,24 @@ class NotificationController extends Controller
         return $arrResponse;
     }
 
-    public function actionEditSenderId()
+    public function actionGetSubjects()
     {
-        $arrResponse = [];
-        $arrInputs = Yii::$app->request->get();
-        $arrMessageTypes = CommonComponent::getMessageTypes();
-        $arrMessageCategoryTypes = CommonComponent::getMessageCategoryTypes();
-        $arrRoutes = CommonComponent::getRoutes();
-        $arrSenderId = SenderIds::getSenderIds([
-            'sender_id' => $arrInputs['id']
-        ]);
-        if (Yii::$app->request->isPost) {
-            $arrFields = Yii::$app->request->post();
-            $arrResponse = $this->saveSenderId($arrFields);
-        }
-        return $this->render('/SenderId', [
-            'message_types' => $arrMessageTypes,
-            'category_types' => $arrMessageCategoryTypes,
-            'errors' => isset($arrResponse['errors']) ? $arrResponse['errors'] : []
-        ]);
-    }
-
-    public function getSubjects()
-    {
-        $strResponse = NULL;
         $arrInputs = Yii::$app->request->post();
-        if (! empty($arrInputs)) {}
-        
-        echo $strResponse;
+        $arrResponse = SenderIds::getSenderIds($arrInputs)[0];
+        echo Json::encode($arrResponse);
     }
 
     public function actionSubjects()
     {
+        $arrMessageTypes = CommonComponent::getMessageTypes();
+        $arrMessageCategoryTypes = CommonComponent::getMessageCategoryTypes();
+        $arrStatuses = CommonComponent::getStatuses();
         $arrSubjects = SenderIds::getSenderIds();
         return $this->render('/SenderId', [
-            'subjects' => $arrSubjects
+            'subjects' => $arrSubjects,
+            'message_types' => $arrMessageTypes,
+            'category_types' => $arrMessageCategoryTypes,
+            'statuses' => $arrStatuses
         ]);
     }
 

@@ -3,6 +3,7 @@ namespace backend\modules\notifications\models;
 
 use yii\db\ActiveRecord;
 use yii\db\Query;
+use Yii;
 
 class SenderIds extends ActiveRecord
 {
@@ -31,7 +32,8 @@ class SenderIds extends ActiveRecord
                     'created_date',
                     'created_by',
                     'last_modified_date',
-                    'last_modified_by'
+                    'last_modified_by',
+                    'sync'
                 ],
                 'safe'
             ],
@@ -47,9 +49,6 @@ class SenderIds extends ActiveRecord
                 'subject',
                 'isValidSubject'
             ],
-            
-            // Need To Implement
-            // Sender ID,While using route4 sender id should be 6 characters long.
             [
                 'route',
                 'isValidRoute'
@@ -68,12 +67,22 @@ class SenderIds extends ActiveRecord
         ];
     }
 
-    public function getDefaults()
+    public function getDefaults($id = null)
     {
-        return [
-            'created_date' => date('Y-m-d H:i:s'),
-            'created_by' => 1 // Need to change
-        ];
+        $arrDefaults = [];
+        if (! empty($id)) {
+            $arrDefaults = [
+                'last_modified_by' => 1,
+                'sync' => 'false'
+            ];
+        } else {
+            $arrDefaults = [
+                'created_date' => date('Y-m-d H:i:s'),
+                'created_by' => 1, // Need to change
+                'sync' => 'false'
+            ];
+        }
+        return $arrDefaults;
     }
 
     public function isValidSubject($attribute, $params)
@@ -151,5 +160,14 @@ class SenderIds extends ActiveRecord
         } else {
             return true;
         }
+    }
+
+    public static function updateSubject($arrInputs, $arrWhere)
+    {
+        $objConnection = Yii::$app->db;
+        $intUpdate = $objConnection->createCommand()
+            ->update('senderids', $arrInputs, $arrWhere)
+            ->execute();
+        return $intUpdate;
     }
 }
