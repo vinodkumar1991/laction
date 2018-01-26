@@ -8,7 +8,10 @@ return [
     'settings.role_permissions' => 'Role Permissions',
     'settings.create_role_permissions' => 'Create Role Permissions',
     'settings.categories' => 'Categories',
-    'settings.sub_categories' => 'Sub Categories'
+    'settings.sub_categories' => 'Sub Categories',
     // Settings :: END
+    // Notifications :: START
+    'notifications.subjects' => 'Subjects'
+    // Notifications :: END
 ];
 
