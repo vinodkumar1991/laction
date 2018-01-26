@@ -1,3 +1,12 @@
+<link
+	href="<?php echo Yii::getAlias('@asset').'/jquery-ui/jquery-ui.css'?>"
+	rel="Stylesheet" type="text/css" />
+<script type="text/javascript"
+	src="<?php echo Yii::getAlias('@asset').'/jquery-ui/jquery-ui.js'?>"></script>
+
+<title>Laction Admin | Slots</title>
+<!-- Page Content Start -->
+<!-- ================== -->
 
 <div class="wraper container-fluid">
 	<!--<div class="page-title"> 
@@ -5,11 +14,21 @@
                 </div>
                 <div class="clearfix"></div>-->
 
-
 	<!-- /.col -->
 	<div class="page-title">
 		<h3 class="title">Add Event</h3>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a
+				href="<?php echo Yii::getAlias('@web').'/dashboard'?>"><i
+					class="fa fa-dashboard"></i> Home</a></li>
+			<li class="breadcrumb-item"><a
+				href="<?php echo Yii::getAlias('@web').'/calendar'?>">Calendar</a></li>
+			<li class="breadcrumb-item active">Slots</li>
+		</ol>
+
 	</div>
+
+
 	<div class="panel">
 		<div class="panel-body">
 			<div class="col-lg-12 col-md-12">
@@ -36,13 +55,12 @@
 								<div class="form-group">
 									<label class="control-label">Event Date</label>
 									<div class="input-group">
-										<input type="date" class="form-control"
-											placeholder="mm/dd/yyyy" id="datepicker-multiple"> <span
-											class="input-group-addon"><i
+										<input type="text" readonly="readonly" id="txtdate"
+											class="form-control" placeholder="mm/dd/yyyy"
+											id="datepicker-multiple"> <span class="input-group-addon"><i
 											class="glyphicon glyphicon-calendar"></i></span>
 									</div>
 								</div>
-
 							</div>
 						</div>
 
@@ -64,182 +82,348 @@
 
 
 
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="control-label">from Time</label>
+										<div class="input-group m-b-15">
 
-								<!-- Copy Fields-These are the fields which we get through jquery and then add after the above input -->
-								<div class="copy-fields hide">
-									<div class="col-md-4">
-										<div class="form-group">
-											<label class="control-label">from Time</label>
-											<div class="input-group m-b-15">
-												<div class="timepicker">
-													<input id="timepicker" type="time" class="form-control">
-													<div class="bootstrap-timepicker-widget dropdown-menu">
-														<table>
-															<tbody>
-																<tr>
-																	<td><a href="#" data-action="incrementHour"><i
-																			class="glyphicon glyphicon-chevron-up"></i></a></td>
-																	<td class="separator">&nbsp;</td>
-																	<td><a href="#" data-action="incrementMinute"><i
-																			class="glyphicon glyphicon-chevron-up"></i></a></td>
-																	<td class="separator">&nbsp;</td>
-																	<td class="meridian-column"><a href="#"
-																		data-action="toggleMeridian"><i
-																			class="glyphicon glyphicon-chevron-up"></i></a></td>
-																</tr>
-																<tr>
-																	<td><input type="text" name="hour"
-																		class="form-control bootstrap-timepicker-hour"
-																		maxlength="2"></td>
-																	<td class="separator">:</td>
-																	<td><input type="text" name="minute"
-																		class="form-control bootstrap-timepicker-minute"
-																		maxlength="2"></td>
-																	<td class="separator">&nbsp;</td>
-																	<td><input type="text" name="meridian"
-																		class="form-control bootstrap-timepicker-meridian"
-																		maxlength="2"></td>
-																</tr>
-																<tr>
-																	<td><a href="#" data-action="decrementHour"><i
-																			class="glyphicon glyphicon-chevron-down"></i></a></td>
-																	<td class="separator"></td>
-																	<td><a href="#" data-action="decrementMinute"><i
-																			class="glyphicon glyphicon-chevron-down"></i></a></td>
-																	<td class="separator">&nbsp;</td>
-																	<td><a href="#" data-action="toggleMeridian"><i
-																			class="glyphicon glyphicon-chevron-down"></i></a></td>
-																</tr>
-															</tbody>
-														</table>
-													</div>
+											<div class="timepicker">
+												<input id="timepicker" type="time" class="form-control">
+												<div class="bootstrap-timepicker-widget dropdown-menu">
+													<table>
+														<tbody>
+															<tr>
+																<td><a href="#" data-action="incrementHour"><i
+																		class="glyphicon glyphicon-chevron-up"></i></a></td>
+																<td class="separator">&nbsp;</td>
+																<td><a href="#" data-action="incrementMinute"><i
+																		class="glyphicon glyphicon-chevron-up"></i></a></td>
+																<td class="separator">&nbsp;</td>
+																<td class="meridian-column"><a href="#"
+																	data-action="toggleMeridian"><i
+																		class="glyphicon glyphicon-chevron-up"></i></a></td>
+															</tr>
+															<tr>
+																<td><input type="text" name="hour"
+																	class="form-control bootstrap-timepicker-hour"
+																	maxlength="2"></td>
+																<td class="separator">:</td>
+																<td><input type="text" name="minute"
+																	class="form-control bootstrap-timepicker-minute"
+																	maxlength="2"></td>
+																<td class="separator">&nbsp;</td>
+																<td><input type="text" name="meridian"
+																	class="form-control bootstrap-timepicker-meridian"
+																	maxlength="2"></td>
+															</tr>
+															<tr>
+																<td><a href="#" data-action="decrementHour"><i
+																		class="glyphicon glyphicon-chevron-down"></i></a></td>
+																<td class="separator"></td>
+																<td><a href="#" data-action="decrementMinute"><i
+																		class="glyphicon glyphicon-chevron-down"></i></a></td>
+																<td class="separator">&nbsp;</td>
+																<td><a href="#" data-action="toggleMeridian"><i
+																		class="glyphicon glyphicon-chevron-down"></i></a></td>
+															</tr>
+														</tbody>
+													</table>
 												</div>
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-time"></i></span>
 											</div>
+											<span class="input-group-addon"><i
+												class="glyphicon glyphicon-time"></i></span>
 										</div>
 									</div>
-									<div class="col-md-4">
-										<div class="form-group">
-											<label class="control-label">To Time</label>
-											<div class="input-group m-b-15">
-												<div class="timepicker">
-													<input id="timepicker" type="time" class="form-control">
-													<div class="bootstrap-timepicker-widget dropdown-menu">
-														<table>
-															<tbody>
-																<tr>
-																	<td><a href="#" data-action="incrementHour"><i
-																			class="glyphicon glyphicon-chevron-up"></i></a></td>
-																	<td class="separator">&nbsp;</td>
-																	<td><a href="#" data-action="incrementMinute"><i
-																			class="glyphicon glyphicon-chevron-up"></i></a></td>
-																	<td class="separator">&nbsp;</td>
-																	<td class="meridian-column"><a href="#"
-																		data-action="toggleMeridian"><i
-																			class="glyphicon glyphicon-chevron-up"></i></a></td>
-																</tr>
-																<tr>
-																	<td><input type="text" name="hour"
-																		class="form-control bootstrap-timepicker-hour"
-																		maxlength="2"></td>
-																	<td class="separator">:</td>
-																	<td><input type="text" name="minute"
-																		class="form-control bootstrap-timepicker-minute"
-																		maxlength="2"></td>
-																	<td class="separator">&nbsp;</td>
-																	<td><input type="text" name="meridian"
-																		class="form-control bootstrap-timepicker-meridian"
-																		maxlength="2"></td>
-																</tr>
-																<tr>
-																	<td><a href="#" data-action="decrementHour"><i
-																			class="glyphicon glyphicon-chevron-down"></i></a></td>
-																	<td class="separator"></td>
-																	<td><a href="#" data-action="decrementMinute"><i
-																			class="glyphicon glyphicon-chevron-down"></i></a></td>
-																	<td class="separator">&nbsp;</td>
-																	<td><a href="#" data-action="toggleMeridian"><i
-																			class="glyphicon glyphicon-chevron-down"></i></a></td>
-																</tr>
-															</tbody>
-														</table>
-													</div>
-												</div>
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-time"></i></span>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-4">
-										<div class="form-group">
-											<label class="control-label">Amount</label>
-											<div class="input-group m-b-15">
-												<div class="bootstrap-timepicker">
-													<input id="timepicker" type="number" class="form-control">
-													<div class="bootstrap-timepicker-widget dropdown-menu">
-														<table>
-															<tbody>
-																<tr>
-																	<td><a href="#" data-action="incrementHour"><i
-																			class="glyphicon glyphicon-chevron-up"></i></a></td>
-																	<td class="separator">&nbsp;</td>
-																	<td><a href="#" data-action="incrementMinute"><i
-																			class="glyphicon glyphicon-chevron-up"></i></a></td>
-																	<td class="separator">&nbsp;</td>
-																	<td class="meridian-column"><a href="#"
-																		data-action="toggleMeridian"><i
-																			class="glyphicon glyphicon-chevron-up"></i></a></td>
-																</tr>
-																<tr>
-																	<td><input type="text" name="hour"
-																		class="form-control bootstrap-timepicker-hour"
-																		maxlength="2"></td>
-																	<td class="separator">:</td>
-																	<td><input type="text" name="minute"
-																		class="form-control bootstrap-timepicker-minute"
-																		maxlength="2"></td>
-																	<td class="separator">&nbsp;</td>
-																	<td><input type="text" name="meridian"
-																		class="form-control bootstrap-timepicker-meridian"
-																		maxlength="2"></td>
-																</tr>
-																<tr>
-																	<td><a href="#" data-action="decrementHour"><i
-																			class="glyphicon glyphicon-chevron-down"></i></a></td>
-																	<td class="separator"></td>
-																	<td><a href="#" data-action="decrementMinute"><i
-																			class="glyphicon glyphicon-chevron-down"></i></a></td>
-																	<td class="separator">&nbsp;</td>
-																	<td><a href="#" data-action="toggleMeridian"><i
-																			class="glyphicon glyphicon-chevron-down"></i></a></td>
-																</tr>
-															</tbody>
-														</table>
-													</div>
-												</div>
-												<span class="input-group-addon"><i
-													class="glyphicon glyphicon-time"></i></span>
-											</div>
-										</div>
-									</div>
-									<!--  <div class="input-group-btn"> 
-              <button class="btn btn-danger remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
-            </div> -->
+								</div>
 
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="control-label">To Time</label>
+										<div class="input-group m-b-15">
+
+											<div class="timepicker">
+												<input id="timepicker" type="time" value="num"
+													class="form-control">
+												<div class="bootstrap-timepicker-widget dropdown-menu">
+													<table>
+														<tbody>
+															<tr>
+																<td><a href="#" data-action="incrementHour"><i
+																		class="glyphicon glyphicon-chevron-up"></i></a></td>
+																<td class="separator">&nbsp;</td>
+																<td><a href="#" data-action="incrementMinute"><i
+																		class="glyphicon glyphicon-chevron-up"></i></a></td>
+																<td class="separator">&nbsp;</td>
+																<td class="meridian-column"><a href="#"
+																	data-action="toggleMeridian"><i
+																		class="glyphicon glyphicon-chevron-up"></i></a></td>
+															</tr>
+															<tr>
+																<td><input type="text" name="hour"
+																	class="form-control bootstrap-timepicker-hour"
+																	maxlength="2"></td>
+																<td class="separator">:</td>
+																<td><input type="text" name="minute"
+																	class="form-control bootstrap-timepicker-minute"
+																	maxlength="2"></td>
+																<td class="separator">&nbsp;</td>
+																<td><input type="text" name="meridian"
+																	class="form-control bootstrap-timepicker-meridian"
+																	maxlength="2"></td>
+															</tr>
+															<tr>
+																<td><a href="#" data-action="decrementHour"><i
+																		class="glyphicon glyphicon-chevron-down"></i></a></td>
+																<td class="separator"></td>
+																<td><a href="#" data-action="decrementMinute"><i
+																		class="glyphicon glyphicon-chevron-down"></i></a></td>
+																<td class="separator">&nbsp;</td>
+																<td><a href="#" data-action="toggleMeridian"><i
+																		class="glyphicon glyphicon-chevron-down"></i></a></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+											<span class="input-group-addon"><i
+												class="glyphicon glyphicon-time"></i></span>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="control-label">Amount</label>
+
+
+										<div class="bootstrap-timepicker">
+											<input id="timepicker" type="number" class="form-control">
+											<div class="bootstrap-timepicker-widget dropdown-menu">
+												<table>
+													<tbody>
+														<tr>
+															<td><a href="#" data-action="incrementHour"><i
+																	class="glyphicon glyphicon-chevron-up"></i></a></td>
+															<td class="separator">&nbsp;</td>
+															<td><a href="#" data-action="incrementMinute"><i
+																	class="glyphicon glyphicon-chevron-up"></i></a></td>
+															<td class="separator">&nbsp;</td>
+															<td class="meridian-column"><a href="#"
+																data-action="toggleMeridian"><i
+																	class="glyphicon glyphicon-chevron-up"></i></a></td>
+														</tr>
+														<tr>
+															<td><input type="text" name="hour"
+																class="form-control bootstrap-timepicker-hour"
+																maxlength="2"></td>
+															<td class="separator">:</td>
+															<td><input type="text" name="minute"
+																class="form-control bootstrap-timepicker-minute"
+																maxlength="2"></td>
+															<td class="separator">&nbsp;</td>
+															<td><input type="text" name="meridian"
+																class="form-control bootstrap-timepicker-meridian"
+																maxlength="2"></td>
+														</tr>
+														<tr>
+															<td><a href="#" data-action="decrementHour"><i
+																	class="glyphicon glyphicon-chevron-down"></i></a></td>
+															<td class="separator"></td>
+															<td><a href="#" data-action="decrementMinute"><i
+																	class="glyphicon glyphicon-chevron-down"></i></a></td>
+															<td class="separator">&nbsp;</td>
+															<td><a href="#" data-action="toggleMeridian"><i
+																	class="glyphicon glyphicon-chevron-down"></i></a></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+
+
+									</div>
 								</div>
 
 
 							</div>
 
+
+
+
+
+							<!-- Copy Fields-These are the fields which we get through jquery and then add after the above input,-->
+							<div class="copy-fields hide">
+
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="control-label">from Time</label>
+										<div class="input-group m-b-15">
+											<div class="timepicker">
+												<input id="timepicker" type="time" class="form-control">
+												<div class="bootstrap-timepicker-widget dropdown-menu">
+													<table>
+														<tbody>
+															<tr>
+																<td><a href="#" data-action="incrementHour"><i
+																		class="glyphicon glyphicon-chevron-up"></i></a></td>
+																<td class="separator">&nbsp;</td>
+																<td><a href="#" data-action="incrementMinute"><i
+																		class="glyphicon glyphicon-chevron-up"></i></a></td>
+																<td class="separator">&nbsp;</td>
+																<td class="meridian-column"><a href="#"
+																	data-action="toggleMeridian"><i
+																		class="glyphicon glyphicon-chevron-up"></i></a></td>
+															</tr>
+															<tr>
+																<td><input type="text" name="hour"
+																	class="form-control bootstrap-timepicker-hour"
+																	maxlength="2"></td>
+																<td class="separator">:</td>
+																<td><input type="text" name="minute"
+																	class="form-control bootstrap-timepicker-minute"
+																	maxlength="2"></td>
+																<td class="separator">&nbsp;</td>
+																<td><input type="text" name="meridian"
+																	class="form-control bootstrap-timepicker-meridian"
+																	maxlength="2"></td>
+															</tr>
+															<tr>
+																<td><a href="#" data-action="decrementHour"><i
+																		class="glyphicon glyphicon-chevron-down"></i></a></td>
+																<td class="separator"></td>
+																<td><a href="#" data-action="decrementMinute"><i
+																		class="glyphicon glyphicon-chevron-down"></i></a></td>
+																<td class="separator">&nbsp;</td>
+																<td><a href="#" data-action="toggleMeridian"><i
+																		class="glyphicon glyphicon-chevron-down"></i></a></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+											<span class="input-group-addon"><i
+												class="glyphicon glyphicon-time"></i></span>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="control-label">To Time</label>
+										<div class="input-group m-b-15">
+											<div class="timepicker">
+												<input id="timepicker" type="time" class="form-control">
+												<div class="bootstrap-timepicker-widget dropdown-menu">
+													<table>
+														<tbody>
+															<tr>
+																<td><a href="#" data-action="incrementHour"><i
+																		class="glyphicon glyphicon-chevron-up"></i></a></td>
+																<td class="separator">&nbsp;</td>
+																<td><a href="#" data-action="incrementMinute"><i
+																		class="glyphicon glyphicon-chevron-up"></i></a></td>
+																<td class="separator">&nbsp;</td>
+																<td class="meridian-column"><a href="#"
+																	data-action="toggleMeridian"><i
+																		class="glyphicon glyphicon-chevron-up"></i></a></td>
+															</tr>
+															<tr>
+																<td><input type="text" name="hour"
+																	class="form-control bootstrap-timepicker-hour"
+																	maxlength="2"></td>
+																<td class="separator">:</td>
+																<td><input type="text" name="minute"
+																	class="form-control bootstrap-timepicker-minute"
+																	maxlength="2"></td>
+																<td class="separator">&nbsp;</td>
+																<td><input type="text" name="meridian"
+																	class="form-control bootstrap-timepicker-meridian"
+																	maxlength="2"></td>
+															</tr>
+															<tr>
+																<td><a href="#" data-action="decrementHour"><i
+																		class="glyphicon glyphicon-chevron-down"></i></a></td>
+																<td class="separator"></td>
+																<td><a href="#" data-action="decrementMinute"><i
+																		class="glyphicon glyphicon-chevron-down"></i></a></td>
+																<td class="separator">&nbsp;</td>
+																<td><a href="#" data-action="toggleMeridian"><i
+																		class="glyphicon glyphicon-chevron-down"></i></a></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+											<span class="input-group-addon"><i
+												class="glyphicon glyphicon-time"></i></span>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="control-label">Amount</label>
+										<div class="bootstrap-timepicker">
+											<input id="timepicker" type="number" class="form-control">
+											<div class="bootstrap-timepicker-widget dropdown-menu">
+												<table>
+													<tbody>
+														<tr>
+															<td><a href="#" data-action="incrementHour"><i
+																	class="glyphicon glyphicon-chevron-up"></i></a></td>
+															<td class="separator">&nbsp;</td>
+															<td><a href="#" data-action="incrementMinute"><i
+																	class="glyphicon glyphicon-chevron-up"></i></a></td>
+															<td class="separator">&nbsp;</td>
+															<td class="meridian-column"><a href="#"
+																data-action="toggleMeridian"><i
+																	class="glyphicon glyphicon-chevron-up"></i></a></td>
+														</tr>
+														<tr>
+															<td><input type="text" name="hour"
+																class="form-control bootstrap-timepicker-hour"
+																maxlength="2"></td>
+															<td class="separator">:</td>
+															<td><input type="text" name="minute"
+																class="form-control bootstrap-timepicker-minute"
+																maxlength="2"></td>
+															<td class="separator">&nbsp;</td>
+															<td><input type="text" name="meridian"
+																class="form-control bootstrap-timepicker-meridian"
+																maxlength="2"></td>
+														</tr>
+														<tr>
+															<td><a href="#" data-action="decrementHour"><i
+																	class="glyphicon glyphicon-chevron-down"></i></a></td>
+															<td class="separator"></td>
+															<td><a href="#" data-action="decrementMinute"><i
+																	class="glyphicon glyphicon-chevron-down"></i></a></td>
+															<td class="separator">&nbsp;</td>
+															<td><a href="#" data-action="toggleMeridian"><i
+																	class="glyphicon glyphicon-chevron-down"></i></a></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--  <div class="input-group-btn"> 
+              <button class="btn btn-danger remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+            </div> -->
+
+							</div>
+
+
 						</div>
+
 					</div>
-					<!-- /.box-body -->
 				</div>
-				<!-- /. box -->
+				<!-- /.box-body -->
 			</div>
+			<!-- /. box -->
 		</div>
 	</div>
+</div>
 
 </div>
 
@@ -263,4 +447,12 @@
         format: "dd MM yyyy - hh:ii"
     });
 
+</script>
+
+<script language="javascript">
+    $(document).ready(function () {
+        $("#txtdate").datepicker({
+            minDate: 0
+        });
+    });
 </script>
