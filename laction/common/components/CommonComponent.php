@@ -123,4 +123,12 @@ class CommonComponent
         unset($strTimestampStartDate, $strTimestampEndDate, $doubleTimeInterval, $strStartDate, $strEndDate);
         return $arrDateDiffInfo;
     }
+
+    public static function getStatuses()
+    {
+        return [
+            'active' => 'Active',
+            'inactive' => 'Inactive'
+        ];
+    }
 }
