@@ -13,6 +13,10 @@ class NotificationController extends Controller
 
     public function beforeAction($action)
     {
+        $objSession = Yii::$app->session;
+        if (! isset($objSession['session_data'])) {
+            $this->redirect(Yii::getAlias('@web') . '/login');
+        }
         $this->enableCsrfValidation = false;
         return parent::beforeAction($action);
     }
