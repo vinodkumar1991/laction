@@ -38,7 +38,7 @@ class Login extends ActiveRecord
             [
                 'password',
                 'string',
-                'max' => 100
+                'max' => 6
             ]
         ];
     }

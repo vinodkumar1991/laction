@@ -28,11 +28,6 @@ class UsersController extends GoController
     public function actionLogin()
     {
         $arrInputs = Yii::$app->request->post();
-        // $arrInputs = [
-        // 'phone' => '1234567890',
-        // 'password' => '12345',
-        // 'do_login' => 'Login'
-        // ];
         $arrResponse = isset($arrInputs['do_login']) ? $this->validateCredentials($arrInputs) : [];
         if (isset($arrResponse['user'])) {
             $this->setSession($arrResponse['user']);
@@ -61,10 +56,14 @@ class UsersController extends GoController
                 if (Yii::$app->getSecurity()->validatePassword($arrValidatedInputs['password'], $arrUser['password'])) {
                     $arrResponse['user'] = $arrUser;
                 } else {
-                    $arrResponse['errors']['password'] = 'Invalid Password';
+                    $arrResponse['errors']['password'] = [
+                        'Invalid Password'
+                    ];
                 }
             } else {
-                $arrResponse['errors']['phone'] = 'Invalid Phone';
+                $arrResponse['errors']['phone'] = [
+                    'Invalid Phone'
+                ];
             }
             unset($arrUser, $arrInputs);
         } else {

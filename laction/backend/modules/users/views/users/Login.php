@@ -36,16 +36,22 @@
 			<img id="profile-img" class="profile-img-card"
 				src="<?php echo Yii::getAlias('@asset').'/img/avatar_2x.png';?>" />
 			<p id="profile-name" class="profile-name-card"></p>
-			<form class="form-signin">
-				<span id="reauth-email" class="reauth-email"></span> <input
-					type="email" id="inputEmail" class="form-control"
-					placeholder="Email address" required autofocus> <input
-					type="password" id="inputPassword" class="form-control"
-					placeholder="Password" required>
-				<button class="btn btn-lg btn-primary btn-block btn-signin"
-					type="submit">Sign in</button>
+			<form class="form-signin" method="post" action="">
+				<!-- Phone :: START -->
+				<input type="text" id="phone" name="phone" class="form-control"
+					placeholder="Enter Phone" maxlength="10"
+					value="<?php echo isset($fields['phone']) ? $fields['phone'] : NULL; ?>"
+					autocomplete="off" autofocus /> <span id="err_phone"><?php echo isset($errors['phone'][0]) ? $errors['phone'][0] : NULL; ?></span>
+				<!-- Phone :: END -->
+				<!-- Password :: START -->
+				<input type="password" id="password" name="password"
+					class="form-control" placeholder="Enter Password" maxlength="6"
+					autocomplete="off" /> <span id="err_password"><?php echo isset($errors['password'][0]) ? $errors['password'][0] : NULL; ?></span>
+				<!-- Password :: END -->
+				<input type="submit"
+					class="btn btn-lg btn-primary btn-block btn-signin" value="Login"
+					name="do_login" id="do_login" />
 			</form>
-			<!-- /form -->
 			<a href="#" class="forgot-password"> Forgot the password? </a>
 		</div>
 		<!-- /card-container -->
