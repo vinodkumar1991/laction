@@ -1,6 +1,6 @@
 <div class="wraper container-fluid">
 	<div class="page-title">
-		<h3 class="title">Admin User</h3>
+		<h3 class="title">Admin Users</h3>
 	</div>
 
 

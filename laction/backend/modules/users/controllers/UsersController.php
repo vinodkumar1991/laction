@@ -85,7 +85,8 @@ class UsersController extends GoController
             'role_name' => $arrUser['role_name'],
             'email' => $arrUser['email'],
             'phone' => $arrUser['phone'],
-            'image' => $arrUser['image']
+            'image' => $arrUser['image'],
+            'user_id' => $arrUser['user_id']
         ];
         $objSession['session_data'] = $arrSessionData;
         unset($arrUser, $arrSessionData);
