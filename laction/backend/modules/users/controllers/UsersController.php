@@ -11,16 +11,19 @@ use backend\modules\users\models\Users;
 use backend\modules\users\models\Token;
 use common\components\CommonComponent;
 use yii\helpers\Json;
-use yii\helpers\ArrayHelper;
 use backend\modules\users\models\Login;
 use yii\web\Session;
-use yii\web\Response;
 
 class UsersController extends GoController
 {
 
     public function beforeAction($action)
     {
+        $strAction = Yii::$app->controller->action->id;
+        $objSession = Yii::$app->session;
+        if (! isset($objSession['session_data']) && 'login' != $strAction) {
+            $this->redirect(Yii::getAlias('@web') . '/login');
+        }
         $this->enableCsrfValidation = false;
         return parent::beforeAction($action);
     }
@@ -144,29 +147,30 @@ class UsersController extends GoController
         return $arrResponse;
     }
 
-    public function actionCreateUser()
+    public function actionUsers()
     {
         $arrResponse = [];
-        $arrRoles = Roles::find()->select([
-            'id',
-            'name'
-        ])
-            ->asArray()
-            ->all();
-        $arrRoles = ArrayHelper::map($arrRoles, 'id', 'name');
-        $arrInputs = Yii::$app->request->post();
-        $arrResponse = isset($arrInputs['create_user']) ? $this->saveUser($arrInputs) : [];
-        isset($arrResponse['user_id']) ? Yii::$app->session->setFlash('user_success', 'User created Successfully.') : NULL;
+        $arrRoles = Roles::getRoles([
+            'role_ids' => [
+                1
+            ]
+        ]);
+        $arrStatus = CommonComponent::getStatuses();
+        $arrRoleIds = CommonComponent::getRoleIds();
+        $arrUsers = Users::getUsers([
+            'role_ids' => $arrRoleIds
+        ]);
         return $this->render('/users/User', [
             'roles' => $arrRoles,
-            'errors' => isset($arrResponse['errors']) ? $arrResponse['errors'] : NULL,
-            'fields' => isset($arrResponse['fields']) ? $arrResponse['fields'] : NULL
+            'users' => $arrUsers,
+            'statuses' => $arrStatus
         ]);
     }
 
-    private function saveUser($arrInputs)
+    public function actionCreateUser()
     {
         $arrResponse = [];
+        $arrInputs = Yii::$app->request->post();
         $objUsers = new Users();
         $arrDefaults = $objUsers->getDefaults();
         $arrInputs = array_merge($arrInputs, $arrDefaults);
@@ -175,14 +179,23 @@ class UsersController extends GoController
         $arrInputs['role_name'] = isset($arrRoleData[1]) ? $arrRoleData[1] : NULL;
         $objUsers->attributes = $arrInputs;
         if ($objUsers->validate()) {
-            $objUsers->save();
-            $arrResponse['user_id'] = $objUsers->id;
+            $arrValidatedInputs = $objUsers->getAttributes();
+            if (! empty($arrValidatedInputs['id'])) {
+                unset($arrValidatedInputs['created_date'], $arrValidatedInputs['created_by'], $arrValidatedInputs['last_modified_date']);
+                Users::updateUser($arrValidatedInputs, [
+                    'id' => $arrValidatedInputs['id']
+                ]);
+                $arrResponse['message'] = 'User updated successfully';
+            } else {
+                $objUsers->save();
+                $arrResponse['user_id'] = $objUsers->id;
+                $arrResponse['message'] = 'New user created successfully.';
+            }
         } else {
             $arrResponse['errors'] = $objUsers->errors;
-            $arrResponse['fields'] = $objUsers->getAttributes();
         }
         unset($arrInputs, $arrDefaults);
-        return $arrResponse;
+        echo Json::encode($arrResponse);
     }
 
     public function actionResetPassword()
@@ -329,5 +342,16 @@ class UsersController extends GoController
         }
         unset($arrInputs, $arrDefaults);
         echo Json::encode($arrResponse);
+    }
+
+    public function actionGetUsers()
+    {
+        $arrUsers = [];
+        $arrInputs = Yii::$app->request->post();
+        if (! empty($arrInputs)) {
+            $arrUsers = Users::getUsers($arrInputs)[0];
+        }
+        unset($arrInputs);
+        echo Json::encode($arrUsers);
     }
 }

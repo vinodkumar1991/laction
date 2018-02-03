@@ -131,4 +131,23 @@ class CommonComponent
             'inactive' => 'Inactive'
         ];
     }
+
+    public static function getRoleIds()
+    {
+        $arrRoles = [];
+        $intRole = Yii::$app->session['session_data']['role_id'];
+        switch ($intRole) {
+            case '2':
+                $arrRoles = [
+                    1,
+                    2
+                ];
+                break;
+            default:
+                $arrRoles = [
+                    1
+                ];
+        }
+        return $arrRoles;
+    }
 }

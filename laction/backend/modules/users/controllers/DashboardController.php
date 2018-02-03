@@ -24,7 +24,7 @@ class DashboardController extends GoController
         $arrUser = $objSession['session_data'];
         switch ($arrUser['role_name']) {
             case 'admin':
-                $this->admin($arrUser);
+                $strView = '/dashboard/Admin';
                 break;
             default:
                 $strView = '/dashboard/Superadmin';

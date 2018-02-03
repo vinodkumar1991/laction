@@ -18,12 +18,13 @@ return [
     'slots' => 'slots/slots/slots',
     'create-slot' => 'slots/slots/create-slot',
     // Slots :: END
-    'create-user' => 'users/users/create-user',
+    // Users :: START
+    'users' => 'users/users/users',
     'gen' => 'users/users/generate-otp', // Need To Remove
-    
-   // 'create-slot' => 'uploads/uploads/create-slot',
     'upload' => 'uploads/uploads/upload-files',
     'login' => 'users/users/login',
     'dashboard' => 'users/dashboard/dashboard',
     'logout' => 'users/users/logout'
+    // Users :: END
+
 ];

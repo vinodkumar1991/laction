@@ -92,7 +92,7 @@ class Roles extends ActiveRecord
                 ':Id' => $arrInputs['id']
             ]);
         }
-        // Id
+        // Role Id
         if (isset($arrInputs['role_ids']) && ! empty($arrInputs['role_ids'])) {
             $objQuery = $objQuery->andWhere([
                 'not in',

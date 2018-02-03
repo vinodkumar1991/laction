@@ -34,8 +34,7 @@
 							class="fa fa-desktop" aria-hidden="true"></i></a></li>
 
 				</ul></li>
-			<li class=""><a
-				href="<?php echo Yii::getAlias('@web').'/create-user';?>"><i
+			<li class=""><a href="<?php echo Yii::getAlias('@web').'/users';?>"><i
 					class="fa fa-users"></i> <span class="nav-label">Admin Users</span></a></li>
 
 

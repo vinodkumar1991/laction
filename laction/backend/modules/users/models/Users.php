@@ -116,7 +116,7 @@ class Users extends ActiveRecord
     public function isValidInput($attribute, $params)
     {
         $arrResponse = [];
-        if (! empty($this->email)) {
+        if (! empty($this->email) && 'email' == $attribute) {
             $arrResponse = self::getUsers([
                 'email' => $this->email,
                 'id' => $this->id
@@ -175,7 +175,30 @@ class Users extends ActiveRecord
                 ':Id' => $arrInputs['id']
             ]);
         }
+        // UserId
+        if (isset($arrInputs['user_id']) && ! empty($arrInputs['user_id'])) {
+            $objQuery = $objQuery->andWhere('u.id=:userId', [
+                ':userId' => $arrInputs['user_id']
+            ]);
+        }
+        // Role
+        if (isset($arrInputs['role_ids']) && ! empty($arrInputs['role_ids'])) {
+            $objQuery = $objQuery->andWhere([
+                'not in',
+                'role_id',
+                $arrInputs['role_ids']
+            ]);
+        }
         $arrResponse = $objQuery->all();
         return $arrResponse;
+    }
+
+    public static function updateUser($arrInputs, $arrWhere)
+    {
+        $objConnection = Yii::$app->db;
+        $intUpdate = $objConnection->createCommand()
+            ->update('users', $arrInputs, $arrWhere)
+            ->execute();
+        return $intUpdate;
     }
 }
