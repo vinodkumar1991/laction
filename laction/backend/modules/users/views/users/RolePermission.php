@@ -36,7 +36,6 @@
 										<tr>
 											<th>Role</th>
 											<th>Permissions</th>
-											<th>Action</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -49,13 +48,7 @@
 											<td>
 												<button class="btn btn-primary" data-toggle="modal"
 													data-target=".bs-example-modal-sm"
-													onclick="getPermissions(<?php echo $arrRole['name'];?>)">Permissions</button>
-											</td>
-											<td class="actions">
-												<button class="btn btn-primary" data-toggle="modal"
-													data-target="#con-close-modal">
-													<i class="fa fa-pencil"></i>
-												</button>
+													onclick="getPermissions('<?php echo $arrRole['name']; ?>')">Permissions</button>
 											</td>
 										</tr>
 									        <?php
@@ -67,26 +60,32 @@
 											<div class="modal-dialog modal-sm">
 												<div class="modal-content">
 													<div class="modal-header">
-														<h4 class="modal-title" id="mySmallModalLabel">Permission
-															Name</h4>
+														<h4 class="modal-title" id="mySmallModalLabel">Permissions</h4>
 													</div>
 													<div class="modal-body">
-														<div class="form-group m-l-10">
-															<label class="cr-styled"> Permission 1 </label>
+													<?php
+            
+            if (! empty($permissions)) {
+                foreach ($permissions as $arrPermission) {
+                    ?>
+                    <div class="form-group m-l-10">
+															<input type="checkbox"
+																name="permission_<?php echo $arrPermission['name']; ?>"
+																id="permission_<?php echo $arrPermission['name']; ?>"
+																onclick="setPermission('<?php echo $arrPermission['name']; ?>')" />&emsp;<label
+																class="cr-styled"><?php echo $arrPermission['name']; ?> </label>
 														</div>
-														<div class="form-group m-l-10">
-															<label class="cr-styled"> Permission 2 </label>
-														</div>
-														<div class="form-group m-l-10">
-															<label class="cr-styled"> Permission 3 </label>
-														</div>
-														<div class="form-group m-l-10">
-															<label class="cr-styled"> Permission 4 </label>
-														</div>
+                    
+                    <?php
+                }
+            }
+            ?>
+														
 
 													</div>
+													<div id="permission_message"></div>
 													<button class="md-close btn-sm btn-primary"
-														data-dismiss="modal" aria-hidden="true">Close me!</button>
+														data-dismiss="modal" aria-hidden="true">Close</button>
 												</div>
 												<!-- /.modal-content -->
 
@@ -113,10 +112,48 @@ $(document).ready(function() {
     var table = $('#datatable-fixed-header').DataTable( { fixedHeader: true } );
 } );
 TableManageButtons.init();
-
+var role = '';
 function getPermissions(role_name){
+	makeEmpty();
+	role = role_name;
 	var objRole = {};
 	objRole = {
-			role_name : role_name};
+			role : role_name,
+			status : 'active',
+			};
+	$.post('<?php echo Yii::getAlias('@web').'/users/users/get-role-permissions';?>',objRole,function(response){
+		var response = $.parseJSON(response);
+		if(response){
+			$.each(response,function(key, value){
+				$("#permission_"+value.permission).prop('checked',true);
+				});
+			}
+		});
+			return true;
+}
+
+function setPermission(permission_name){
+	makeEmpty();
+	var objPermission = {};
+	var status = 'active';
+	if($("#permission_"+permission_name).prop('checked') == false){
+	   status = 'inactive';
+	}	
+	objPermission = {
+			permission : permission_name,
+			role : role,
+			status : status,
+			sign : 1,
+			};
+	$.post('<?php echo Yii::getAlias('@web').'/users/users/save-permission';?>',objPermission,function(response){
+		var response = $.parseJSON(response);
+		$("#permission_message").html(response.message);
+		});
+		return true;
+}
+
+function makeEmpty(){
+	$("#permission_message").empty();
+	return true;
 }
 </script>

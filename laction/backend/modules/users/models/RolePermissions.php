@@ -8,6 +8,8 @@ use yii\db\Query;
 class RolePermissions extends ActiveRecord
 {
 
+    public $sign;
+
     public static function tableName()
     {
         return 'role_permissions';
@@ -30,7 +32,8 @@ class RolePermissions extends ActiveRecord
                     'created_date',
                     'created_by',
                     'last_modified_date',
-                    'last_modified_by'
+                    'last_modified_by',
+                    'sign'
                 ],
                 'safe'
             ],
@@ -68,7 +71,8 @@ class RolePermissions extends ActiveRecord
     {
         return [
             'created_date' => date('Y-m-d H:i:s'),
-            'created_by' => 1 // Need to change
+            'created_by' => Yii::$app->session['session_data']['user_id'],
+            'last_modified_by' => Yii::$app->session['session_data']['user_id']
         ];
     }
 
@@ -88,6 +92,18 @@ class RolePermissions extends ActiveRecord
                 ':Role' => $arrInputs['role']
             ]);
         }
+        // permission
+        if (isset($arrInputs['permission']) && ! empty($arrInputs['permission'])) {
+            $objQuery = $objQuery->andWhere('rp.permission=:Permission', [
+                ':Permission' => $arrInputs['permission']
+            ]);
+        }
+        // status
+        if (isset($arrInputs['status']) && ! empty($arrInputs['status'])) {
+            $objQuery = $objQuery->andWhere('rp.status=:status', [
+                ':status' => $arrInputs['status']
+            ]);
+        }
         $arrResponse = $objQuery->all();
         return $arrResponse;
     }
@@ -96,9 +112,13 @@ class RolePermissions extends ActiveRecord
     {
         $arrRolePermission = [];
         if (! empty($this->role)) {
-            $arrRolePermission = self::getRolePermissions([
+            $arrInputs = ! empty($this->sign) ? [
+                'role' => $this->role,
+                'permission' => $this->permission
+            ] : [
                 'role' => $this->role
-            ]);
+            ];
+            $arrRolePermission = self::getRolePermissions($arrInputs);
         }
         if (empty($arrRolePermission)) {
             return true;
@@ -106,5 +126,14 @@ class RolePermissions extends ActiveRecord
             $this->addError($attribute, 'Permissions already mapped to this role');
             return false;
         }
+    }
+
+    public static function updateRolePermission($arrInputs, $arrWhere)
+    {
+        $objConnection = Yii::$app->db;
+        $intUpdate = $objConnection->createCommand()
+            ->update('role_permissions', $arrInputs, $arrWhere)
+            ->execute();
+        return $intUpdate;
     }
 }

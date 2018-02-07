@@ -270,8 +270,10 @@ class UsersController extends GoController
     public function actionRolePermissions()
     {
         $arrRoles = Roles::getRoles();
+        $arrPermissions = Permissions::getPermissions();
         return $this->render('/users/RolePermission', [
-            'roles' => $arrRoles
+            'roles' => $arrRoles,
+            'permissions' => $arrPermissions
         ]);
     }
 
@@ -354,5 +356,53 @@ class UsersController extends GoController
         }
         unset($arrInputs);
         echo Json::encode($arrUsers);
+    }
+
+    public function actionGetRolePermissions()
+    {
+        $arrRolePermissions = [];
+        $arrInputs = Yii::$app->request->post();
+        if (! empty($arrInputs)) {
+            $arrRolePermissions = RolePermissions::getRolePermissions($arrInputs);
+        }
+        unset($arrInputs);
+        echo Json::encode($arrRolePermissions);
+    }
+
+    public function actionSavePermission()
+    {
+        $arrResponse = [];
+        $arrInputs = Yii::$app->request->post();
+        if (! empty($arrInputs)) {
+            $arrRolePermission = RolePermissions::find()->select('id')
+                ->andWhere('role=:roleName and permission=:permissionName', [
+                ':roleName' => $arrInputs['role'],
+                ':permissionName' => $arrInputs['permission']
+            ])
+                ->asArray()
+                ->all();
+            if (empty($arrRolePermission)) {
+                $objRolePermission = new RolePermissions();
+                $arrDefaults = $objRolePermission->getDefaults();
+                $arrInputs = array_merge($arrDefaults, $arrInputs);
+                $objRolePermission->attributes = $arrInputs;
+                if ($objRolePermission->validate()) {
+                    $objRolePermission->save();
+                    $arrResponse['is_updated'] = $objRolePermission->id;
+                    $arrResponse['message'] = 'Permission added succesfully.';
+                } else {
+                    $arrResponse['errors'] = $objRolePermission->errors;
+                }
+            } else {
+                unset($arrInputs['sign']);
+                $arrResponse['is_updated'] = RolePermissions::updateRolePermission($arrInputs, [
+                    'role' => $arrInputs['role'],
+                    'permission' => $arrInputs['permission']
+                ]);
+                $arrResponse['message'] = 'Permission updated succesfully.';
+            }
+        }
+        unset($arrInputs);
+        echo Json::encode($arrResponse);
     }
 }
