@@ -57,32 +57,31 @@ class NotificationController extends Controller
     {
         $arrResponse = [];
         $arrMessageTypes = CommonComponent::getMessageTypes();
-        $arrInputs = Yii::$app->request->post();
-        $arrResponse = ! empty($arrInputs) ? $this->saveTemplate($arrInputs) : [];
-        isset($arrResponse['template_id']) ? Yii::$app->session->setFlash('template_success', 'Template created Successfully.') : NULL;
+        $arrSubjects = SenderIds::getSenderIds();
         return $this->render('/CreateTemplate', [
             'message_types' => $arrMessageTypes,
-            'errors' => isset($arrResponse['errors']) ? $arrResponse['errors'] : [],
-            'fields' => isset($arrResponse['fields']) ? $arrResponse['fields'] : []
+            'subjects' => $arrSubjects
         ]);
     }
 
-    private function saveTemplate($arrInputs)
+    public function actionSaveTemplate()
     {
         $arrResponse = [];
+        $arrInputs = Yii::$app->request->post();
         $objTemplate = new Template();
+        $objTemplate->scenario = $arrInputs['message_type'];
         $arrDefaults = $objTemplate->getDefaults();
         $arrInputs = array_merge($arrInputs, $arrDefaults);
         $objTemplate->attributes = $arrInputs;
         if ($objTemplate->validate()) {
             $objTemplate->save();
             $arrResponse['template_id'] = $objTemplate->id;
+            $arrResponse['message'] = 'Template Created Successfully';
         } else {
             $arrResponse['errors'] = $objTemplate->errors;
-            $arrResponse['fields'] = $objTemplate->getAttributes();
         }
         unset($arrInputs, $arrDefaults);
-        return $arrResponse;
+        echo Json::encode($arrResponse);
     }
 
     public function actionGetSubjects()
@@ -108,6 +107,20 @@ class NotificationController extends Controller
 
     public function actionTemplates()
     {
-        return $this->render('/Templates', []);
+        $arrTemplates = Template::getTemplates();
+        return $this->render('/Templates', [
+            'templates' => $arrTemplates
+        ]);
+    }
+
+    public function actionGetTemplate()
+    {
+        $arrResponse = [];
+        $arrInputs = Yii::$app->request->post();
+        if (! empty($arrInputs)) {
+            $arrResponse = Template::getTemplates($arrInputs)[0];
+        }
+        unset($arrInputs);
+        echo Json::encode($arrResponse);
     }
 }

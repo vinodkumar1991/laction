@@ -2,7 +2,7 @@
 
 <div class="wraper container-fluid">
 	<div class="page-title">
-		<h3 class="title">Role Permission</h3>
+		<h3 class="title">Templates</h3>
 	</div>
 
 	<!-- Tabs-style-1 -->
@@ -28,32 +28,62 @@
 										class="table table-striped table-bordered">
 										<thead>
 											<tr>
-												<th>S.No</th>
-												<th>Code</th>
+												<th>Message Type</th>
+												<th>From Email</th>
+												<th>Subject</th>
+												<th>Template Code</th>
+												<th>Template Name</th>
 												<th>Template</th>
+												<th>Template Description</th>
+												<th>Status</th>
 												<th>Actions</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr class="gradeX">
-												<td>1</td>
-												<td>A</td>
+										<?php
+        
+        if (! empty($templates)) {
+            foreach ($templates as $arrTemplate) {
+                ?>
+                <tr class="gradeX">
+												<td><?php echo $arrTemplate['message_type'].' ( '.$arrTemplate['category_type'].' ) '; ?></td>
+												<td><?php echo $arrTemplate['from_email']; ?></td>
+												<td><?php echo $arrTemplate['subject']; ?></td>
+												<td><?php echo $arrTemplate['code']; ?></td>
+												<td><?php echo $arrTemplate['name']; ?></td>
 												<td class="actions">
-
+												<?php
+                
+                if ("email" == $arrTemplate['message_type']) {
+                    ?>
 													<button class="btn btn-primary" data-toggle="modal"
-														data-target="#con-close-modale">
+														data-target=".template_mode"
+														onclick="setTemplate('<?php echo $arrTemplate['id']; ?>')">
 														<i class="fa fa-picture-o" aria-hidden="true"></i>
 													</button>
-												</td>
-
-												<td class="actions">
-
+													<?php }else{?>
 													<button class="btn btn-primary" data-toggle="modal"
-														data-target="#con-close-modal">
+														data-target=".sms"
+														onclick="setTemplate('<?php echo $arrTemplate['id']; ?>')">
+														<i class="fa fa-picture-o" aria-hidden="true"></i>
+													</button>
+													<?php }?>
+												</td>
+												<td><?php echo $arrTemplate['description']; ?></td>
+												<td><?php echo $arrTemplate['status']; ?></td>
+												<td class="actions">
+													<button class="btn btn-primary" data-toggle="modal"
+														data-target="#edit_template">
 														<i class="fa fa-pencil"></i>
 													</button>
 												</td>
 											</tr>
+										    <?php
+            }
+            unset($templates);
+        }
+        ?>
+											
 										</tbody>
 									</table>
 								</div>
@@ -65,130 +95,51 @@
 		</div>
 	</div>
 </div>
-
-<div id="con-close-modale" class="modal fade" tabindex="-1"
-	role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-	style="display: none;">
+<!-- SMS :: START -->
+<div class="modal fade sms" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"
-					aria-hidden="true">×</button>
-				<h4 class="modal-title">Email Templet</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"></h4>
 			</div>
-			<div class="modal-body">
-
-				<div class="row">
-					<table
-						style="border: 1px solid #ccc; font-family: Arial, Helvetica, sans-serif; max-width: 650px"
-						cellspacing="0" cellpadding="0" border="0" width="100%"
-						align="center">
-
-						<tbody>
-							<tr>
-								<td
-									style="font-size: 16px; text-align: center; padding: 30px 0 0 0; text-decoration: underline"><strong>SBI
-										Elite Card</strong></td>
-							</tr>
-							<tr>
-								<td style="font-size: 13px; padding: 20px 0 0 20px">Hi,</td>
-							</tr>
-							<tr>
-								<td style="font-size: 13px; padding: 15px 0 0 20px"><span
-									style="color: #0070c0">Apply Online</span> for <strong>SBI Card
-										Elite</strong> &amp; get rewarding benefits*.</td>
-							</tr>
-							<tr>
-								<td>
-									<table cellspacing="0" cellpadding="0" border="0" width="90%"
-										align="center">
-
-										<tbody>
-											<tr>
-												<td style="padding: 20px 0 0 15px" valign="top"><img alt=""
-													src="https://ci6.googleusercontent.com/proxy/2FFJ6z2HeWgeG2WIZ7uW0JPbIP0fPqOmcEN4Y3oW8N8IlUFAL5zOB2MjbJHziGEUINZsT67OVsxxE_EhPH1VoM7cdCcvmAyHkDQmDrPhjgC7-h9xbQEzDJw9pEVu_dhcK_t7kryvJp2Qpw=s0-d-e1-ft#http://app.way2sms.biz/w2email/newsletters/12_2017/29/29Dec2017024012_ex//bullet.jpg"
-													class="CToWUd"></td>
-												<td style="font-size: 13px; padding: 20px 0 0 0">Up to
-													50,000 Bonus Reward points annually</td>
-											</tr>
-											<tr>
-												<td style="padding: 10px 0 0 15px" valign="top"><img alt=""
-													src="https://ci6.googleusercontent.com/proxy/2FFJ6z2HeWgeG2WIZ7uW0JPbIP0fPqOmcEN4Y3oW8N8IlUFAL5zOB2MjbJHziGEUINZsT67OVsxxE_EhPH1VoM7cdCcvmAyHkDQmDrPhjgC7-h9xbQEzDJw9pEVu_dhcK_t7kryvJp2Qpw=s0-d-e1-ft#http://app.way2sms.biz/w2email/newsletters/12_2017/29/29Dec2017024012_ex//bullet.jpg"
-													class="CToWUd"></td>
-												<td style="font-size: 13px; padding: 10px 0 0 0">24/7
-													Concierge Service at your attendance</td>
-											</tr>
-											<tr>
-												<td style="padding: 10px 0 0 15px" valign="top"><img alt=""
-													src="https://ci6.googleusercontent.com/proxy/2FFJ6z2HeWgeG2WIZ7uW0JPbIP0fPqOmcEN4Y3oW8N8IlUFAL5zOB2MjbJHziGEUINZsT67OVsxxE_EhPH1VoM7cdCcvmAyHkDQmDrPhjgC7-h9xbQEzDJw9pEVu_dhcK_t7kryvJp2Qpw=s0-d-e1-ft#http://app.way2sms.biz/w2email/newsletters/12_2017/29/29Dec2017024012_ex//bullet.jpg"
-													class="CToWUd"></td>
-												<td style="font-size: 13px; padding: 10px 0 0 0">Wellness,
-													Travel &amp; Reservation Privileges</td>
-											</tr>
-											<tr>
-												<td style="padding: 10px 0 0 15px" valign="top"><img alt=""
-													src="https://ci6.googleusercontent.com/proxy/2FFJ6z2HeWgeG2WIZ7uW0JPbIP0fPqOmcEN4Y3oW8N8IlUFAL5zOB2MjbJHziGEUINZsT67OVsxxE_EhPH1VoM7cdCcvmAyHkDQmDrPhjgC7-h9xbQEzDJw9pEVu_dhcK_t7kryvJp2Qpw=s0-d-e1-ft#http://app.way2sms.biz/w2email/newsletters/12_2017/29/29Dec2017024012_ex//bullet.jpg"
-													class="CToWUd"></td>
-												<td style="font-size: 13px; padding: 10px 0 0 0">Lounge
-													access at over 850 airports worldwide.</td>
-											</tr>
-											<tr>
-												<td style="padding: 10px 0 0 15px" valign="top"><img alt=""
-													src="https://ci6.googleusercontent.com/proxy/2FFJ6z2HeWgeG2WIZ7uW0JPbIP0fPqOmcEN4Y3oW8N8IlUFAL5zOB2MjbJHziGEUINZsT67OVsxxE_EhPH1VoM7cdCcvmAyHkDQmDrPhjgC7-h9xbQEzDJw9pEVu_dhcK_t7kryvJp2Qpw=s0-d-e1-ft#http://app.way2sms.biz/w2email/newsletters/12_2017/29/29Dec2017024012_ex//bullet.jpg"
-													class="CToWUd"></td>
-												<td style="font-size: 13px; padding: 10px 0 0 0">Convenience
-													of contactless technology.</td>
-											</tr>
-											<tr>
-												<td style="padding: 10px 0 0 15px" valign="top"><img alt=""
-													src="https://ci6.googleusercontent.com/proxy/2FFJ6z2HeWgeG2WIZ7uW0JPbIP0fPqOmcEN4Y3oW8N8IlUFAL5zOB2MjbJHziGEUINZsT67OVsxxE_EhPH1VoM7cdCcvmAyHkDQmDrPhjgC7-h9xbQEzDJw9pEVu_dhcK_t7kryvJp2Qpw=s0-d-e1-ft#http://app.way2sms.biz/w2email/newsletters/12_2017/29/29Dec2017024012_ex//bullet.jpg"
-													class="CToWUd"></td>
-												<td style="font-size: 13px; padding: 10px 0 0 0">Special
-													discounts on health resorts and spas.</td>
-											</tr>
-											<tr>
-												<td style="padding: 10px 0 0 15px" valign="top"><img alt=""
-													src="https://ci6.googleusercontent.com/proxy/2FFJ6z2HeWgeG2WIZ7uW0JPbIP0fPqOmcEN4Y3oW8N8IlUFAL5zOB2MjbJHziGEUINZsT67OVsxxE_EhPH1VoM7cdCcvmAyHkDQmDrPhjgC7-h9xbQEzDJw9pEVu_dhcK_t7kryvJp2Qpw=s0-d-e1-ft#http://app.way2sms.biz/w2email/newsletters/12_2017/29/29Dec2017024012_ex//bullet.jpg"
-													class="CToWUd"></td>
-												<td style="font-size: 13px; padding: 10px 0 0 0">2
-													complimentary Movie tickets every month.</td>
-											</tr>
-
-										</tbody>
-									</table>
-								</td>
-							</tr>
-							<tr>
-								<td
-									style="font-size: 16px; color: #0070c0; padding: 30px 0 0 20px; text-decoration: underline"><strong>Apply
-										Now </strong></td>
-							</tr>
-							<tr>
-								<td style="font-size: 13px; padding: 10px 0 0 20px">Warm
-									regards,</td>
-							</tr>
-							<tr>
-								<td style="padding: 20px 0 0 20px"><img alt=""
-									src="https://ci5.googleusercontent.com/proxy/BVPE2LiOby2iE4gv4D1mKpK34PZU9MLk3f_EpJrB47IvTmshFR5lh6Cr9_URJIO68sbyYBY-OCAgjKuW4IEBZOwXDhfs0jbIdRV0yFfO81ziWVV-Ln2xKqEB51L631QPk9y0xGBykNuUx63JaAUHdm8=s0-d-e1-ft#http://app.way2sms.biz/w2email/newsletters/12_2017/29/29Dec2017024012_ex//xfgdfg_dfgdfg.png"
-									class="CToWUd"></td>
-							</tr>
-							<tr>
-								<td style="padding: 30px 30px 30px 20px; font-size: 10px">* For
-									Terms &amp; Conditions log onto <span style="color: #0070c0">sbicard&shy;.com</span><br>
-									"SBI Card" is a registered logo/trademark of SBICPSL. You may
-									call SBI Card helpline for any additional clarifications or for
-									any other issues with regard to any information contained in
-									this emailer. Please do not reply to this <span class="il">email</span>
-									as it is a computer generated <span class="il">email</span> and
-									reply to this <span class="il">email</span> id is not
-									monitored.<br>
-								</td>
-							</tr>
-
-						</tbody>
-					</table>
-				</div>
-			</div>
+			<div class="modal-body"></div>
 		</div>
+
 	</div>
 </div>
+<!-- SMS :: END -->
+
+<div class="modal fade template_mode" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true"
+	style="display: none;"></div>
+<script type="text/javascript">
+            $(document).ready(function() {
+                $('#datatable').dataTable();
+                $('#datatable-keytable').DataTable( { keys: true } );
+                $('#datatable-responsive').DataTable();
+                $('#datatable-scroller').DataTable( { ajax: "assets/datatables/json/scroller-demo.json", deferRender: true, scrollY: 380, scrollCollapse: true, scroller: true } );
+                var table = $('#datatable-fixed-header').DataTable( { fixedHeader: true } );
+            } );
+            TableManageButtons.init();
+
+            function setTemplate(template_id){
+                var objTemplate = {};
+                objTemplate = {
+                        template_id : template_id};
+                $.post('<?php echo Yii::getAlias('@web').'/notifications/notification/get-template';?>',objTemplate,function(response){
+                    var response = $.parseJSON(response);
+                    if(response){
+
+                    	if('email' == response.message_type){
+                    		$(".template_mode").html(response.template);
+                            }else{
+                                $(".modal-title").html(response.name);
+                            	$(".modal-body").html(response.template);
+                                }
+                        
+                        }
+                    });
+                        return true;
+            }
+        </script>

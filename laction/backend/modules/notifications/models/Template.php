@@ -3,6 +3,7 @@ namespace backend\modules\notifications\models;
 
 use yii\db\ActiveRecord;
 use yii\db\Query;
+use Yii;
 
 class Template extends ActiveRecord
 {
@@ -24,12 +25,27 @@ class Template extends ActiveRecord
                     'template',
                     'status'
                 ],
-                'required'
+                'required',
+                'on' => 'sms',
+                'message' => '{attribute} is required'
+            ],
+            [
+                [
+                    'message_type',
+                    'from_email',
+                    'senderid_id',
+                    'code',
+                    'name',
+                    'template',
+                    'status'
+                ],
+                'required',
+                'on' => 'email',
+                'message' => '{attribute} is required'
             ],
             [
                 [
                     'id',
-                    'from_email',
                     'description',
                     'created_date',
                     'created_by',
@@ -43,6 +59,12 @@ class Template extends ActiveRecord
                 'isValidCode'
             ],
             [
+                'code',
+                'match',
+                'pattern' => '/^[0-9a-zA-Z]+$/',
+                'message' => 'Invalid Code'
+            ],
+            [
                 'from_email',
                 'email'
             ],
@@ -53,6 +75,29 @@ class Template extends ActiveRecord
                 'message' => 'Invalid Description'
             ]
         ];
+    }
+
+    public function scenarios()
+    {
+        $arrScenarios = parent::scenarios();
+        $arrScenarios['email'] = [
+            'message_type',
+            'from_email',
+            'senderid_id',
+            'code',
+            'name',
+            'template',
+            'status'
+        ];
+        $arrScenarios['sms'] = [
+            'message_type',
+            'senderid_id',
+            'code',
+            'name',
+            'template',
+            'status'
+        ];
+        return $arrScenarios;
     }
 
     public function attributeLabels()
@@ -73,7 +118,9 @@ class Template extends ActiveRecord
     {
         return [
             'created_date' => date('Y-m-d H:i:s'),
-            'created_by' => 1 // Need to change
+            'created_by' => Yii::$app->session['session_data']['user_id'],
+            'last_modified_by' => Yii::$app->session['session_data']['user_id'],
+            'sync' => 'false'
         ];
     }
 
@@ -95,9 +142,21 @@ class Template extends ActiveRecord
     {
         $objQuery = new Query();
         $objQuery->select([
-            't.id'
+            't.id',
+            't.message_type',
+            't.from_email',
+            's.subject',
+            's.category_type',
+            's.route',
+            't.code',
+            't.name',
+            't.template',
+            't.description',
+            't.status',
+            't.sync'
         ]);
         $objQuery->from('templates as t');
+        $objQuery->innerJoin('senderids as s', 's.id = t.senderid_id');
         // Message Type
         if (isset($arrInputs['message_type']) && ! empty($arrInputs['message_type'])) {
             $objQuery = $objQuery->andWhere('t.message_type=:MessageType', [
@@ -114,6 +173,12 @@ class Template extends ActiveRecord
         if (isset($arrInputs['id']) && ! empty($arrInputs['id'])) {
             $objQuery = $objQuery->andWhere('t.id!=:Id', [
                 ':Id' => $arrInputs['id']
+            ]);
+        }
+        // Template Id
+        if (isset($arrInputs['template_id']) && ! empty($arrInputs['template_id'])) {
+            $objQuery = $objQuery->andWhere('t.id=:TemplateId', [
+                ':TemplateId' => $arrInputs['template_id']
             ]);
         }
         $arrResponse = $objQuery->all();

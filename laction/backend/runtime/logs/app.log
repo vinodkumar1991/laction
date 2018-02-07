@@ -61800,3 +61800,2211 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1517688916.022
     'REQUEST_TIME' => 1517688916
 ]
+2018-02-07 19:56:29 [::1][-][hjei3ddebs4j544bdjgs3scu40][error][yii\base\UnknownMethodException] exception 'yii\base\UnknownMethodException' with message 'Calling unknown method: backend\modules\users\models\RolePermissions::select()' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Component.php:290
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\backend\modules\users\controllers\UsersController.php(378): yii\base\Component->__call('select', Array)
+#1 C:\xampp\htdocs\laction\laction\backend\modules\users\controllers\UsersController.php(378): backend\modules\users\models\RolePermissions->select('id')
+#2 [internal function]: app\modules\users\controllers\UsersController->actionSavePermission()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#4 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('save-permission', Array)
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('users/users/sav...', Array)
+#7 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(common\components\Request))
+#8 C:\xampp\htdocs\laction\laction\backend\web\index.php(18): yii\base\Application->run()
+#9 {main}
+2018-02-07 19:56:29 [::1][-][hjei3ddebs4j544bdjgs3scu40][info][application] $_POST = [
+    'permission' => 'notifications'
+    'role' => 'admin'
+    'status' => 'active'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'hjei3ddebs4j544bdjgs3scu40'
+    '_csrf-backend' => '20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"nigM^Uº§ð8ËÂ…˜Xfmã
+ÙüQ\"2ñ¦èq‚\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'session_data' => [
+        'fullname' => 'Laction Studios'
+        'role_id' => '1'
+        'role_name' => 'superadmin'
+        'email' => 'superadmin@lactionstudio.com'
+        'phone' => '1234567890'
+        'image' => null
+        'user_id' => '1'
+    ]
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '49'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded; charset=UTF-8'
+    'HTTP_REFERER' => 'http://localhost/laction/laction/admin/role-permissions'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,te;q=0.8'
+    'HTTP_COOKIE' => 'advanced-backend=hjei3ddebs4j544bdjgs3scu40; _csrf-backend=20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ni%90gM%5EU%14%BA%A7%F08%CB%C2%85%98Xfm%E3%0A%D9%FCQ%222%8D%F1%A6%E8q%82%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/laction/laction/backend/web/index.php'
+    'REMOTE_PORT' => '52680'
+    'REDIRECT_URL' => '/laction/laction/admin/users/users/save-permission'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/laction/laction/admin/users/users/save-permission'
+    'SCRIPT_NAME' => '/laction/laction/backend/web/index.php'
+    'PHP_SELF' => '/laction/laction/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1518029789.701
+    'REQUEST_TIME' => 1518029789
+]
+2018-02-07 19:56:30 [::1][-][hjei3ddebs4j544bdjgs3scu40][error][yii\base\UnknownMethodException] exception 'yii\base\UnknownMethodException' with message 'Calling unknown method: backend\modules\users\models\RolePermissions::select()' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Component.php:290
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\backend\modules\users\controllers\UsersController.php(378): yii\base\Component->__call('select', Array)
+#1 C:\xampp\htdocs\laction\laction\backend\modules\users\controllers\UsersController.php(378): backend\modules\users\models\RolePermissions->select('id')
+#2 [internal function]: app\modules\users\controllers\UsersController->actionSavePermission()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#4 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('save-permission', Array)
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('users/users/sav...', Array)
+#7 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(common\components\Request))
+#8 C:\xampp\htdocs\laction\laction\backend\web\index.php(18): yii\base\Application->run()
+#9 {main}
+2018-02-07 19:56:30 [::1][-][hjei3ddebs4j544bdjgs3scu40][info][application] $_POST = [
+    'permission' => 'notifications'
+    'role' => 'admin'
+    'status' => 'inactive'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'hjei3ddebs4j544bdjgs3scu40'
+    '_csrf-backend' => '20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"nigM^Uº§ð8ËÂ…˜Xfmã
+ÙüQ\"2ñ¦èq‚\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'session_data' => [
+        'fullname' => 'Laction Studios'
+        'role_id' => '1'
+        'role_name' => 'superadmin'
+        'email' => 'superadmin@lactionstudio.com'
+        'phone' => '1234567890'
+        'image' => null
+        'user_id' => '1'
+    ]
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '51'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded; charset=UTF-8'
+    'HTTP_REFERER' => 'http://localhost/laction/laction/admin/role-permissions'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,te;q=0.8'
+    'HTTP_COOKIE' => 'advanced-backend=hjei3ddebs4j544bdjgs3scu40; _csrf-backend=20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ni%90gM%5EU%14%BA%A7%F08%CB%C2%85%98Xfm%E3%0A%D9%FCQ%222%8D%F1%A6%E8q%82%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/laction/laction/backend/web/index.php'
+    'REMOTE_PORT' => '52681'
+    'REDIRECT_URL' => '/laction/laction/admin/users/users/save-permission'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/laction/laction/admin/users/users/save-permission'
+    'SCRIPT_NAME' => '/laction/laction/backend/web/index.php'
+    'PHP_SELF' => '/laction/laction/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1518029790.701
+    'REQUEST_TIME' => 1518029790
+]
+2018-02-07 19:56:32 [::1][-][hjei3ddebs4j544bdjgs3scu40][error][yii\base\UnknownMethodException] exception 'yii\base\UnknownMethodException' with message 'Calling unknown method: backend\modules\users\models\RolePermissions::select()' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Component.php:290
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\backend\modules\users\controllers\UsersController.php(378): yii\base\Component->__call('select', Array)
+#1 C:\xampp\htdocs\laction\laction\backend\modules\users\controllers\UsersController.php(378): backend\modules\users\models\RolePermissions->select('id')
+#2 [internal function]: app\modules\users\controllers\UsersController->actionSavePermission()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#4 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('save-permission', Array)
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('users/users/sav...', Array)
+#7 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(common\components\Request))
+#8 C:\xampp\htdocs\laction\laction\backend\web\index.php(18): yii\base\Application->run()
+#9 {main}
+2018-02-07 19:56:32 [::1][-][hjei3ddebs4j544bdjgs3scu40][info][application] $_POST = [
+    'permission' => 'notifications'
+    'role' => 'admin'
+    'status' => 'active'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'hjei3ddebs4j544bdjgs3scu40'
+    '_csrf-backend' => '20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"nigM^Uº§ð8ËÂ…˜Xfmã
+ÙüQ\"2ñ¦èq‚\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'session_data' => [
+        'fullname' => 'Laction Studios'
+        'role_id' => '1'
+        'role_name' => 'superadmin'
+        'email' => 'superadmin@lactionstudio.com'
+        'phone' => '1234567890'
+        'image' => null
+        'user_id' => '1'
+    ]
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '49'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded; charset=UTF-8'
+    'HTTP_REFERER' => 'http://localhost/laction/laction/admin/role-permissions'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,te;q=0.8'
+    'HTTP_COOKIE' => 'advanced-backend=hjei3ddebs4j544bdjgs3scu40; _csrf-backend=20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ni%90gM%5EU%14%BA%A7%F08%CB%C2%85%98Xfm%E3%0A%D9%FCQ%222%8D%F1%A6%E8q%82%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/laction/laction/backend/web/index.php'
+    'REMOTE_PORT' => '52679'
+    'REDIRECT_URL' => '/laction/laction/admin/users/users/save-permission'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/laction/laction/admin/users/users/save-permission'
+    'SCRIPT_NAME' => '/laction/laction/backend/web/index.php'
+    'PHP_SELF' => '/laction/laction/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1518029792.158
+    'REQUEST_TIME' => 1518029792
+]
+2018-02-07 19:57:57 [::1][-][hjei3ddebs4j544bdjgs3scu40][error][yii\base\ErrorException:1] exception 'yii\base\ErrorException' with message 'Call to a member function all() on null' in C:\xampp\htdocs\laction\laction\backend\modules\users\controllers\UsersController.php:380
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2018-02-07 19:57:57 [::1][-][hjei3ddebs4j544bdjgs3scu40][info][application] $_POST = [
+    'permission' => 'notifications'
+    'role' => 'admin'
+    'status' => 'active'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'hjei3ddebs4j544bdjgs3scu40'
+    '_csrf-backend' => '20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"nigM^Uº§ð8ËÂ…˜Xfmã
+ÙüQ\"2ñ¦èq‚\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'session_data' => [
+        'fullname' => 'Laction Studios'
+        'role_id' => '1'
+        'role_name' => 'superadmin'
+        'email' => 'superadmin@lactionstudio.com'
+        'phone' => '1234567890'
+        'image' => null
+        'user_id' => '1'
+    ]
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '49'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded; charset=UTF-8'
+    'HTTP_REFERER' => 'http://localhost/laction/laction/admin/role-permissions'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,te;q=0.8'
+    'HTTP_COOKIE' => 'advanced-backend=hjei3ddebs4j544bdjgs3scu40; _csrf-backend=20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ni%90gM%5EU%14%BA%A7%F08%CB%C2%85%98Xfm%E3%0A%D9%FCQ%222%8D%F1%A6%E8q%82%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/laction/laction/backend/web/index.php'
+    'REMOTE_PORT' => '52832'
+    'REDIRECT_URL' => '/laction/laction/admin/users/users/save-permission'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/laction/laction/admin/users/users/save-permission'
+    'SCRIPT_NAME' => '/laction/laction/backend/web/index.php'
+    'PHP_SELF' => '/laction/laction/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1518029877.37
+    'REQUEST_TIME' => 1518029877
+]
+2018-02-07 20:13:41 [::1][-][hjei3ddebs4j544bdjgs3scu40][error][yii\base\ErrorException:4] exception 'yii\base\ErrorException' with message 'syntax error, unexpected '$arrRolePermission' (T_VARIABLE)' in C:\xampp\htdocs\laction\laction\backend\modules\users\models\RolePermissions.php:121
+Stack trace:
+#0 [internal function]: yii\base\ErrorHandler->handleFatalError()
+#1 {main}
+2018-02-07 20:13:40 [::1][-][hjei3ddebs4j544bdjgs3scu40][info][application] $_POST = [
+    'role' => 'admin'
+    'status' => 'active'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'hjei3ddebs4j544bdjgs3scu40'
+    '_csrf-backend' => '20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"nigM^Uº§ð8ËÂ…˜Xfmã
+ÙüQ\"2ñ¦èq‚\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'session_data' => [
+        'fullname' => 'Laction Studios'
+        'role_id' => '1'
+        'role_name' => 'superadmin'
+        'email' => 'superadmin@lactionstudio.com'
+        'phone' => '1234567890'
+        'image' => null
+        'user_id' => '1'
+    ]
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '24'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded; charset=UTF-8'
+    'HTTP_REFERER' => 'http://localhost/laction/laction/admin/role-permissions'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,te;q=0.8'
+    'HTTP_COOKIE' => 'advanced-backend=hjei3ddebs4j544bdjgs3scu40; _csrf-backend=20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ni%90gM%5EU%14%BA%A7%F08%CB%C2%85%98Xfm%E3%0A%D9%FCQ%222%8D%F1%A6%E8q%82%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/laction/laction/backend/web/index.php'
+    'REMOTE_PORT' => '54172'
+    'REDIRECT_URL' => '/laction/laction/admin/users/users/get-role-permissions'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/laction/laction/admin/users/users/get-role-permissions'
+    'SCRIPT_NAME' => '/laction/laction/backend/web/index.php'
+    'PHP_SELF' => '/laction/laction/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1518030820.855
+    'REQUEST_TIME' => 1518030820
+]
+2018-02-07 20:21:06 [::1][-][hjei3ddebs4j544bdjgs3scu40][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Command.php:915
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Command.php(915): PDOStatement->execute()
+#1 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#2 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Query.php(213): yii\db\Command->queryAll()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\ActiveQuery.php(135): yii\db\Query->all(NULL)
+#4 C:\xampp\htdocs\laction\laction\backend\modules\users\controllers\UsersController.php(383): yii\db\ActiveQuery->all()
+#5 [internal function]: app\modules\users\controllers\UsersController->actionSavePermission()
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#7 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('save-permission', Array)
+#9 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('users/users/sav...', Array)
+#10 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(common\components\Request))
+#11 C:\xampp\htdocs\laction\laction\backend\web\index.php(18): yii\base\Application->run()
+#12 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+The SQL being executed was: SELECT `id` FROM `role_permissions` WHERE role='admin' and permission='notifications' and status=:status' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Schema.php:636
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Command.php(930): yii\db\Schema->convertException(Object(PDOException), 'SELECT `id` FRO...')
+#1 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#2 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Query.php(213): yii\db\Command->queryAll()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\ActiveQuery.php(135): yii\db\Query->all(NULL)
+#4 C:\xampp\htdocs\laction\laction\backend\modules\users\controllers\UsersController.php(383): yii\db\ActiveQuery->all()
+#5 [internal function]: app\modules\users\controllers\UsersController->actionSavePermission()
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#7 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('save-permission', Array)
+#9 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('users/users/sav...', Array)
+#10 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(common\components\Request))
+#11 C:\xampp\htdocs\laction\laction\backend\web\index.php(18): yii\base\Application->run()
+#12 {main}
+Additional Information:
+Array
+(
+    [0] => HY093
+    [1] => 0
+)
+
+2018-02-07 20:21:06 [::1][-][hjei3ddebs4j544bdjgs3scu40][info][application] $_POST = [
+    'permission' => 'notifications'
+    'role' => 'admin'
+    'status' => 'inactive'
+    'sign' => '1'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'hjei3ddebs4j544bdjgs3scu40'
+    '_csrf-backend' => '20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"nigM^Uº§ð8ËÂ…˜Xfmã
+ÙüQ\"2ñ¦èq‚\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'session_data' => [
+        'fullname' => 'Laction Studios'
+        'role_id' => '1'
+        'role_name' => 'superadmin'
+        'email' => 'superadmin@lactionstudio.com'
+        'phone' => '1234567890'
+        'image' => null
+        'user_id' => '1'
+    ]
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '58'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded; charset=UTF-8'
+    'HTTP_REFERER' => 'http://localhost/laction/laction/admin/role-permissions'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,te;q=0.8'
+    'HTTP_COOKIE' => 'advanced-backend=hjei3ddebs4j544bdjgs3scu40; _csrf-backend=20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ni%90gM%5EU%14%BA%A7%F08%CB%C2%85%98Xfm%E3%0A%D9%FCQ%222%8D%F1%A6%E8q%82%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/laction/laction/backend/web/index.php'
+    'REMOTE_PORT' => '54737'
+    'REDIRECT_URL' => '/laction/laction/admin/users/users/save-permission'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/laction/laction/admin/users/users/save-permission'
+    'SCRIPT_NAME' => '/laction/laction/backend/web/index.php'
+    'PHP_SELF' => '/laction/laction/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1518031266.078
+    'REQUEST_TIME' => 1518031266
+]
+2018-02-07 20:21:43 [::1][-][hjei3ddebs4j544bdjgs3scu40][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Command.php:915
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Command.php(915): PDOStatement->execute()
+#1 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#2 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Query.php(213): yii\db\Command->queryAll()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\ActiveQuery.php(135): yii\db\Query->all(NULL)
+#4 C:\xampp\htdocs\laction\laction\backend\modules\users\controllers\UsersController.php(383): yii\db\ActiveQuery->all()
+#5 [internal function]: app\modules\users\controllers\UsersController->actionSavePermission()
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#7 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('save-permission', Array)
+#9 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('users/users/sav...', Array)
+#10 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(common\components\Request))
+#11 C:\xampp\htdocs\laction\laction\backend\web\index.php(18): yii\base\Application->run()
+#12 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens
+The SQL being executed was: SELECT `id` FROM `role_permissions` WHERE role='admin' and permission='notifications' and status=:status' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Schema.php:636
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Command.php(930): yii\db\Schema->convertException(Object(PDOException), 'SELECT `id` FRO...')
+#1 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#2 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Query.php(213): yii\db\Command->queryAll()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\ActiveQuery.php(135): yii\db\Query->all(NULL)
+#4 C:\xampp\htdocs\laction\laction\backend\modules\users\controllers\UsersController.php(383): yii\db\ActiveQuery->all()
+#5 [internal function]: app\modules\users\controllers\UsersController->actionSavePermission()
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#7 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('save-permission', Array)
+#9 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('users/users/sav...', Array)
+#10 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(common\components\Request))
+#11 C:\xampp\htdocs\laction\laction\backend\web\index.php(18): yii\base\Application->run()
+#12 {main}
+Additional Information:
+Array
+(
+    [0] => HY093
+    [1] => 0
+)
+
+2018-02-07 20:21:43 [::1][-][hjei3ddebs4j544bdjgs3scu40][info][application] $_POST = [
+    'permission' => 'notifications'
+    'role' => 'admin'
+    'status' => 'inactive'
+    'sign' => '1'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'hjei3ddebs4j544bdjgs3scu40'
+    '_csrf-backend' => '20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"nigM^Uº§ð8ËÂ…˜Xfmã
+ÙüQ\"2ñ¦èq‚\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'session_data' => [
+        'fullname' => 'Laction Studios'
+        'role_id' => '1'
+        'role_name' => 'superadmin'
+        'email' => 'superadmin@lactionstudio.com'
+        'phone' => '1234567890'
+        'image' => null
+        'user_id' => '1'
+    ]
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '58'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded; charset=UTF-8'
+    'HTTP_REFERER' => 'http://localhost/laction/laction/admin/role-permissions'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,te;q=0.8'
+    'HTTP_COOKIE' => 'advanced-backend=hjei3ddebs4j544bdjgs3scu40; _csrf-backend=20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ni%90gM%5EU%14%BA%A7%F08%CB%C2%85%98Xfm%E3%0A%D9%FCQ%222%8D%F1%A6%E8q%82%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/laction/laction/backend/web/index.php'
+    'REMOTE_PORT' => '54740'
+    'REDIRECT_URL' => '/laction/laction/admin/users/users/save-permission'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/laction/laction/admin/users/users/save-permission'
+    'SCRIPT_NAME' => '/laction/laction/backend/web/index.php'
+    'PHP_SELF' => '/laction/laction/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1518031303.062
+    'REQUEST_TIME' => 1518031303
+]
+2018-02-07 20:22:49 [::1][-][hjei3ddebs4j544bdjgs3scu40][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sign' in 'field list'' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Command.php:842
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Command.php(842): PDOStatement->execute()
+#1 C:\xampp\htdocs\laction\laction\backend\modules\users\models\RolePermissions.php(136): yii\db\Command->execute()
+#2 C:\xampp\htdocs\laction\laction\backend\modules\users\controllers\UsersController.php(399): backend\modules\users\models\RolePermissions::updateRolePermission(Array, Array)
+#3 [internal function]: app\modules\users\controllers\UsersController->actionSavePermission()
+#4 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#5 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('save-permission', Array)
+#7 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('users/users/sav...', Array)
+#8 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(common\components\Request))
+#9 C:\xampp\htdocs\laction\laction\backend\web\index.php(18): yii\base\Application->run()
+#10 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'sign' in 'field list'
+The SQL being executed was: UPDATE `role_permissions` SET `permission`='notifications', `role`='admin', `status`='inactive', `sign`='1' WHERE `role`='admin'' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Schema.php:636
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Command.php(852): yii\db\Schema->convertException(Object(PDOException), 'UPDATE `role_pe...')
+#1 C:\xampp\htdocs\laction\laction\backend\modules\users\models\RolePermissions.php(136): yii\db\Command->execute()
+#2 C:\xampp\htdocs\laction\laction\backend\modules\users\controllers\UsersController.php(399): backend\modules\users\models\RolePermissions::updateRolePermission(Array, Array)
+#3 [internal function]: app\modules\users\controllers\UsersController->actionSavePermission()
+#4 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#5 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('save-permission', Array)
+#7 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('users/users/sav...', Array)
+#8 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(common\components\Request))
+#9 C:\xampp\htdocs\laction\laction\backend\web\index.php(18): yii\base\Application->run()
+#10 {main}
+Additional Information:
+Array
+(
+    [0] => 42S22
+    [1] => 1054
+    [2] => Unknown column 'sign' in 'field list'
+)
+
+2018-02-07 20:22:49 [::1][-][hjei3ddebs4j544bdjgs3scu40][info][application] $_POST = [
+    'permission' => 'notifications'
+    'role' => 'admin'
+    'status' => 'inactive'
+    'sign' => '1'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'hjei3ddebs4j544bdjgs3scu40'
+    '_csrf-backend' => '20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"nigM^Uº§ð8ËÂ…˜Xfmã
+ÙüQ\"2ñ¦èq‚\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'session_data' => [
+        'fullname' => 'Laction Studios'
+        'role_id' => '1'
+        'role_name' => 'superadmin'
+        'email' => 'superadmin@lactionstudio.com'
+        'phone' => '1234567890'
+        'image' => null
+        'user_id' => '1'
+    ]
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '58'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded; charset=UTF-8'
+    'HTTP_REFERER' => 'http://localhost/laction/laction/admin/role-permissions'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,te;q=0.8'
+    'HTTP_COOKIE' => 'advanced-backend=hjei3ddebs4j544bdjgs3scu40; _csrf-backend=20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ni%90gM%5EU%14%BA%A7%F08%CB%C2%85%98Xfm%E3%0A%D9%FCQ%222%8D%F1%A6%E8q%82%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/laction/laction/backend/web/index.php'
+    'REMOTE_PORT' => '54854'
+    'REDIRECT_URL' => '/laction/laction/admin/users/users/save-permission'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/laction/laction/admin/users/users/save-permission'
+    'SCRIPT_NAME' => '/laction/laction/backend/web/index.php'
+    'PHP_SELF' => '/laction/laction/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1518031369.256
+    'REQUEST_TIME' => 1518031369
+]
+2018-02-07 21:28:03 [::1][-][hjei3ddebs4j544bdjgs3scu40][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'Invalid validation rule: a rule must specify both attribute names and validator type.' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php:450
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(411): yii\base\Model->createValidators()
+#1 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(187): yii\base\Model->getValidators()
+#2 C:\xampp\htdocs\laction\laction\backend\modules\notifications\models\Template.php(94): yii\base\Model->scenarios()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(751): backend\modules\notifications\models\Template->scenarios()
+#4 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(695): yii\base\Model->safeAttributes()
+#5 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Component.php(172): yii\base\Model->setAttributes(Array)
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\BaseActiveRecord.php(305): yii\base\Component->__set('attributes', Array)
+#7 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(79): yii\db\BaseActiveRecord->__set('attributes', Array)
+#8 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(64): app\modules\notifications\controllers\NotificationController->saveTemplate(Array)
+#9 [internal function]: app\modules\notifications\controllers\NotificationController->actionCreateTemplate()
+#10 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#11 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('create-template', Array)
+#13 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('notifications/n...', Array)
+#14 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(common\components\Request))
+#15 C:\xampp\htdocs\laction\laction\backend\web\index.php(18): yii\base\Application->run()
+#16 {main}
+2018-02-07 21:28:03 [::1][-][hjei3ddebs4j544bdjgs3scu40][info][application] $_POST = [
+    'message_type' => 'sms'
+    'from_email' => ''
+    'senderid_id' => '1'
+    'code' => 'NEWRE'
+    'name' => 'New Registrationsss'
+    'template' => 'asdfasfasfd{dd}'
+    'description' => 'asdfasdf asdfas fs'
+    'status' => 'active'
+    'submit' => 'Create'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'hjei3ddebs4j544bdjgs3scu40'
+    '_csrf-backend' => '20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"nigM^Uº§ð8ËÂ…˜Xfmã
+ÙüQ\"2ñ¦èq‚\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'session_data' => [
+        'fullname' => 'Laction Studios'
+        'role_id' => '1'
+        'role_name' => 'superadmin'
+        'email' => 'superadmin@lactionstudio.com'
+        'phone' => '1234567890'
+        'image' => null
+        'user_id' => '1'
+    ]
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '166'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost/laction/laction/admin/create-template'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,te;q=0.8'
+    'HTTP_COOKIE' => 'advanced-backend=hjei3ddebs4j544bdjgs3scu40; _csrf-backend=20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ni%90gM%5EU%14%BA%A7%F08%CB%C2%85%98Xfm%E3%0A%D9%FCQ%222%8D%F1%A6%E8q%82%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/laction/laction/backend/web/index.php'
+    'REMOTE_PORT' => '55984'
+    'REDIRECT_URL' => '/laction/laction/admin/create-template'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/laction/laction/admin/create-template'
+    'SCRIPT_NAME' => '/laction/laction/backend/web/index.php'
+    'PHP_SELF' => '/laction/laction/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1518035283.347
+    'REQUEST_TIME' => 1518035283
+]
+2018-02-07 21:28:52 [::1][-][hjei3ddebs4j544bdjgs3scu40][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'Invalid validation rule: a rule must specify both attribute names and validator type.' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php:450
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(411): yii\base\Model->createValidators()
+#1 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(187): yii\base\Model->getValidators()
+#2 C:\xampp\htdocs\laction\laction\backend\modules\notifications\models\Template.php(94): yii\base\Model->scenarios()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(751): backend\modules\notifications\models\Template->scenarios()
+#4 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(695): yii\base\Model->safeAttributes()
+#5 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Component.php(172): yii\base\Model->setAttributes(Array)
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\BaseActiveRecord.php(305): yii\base\Component->__set('attributes', Array)
+#7 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(80): yii\db\BaseActiveRecord->__set('attributes', Array)
+#8 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(64): app\modules\notifications\controllers\NotificationController->saveTemplate(Array)
+#9 [internal function]: app\modules\notifications\controllers\NotificationController->actionCreateTemplate()
+#10 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#11 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('create-template', Array)
+#13 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('notifications/n...', Array)
+#14 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(common\components\Request))
+#15 C:\xampp\htdocs\laction\laction\backend\web\index.php(18): yii\base\Application->run()
+#16 {main}
+2018-02-07 21:28:52 [::1][-][hjei3ddebs4j544bdjgs3scu40][info][application] $_POST = [
+    'message_type' => 'sms'
+    'from_email' => ''
+    'senderid_id' => '1'
+    'code' => 'NEWRE'
+    'name' => 'New Registrationsss'
+    'template' => 'asdfasfasfd{dd}'
+    'description' => 'asdfasdf asdfas fs'
+    'status' => 'active'
+    'submit' => 'Create'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'hjei3ddebs4j544bdjgs3scu40'
+    '_csrf-backend' => '20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"nigM^Uº§ð8ËÂ…˜Xfmã
+ÙüQ\"2ñ¦èq‚\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'session_data' => [
+        'fullname' => 'Laction Studios'
+        'role_id' => '1'
+        'role_name' => 'superadmin'
+        'email' => 'superadmin@lactionstudio.com'
+        'phone' => '1234567890'
+        'image' => null
+        'user_id' => '1'
+    ]
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '166'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost/laction/laction/admin/create-template'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,te;q=0.8'
+    'HTTP_COOKIE' => 'advanced-backend=hjei3ddebs4j544bdjgs3scu40; _csrf-backend=20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ni%90gM%5EU%14%BA%A7%F08%CB%C2%85%98Xfm%E3%0A%D9%FCQ%222%8D%F1%A6%E8q%82%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/laction/laction/backend/web/index.php'
+    'REMOTE_PORT' => '55988'
+    'REDIRECT_URL' => '/laction/laction/admin/create-template'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/laction/laction/admin/create-template'
+    'SCRIPT_NAME' => '/laction/laction/backend/web/index.php'
+    'PHP_SELF' => '/laction/laction/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1518035332.27
+    'REQUEST_TIME' => 1518035332
+]
+2018-02-07 21:29:08 [::1][-][hjei3ddebs4j544bdjgs3scu40][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'Invalid validation rule: a rule must specify both attribute names and validator type.' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php:450
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(411): yii\base\Model->createValidators()
+#1 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(187): yii\base\Model->getValidators()
+#2 C:\xampp\htdocs\laction\laction\backend\modules\notifications\models\Template.php(94): yii\base\Model->scenarios()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(751): backend\modules\notifications\models\Template->scenarios()
+#4 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(695): yii\base\Model->safeAttributes()
+#5 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Component.php(172): yii\base\Model->setAttributes(Array)
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\BaseActiveRecord.php(305): yii\base\Component->__set('attributes', Array)
+#7 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(80): yii\db\BaseActiveRecord->__set('attributes', Array)
+#8 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(64): app\modules\notifications\controllers\NotificationController->saveTemplate(Array)
+#9 [internal function]: app\modules\notifications\controllers\NotificationController->actionCreateTemplate()
+#10 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#11 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('create-template', Array)
+#13 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('notifications/n...', Array)
+#14 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(common\components\Request))
+#15 C:\xampp\htdocs\laction\laction\backend\web\index.php(18): yii\base\Application->run()
+#16 {main}
+2018-02-07 21:29:08 [::1][-][hjei3ddebs4j544bdjgs3scu40][info][application] $_POST = [
+    'message_type' => 'sms'
+    'from_email' => ''
+    'senderid_id' => ''
+    'code' => ''
+    'name' => ''
+    'template' => ''
+    'description' => ''
+    'status' => 'active'
+    'submit' => 'Create'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'hjei3ddebs4j544bdjgs3scu40'
+    '_csrf-backend' => '20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"nigM^Uº§ð8ËÂ…˜Xfmã
+ÙüQ\"2ñ¦èq‚\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'session_data' => [
+        'fullname' => 'Laction Studios'
+        'role_id' => '1'
+        'role_name' => 'superadmin'
+        'email' => 'superadmin@lactionstudio.com'
+        'phone' => '1234567890'
+        'image' => null
+        'user_id' => '1'
+    ]
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '104'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost/laction/laction/admin/create-template'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,te;q=0.8'
+    'HTTP_COOKIE' => 'advanced-backend=hjei3ddebs4j544bdjgs3scu40; _csrf-backend=20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ni%90gM%5EU%14%BA%A7%F08%CB%C2%85%98Xfm%E3%0A%D9%FCQ%222%8D%F1%A6%E8q%82%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/laction/laction/backend/web/index.php'
+    'REMOTE_PORT' => '55995'
+    'REDIRECT_URL' => '/laction/laction/admin/create-template'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/laction/laction/admin/create-template'
+    'SCRIPT_NAME' => '/laction/laction/backend/web/index.php'
+    'PHP_SELF' => '/laction/laction/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1518035348.685
+    'REQUEST_TIME' => 1518035348
+]
+2018-02-07 21:29:56 [::1][-][hjei3ddebs4j544bdjgs3scu40][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'Invalid validation rule: a rule must specify both attribute names and validator type.' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php:450
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(411): yii\base\Model->createValidators()
+#1 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(187): yii\base\Model->getValidators()
+#2 C:\xampp\htdocs\laction\laction\backend\modules\notifications\models\Template.php(80): yii\base\Model->scenarios()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(751): backend\modules\notifications\models\Template->scenarios()
+#4 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(695): yii\base\Model->safeAttributes()
+#5 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Component.php(172): yii\base\Model->setAttributes(Array)
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\BaseActiveRecord.php(305): yii\base\Component->__set('attributes', Array)
+#7 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(80): yii\db\BaseActiveRecord->__set('attributes', Array)
+#8 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(64): app\modules\notifications\controllers\NotificationController->saveTemplate(Array)
+#9 [internal function]: app\modules\notifications\controllers\NotificationController->actionCreateTemplate()
+#10 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#11 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('create-template', Array)
+#13 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('notifications/n...', Array)
+#14 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(common\components\Request))
+#15 C:\xampp\htdocs\laction\laction\backend\web\index.php(18): yii\base\Application->run()
+#16 {main}
+2018-02-07 21:29:56 [::1][-][hjei3ddebs4j544bdjgs3scu40][info][application] $_POST = [
+    'message_type' => 'sms'
+    'from_email' => ''
+    'senderid_id' => ''
+    'code' => ''
+    'name' => ''
+    'template' => ''
+    'description' => ''
+    'status' => 'active'
+    'submit' => 'Create'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'hjei3ddebs4j544bdjgs3scu40'
+    '_csrf-backend' => '20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"nigM^Uº§ð8ËÂ…˜Xfmã
+ÙüQ\"2ñ¦èq‚\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'session_data' => [
+        'fullname' => 'Laction Studios'
+        'role_id' => '1'
+        'role_name' => 'superadmin'
+        'email' => 'superadmin@lactionstudio.com'
+        'phone' => '1234567890'
+        'image' => null
+        'user_id' => '1'
+    ]
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '104'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost/laction/laction/admin/create-template'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,te;q=0.8'
+    'HTTP_COOKIE' => 'advanced-backend=hjei3ddebs4j544bdjgs3scu40; _csrf-backend=20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ni%90gM%5EU%14%BA%A7%F08%CB%C2%85%98Xfm%E3%0A%D9%FCQ%222%8D%F1%A6%E8q%82%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/laction/laction/backend/web/index.php'
+    'REMOTE_PORT' => '56004'
+    'REDIRECT_URL' => '/laction/laction/admin/create-template'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/laction/laction/admin/create-template'
+    'SCRIPT_NAME' => '/laction/laction/backend/web/index.php'
+    'PHP_SELF' => '/laction/laction/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1518035396.41
+    'REQUEST_TIME' => 1518035396
+]
+2018-02-07 21:30:51 [::1][-][hjei3ddebs4j544bdjgs3scu40][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'Invalid validation rule: a rule must specify both attribute names and validator type.' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php:450
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(411): yii\base\Model->createValidators()
+#1 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(187): yii\base\Model->getValidators()
+#2 C:\xampp\htdocs\laction\laction\backend\modules\notifications\models\Template.php(80): yii\base\Model->scenarios()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(751): backend\modules\notifications\models\Template->scenarios()
+#4 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(695): yii\base\Model->safeAttributes()
+#5 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Component.php(172): yii\base\Model->setAttributes(Array)
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\BaseActiveRecord.php(305): yii\base\Component->__set('attributes', Array)
+#7 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(78): yii\db\BaseActiveRecord->__set('attributes', Array)
+#8 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(62): app\modules\notifications\controllers\NotificationController->saveTemplate(Array)
+#9 [internal function]: app\modules\notifications\controllers\NotificationController->actionCreateTemplate()
+#10 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#11 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('create-template', Array)
+#13 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('notifications/n...', Array)
+#14 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(common\components\Request))
+#15 C:\xampp\htdocs\laction\laction\backend\web\index.php(18): yii\base\Application->run()
+#16 {main}
+2018-02-07 21:30:51 [::1][-][hjei3ddebs4j544bdjgs3scu40][info][application] $_POST = [
+    'message_type' => 'sms'
+    'from_email' => ''
+    'senderid_id' => ''
+    'code' => ''
+    'name' => ''
+    'template' => ''
+    'description' => ''
+    'status' => 'active'
+    'submit' => 'Create'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'hjei3ddebs4j544bdjgs3scu40'
+    '_csrf-backend' => '20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"nigM^Uº§ð8ËÂ…˜Xfmã
+ÙüQ\"2ñ¦èq‚\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'session_data' => [
+        'fullname' => 'Laction Studios'
+        'role_id' => '1'
+        'role_name' => 'superadmin'
+        'email' => 'superadmin@lactionstudio.com'
+        'phone' => '1234567890'
+        'image' => null
+        'user_id' => '1'
+    ]
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '104'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost/laction/laction/admin/create-template'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,te;q=0.8'
+    'HTTP_COOKIE' => 'advanced-backend=hjei3ddebs4j544bdjgs3scu40; _csrf-backend=20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ni%90gM%5EU%14%BA%A7%F08%CB%C2%85%98Xfm%E3%0A%D9%FCQ%222%8D%F1%A6%E8q%82%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/laction/laction/backend/web/index.php'
+    'REMOTE_PORT' => '56015'
+    'REDIRECT_URL' => '/laction/laction/admin/create-template'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/laction/laction/admin/create-template'
+    'SCRIPT_NAME' => '/laction/laction/backend/web/index.php'
+    'PHP_SELF' => '/laction/laction/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1518035451.55
+    'REQUEST_TIME' => 1518035451
+]
+2018-02-07 21:31:09 [::1][-][hjei3ddebs4j544bdjgs3scu40][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'Invalid validation rule: a rule must specify both attribute names and validator type.' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php:450
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(411): yii\base\Model->createValidators()
+#1 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(187): yii\base\Model->getValidators()
+#2 C:\xampp\htdocs\laction\laction\backend\modules\notifications\models\Template.php(80): yii\base\Model->scenarios()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(751): backend\modules\notifications\models\Template->scenarios()
+#4 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(695): yii\base\Model->safeAttributes()
+#5 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Component.php(172): yii\base\Model->setAttributes(Array)
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\BaseActiveRecord.php(305): yii\base\Component->__set('attributes', Array)
+#7 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(78): yii\db\BaseActiveRecord->__set('attributes', Array)
+#8 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(62): app\modules\notifications\controllers\NotificationController->saveTemplate(Array)
+#9 [internal function]: app\modules\notifications\controllers\NotificationController->actionCreateTemplate()
+#10 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#11 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('create-template', Array)
+#13 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('notifications/n...', Array)
+#14 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(common\components\Request))
+#15 C:\xampp\htdocs\laction\laction\backend\web\index.php(18): yii\base\Application->run()
+#16 {main}
+2018-02-07 21:31:09 [::1][-][hjei3ddebs4j544bdjgs3scu40][info][application] $_POST = [
+    'message_type' => 'sms'
+    'from_email' => ''
+    'senderid_id' => '1'
+    'code' => 'sssss'
+    'name' => 'ssssssssssss'
+    'template' => 'ssssssssssssss'
+    'description' => 'ssssssss'
+    'status' => 'active'
+    'submit' => 'Create'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'hjei3ddebs4j544bdjgs3scu40'
+    '_csrf-backend' => '20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"nigM^Uº§ð8ËÂ…˜Xfmã
+ÙüQ\"2ñ¦èq‚\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'session_data' => [
+        'fullname' => 'Laction Studios'
+        'role_id' => '1'
+        'role_name' => 'superadmin'
+        'email' => 'superadmin@lactionstudio.com'
+        'phone' => '1234567890'
+        'image' => null
+        'user_id' => '1'
+    ]
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '144'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost/laction/laction/admin/create-template'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,te;q=0.8'
+    'HTTP_COOKIE' => 'advanced-backend=hjei3ddebs4j544bdjgs3scu40; _csrf-backend=20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ni%90gM%5EU%14%BA%A7%F08%CB%C2%85%98Xfm%E3%0A%D9%FCQ%222%8D%F1%A6%E8q%82%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/laction/laction/backend/web/index.php'
+    'REMOTE_PORT' => '56025'
+    'REDIRECT_URL' => '/laction/laction/admin/create-template'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/laction/laction/admin/create-template'
+    'SCRIPT_NAME' => '/laction/laction/backend/web/index.php'
+    'PHP_SELF' => '/laction/laction/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1518035469.643
+    'REQUEST_TIME' => 1518035469
+]
+2018-02-07 21:33:49 [::1][-][hjei3ddebs4j544bdjgs3scu40][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'Invalid validation rule: a rule must specify both attribute names and validator type.' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php:450
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(411): yii\base\Model->createValidators()
+#1 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(187): yii\base\Model->getValidators()
+#2 C:\xampp\htdocs\laction\laction\backend\modules\notifications\models\Template.php(80): yii\base\Model->scenarios()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(751): backend\modules\notifications\models\Template->scenarios()
+#4 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(695): yii\base\Model->safeAttributes()
+#5 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Component.php(172): yii\base\Model->setAttributes(Array)
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\BaseActiveRecord.php(305): yii\base\Component->__set('attributes', Array)
+#7 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(78): yii\db\BaseActiveRecord->__set('attributes', Array)
+#8 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(62): app\modules\notifications\controllers\NotificationController->saveTemplate(Array)
+#9 [internal function]: app\modules\notifications\controllers\NotificationController->actionCreateTemplate()
+#10 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#11 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('create-template', Array)
+#13 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('notifications/n...', Array)
+#14 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(common\components\Request))
+#15 C:\xampp\htdocs\laction\laction\backend\web\index.php(18): yii\base\Application->run()
+#16 {main}
+2018-02-07 21:33:49 [::1][-][hjei3ddebs4j544bdjgs3scu40][info][application] $_POST = [
+    'message_type' => 'sms'
+    'from_email' => ''
+    'senderid_id' => '1'
+    'code' => 'sssss'
+    'name' => 'ssssssssssss'
+    'template' => 'ssssssssssssss'
+    'description' => 'ssssssss'
+    'status' => 'active'
+    'submit' => 'Create'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'hjei3ddebs4j544bdjgs3scu40'
+    '_csrf-backend' => '20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"nigM^Uº§ð8ËÂ…˜Xfmã
+ÙüQ\"2ñ¦èq‚\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'session_data' => [
+        'fullname' => 'Laction Studios'
+        'role_id' => '1'
+        'role_name' => 'superadmin'
+        'email' => 'superadmin@lactionstudio.com'
+        'phone' => '1234567890'
+        'image' => null
+        'user_id' => '1'
+    ]
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '144'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost/laction/laction/admin/create-template'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,te;q=0.8'
+    'HTTP_COOKIE' => 'advanced-backend=hjei3ddebs4j544bdjgs3scu40; _csrf-backend=20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ni%90gM%5EU%14%BA%A7%F08%CB%C2%85%98Xfm%E3%0A%D9%FCQ%222%8D%F1%A6%E8q%82%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/laction/laction/backend/web/index.php'
+    'REMOTE_PORT' => '56041'
+    'REDIRECT_URL' => '/laction/laction/admin/create-template'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/laction/laction/admin/create-template'
+    'SCRIPT_NAME' => '/laction/laction/backend/web/index.php'
+    'PHP_SELF' => '/laction/laction/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1518035629.279
+    'REQUEST_TIME' => 1518035629
+]
+2018-02-07 21:34:06 [::1][-][hjei3ddebs4j544bdjgs3scu40][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'Invalid validation rule: a rule must specify both attribute names and validator type.' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php:450
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(411): yii\base\Model->createValidators()
+#1 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(187): yii\base\Model->getValidators()
+#2 C:\xampp\htdocs\laction\laction\backend\modules\notifications\models\Template.php(80): yii\base\Model->scenarios()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(751): backend\modules\notifications\models\Template->scenarios()
+#4 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(695): yii\base\Model->safeAttributes()
+#5 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Component.php(172): yii\base\Model->setAttributes(Array)
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\BaseActiveRecord.php(305): yii\base\Component->__set('attributes', Array)
+#7 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(78): yii\db\BaseActiveRecord->__set('attributes', Array)
+#8 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(62): app\modules\notifications\controllers\NotificationController->saveTemplate(Array)
+#9 [internal function]: app\modules\notifications\controllers\NotificationController->actionCreateTemplate()
+#10 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#11 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('create-template', Array)
+#13 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('notifications/n...', Array)
+#14 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(common\components\Request))
+#15 C:\xampp\htdocs\laction\laction\backend\web\index.php(18): yii\base\Application->run()
+#16 {main}
+2018-02-07 21:34:06 [::1][-][hjei3ddebs4j544bdjgs3scu40][info][application] $_POST = [
+    'message_type' => 'sms'
+    'from_email' => ''
+    'senderid_id' => '1'
+    'code' => 'sssss'
+    'name' => 'ssssssssssss'
+    'template' => 'ssssssssssssss'
+    'description' => 'ssssssss'
+    'status' => 'active'
+    'submit' => 'Create'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'hjei3ddebs4j544bdjgs3scu40'
+    '_csrf-backend' => '20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"nigM^Uº§ð8ËÂ…˜Xfmã
+ÙüQ\"2ñ¦èq‚\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'session_data' => [
+        'fullname' => 'Laction Studios'
+        'role_id' => '1'
+        'role_name' => 'superadmin'
+        'email' => 'superadmin@lactionstudio.com'
+        'phone' => '1234567890'
+        'image' => null
+        'user_id' => '1'
+    ]
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '144'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost/laction/laction/admin/create-template'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,te;q=0.8'
+    'HTTP_COOKIE' => 'advanced-backend=hjei3ddebs4j544bdjgs3scu40; _csrf-backend=20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ni%90gM%5EU%14%BA%A7%F08%CB%C2%85%98Xfm%E3%0A%D9%FCQ%222%8D%F1%A6%E8q%82%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/laction/laction/backend/web/index.php'
+    'REMOTE_PORT' => '56048'
+    'REDIRECT_URL' => '/laction/laction/admin/create-template'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/laction/laction/admin/create-template'
+    'SCRIPT_NAME' => '/laction/laction/backend/web/index.php'
+    'PHP_SELF' => '/laction/laction/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1518035646.502
+    'REQUEST_TIME' => 1518035646
+]
+2018-02-07 21:36:45 [::1][-][hjei3ddebs4j544bdjgs3scu40][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'Invalid validation rule: a rule must specify both attribute names and validator type.' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php:450
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(411): yii\base\Model->createValidators()
+#1 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(187): yii\base\Model->getValidators()
+#2 C:\xampp\htdocs\laction\laction\backend\modules\notifications\models\Template.php(80): yii\base\Model->scenarios()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(751): backend\modules\notifications\models\Template->scenarios()
+#4 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(695): yii\base\Model->safeAttributes()
+#5 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Component.php(172): yii\base\Model->setAttributes(Array)
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\BaseActiveRecord.php(305): yii\base\Component->__set('attributes', Array)
+#7 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(78): yii\db\BaseActiveRecord->__set('attributes', Array)
+#8 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(62): app\modules\notifications\controllers\NotificationController->saveTemplate(Array)
+#9 [internal function]: app\modules\notifications\controllers\NotificationController->actionCreateTemplate()
+#10 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#11 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('create-template', Array)
+#13 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('notifications/n...', Array)
+#14 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(common\components\Request))
+#15 C:\xampp\htdocs\laction\laction\backend\web\index.php(18): yii\base\Application->run()
+#16 {main}
+2018-02-07 21:36:45 [::1][-][hjei3ddebs4j544bdjgs3scu40][info][application] $_POST = [
+    'message_type' => 'sms'
+    'from_email' => ''
+    'senderid_id' => '1'
+    'code' => 'sssss'
+    'name' => 'ssssssssssss'
+    'template' => 'ssssssssssssss'
+    'description' => 'ssssssss'
+    'status' => 'active'
+    'submit' => 'Create'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'hjei3ddebs4j544bdjgs3scu40'
+    '_csrf-backend' => '20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"nigM^Uº§ð8ËÂ…˜Xfmã
+ÙüQ\"2ñ¦èq‚\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'session_data' => [
+        'fullname' => 'Laction Studios'
+        'role_id' => '1'
+        'role_name' => 'superadmin'
+        'email' => 'superadmin@lactionstudio.com'
+        'phone' => '1234567890'
+        'image' => null
+        'user_id' => '1'
+    ]
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '144'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost/laction/laction/admin/create-template'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,te;q=0.8'
+    'HTTP_COOKIE' => 'advanced-backend=hjei3ddebs4j544bdjgs3scu40; _csrf-backend=20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ni%90gM%5EU%14%BA%A7%F08%CB%C2%85%98Xfm%E3%0A%D9%FCQ%222%8D%F1%A6%E8q%82%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/laction/laction/backend/web/index.php'
+    'REMOTE_PORT' => '56057'
+    'REDIRECT_URL' => '/laction/laction/admin/create-template'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/laction/laction/admin/create-template'
+    'SCRIPT_NAME' => '/laction/laction/backend/web/index.php'
+    'PHP_SELF' => '/laction/laction/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1518035805.092
+    'REQUEST_TIME' => 1518035805
+]
+2018-02-07 21:42:36 [::1][-][hjei3ddebs4j544bdjgs3scu40][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'Invalid validation rule: a rule must specify both attribute names and validator type.' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php:450
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(411): yii\base\Model->createValidators()
+#1 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(187): yii\base\Model->getValidators()
+#2 C:\xampp\htdocs\laction\laction\backend\modules\notifications\models\Template.php(80): yii\base\Model->scenarios()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(751): backend\modules\notifications\models\Template->scenarios()
+#4 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(695): yii\base\Model->safeAttributes()
+#5 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Component.php(172): yii\base\Model->setAttributes(Array)
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\BaseActiveRecord.php(305): yii\base\Component->__set('attributes', Array)
+#7 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(78): yii\db\BaseActiveRecord->__set('attributes', Array)
+#8 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(62): app\modules\notifications\controllers\NotificationController->saveTemplate(Array)
+#9 [internal function]: app\modules\notifications\controllers\NotificationController->actionCreateTemplate()
+#10 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#11 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('create-template', Array)
+#13 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('notifications/n...', Array)
+#14 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(common\components\Request))
+#15 C:\xampp\htdocs\laction\laction\backend\web\index.php(18): yii\base\Application->run()
+#16 {main}
+2018-02-07 21:42:35 [::1][-][hjei3ddebs4j544bdjgs3scu40][info][application] $_POST = [
+    'message_type' => 'sms'
+    'from_email' => ''
+    'senderid_id' => ''
+    'code' => ''
+    'name' => ''
+    'template' => ''
+    'description' => ''
+    'status' => 'active'
+    'create_template' => 'Create'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'hjei3ddebs4j544bdjgs3scu40'
+    '_csrf-backend' => '20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"nigM^Uº§ð8ËÂ…˜Xfmã
+ÙüQ\"2ñ¦èq‚\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'session_data' => [
+        'fullname' => 'Laction Studios'
+        'role_id' => '1'
+        'role_name' => 'superadmin'
+        'email' => 'superadmin@lactionstudio.com'
+        'phone' => '1234567890'
+        'image' => null
+        'user_id' => '1'
+    ]
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '113'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost/laction/laction/admin/create-template'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,te;q=0.8'
+    'HTTP_COOKIE' => 'advanced-backend=hjei3ddebs4j544bdjgs3scu40; _csrf-backend=20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ni%90gM%5EU%14%BA%A7%F08%CB%C2%85%98Xfm%E3%0A%D9%FCQ%222%8D%F1%A6%E8q%82%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/laction/laction/backend/web/index.php'
+    'REMOTE_PORT' => '56147'
+    'REDIRECT_URL' => '/laction/laction/admin/create-template'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/laction/laction/admin/create-template'
+    'SCRIPT_NAME' => '/laction/laction/backend/web/index.php'
+    'PHP_SELF' => '/laction/laction/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1518036155.95
+    'REQUEST_TIME' => 1518036155
+]
+2018-02-07 21:43:38 [::1][-][hjei3ddebs4j544bdjgs3scu40][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'Invalid validation rule: a rule must specify both attribute names and validator type.' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php:450
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(411): yii\base\Model->createValidators()
+#1 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(187): yii\base\Model->getValidators()
+#2 C:\xampp\htdocs\laction\laction\backend\modules\notifications\models\Template.php(80): yii\base\Model->scenarios()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(751): backend\modules\notifications\models\Template->scenarios()
+#4 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(695): yii\base\Model->safeAttributes()
+#5 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Component.php(172): yii\base\Model->setAttributes(Array)
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\BaseActiveRecord.php(305): yii\base\Component->__set('attributes', Array)
+#7 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(78): yii\db\BaseActiveRecord->__set('attributes', Array)
+#8 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(62): app\modules\notifications\controllers\NotificationController->saveTemplate(Array)
+#9 [internal function]: app\modules\notifications\controllers\NotificationController->actionCreateTemplate()
+#10 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#11 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('create-template', Array)
+#13 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('notifications/n...', Array)
+#14 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(common\components\Request))
+#15 C:\xampp\htdocs\laction\laction\backend\web\index.php(18): yii\base\Application->run()
+#16 {main}
+2018-02-07 21:43:38 [::1][-][hjei3ddebs4j544bdjgs3scu40][info][application] $_POST = [
+    'message_type' => 'sms'
+    'from_email' => ''
+    'senderid_id' => ''
+    'code' => ''
+    'name' => ''
+    'template' => ''
+    'description' => ''
+    'status' => 'active'
+    'create_template' => 'Create'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'hjei3ddebs4j544bdjgs3scu40'
+    '_csrf-backend' => '20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"nigM^Uº§ð8ËÂ…˜Xfmã
+ÙüQ\"2ñ¦èq‚\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'session_data' => [
+        'fullname' => 'Laction Studios'
+        'role_id' => '1'
+        'role_name' => 'superadmin'
+        'email' => 'superadmin@lactionstudio.com'
+        'phone' => '1234567890'
+        'image' => null
+        'user_id' => '1'
+    ]
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '113'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost/laction/laction/admin/create-template'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,te;q=0.8'
+    'HTTP_COOKIE' => 'advanced-backend=hjei3ddebs4j544bdjgs3scu40; _csrf-backend=20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ni%90gM%5EU%14%BA%A7%F08%CB%C2%85%98Xfm%E3%0A%D9%FCQ%222%8D%F1%A6%E8q%82%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/laction/laction/backend/web/index.php'
+    'REMOTE_PORT' => '56161'
+    'REDIRECT_URL' => '/laction/laction/admin/create-template'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/laction/laction/admin/create-template'
+    'SCRIPT_NAME' => '/laction/laction/backend/web/index.php'
+    'PHP_SELF' => '/laction/laction/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1518036218.332
+    'REQUEST_TIME' => 1518036218
+]
+2018-02-07 21:43:53 [::1][-][hjei3ddebs4j544bdjgs3scu40][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'Invalid validation rule: a rule must specify both attribute names and validator type.' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php:450
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(411): yii\base\Model->createValidators()
+#1 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(187): yii\base\Model->getValidators()
+#2 C:\xampp\htdocs\laction\laction\backend\modules\notifications\models\Template.php(80): yii\base\Model->scenarios()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(751): backend\modules\notifications\models\Template->scenarios()
+#4 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(695): yii\base\Model->safeAttributes()
+#5 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Component.php(172): yii\base\Model->setAttributes(Array)
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\BaseActiveRecord.php(305): yii\base\Component->__set('attributes', Array)
+#7 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(78): yii\db\BaseActiveRecord->__set('attributes', Array)
+#8 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(62): app\modules\notifications\controllers\NotificationController->saveTemplate(Array)
+#9 [internal function]: app\modules\notifications\controllers\NotificationController->actionCreateTemplate()
+#10 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#11 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('create-template', Array)
+#13 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('notifications/n...', Array)
+#14 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(common\components\Request))
+#15 C:\xampp\htdocs\laction\laction\backend\web\index.php(18): yii\base\Application->run()
+#16 {main}
+2018-02-07 21:43:53 [::1][-][hjei3ddebs4j544bdjgs3scu40][info][application] $_POST = [
+    'message_type' => 'sms'
+    'from_email' => ''
+    'senderid_id' => ''
+    'code' => ''
+    'name' => ''
+    'template' => ''
+    'description' => ''
+    'status' => 'active'
+    'create_template' => 'Create'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'hjei3ddebs4j544bdjgs3scu40'
+    '_csrf-backend' => '20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"nigM^Uº§ð8ËÂ…˜Xfmã
+ÙüQ\"2ñ¦èq‚\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'session_data' => [
+        'fullname' => 'Laction Studios'
+        'role_id' => '1'
+        'role_name' => 'superadmin'
+        'email' => 'superadmin@lactionstudio.com'
+        'phone' => '1234567890'
+        'image' => null
+        'user_id' => '1'
+    ]
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '113'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost/laction/laction/admin/create-template'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,te;q=0.8'
+    'HTTP_COOKIE' => 'advanced-backend=hjei3ddebs4j544bdjgs3scu40; _csrf-backend=20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ni%90gM%5EU%14%BA%A7%F08%CB%C2%85%98Xfm%E3%0A%D9%FCQ%222%8D%F1%A6%E8q%82%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/laction/laction/backend/web/index.php'
+    'REMOTE_PORT' => '56164'
+    'REDIRECT_URL' => '/laction/laction/admin/create-template'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/laction/laction/admin/create-template'
+    'SCRIPT_NAME' => '/laction/laction/backend/web/index.php'
+    'PHP_SELF' => '/laction/laction/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1518036233.304
+    'REQUEST_TIME' => 1518036233
+]
+2018-02-07 21:44:57 [::1][-][hjei3ddebs4j544bdjgs3scu40][error][yii\base\InvalidConfigException] exception 'yii\base\InvalidConfigException' with message 'Invalid validation rule: a rule must specify both attribute names and validator type.' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php:450
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(411): yii\base\Model->createValidators()
+#1 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(187): yii\base\Model->getValidators()
+#2 C:\xampp\htdocs\laction\laction\backend\modules\notifications\models\Template.php(80): yii\base\Model->scenarios()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(751): backend\modules\notifications\models\Template->scenarios()
+#4 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Model.php(695): yii\base\Model->safeAttributes()
+#5 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Component.php(172): yii\base\Model->setAttributes(Array)
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\BaseActiveRecord.php(305): yii\base\Component->__set('attributes', Array)
+#7 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(78): yii\db\BaseActiveRecord->__set('attributes', Array)
+#8 C:\xampp\htdocs\laction\laction\backend\modules\notifications\controllers\NotificationController.php(62): app\modules\notifications\controllers\NotificationController->saveTemplate(Array)
+#9 [internal function]: app\modules\notifications\controllers\NotificationController->actionCreateTemplate()
+#10 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#11 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#12 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\base\Controller->runAction('create-template', Array)
+#13 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\web\Application.php(102): yii\base\Module->runAction('notifications/n...', Array)
+#14 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\web\Application->handleRequest(Object(common\components\Request))
+#15 C:\xampp\htdocs\laction\laction\backend\web\index.php(18): yii\base\Application->run()
+#16 {main}
+2018-02-07 21:44:56 [::1][-][hjei3ddebs4j544bdjgs3scu40][info][application] $_POST = [
+    'message_type' => 'sms'
+    'from_email' => ''
+    'senderid_id' => ''
+    'code' => ''
+    'name' => ''
+    'template' => ''
+    'description' => ''
+    'status' => 'active'
+    'create_template' => 'Create'
+]
+
+$_COOKIE = [
+    'advanced-backend' => 'hjei3ddebs4j544bdjgs3scu40'
+    '_csrf-backend' => '20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"nigM^Uº§ð8ËÂ…˜Xfmã
+ÙüQ\"2ñ¦èq‚\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    'session_data' => [
+        'fullname' => 'Laction Studios'
+        'role_id' => '1'
+        'role_name' => 'superadmin'
+        'email' => 'superadmin@lactionstudio.com'
+        'phone' => '1234567890'
+        'image' => null
+        'user_id' => '1'
+    ]
+]
+
+$_SERVER = [
+    'REDIRECT_MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'REDIRECT_MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'REDIRECT_OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'REDIRECT_PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'REDIRECT_PHPRC' => '\\xampp\\php'
+    'REDIRECT_TMP' => '\\xampp\\tmp'
+    'REDIRECT_STATUS' => '200'
+    'MIBDIRS' => 'C:/xampp/php/extras/mibs'
+    'MYSQL_HOME' => '\\xampp\\mysql\\bin'
+    'OPENSSL_CONF' => 'C:/xampp/apache/bin/openssl.cnf'
+    'PHP_PEAR_SYSCONF_DIR' => '\\xampp\\php'
+    'PHPRC' => '\\xampp\\php'
+    'TMP' => '\\xampp\\tmp'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'CONTENT_LENGTH' => '113'
+    'HTTP_PRAGMA' => 'no-cache'
+    'HTTP_CACHE_CONTROL' => 'no-cache'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_ORIGIN' => 'http://localhost'
+    'CONTENT_TYPE' => 'application/x-www-form-urlencoded'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_REFERER' => 'http://localhost/laction/laction/admin/create-template'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'en-US,en;q=0.9,te;q=0.8'
+    'HTTP_COOKIE' => 'advanced-backend=hjei3ddebs4j544bdjgs3scu40; _csrf-backend=20e97b92744bfabf1daa36b12c43ab63d8c83e058650552813b356d5071e370fa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22ni%90gM%5EU%14%BA%A7%F08%CB%C2%85%98Xfm%E3%0A%D9%FCQ%222%8D%F1%A6%E8q%82%22%3B%7D'
+    'PATH' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33 Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.29 (Win32) OpenSSL/1.0.2n PHP/5.6.33'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/xampp/htdocs'
+    'SERVER_ADMIN' => 'postmaster@localhost'
+    'SCRIPT_FILENAME' => 'C:/xampp/htdocs/laction/laction/backend/web/index.php'
+    'REMOTE_PORT' => '56167'
+    'REDIRECT_URL' => '/laction/laction/admin/create-template'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'POST'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/laction/laction/admin/create-template'
+    'SCRIPT_NAME' => '/laction/laction/backend/web/index.php'
+    'PHP_SELF' => '/laction/laction/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1518036296.957
+    'REQUEST_TIME' => 1518036296
+]

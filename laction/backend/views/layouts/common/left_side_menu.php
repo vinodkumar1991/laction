@@ -30,7 +30,7 @@
 					<li class=""><a
 						href="<?php echo Yii::getAlias('@web').'/subjects';?>">Subjects<i
 							class="fa fa-puzzle-piece" aria-hidden="true"></i></a></li>
-					<li><a href="<?php echo Yii::getAlias('@web').'/templates';?>">Templets<i
+					<li><a href="<?php echo Yii::getAlias('@web').'/templates';?>">Templates<i
 							class="fa fa-desktop" aria-hidden="true"></i></a></li>
 
 				</ul></li>
