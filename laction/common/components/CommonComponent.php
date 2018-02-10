@@ -150,4 +150,12 @@ class CommonComponent
         }
         return $arrRoles;
     }
+
+    public static function getSlotTypes()
+    {
+        return [
+            'audition' => 'Audition',
+            'preview' => 'Preview'
+        ];
+    }
 }
