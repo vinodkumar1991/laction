@@ -132,7 +132,7 @@ function getPermissions(role_name){
 			return true;
 }
 
-function setPermission(permission_name){
+function setPermission(permission_name){ 
 	makeEmpty();
 	var objPermission = {};
 	var status = 'active';

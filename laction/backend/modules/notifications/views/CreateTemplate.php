@@ -1,5 +1,4 @@
-
-
+<title><?php echo Yii::t('titles', 'laction.admin').Yii::t('titles', 'notifications.templates'); ?></title>
 <link rel="stylesheet"
 	href="<?php echo Yii::getAlias('@asset').'/ckeditor/css/samples.css'?>">
 <script
@@ -8,10 +7,18 @@
 	src="<?php echo Yii::getAlias('@asset').'/ckeditor/js/sample.js'?>"></script>
 
 
-
 <div class="wraper container-fluid">
-	<div class="page-title" style="margin-top: -40px;">
-		<h3 class="title">Role Permission</h3>
+	<div class="page-title">
+		<h3 class="title"><?php echo Yii::t('breadcrumb','notifications.template_heading');?></h3>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a
+				href="<?php echo Yii::getAlias('@web').'/dashboard'?>"><i
+					class="fa fa-dashboard fa-fw"></i><?php echo Yii::t('breadcrumb','common.home');?></a></li>
+			<li class="breadcrumb-item"><a
+				href="<?php echo Yii::getAlias('@web').'/templates'?>"><?php echo Yii::t('breadcrumb','notifications.module_name');?></a></li>
+			<li class="breadcrumb-item active"><a
+				href="<?php echo Yii::getAlias('@web').'/create-template'?>"><?php echo Yii::t('breadcrumb','notifications.createtemplates');?></a></li>
+		</ol>
 	</div>
 
 	<!-- Tabs-style-1 -->

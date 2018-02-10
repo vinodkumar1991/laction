@@ -1,8 +1,16 @@
-
-
+<title><?php echo Yii::t('titles', 'laction.admin').Yii::t('titles', 'notifications.templates'); ?></title>
 <div class="wraper container-fluid">
 	<div class="page-title">
-		<h3 class="title">Templates</h3>
+		<h3 class="title"><?php echo Yii::t('breadcrumb','notifications.template_heading');?></h3>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a
+				href="<?php echo Yii::getAlias('@web').'/dashboard'?>"><i
+					class="fa fa-dashboard fa-fw"></i><?php echo Yii::t('breadcrumb','common.home');?></a></li>
+			<li class="breadcrumb-item"><a
+				href="<?php echo Yii::getAlias('@web').'/subjects'?>"><?php echo Yii::t('breadcrumb','notifications.module_name');?></a></li>
+			<li class="breadcrumb-item active"><a
+				href="<?php echo Yii::getAlias('@web').'/templates'?>"><?php echo Yii::t('breadcrumb','notifications.templates');?></a></li>
+		</ol>
 	</div>
 
 	<!-- Tabs-style-1 -->

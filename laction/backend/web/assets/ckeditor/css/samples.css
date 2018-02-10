@@ -119,10 +119,32 @@ html {
     padding-right: 4%;
   }
 }
-.header-a {
-  min-height: 140px;
-  overflow: hidden;
+header-a {
+	background-color: #2f353f;
+	box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0
+		rgba(0, 0, 0, 0.02);
+	position: fixed;
+	top: -52px;
+	left: 250px;
+	right: 0;
+	z-index: 999;
 }
+
+header .navbar-default .navbar-nav>li>a {
+	background-color: transparent;
+	line-height: 30px;
+	color: #C3C9CE;
+}
+
+header .navbar-default .navbar-nav>li>a:hover {
+	color: #ffffff;
+}
+
+header .navbar-default .navbar-nav>li>a i {
+	font-size: 20px;
+	line-height: 33px;
+}
+
 .header-a .header-a-logo {
   margin: 40px 0 0;
 }
@@ -135,14 +157,8 @@ html {
   border: transparent;
 }
 .navigation-a {
-  height: 30px;
-  background: #3D3D3D;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  padding: 0;
-  overflow: hidden;
+    margin: 55px 0px 20px;
+ 
 }
 @media (max-width: 900px) {
   .navigation-a {
@@ -286,9 +302,7 @@ html {
   text-decoration: none;
   border-bottom: 1px dotted #27C0D8;
 }
-.footer-a a:hover {
-  color: #23adc2;
-}
+
 .footer-a p {
   margin: 0;
   display: inline-block;
@@ -306,14 +320,14 @@ html {
 .content p {
   margin: 0.75em 0;
 }
-.content ul,
+/*.content ul,
 .content ol,
 .content pre,
 .content blockquote,
 .content textarea:not([class^="cke"]),
 .content .cke {
   margin: 1.875em 0;
-}
+}*/
 .content code,
 .content kbd {
   -webkit-border-radius: 3px;
@@ -336,7 +350,7 @@ html {
   border-left: 4px solid #27C0D8;
   padding: 1.5em 2.25em;
 }
-.content p a,
+/*.content p a,
 .content ul a,
 .content ol a,
 .content blockquote a,
@@ -348,8 +362,8 @@ html {
   color: #27C0D8;
   text-decoration: none;
   border-bottom: 1px dotted #27C0D8;
-}
-.content p a:hover,
+}*/
+/*.content p a:hover,
 .content ul a:hover,
 .content ol a:hover,
 .content blockquote a:hover,
@@ -407,7 +421,7 @@ html {
   -o-animation: targetLinkOpacity 0.5s linear alternate;
   animation: targetLinkOpacity 0.5s linear alternate;
   opacity: 1;
-}
+}*/
 .content input,
 .content select,
 .content textarea:not([class^="cke"]) {
@@ -463,14 +477,14 @@ html {
   line-height: 3.06rem;
   margin: 0.9em 0 0;
 }
-.content h3 {
+/*.content h3 {
   font-size: 24px;
   font-size: 1.5rem;
   line-height: 43.2px;
   line-height: 2.7rem;
   font-weight: 500;
   margin: 0.75em 0 0;
-}
+}*/
 .content h4 {
   font-size: 19.2px;
   font-size: 1.2rem;
@@ -1001,7 +1015,7 @@ footer > div {
   max-width: 968px;
 }
 .header-a {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 .footer-a {
   border-top: 1px solid #D9D9D9;
@@ -1010,13 +1024,13 @@ footer > div {
   background-color: #27C0D8;
   color: #fff;
 }
-.adjoined-top .content h1,
+/*.adjoined-top .content h1,
 .adjoined-top .content h2,
 .adjoined-top .content h3,
 .adjoined-top .content h4,
 .adjoined-top .content h5 {
   color: #fff;
-}
+}*/
 .adjoined-top .content p {
   font-size: 18px;
   font-size: 1.125rem;

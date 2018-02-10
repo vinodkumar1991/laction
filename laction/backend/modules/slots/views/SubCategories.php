@@ -1,9 +1,17 @@
+<title><?php echo Yii::t('titles', 'laction.admin').Yii::t('titles', 'settings.sub_categories'); ?></title>
 <div class="wraper container-fluid">
 	<div class="page-title">
-		<h3 class="title">Sub Categories</h3>
+		<h3 class="title"><?php echo Yii::t('breadcrumb','slots.subcategories_heading');?></h3>
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a
+				href="<?php echo Yii::getAlias('@web').'/dashboard'?>"><i
+					class="fa fa-dashboard fa-fw"></i><?php echo Yii::t('breadcrumb','common.home');?></a></li>
+			<li class="breadcrumb-item"><a
+				href="<?php echo Yii::getAlias('@web').'/roles'?>"><?php echo Yii::t('breadcrumb','slots.categories_module_name');?></a></li>
+			<li class="breadcrumb-item active"><a
+				href="<?php echo Yii::getAlias('@web').'/sub-categories'?>"><?php echo Yii::t('breadcrumb','slots.subcategories');?></a></li>
+		</ol>
 	</div>
-
-
 	<div class="row">
 		<div class="col-md-12">
 			<div class="panel panel-default">
