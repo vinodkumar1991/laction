@@ -5,8 +5,6 @@
 	src="<?php echo Yii::getAlias('@asset').'/jquery-ui/jquery-ui.js'?>"></script>
 
 <title>Laction Admin | Slots</title>
-<!-- Page Content Start -->
-<!-- ================== -->
 
 <div class="wraper container-fluid">
 	<!--<div class="page-title"> 
@@ -42,46 +40,56 @@
 									<strong>Add Event</strong>
 								</h4>
 							</div>
+							<!-- Slot Type :: STARAT -->
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="control-label">Slot Type</label> <select
-										class="form-control" name="category">
-										<option value="bg-danger">Slot 1</option>
-										<option value="bg-success">Slot 2</option>
+										id="category_type" class="form-control" name="category_type">
+										<option value="">--Select Slot Type--</option>
+										<?php
+        
+        if (! empty($slot_types)) {
+            foreach ($slot_types as $key => $value) {
+                ?>
+										    <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+										    <?php
+            }
+        }
+        ?>
 									</select>
 								</div>
+								<div id="err_category_type"></div>
 							</div>
+							<!-- Slot Type :: END -->
+							<!-- Event Date :: START -->
 							<div class="col-md-6">
 								<div class="form-group">
 									<label class="control-label">Event Date</label>
 									<div class="input-group">
-										<input type="text" readonly="readonly" id="txtdate"
-											class="form-control" placeholder="mm/dd/yyyy"
-											id="datepicker-multiple"> <span class="input-group-addon"><i
+										<input type="text" readonly="readonly" id="event_date"
+											name="event_date" class="form-control"
+											placeholder="mm/dd/yyyy" /> <span class="input-group-addon"><i
 											class="glyphicon glyphicon-calendar"></i></span>
 									</div>
 								</div>
+								<div id="err_event_date"></div>
 							</div>
+							<!-- Event Date :: END -->
 						</div>
 
 
 
 						<div class="modal-footer">
 							<div class="panel-body">
-
-
 								<div class="input-group control-group after-add-more">
-
 									<div class="input-group-btn">
+										<button class="btn btn-success add-more" type="button"
+											name="create_slot" id="create_slot" onclick="createSlot()">Create</button>
 										<button class="btn btn-success add-more" type="button">
 											<i class="glyphicon glyphicon-plus"></i> Add
 										</button>
 									</div>
-
 								</div>
-
-
-
 								<div class="col-md-4">
 									<div class="form-group">
 										<label class="control-label">from Time</label>
@@ -451,8 +459,26 @@
 
 <script language="javascript">
     $(document).ready(function () {
-        $("#txtdate").datepicker({
+        $("#event_date").datepicker({
             minDate: 0
         });
     });
+
+
+    function createSlot(){
+        var objSlot = {};
+        objDaySlots = [{from_time : '09:22 AM',to_time : '12:00 PM',amount : 120,status:'active'},
+            {from_time : '09:22 AM',to_time : '12:00 PM',amount : 120,status:'active'},
+            {from_time : '09:22 AM',to_time : '12:00 PM',amount : 120,status:'active'}
+            ];
+        objSlot = {
+                category_type : $("#category_type").val(),
+                event_date : $("#event_date").val(),
+                slots : objDaySlots
+                };
+        $.post('<?php echo Yii::getAlias('@web').'/slots/slots/save-slots'; ?>',objSlot,function(response){
+            alert(response);
+            return false;
+            });
+        }
 </script>

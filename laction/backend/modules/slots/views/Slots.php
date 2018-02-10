@@ -18,7 +18,7 @@
 						<a href="<?php echo Yii::getAlias('@web').'/create-slot'?>"
 							target="_blank"><button class="btn btn-primary add-more"
 								type="button" data-toggle="collapse" data-target="#demo">
-								<i class="glyphicon glyphicon-plus"></i> Add Project
+								<i class="glyphicon glyphicon-plus"></i> Add Slot
 							</button></a> <br> <br>
 						<!-- THE CALENDAR -->
 						<div id="calendar"></div>

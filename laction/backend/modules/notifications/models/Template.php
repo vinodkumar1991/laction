@@ -87,6 +87,7 @@ class Template extends ActiveRecord
             'code',
             'name',
             'template',
+            'description',
             'status'
         ];
         $arrScenarios['sms'] = [
@@ -95,6 +96,7 @@ class Template extends ActiveRecord
             'code',
             'name',
             'template',
+            'description',
             'status'
         ];
         return $arrScenarios;
