@@ -1,5 +1,8 @@
 <?php
 return [
+    '<controller:\w+>/<id:\d+>' => '<controller>/view',
+    '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+    '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
     // Settings :: START
     'roles' => 'users/users/roles',
     'permissions' => 'users/users/permissions',
@@ -13,6 +16,7 @@ return [
     'create-subject' => 'notifications/notification/create-sender-id',
     'templates' => 'notifications/notification/templates',
     'create-template' => 'notifications/notification/create-template',
+    'edit-template/<id:\d+>' => 'notifications/notification/edit-template',
     // Notifications :: END
     // Slots :: START
     'slots' => 'slots/slots/slots',

@@ -88,7 +88,13 @@ class Template extends ActiveRecord
             'name',
             'template',
             'description',
-            'status'
+            'status',
+            'id',
+            'created_date',
+            'created_by',
+            'last_modified_date',
+            'last_modified_by',
+            'sync'
         ];
         $arrScenarios['sms'] = [
             'message_type',
@@ -97,7 +103,13 @@ class Template extends ActiveRecord
             'name',
             'template',
             'description',
-            'status'
+            'status',
+            'id',
+            'created_date',
+            'created_by',
+            'last_modified_date',
+            'last_modified_by',
+            'sync'
         ];
         return $arrScenarios;
     }
@@ -132,6 +144,7 @@ class Template extends ActiveRecord
             'code' => $this->code,
             'id' => $this->id
         ]);
+        
         if (! empty($arrTemplate)) {
             $this->addError($attribute, $attribute . ' is already exists');
             return false;
@@ -155,7 +168,8 @@ class Template extends ActiveRecord
             't.template',
             't.description',
             't.status',
-            't.sync'
+            't.sync',
+            't.senderid_id'
         ]);
         $objQuery->from('templates as t');
         $objQuery->innerJoin('senderids as s', 's.id = t.senderid_id');
@@ -185,5 +199,14 @@ class Template extends ActiveRecord
         }
         $arrResponse = $objQuery->all();
         return $arrResponse;
+    }
+
+    public static function updateTemplate($arrInputs, $arrWhere)
+    {
+        $objConnection = Yii::$app->db;
+        $intUpdate = $objConnection->createCommand()
+            ->update('templates', $arrInputs, $arrWhere)
+            ->execute();
+        return $intUpdate;
     }
 }

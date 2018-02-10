@@ -30,10 +30,25 @@
 					<div class="col-lg-12">
 						<a href="<?php echo Yii::getAlias('@web').'/templates'?>">
 							<button type="button" class="btn btn-default m-b-5">List</button>
-						</a> <a
+						</a> 
+						<?php
+    
+    if (Yii::$app->request->get('id')) {
+        ?>
+        <a
+							href="<?php echo Yii::getAlias('@web').'/edit-template/'.Yii::$app->request->get('id'); ?>">
+							<button type="button" class="btn btn-primary m-b-5">Edit</button>
+						</a>
+						<?php
+    } else {
+        ?><a
 							href="<?php echo Yii::getAlias('@web').'/create-template'?>">
 							<button type="button" class="btn btn-primary m-b-5">Create</button>
 						</a>
+						<?php
+    }
+    ?>
+						
 						<div class="tab-content">
 							<div class="tab-pane active">
 								<div id="page-wrapper">
@@ -55,10 +70,17 @@
                                                                         <?php
                                                                         if (! empty($message_types)) {
                                                                             foreach ($message_types as $key => $value) {
-                                                                                ?>
-                                                                        <option
-																			value="<?php echo $key; ?>"><?php echo $value; ?></option>        
-                                                                                <?php
+                                                                                if (isset($template['message_type']) && ($template['message_type'] == $key)) {
+                                                                                    ?>
+                                                                                    <option
+																			value="<?php echo $key; ?>" selected><?php echo $value; ?></option>
+                                                                                    <?php
+                                                                                } else {
+                                                                                    ?>
+                                                                                    <option
+																			value="<?php echo $key; ?>"><?php echo $value; ?></option>
+                                                                                    <?php
+                                                                                }
                                                                             }
                                                                             unset($message_types);
                                                                         }
@@ -74,7 +96,8 @@
 																<label class="col-md-4">From Email</label>
 																<div class="col-md-6">
 																	<input type="text" class="form-control"
-																		name="from_email" id="from_email" value="" />
+																		name="from_email" id="from_email"
+																		value="<?php echo isset($template['from_email']) ? $template['from_email'] : NULL; ?>" />
 																</div>
 																<div id="err_from_email"></div>
 															</div>
@@ -91,10 +114,20 @@
                 
                 if (! empty($subjects)) {
                     foreach ($subjects as $arrSubject) {
-                        ?>
-                        <option
-																			value="<?php echo $arrSubject['sender_id']; ?>"><?php echo $arrSubject['subject'].' ( '.$arrSubject['message_type'].' ) '; ?></option>
+                        if (isset($template['senderid_id']) && ($template['senderid_id'] == $arrSubject['sender_id'])) {
+                            ?>
+                         <option
+																			value="<?php echo $arrSubject['sender_id']; ?>"
+																			selected><?php echo $arrSubject['subject'].' ( '.$arrSubject['message_type'].' ) '; ?></option>
+                         <?php
+                        } else {
+                            ?>
+                         <option
+																			value="<?php echo $arrSubject['sender_id']; ?>"><?php echo $arrSubject['subject'].' ( '.$arrSubject['message_type'].' ) '; ?></option>   
+                        
+                        
                         <?php
+                        }
                     }
                     unset($subjects);
                 }
@@ -110,7 +143,8 @@
 																<label class="col-md-4">Template Code</label>
 																<div class="col-md-6">
 																	<input type="text" name="code" id="code" maxlength="5"
-																		class="form-control" autocomplete="off" value="" />
+																		class="form-control" autocomplete="off"
+																		value="<?php echo isset($template['code']) ? $template['code'] : NULL; ?>" />
 																</div>
 																<div id="err_code"></div>
 															</div>
@@ -121,7 +155,8 @@
 																<label class="col-md-4">Template Name</label>
 																<div class="col-md-6">
 																	<input type="text" name="name" id="name" maxlength="30"
-																		class="form-control" autocomplete="off" value="" />
+																		class="form-control" autocomplete="off"
+																		value="<?php echo isset($template['name']) ? $template['name'] : NULL; ?>" />
 																</div>
 																<div id="err_name"></div>
 															</div>
@@ -132,7 +167,7 @@
 																<div class="col-md-6">
 																	<textarea name="template" col="3" rows="4"
 																		id="stemplate" class="form-control"
-																		placeholder="Enter Template Code"></textarea>
+																		placeholder="Enter Template Code"><?php echo isset($template['template']) ? $template['template'] : NULL; ?></textarea>
 																</div>
 															</div>
 															<!-- SMS Template :: END -->
@@ -157,7 +192,7 @@
 																<div class="col-md-6">
 																	<textarea name="description" id="description" col="3"
 																		rows="4" class="form-control"
-																		placeholder="Template Description" maxlength="1000"></textarea>
+																		placeholder="Template Description" maxlength="1000"><?php echo isset($template['description']) ? $template['description'] : NULL; ?></textarea>
 																</div>
 																<div id="err_description"></div>
 															</div>
@@ -165,13 +200,55 @@
 
 															<!--Status :: START -->
 															<div class="form-group">
-																<!-- 																<label class="col-md-4">Status</label> -->
+<?php
+
+if (isset($template['status'])) {
+    ?>
+    
+															<label class="col-md-4">Status</label>
 																<div class="col-md-6">
+																	<select id="status" name="status" class="form-control">
+																		<option value="">--Select Status--</option>
+																		<?php
+    
+    if (! empty($statuses)) {
+        foreach ($statuses as $key => $value) {
+            if ($template['status'] == $key) {
+                ?>
+                														        <option
+																			value="<?php echo $key; ?>" selected><?php echo $value;?></option>
+                <?php
+            } else {
+                ?>
+                														        <option
+																			value="<?php echo $key; ?>"><?php echo $value;?></option>
+                <?php
+            }
+        }
+        unset($statuses);
+    }
+    ?>
+																	</select>
+																</div>
+									
+    
+    
+    <?php
+} else {
+    ?>
+    <div class="col-md-6">
 																	<input type="hidden" name="status" id="status"
 																		value="active" />
 																</div>
-																<!-- 																<div id="err_status"></div> -->
+																
+<?php
+}
+?>
+																
+
+	
 															</div>
+															<div id="err_status"></div>
 															<!--Status :: END -->
 														</div>
 														<!-- end div -->
@@ -183,9 +260,23 @@
 									</div>
 									<div class="col-md-4 col-md-offset-4"
 										style="margin-bottom: 50px;">
+										<?php
+        
+        if (isset($template['status'])) {
+            ?>
+										<input type="button" name="create_template"
+											id="create_template" class="btn btn-primary" value="Update"
+											onclick="createTemplate()" />
+										<?php
+        } else {
+            ?>
 										<input type="button" name="create_template"
 											id="create_template" class="btn btn-primary" value="Create"
 											onclick="createTemplate()" />
+										<?php
+        }
+        ?>
+										
 									</div>
 									</form>
 								</div>
@@ -229,7 +320,8 @@
 							name : $("#name").val(),
 							template : template,
 									description : $("#description").val(),
-									status : $("#status").val()
+									status : $("#status").val(),
+									id : '<?php echo Yii::$app->request->get('id'); ?>'
 					};
 			$.post('<?php echo Yii::getAlias('@web').'/notifications/notification/save-template';?>',objTemplate,function(response){
 				makeEmpty();
@@ -263,10 +355,16 @@
 	          	  if(undefined != response.errors.description && response.errors.description.length > 0){
 	          		   $("#err_description").html(response.errors.description);
 	          		   }
+         		   //Status
+	          	if(undefined != response.errors.status && response.errors.status.length > 0){
+	          		   $("#err_status").html(response.errors.status);
+	          		   }
 		 		   return false;
 		            }else{
 		              $("#template_success_message").html(response.message);
-		              makeFieldsEmpty();
+		              if(undefined == response.is_updated){
+		          			 makeFieldsEmpty();
+		          		   }
 		              return true;         
 		                }
 				});

@@ -79,12 +79,9 @@
 												</td>
 												<td><?php echo $arrTemplate['description']; ?></td>
 												<td><?php echo $arrTemplate['status']; ?></td>
-												<td class="actions">
-													<button class="btn btn-primary" data-toggle="modal"
-														data-target="#edit_template">
-														<i class="fa fa-pencil"></i>
-													</button>
-												</td>
+												<td class="actions"><a class="btn btn-primary"
+													href="<?php echo Yii::getAlias('@web').'/edit-template/'.$arrTemplate['id']; ?>"><i
+														class="fa fa-pencil"></i></a></td>
 											</tr>
 										    <?php
             }

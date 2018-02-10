@@ -74,9 +74,19 @@ class NotificationController extends Controller
         $arrInputs = array_merge($arrInputs, $arrDefaults);
         $objTemplate->attributes = $arrInputs;
         if ($objTemplate->validate()) {
-            $objTemplate->save();
-            $arrResponse['template_id'] = $objTemplate->id;
-            $arrResponse['message'] = 'Template Created Successfully';
+            $arrValidatedInputs = $objTemplate->getAttributes();
+            if (! empty($arrValidatedInputs['id'])) {
+                unset($arrValidatedInputs['last_modified_date'], $arrValidatedInputs['created_date'], $arrValidatedInputs['created_by']);
+                $arrResponse['is_updated'] = Template::updateTemplate($arrValidatedInputs, [
+                    'id' => $arrValidatedInputs['id']
+                ]);
+                $arrResponse['message'] = 'Template Updated Successfully';
+            } else {
+                
+                $objTemplate->save();
+                $arrResponse['template_id'] = $objTemplate->id;
+                $arrResponse['message'] = 'Template Created Successfully';
+            }
         } else {
             $arrResponse['errors'] = $objTemplate->errors;
         }
@@ -122,5 +132,23 @@ class NotificationController extends Controller
         }
         unset($arrInputs);
         echo Json::encode($arrResponse);
+    }
+
+    public function actionEditTemplate()
+    {
+        $arrResponse = [];
+        $arrInputs = Yii::$app->request->get();
+        $arrStatuses = CommonComponent::getStatuses();
+        $arrMessageTypes = CommonComponent::getMessageTypes();
+        $arrSubjects = SenderIds::getSenderIds();
+        $arrTemplate = Template::getTemplates([
+            'template_id' => $arrInputs['id']
+        ])[0];
+        return $this->render('/CreateTemplate', [
+            'template' => $arrTemplate,
+            'message_types' => $arrMessageTypes,
+            'subjects' => $arrSubjects,
+            'statuses' => $arrStatuses
+        ]);
     }
 }
