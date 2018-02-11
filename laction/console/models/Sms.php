@@ -37,11 +37,7 @@ class Sms extends ActiveRecord
             's.mobile_number',
             's.params',
             's.status',
-            's.confirmation_token',
-            'u.fullname',
-            's.id',
-            'u.email',
-            'u.phone'
+            's.id'
         ]);
         $objQuery->from('sms as s');
         $objQuery->innerJoin('users as u', 'u.id = s.user_id');
@@ -53,5 +49,14 @@ class Sms extends ActiveRecord
         }
         $arrResponse = $objQuery->all();
         return $arrResponse;
+    }
+
+    public static function updateSms($arrInputs, $arrWhere)
+    {
+        $objConnection = Yii::$app->db;
+        $intUpdate = $objConnection->createCommand()
+            ->update('sms', $arrInputs, $arrWhere)
+            ->execute();
+        return $intUpdate;
     }
 }
