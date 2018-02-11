@@ -39,7 +39,7 @@
 											<th>Full Name</th>
 											<th>Phone</th>
 											<th>Email</th>
-											<th>Image</th>
+<!-- 											<th>Image</th> -->
 											<th>Status</th>
 											<th>Actions</th>
 
@@ -57,13 +57,18 @@
 											<td><?php echo $arrUser['fullname']; ?></td>
 											<td><?php echo $arrUser['phone']; ?></td>
 											<td><?php echo $arrUser['email']; ?></td>
-											<td></td>
+<!-- 											<td></td> -->
 											<td><?php echo $arrUser['status']; ?></td>
 											<td class="actions">
 												<button class="btn btn-primary" data-toggle="modal"
 													data-target="#edit-close-modal"
 													onclick="setUser(<?php echo $arrUser['user_id']; ?>)">
 													<i class="fa fa-pencil"></i>
+												</button>
+												<button class="btn btn-primary" data-toggle="modal"
+													data-target="#change-password"
+													onclick="setUserId(<?php echo $arrUser['user_id']; ?>)">
+													<i class="fa fa-key"></i>
 												</button>
 											</td>
 										</tr>
@@ -247,6 +252,46 @@
 		</div>
 	</div>
 </div>
+<div id="change-password" class="modal fade" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true"
+	style="display: none;">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">×</button>
+				<h4 class="modal-title">Change Password</h4>
+			</div>
+			<div class="modal-body">
+				<div id="password_success_message"></div>
+				<div class="row">
+					<form role="form" class="p-20" method="post" action="">
+						<div class="form-group">
+							<label for="newpassword">New Password</label> <input
+								type="password" class="form-control" name="newpassword"
+								id="newpassword" placeholder="Enter new password" maxlength="6" />
+							<div id="err_new_password"></div>
+						</div>
+
+						<div class="form-group">
+							<label for="confirm_newpassword">Conform password</label> <input
+								type="password" class="form-control" name="confirm_newpassword"
+								id="confirm_newpassword" placeholder="Enter new password again"
+								maxlength="6" />
+							<div id="err_confirm_new_password"></div>
+						</div>
+						<input type="hidden" name="usr_id" id="usr_id" value="" />
+
+						<button type="button" class="btn btn-purple"
+							name="btn_change_password" id="btn_change_password">Change
+							Password</button>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
 <script src="<?php echo Yii::getAlias('@asset').'/js/fileinput.js'?>"></script>
 <script>
 $("#input-image-2").fileinput({
@@ -406,4 +451,52 @@ function makeEmpty(){
        	  	  	  		  });
 	  		  return true;
   		  }
+
+  $("#btn_change_password").on("click",function(){
+	  var objPassword = {};
+	  objPassword = {
+			  newpassword : $("#newpassword").val(),
+			  confirmpassword : $("#confirm_newpassword").val(),
+			  id : $("#usr_id").val()
+			  };
+	  $.post('<?php echo Yii::getAlias('@web').'/users/users/change-password';?>',objPassword,function(response){
+		  makePasswordEmpty();
+		  var response = $.parseJSON(response);
+	        if(response.hasOwnProperty('errors')){
+	            //New Password
+	      	  if(undefined != response.errors.newpassword && response.errors.newpassword.length > 0){
+	      		   $("#err_new_password").html(response.errors.newpassword);
+	      		   }
+	      	 //Confirm New Password
+	      	  if(undefined != response.errors.confirmpassword && response.errors.confirmpassword.length > 0){
+	      		   $("#err_confirm_new_password").html(response.errors.confirmpassword);
+	      		   }
+	 		   return false;
+	            }else{
+		            makePasswordFieldsEmpty();
+	              $("#password_success_message").html(response.message);
+	              setTimeout(function(){location.reload()},1500);
+	              return true;         
+	                }
+		  });
+	  });
+
+  function makePasswordEmpty(){
+	  $("#err_new_password").empty();
+	  $("#err_confirm_new_password").empty();
+	  return true;
+  }
+
+  function makePasswordFieldsEmpty(){
+	  $("#newpassword").val("");
+	  $("#confirm_newpassword").val("");
+	  return true;
+	  }
+
+  function setUserId(user_id){
+	  makePasswordEmpty();
+	  makePasswordFieldsEmpty();
+	  $("#usr_id").val(user_id);
+	  return true;
+  }
 </script>

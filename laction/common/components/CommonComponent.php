@@ -158,4 +158,14 @@ class CommonComponent
             'preview' => 'Preview'
         ];
     }
+
+    public static function getNotificationCodes()
+    {
+        return [
+            'sms' => [
+                'forgotpwd' => 'FGPWD'
+            ],
+            'email' => []
+        ];
+    }
 }

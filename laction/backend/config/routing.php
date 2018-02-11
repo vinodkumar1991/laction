@@ -28,7 +28,8 @@ return [
     'upload' => 'uploads/uploads/upload-files',
     'login' => 'users/users/login',
     'dashboard' => 'users/dashboard/dashboard',
-    'logout' => 'users/users/logout'
+    'logout' => 'users/users/logout',
+    'forgot-password' => 'users/users/forgot-password'
     // Users :: END
 
 ];

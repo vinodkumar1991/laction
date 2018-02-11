@@ -13,6 +13,7 @@ use common\components\CommonComponent;
 use yii\helpers\Json;
 use backend\modules\users\models\Login;
 use yii\web\Session;
+use backend\modules\notifications\models\Sms;
 
 class UsersController extends GoController
 {
@@ -20,8 +21,12 @@ class UsersController extends GoController
     public function beforeAction($action)
     {
         $strAction = Yii::$app->controller->action->id;
+        $arrAllowed = [
+            'login',
+            'forgot-password'
+        ];
         $objSession = Yii::$app->session;
-        if (! isset($objSession['session_data']) && 'login' != $strAction) {
+        if (! isset($objSession['session_data']) && ! in_array($strAction, $arrAllowed)) {
             $this->redirect(Yii::getAlias('@web') . '/login');
         }
         $this->enableCsrfValidation = false;
@@ -213,20 +218,17 @@ class UsersController extends GoController
     {
         $arrResponse = [];
         $arrInputs = Yii::$app->request->post();
-        $arrInputs = [
-            'phone' => '9502038283'
-        ];
-        if (! empty($arrInputs)) {
-            $arrUser = Users::getUsers([
-                'phone' => $arrInputs['phone'],
-                'status' => 'active'
-            ]);
-            $arrResponse = ! empty($arrUser) ? $this->sendToken($arrUser[0]) : 'Invalid Username';
-            print_r($arrResponse);
-            die();
+        if (isset($arrInputs['phone']) && ! empty($arrInputs['phone'])) {
+            $arrUser = Users::getUsers($arrInputs);
+            $arrResponse = ! empty($arrUser) ? $this->sendToken($arrUser[0]) : [
+                'errors' => [
+                    'phone' => 'Invalid Phone'
+                ]
+            ];
             unset($arrInputs, $arrUser);
         }
         echo Json::encode($arrResponse);
+        exit();
     }
 
     private function sendToken($arrInputs)
@@ -240,10 +242,22 @@ class UsersController extends GoController
         $objToken->attributes = $arrInputs;
         if ($objToken->validate()) {
             $objToken->save();
+            $arrNotificationCodes = CommonComponent::getNotificationCodes();
+            $arrSmsInputs[] = [
+                'user_id' => $arrInputs['user_id'],
+                'template_code' => $arrNotificationCodes['sms']['forgotpwd'],
+                'mobile_number' => $arrInputs['phone'],
+                'params' => Json::encode([
+                    'token' => $arrInputs['token']
+                ]),
+                'status' => 'notsend',
+                'created_date' => date("Y-m-d H:i:s"),
+                'created_by' => 1
+            ];
+            Sms::create($arrSmsInputs);
+            $arrResponse['user_id'] = $arrInputs['user_id'];
             $arrResponse['token_id'] = $objToken->id;
-            // Need To Insert Data Into SMS Table
-            // Need To Insert Data Into Email Table
-            // Need To Run Cron Job
+            $arrResponse['message'] = "OTP has been sent successfully.";
         } else {
             $arrResponse['errors'] = $objToken->errors;
         }
@@ -404,5 +418,63 @@ class UsersController extends GoController
         }
         unset($arrInputs);
         echo Json::encode($arrResponse);
+    }
+
+    public function actionForgotPassword()
+    {
+        return $this->render('/users/ForgotPassword', []);
+    }
+
+    public function actionChangePassword()
+    {
+        $arrResponse = [];
+        $arrInputs = Yii::$app->request->post();
+        if (! empty($arrInputs)) {
+            $objLogin = new Login();
+            $objLogin->scenario = 'changepassword';
+            $objLogin->attributes = $arrInputs;
+            if ($objLogin->validate()) {
+                $arrValidatedInputs = $arrInputs;
+                $arrValidatedInputs['password'] = Yii::$app->getSecurity()->generatePasswordHash($arrInputs['newpassword']);
+                $arrValidatedInputs['last_modified_by'] = Yii::$app->session['session_data']['user_id'];
+                unset($arrValidatedInputs['confirmpassword'], $arrValidatedInputs['newpassword']);
+                $arrResponse['is_updated'] = Users::updateUser($arrValidatedInputs, [
+                    'id' => $arrValidatedInputs['id']
+                ]);
+                $arrResponse['message'] = 'Password changed successfully';
+                unset($arrValidatedInputs);
+            } else {
+                $arrResponse['errors'] = $objLogin->errors;
+            }
+            unset($arrInputs);
+        }
+        echo Json::encode($arrResponse);
+    }
+
+    public function actionUpdatePassword()
+    {
+        $arrResponse = [];
+        $arrInputs = Yii::$app->request->post();
+        if (! empty($arrInputs)) {
+            $objLogin = new Login();
+            $objLogin->scenario = 'updatepassword';
+            $objLogin->attributes = $arrInputs;
+            if ($objLogin->validate()) {
+                $arrValidatedInputs = $arrInputs;
+                $arrValidatedInputs['password'] = Yii::$app->getSecurity()->generatePasswordHash($arrInputs['newpassword']);
+                $arrValidatedInputs['last_modified_by'] = Yii::$app->session['session_data']['user_id'];
+                unset($arrValidatedInputs['confirmpassword'], $arrValidatedInputs['newpassword'], $arrValidatedInputs['otp']);
+                $arrResponse['is_updated'] = Users::updateUser($arrValidatedInputs, [
+                    'id' => $arrValidatedInputs['id']
+                ]);
+                $arrResponse['message'] = 'Password changed successfully';
+                unset($arrValidatedInputs);
+            } else {
+                $arrResponse['errors'] = $objLogin->errors;
+            }
+            unset($arrInputs);
+        }
+        echo Json::encode($arrResponse);
+        exit();
     }
 }

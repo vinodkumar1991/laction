@@ -52,7 +52,10 @@
 					class="btn btn-lg btn-primary btn-block btn-signin" value="Login"
 					name="do_login" id="do_login" />
 			</form>
-			<a href="#" class="forgot-password"> Forgot the password? </a>
+			<div class="m-t-30">
+				<a href="<?php echo Yii::getAlias('@web').'/forgot-password';?>"
+					class="forgot-password"> Forgot the password? </a>
+			</div>
 		</div>
 		<!-- /card-container -->
 	</div>

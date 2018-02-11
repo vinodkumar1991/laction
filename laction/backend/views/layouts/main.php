@@ -1,7 +1,10 @@
  <?php
 $strAction = Yii::$app->controller->action->id;
-
-if ('login' != $strAction) {
+$arrAllowed = [
+    'login',
+    'forgot-password'
+];
+if (! in_array($strAction, $arrAllowed)) {
     ?>
 <!DOCTYPE html>
 <html>

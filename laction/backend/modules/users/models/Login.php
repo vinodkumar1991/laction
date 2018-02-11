@@ -2,9 +2,16 @@
 namespace backend\modules\users\models;
 
 use yii\db\ActiveRecord;
+use backend\modules\users\models\Token;
 
 class Login extends ActiveRecord
 {
+
+    public $newpassword;
+
+    public $confirmpassword;
+
+    public $otp;
 
     public static function tableName()
     {
@@ -25,6 +32,27 @@ class Login extends ActiveRecord
             ],
             [
                 [
+                    'newpassword',
+                    'confirmpassword',
+                    'id'
+                ],
+                'required',
+                'on' => 'changepassword',
+                'message' => '{attribute} is required'
+            ],
+            [
+                [
+                    'newpassword',
+                    'confirmpassword',
+                    'id',
+                    'otp'
+                ],
+                'required',
+                'on' => 'updatepassword',
+                'message' => '{attribute} is required'
+            ],
+            [
+                [
                     'phone'
                 ],
                 'trim'
@@ -38,7 +66,29 @@ class Login extends ActiveRecord
             [
                 'password',
                 'string',
+                'min' => 6,
                 'max' => 6
+            ],
+            [
+                [
+                    'newpassword',
+                    'confirmpassword'
+                ],
+                'string',
+                'min' => 6,
+                'max' => 6
+            ],
+            [
+                [
+                    'confirmpassword'
+                ],
+                'compare',
+                'compareAttribute' => 'newpassword'
+            ],
+            [
+                'otp',
+                'validateOTP',
+                'on' => 'updatepassword'
             ]
         ];
     }
@@ -50,6 +100,17 @@ class Login extends ActiveRecord
             'phone',
             'password'
         ];
+        $arrScenarios['changepassword'] = [
+            'newpassword',
+            'confirmpassword',
+            'id'
+        ];
+        $arrScenarios['updatepassword'] = [
+            'newpassword',
+            'confirmpassword',
+            'otp',
+            'id'
+        ];
         return $arrScenarios;
     }
 
@@ -57,7 +118,23 @@ class Login extends ActiveRecord
     {
         return [
             'phone' => 'Phone Number',
-            'password' => 'Password'
+            'password' => 'Password',
+            'newpassword' => 'New Password',
+            'confirmpassword' => 'Confirm Password'
         ];
+    }
+
+    public function validateOTP($attribute, $params)
+    {
+        $arrToken = Token::getToken([
+            'token' => $this->otp,
+            'user_id' => $this->id
+        ]);
+        if (! empty($arrToken)) {
+            return true;
+        } else {
+            $this->addError('otp', 'Invalid OTP is given');
+            return false;
+        }
     }
 }

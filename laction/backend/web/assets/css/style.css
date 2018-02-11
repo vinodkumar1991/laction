@@ -317,7 +317,7 @@ aside.left-panel.lg+.content {
 .logo {
 	text-align: center;
 	background-color: #2f353f;
-	padding: 16px 10px 16px;
+	    padding: 14px 10px 16px;
 	position: fixed;
 	right: 0;
 	left: 0;
@@ -2316,6 +2316,7 @@ ul.p-social-link li a {
 	}
 	aside.left-panel.collapsed+.content {
 		margin-left: 75px;
+                
 	}
 	aside.left-panel.collapsed+.content header {
 		left: 0px;
@@ -2324,12 +2325,13 @@ ul.p-social-link li a {
 	aside.left-panel.collapsed .logo {
 		width: 75px;
 		position: relative;
+                    padding: 16px 10px 16px;
 	}
 	aside.left-panel.collapsed .navigation {
-		margin: 61px 0px 20px;
+		    margin: 0px 0px 20px;
 	}
 	aside.left-panel.collapsed+.content .wraper {
-		margin-top: 20px;
+		    margin-top: -60px;
 	}
 	aside.left-panel.collapsed .navigation ul li ul li a {
 		padding: 8px 25px 8px 30px;
@@ -2500,3 +2502,39 @@ ul.p-social-link li a {
 .span1{
     color: green;
 }
+.avtar_username{
+   vertical-align: middle;
+   margin-left: 3px;
+   background-color: transparent;
+   line-height: 30px;
+   color: #C3C9CE;
+   text-align: center;
+   padding: 14px 15px;
+   font-size: 16px;
+   display: block;
+}
+.avtar_username a{
+color:#fff;
+}
+.card-width {
+    max-width: 419px;
+    padding: 40px 40px;
+}
+
+ .form-signin .btn-width{
+    background-color: #4d90fe;
+    background-color: rgb(104, 145, 162);
+    padding: 0px;
+    font-weight: 700;
+    font-size: 14px;
+    height: 40px;
+    width: 76px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    -o-transition: all 0.218s;
+    -moz-transition: all 0.218s;
+    -webkit-transition: all 0.218s;
+    transition: all 0.218s;
+	}

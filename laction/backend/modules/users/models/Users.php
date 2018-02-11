@@ -137,7 +137,7 @@ class Users extends ActiveRecord
 
     private function getPassword()
     {
-        $strPassword = CommonComponent::generatePassword();
+        $strPassword = CommonComponent::generatePassword(6);
         $strPassword = Yii::$app->getSecurity()->generatePasswordHash($strPassword);
         return $strPassword;
     }
