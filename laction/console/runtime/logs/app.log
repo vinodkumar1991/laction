@@ -1,0 +1,232 @@
+2018-02-11 13:48:37 [-][-][-][error][yii\db\Exception] exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database 'yii2advanced'' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Connection.php:646
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Connection.php(646): PDO->__construct('mysql:host=loca...', 'root', '', NULL)
+#1 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Connection.php(579): yii\db\Connection->createPdoInstance()
+#2 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Connection.php(928): yii\db\Connection->open()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Connection.php(915): yii\db\Connection->getMasterPdo()
+#4 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Schema.php(483): yii\db\Connection->getSlavePdo()
+#5 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Connection.php(824): yii\db\Schema->quoteValue('notsend')
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Command.php(175): yii\db\Connection->quoteValue('notsend')
+#7 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Command.php(866): yii\db\Command->getRawSql()
+#8 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Command.php(887): yii\db\Command->logQuery('yii\\db\\Command:...')
+#9 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#10 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Query.php(213): yii\db\Command->queryAll()
+#11 C:\xampp\htdocs\laction\laction\console\models\Sms.php(54): yii\db\Query->all()
+#12 C:\xampp\htdocs\laction\laction\console\controllers\CronController.php(14): console\models\Sms::getSms(Array)
+#13 [internal function]: console\controllers\CronController->actionSms()
+#14 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#15 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#16 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\console\Controller.php(128): yii\base\Controller->runAction('sms', Array)
+#17 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\console\Controller->runAction('sms', Array)
+#18 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction('cron/sms', Array)
+#19 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('cron/sms', Array)
+#20 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#21 C:\xampp\htdocs\laction\laction\yii(27): yii\base\Application->run()
+#22 {main}
+
+Next exception 'yii\db\Exception' with message 'SQLSTATE[HY000] [1049] Unknown database 'yii2advanced'' in C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Connection.php:584
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Connection.php(928): yii\db\Connection->open()
+#1 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Connection.php(915): yii\db\Connection->getMasterPdo()
+#2 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Schema.php(483): yii\db\Connection->getSlavePdo()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Connection.php(824): yii\db\Schema->quoteValue('notsend')
+#4 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Command.php(175): yii\db\Connection->quoteValue('notsend')
+#5 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Command.php(866): yii\db\Command->getRawSql()
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Command.php(887): yii\db\Command->logQuery('yii\\db\\Command:...')
+#7 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Command.php(362): yii\db\Command->queryInternal('fetchAll', NULL)
+#8 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\db\Query.php(213): yii\db\Command->queryAll()
+#9 C:\xampp\htdocs\laction\laction\console\models\Sms.php(54): yii\db\Query->all()
+#10 C:\xampp\htdocs\laction\laction\console\controllers\CronController.php(14): console\models\Sms::getSms(Array)
+#11 [internal function]: console\controllers\CronController->actionSms()
+#12 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#13 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#14 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\console\Controller.php(128): yii\base\Controller->runAction('sms', Array)
+#15 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\console\Controller->runAction('sms', Array)
+#16 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction('cron/sms', Array)
+#17 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('cron/sms', Array)
+#18 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#19 C:\xampp\htdocs\laction\laction\yii(27): yii\base\Application->run()
+#20 {main}
+Additional Information:
+
+2018-02-11 13:48:37 [-][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\KING\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'KING-PC'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\KING'
+    'LOCALAPPDATA' => 'C:\\Users\\KING\\AppData\\Local'
+    'LOGONSERVER' => '\\\\KING-PC'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 58 Stepping 9, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3a09'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KING\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KING\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'KING-PC'
+    'USERNAME' => 'KING'
+    'USERPROFILE' => 'C:\\Users\\KING'
+    'windir' => 'C:\\Windows'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1518353317.7752
+    'REQUEST_TIME' => 1518353317
+    'argv' => [
+        0 => 'yii'
+        1 => 'cron/sms'
+    ]
+    'argc' => 2
+]
+2018-02-11 20:30:26 [-][-][-][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Undefined index: template_code' in C:\xampp\htdocs\laction\laction\console\controllers\CronController.php:49
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\console\controllers\CronController.php(49): yii\base\ErrorHandler->handleError(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 49, Array)
+#1 C:\xampp\htdocs\laction\laction\console\controllers\CronController.php(32): console\controllers\CronController->prepareData(Array)
+#2 [internal function]: console\controllers\CronController->actionSms()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#4 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\console\Controller.php(128): yii\base\Controller->runAction('sms', Array)
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\console\Controller->runAction('sms', Array)
+#7 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction('cron/sms', Array)
+#8 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('cron/sms', Array)
+#9 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#10 C:\xampp\htdocs\laction\laction\yii(27): yii\base\Application->run()
+#11 {main}
+2018-02-11 20:30:26 [-][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\KING\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'KING-PC'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\KING'
+    'LOCALAPPDATA' => 'C:\\Users\\KING\\AppData\\Local'
+    'LOGONSERVER' => '\\\\KING-PC'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 58 Stepping 9, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3a09'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KING\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KING\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'KING-PC'
+    'USERNAME' => 'KING'
+    'USERPROFILE' => 'C:\\Users\\KING'
+    'windir' => 'C:\\Windows'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1518377426.7269
+    'REQUEST_TIME' => 1518377426
+    'argv' => [
+        0 => 'yii'
+        1 => 'cron/sms'
+    ]
+    'argc' => 2
+]
+2018-02-11 20:43:35 [-][-][-][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Undefined index: sender' in C:\xampp\htdocs\laction\laction\console\controllers\CronController.php:56
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\console\controllers\CronController.php(56): yii\base\ErrorHandler->handleError(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 56, Array)
+#1 C:\xampp\htdocs\laction\laction\console\controllers\CronController.php(32): console\controllers\CronController->prepareData(Array)
+#2 [internal function]: console\controllers\CronController->actionSms()
+#3 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#4 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#5 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\console\Controller.php(128): yii\base\Controller->runAction('sms', Array)
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\console\Controller->runAction('sms', Array)
+#7 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction('cron/sms', Array)
+#8 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('cron/sms', Array)
+#9 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#10 C:\xampp\htdocs\laction\laction\yii(27): yii\base\Application->run()
+#11 {main}
+2018-02-11 20:43:35 [-][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\KING\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'KING-PC'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\KING'
+    'LOCALAPPDATA' => 'C:\\Users\\KING\\AppData\\Local'
+    'LOGONSERVER' => '\\\\KING-PC'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files (x86)\\Skype\\Phone\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 58 Stepping 9, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3a09'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KING\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KING\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'KING-PC'
+    'USERNAME' => 'KING'
+    'USERPROFILE' => 'C:\\Users\\KING'
+    'windir' => 'C:\\Windows'
+    'PHP_SELF' => 'yii'
+    'SCRIPT_NAME' => 'yii'
+    'SCRIPT_FILENAME' => 'yii'
+    'PATH_TRANSLATED' => 'yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1518378215.137
+    'REQUEST_TIME' => 1518378215
+    'argv' => [
+        0 => 'yii'
+        1 => 'cron/sms'
+    ]
+    'argc' => 2
+]
