@@ -2538,3 +2538,28 @@ color:#fff;
     -webkit-transition: all 0.218s;
     transition: all 0.218s;
 	}
+	.my_slots {
+    padding: 21px;
+}
+.field-styl {
+    float: right;
+	margin: 2px;
+}
+
+.form-styl {
+    background-color: #fafafa!important;
+    color: #2F353F;
+    font-size: 14px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    border: 1px solid #eee;
+    box-shadow: none;
+    height: 43px;
+}
+.control-label{
+	padding: 13px 10px;
+}

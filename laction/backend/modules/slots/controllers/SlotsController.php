@@ -133,6 +133,8 @@ class SlotsController extends Controller
     {
         $arrResponse = [];
         $arrInputs = Yii::$app->request->post();
+        print_r($arrInputs);
+        die();
         if (! empty($arrInputs)) {
             $arrSlots = isset($arrInputs['slots']) ? $arrInputs['slots'] : [];
             if (! empty($arrSlots)) {

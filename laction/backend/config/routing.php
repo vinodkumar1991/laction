@@ -29,7 +29,11 @@ return [
     'login' => 'users/users/login',
     'dashboard' => 'users/dashboard/dashboard',
     'logout' => 'users/users/logout',
-    'forgot-password' => 'users/users/forgot-password'
+    'forgot-password' => 'users/users/forgot-password',
     // Users :: END
+    // Reports :: START
+    'customers' => 'reports/reports/customers',
+    'bookings' => 'reports/reports/bookings'
+    // Reports :: END
 
 ];

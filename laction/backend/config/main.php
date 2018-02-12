@@ -24,6 +24,9 @@ return [
         ],
         'slots' => [
             'class' => 'app\modules\slots\slots_module'
+        ],
+        'reports' => [
+            'class' => 'app\modules\reports\reports_module'
         ]
     ],
     'language' => 'en',
