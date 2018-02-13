@@ -123,6 +123,12 @@ class Slots extends ActiveRecord
                 ':eventId' => $arrInputs['id']
             ]);
         }
+        // Status
+        if (isset($arrInputs['status']) && ! empty($arrInputs['status'])) {
+            $objQuery = $objQuery->andWhere('s.status=:Status', [
+                ':Status' => $arrInputs['status']
+            ]);
+        }
         $arrResponse = $objQuery->all();
         return $arrResponse;
     }

@@ -195,31 +195,7 @@
 						var form = '';
 						var today = new Date($.now());
 
-						var defaultEvents = [ {
-							title : 'Released Ample Admin!',
-							start : '2017-08-08',
-							end : '2017-08-08',
-							className : 'bg-info'
-						}, {
-							title : 'This is today check date',
-							start : today,
-							end : today,
-							className : 'bg-danger'
-						}, {
-							title : 'This is your birthday',
-							start : '2017-09-08',
-							end : '2017-09-08',
-							className : 'bg-info'
-						}, {
-							title : 'Hanns birthday',
-							start : '2017-10-08',
-							end : '2017-10-08',
-							className : 'bg-danger'
-						}, {
-							title : 'Like it?',
-							start : new Date($.now() + 784800000),
-							className : 'bg-success'
-						} ];
+						var defaultEvents = my_slots;
 
 						var $this = this;
 						$this.$calendarObj = $this.$calendar.fullCalendar({
@@ -228,8 +204,8 @@
 														 * day time each
 														 * 15minutes
 														 */
-							minTime : '08:00:00',
-							maxTime : '19:00:00',
+							minTime : '00:00:00',
+							maxTime : '23:59:59',
 							defaultView : 'month',
 							handleWindowResize : true,
 

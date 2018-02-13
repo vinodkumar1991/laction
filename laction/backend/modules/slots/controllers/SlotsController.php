@@ -46,7 +46,13 @@ class SlotsController extends Controller
 
     public function actionSlots()
     {
-        return $this->render('/Slots', []);
+        $arrSlots = Slots::getSlots([
+            'status' => 'active'
+        ]);
+        $arrModifiedSlots = ! empty($arrSlots) ? $this->modifySlots($arrSlots) : [];
+        return $this->render('/Slots', [
+            'all_slots' => Json::encode($arrModifiedSlots)
+        ]);
     }
 
     public function actionCreateSlot()
@@ -167,8 +173,20 @@ class SlotsController extends Controller
         echo Json::encode($arrResponse);
     }
 
-    public function actionTest()
+    private function modifySlots($arrSlots)
     {
-        return $this->render('/Test');
+        $arrResponse = [];
+        $i = 1;
+        foreach ($arrSlots as $arrSlot) {
+            $arrResponse[$arrSlot['event_date'] . ' ' . $arrSlot['from_time']] = [
+                'title' => 'Slot -' . $i,
+                'start' => $arrSlot['event_date'] . ' ' . $arrSlot['from_time'],
+                'end' => $arrSlot['event_date'] . ' ' . $arrSlot['to_time'],
+                'className' => 'bg-danger'
+            ];
+            $i ++;
+        }
+        $arrResponse = array_values($arrResponse);
+        return $arrResponse;
     }
 }
