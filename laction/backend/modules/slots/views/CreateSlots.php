@@ -30,6 +30,7 @@
 		<div class="panel-body">
 			<div class="row">
 				<div class="row">
+					<div id="slots_success_message"></div>
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<form method="post" action="">
 							<div>
@@ -82,13 +83,14 @@
 									<div class="col-md-12">
 										<div class="my_slots">
 											<label class="control-label">From Time : </label><input
-												type="text" name="from_time[]" id="from_time"
-												class="timepicker form-styl input-sm" /> <label
-												class="control-label">FromTo Time :</label> <input
-												type="text" name="to_time[]" id="to_time"
-												class="timepicker form-styl input-sm" /><label
-												class="control-label">From Amount :</label> <input
-												type="text" name="amount[]" id="amount" class=" form-styl" />
+												type="text" name="from_time[]" id="from_time1"
+												class="timepicker form-styl input-sm" /> <span
+												id="err_from_time1"></span> <label class="control-label">To
+												Time :</label> <input type="text" name="to_time[]"
+												id="to_time1" class="timepicker form-styl input-sm" /> <span
+												id="err_to_time1"></span> <label class="control-label">From
+												Amount :</label> <input type="text" name="amount[]"
+												id="amount1" class=" form-styl" /> <span id="err_amount1"></span>
 
 										</div>
 									</div>
@@ -98,7 +100,7 @@
 
 					</div>
 
-					<button class="field-styl  btn btn-primary">Create</button>
+					<button class="field-styl  btn btn-primary" onclick="createSlot()">Create</button>
 				</div>
 			</div>
 		</div>
@@ -111,8 +113,17 @@ $(document).ready(function () {
         minDate: 0
     });
 });
-
-var timepicker = $('.timepicker ').wickedpicker();
+var formats = {
+		format: '<?php echo date('H:i A');?>',
+		inline:true,
+		twentyFour: false,
+		upArrow: 'wickedpicker__controls__control-up',
+		downArrow: 'wickedpicker__controls__control-down',
+		close: 'wickedpicker__close',
+		hoverState: 'hover-state',
+		title: 'Select Time',
+		 		};
+var timepicker = $('.timepicker ').wickedpicker(formats);
 //Append Time Picker For Each Row :: START
 $('body').on('focus',".timepicker", function(){
     $(this).wickedpicker();
@@ -123,12 +134,12 @@ $(document).ready(function() {
     var wrapper         = $(".input_fields_wrap"); //Fields wrapper
     var add_button      = $(".add_field_button"); //Add button ID
     
-    var x = 1; //initlal text box count
+    var x = 1; //initlal text box count    
     $(add_button).click(function(e){ //on add input button click
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div class="my_slots"><label class="control-label">From Time : </label><input type="text" name="from_time[]" class="timepicker form-styl input-sm " /><label class="control-label">FromTo Time : </label><input type="text" name="to_time[]" class="timepicker form-styl input-sm" /><label class="control-label">FromAmount : </label><input type="text" name="amount[]" id="amount" class="form-styl"/> <a href="#" class="remove_field">Remove</a></div>'); //add input box
+            $(wrapper).append('<div class="my_slots"><label class="control-label">From Time : </label><input type="text" name="from_time[]" id="from_time'+x+'" class="timepicker form-styl input-sm " /><span id="err_from_time'+x+'"></span><label class="control-label">To Time : </label><input type="text" name="to_time[]" id="to_time'+x+'" class="timepicker form-styl input-sm" /><span id="err_to_time'+x+'"></span><label class="control-label">Amount : </label><input type="text" name="amount[]" id="amount'+x+'" class="form-styl"/><span id="err_amount'+x+'"></span> <a href="#" class="remove_field">Remove</a></div>');
         	           
         }
     });
@@ -142,47 +153,89 @@ $(document).ready(function() {
 function createSlot(){
     var objSlot = {}; 
     objDaySlots =  gatherSlots();
-    objDaySlots = JSON.stringify(objDaySlots);
-    console.log(objDaySlots);
     objSlot = {
             category_type : $("#category_type").val(),
             event_date : $("#event_date").val(),
             slots : objDaySlots
             };
     $.post('<?php echo Yii::getAlias('@web').'/slots/slots/save-slots'; ?>',objSlot,function(response){
-        alert(response);
-        return false;
+        makeEmpty();
+    	var response = $.parseJSON(response);
+        if(response.hasOwnProperty('errors')){
+      	var errLength = $(".my_slots").length;
+      	var arrErrors = response.errors;
+      	$.each(arrErrors, function(key, arrValue) {
+      	//Slot Type
+      	  if(undefined != arrValue.category_type && arrValue.category_type.length > 0){
+      		   $("#err_category_type").html(arrValue.category_type);
+      		   }
+      	 //Event Date
+      	  if(undefined != arrValue.event_date && arrValue.event_date.length > 0){
+      		   $("#err_event_date").html(arrValue.event_date);
+      		   }      	
+      	for(j=1;j<=errLength;j++){
+      	//From Time
+      	  if(undefined != arrValue.from_time && arrValue.from_time.length > 0){
+      		   $("#err_from_time"+key).html(arrValue.from_time);
+      		   }
+      	//To Time
+    	  if(undefined != arrValue.to_time && arrValue.to_time.length > 0){
+    		   $("#err_to_time"+key).html(arrValue.to_time);
+    		   }
+      	//Amount
+        	  if(undefined != arrValue.amount && arrValue.amount.length > 0){
+        		   $("#err_amount"+key).html(arrValue.amount);
+        		   }
+          	}
+      	});
+ 		   return false;
+            }else{
+            	makeEmptyFields();
+              $("#slots_success_message").html(response.message);
+              return true;         
+                }
         });
     }
 
 function gatherSlots(){
-	var response = {};
-	 var  arrFTimes = arrTTimes = arrAmounts = [];	 
-	var from_Times = $('input[name^="from_time"]');
-	var to_Times = $('input[name^="to_time"]');
-	var t_amounts = $('input[name^="amount"]');
-	console.log(from_Times);
-	return false;
-    //From Time
-	$.each(from_Times, function(index, value) {
-		alert(index+"---"+value);
-	    arrFTimes.push($(this).val());
-	});
-    response.f_times = arrFTimes;
-	 //To Time
-	$.each(to_Times, function(to_val) {
-	    arrTTimes.push($(this).val());
-	});
-    response.t_times = arrTTimes;
-	 //Amounts
-	$.each(t_amounts, function(amount_val) {
-	    arrAmounts.push($(this).val());
-	});
-    response.amounts = arrAmounts;
-    console.log(response);
-	 return response;
-
+	var response = [];
+	var z = $(".my_slots").length;
+		for(i=1;i<=z;i++){
+			response.push({from_time : $("#from_time"+i).val(),
+					to_time : $("#to_time"+i).val(),
+					amount : $("#amount"+i).val(),status : 'active'});
+		}
+return response;
 }
 
+function makeEmpty(){
+	var z = $(".my_slots").length;
+	$("#slots_success_message").empty();
+	$("#err_category_type").html("");
+	$("#err_event_date").html("");
+	$("#err_from_time1").html("");
+	$("#err_to_time1").html("");
+	$("#err_amount1").html("");
+	for(i=1;i<=z;i++){
+		$("#err_from_time"+z).html("");
+		$("#err_to_time"+z).html("");
+		$("#err_amount"+z).html("");
+	}
+	return true;
+}
 
+function makeEmptyFields(){
+	var z = $(".my_slots").length;
+	$("#category_type").val("");
+	$("#event_date").val("");
+	$("#from_time1").val("");
+	$("#to_time1").val("");
+	$("#amount1").val("");
+	for(i=1;i<=z;i++){
+		$("#from_time"+z).val("");
+		$("#to_time"+z).val("");
+		$("#amount"+z).val("");
+	}
+	return true;
+}
 </script>

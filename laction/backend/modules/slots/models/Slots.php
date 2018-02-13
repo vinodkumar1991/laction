@@ -45,11 +45,21 @@ class Slots extends ActiveRecord
             ],
             [
                 [
-                    'event_date',
-                    'from_time',
-                    'to_time'
+                    'event_date'
                 ],
                 'changeDateNTime'
+            ],
+            [
+                [
+                    'from_time'
+                ],
+                'changeFromTime'
+            ],
+            [
+                [
+                    'to_time'
+                ],
+                'changeToTime'
             ],
             [
                 'event_date',
@@ -61,6 +71,10 @@ class Slots extends ActiveRecord
                     'status'
                 ],
                 'safe'
+            ],
+            [
+                'to_time',
+                'isValidTime'
             ]
         ];
     }
@@ -159,15 +173,33 @@ class Slots extends ActiveRecord
 
     public function changeDateNTime($attribute, $params)
     {
-        if ('event_date' == $attribute) {
-            $this->event_date = date('Y-m-d', strtotime($this->$attribute));
-        } else {
-            if ('from_time' == $attribute) {
-                $this->from_time = date('H:i:s', strtotime($this->$attribute));
-            } else {
-                $this->to_time = date('H:i:s', strtotime($this->$attribute));
-            }
-        }
+        $this->event_date = date('Y-m-d', strtotime($this->event_date));
         return true;
+    }
+
+    public function changeFromTime($attribute, $params)
+    {
+        $this->from_time = str_replace(' : ', ':', $this->from_time);
+        $this->from_time = date("H:i:s", strtotime($this->from_time));
+        return true;
+    }
+
+    public function changeToTime($attribute, $params)
+    {
+        $this->to_time = str_replace(' : ', ':', $this->to_time);
+        $this->to_time = date('H:i:s', strtotime($this->to_time));
+        return true;
+    }
+
+    public function isValidTime($attribute, $params)
+    {
+        $strFromTime = strtotime($this->from_time);
+        $strToTime = strtotime($this->to_time);
+        if ($strToTime > $strFromTime) {
+            return true;
+        } else {
+            $this->addError('to_time', 'To time should be less than from time');
+            return false;
+        }
     }
 }

@@ -133,14 +133,12 @@ class SlotsController extends Controller
     {
         $arrResponse = [];
         $arrInputs = Yii::$app->request->post();
-        print_r($arrInputs);
-        die();
         if (! empty($arrInputs)) {
             $arrSlots = isset($arrInputs['slots']) ? $arrInputs['slots'] : [];
             if (! empty($arrSlots)) {
                 unset($arrInputs['slots']);
                 $arrBasic = $arrInputs;
-                $i = 0;
+                $i = 1;
                 foreach ($arrSlots as $arrSlot) {
                     $objSlot = new Slots();
                     $arrDefaults = $objSlot->getDefaults();
@@ -157,8 +155,12 @@ class SlotsController extends Controller
                     $i ++;
                 }
                 unset($arrSlots, $arrBasic);
-                $arrResponse['inserted_count'] = ! isset($arrResponse['errors']) ? Slots::create($arrResponse['new']) : 0;
-                $arrResponse['message'] = 'Slots created successfully';
+                $intInsert = ! isset($arrResponse['errors']) ? Slots::create($arrResponse['new']) : 0;
+                if ($intInsert > 0) {
+                    unset($arrResponse['new']);
+                    $arrResponse['inserted_count'] = $intInsert;
+                    $arrResponse['message'] = 'Slots created successfully';
+                }
             }
         }
         unset($arrInputs);
