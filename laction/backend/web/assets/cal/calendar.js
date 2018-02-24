@@ -164,6 +164,7 @@
 					}, CalendarApp.prototype.enableDrag = function() {
 						// init events
 						$(this.$event).each(function() {
+
 							// create an Event Object
 							// (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
 							// it doesn't need to have a start or end
@@ -184,6 +185,7 @@
 							});
 						});
 					}
+
 			/* Initializing */
 					CalendarApp.prototype.init = function() {
 						this.enableDrag();
@@ -198,40 +200,61 @@
 						var defaultEvents = my_slots;
 
 						var $this = this;
-						$this.$calendarObj = $this.$calendar.fullCalendar({
-							slotDuration : '00:15:00', /*
-														 * If we want to split
-														 * day time each
-														 * 15minutes
-														 */
-							minTime : '00:00:00',
-							maxTime : '23:59:59',
-							defaultView : 'month',
-							handleWindowResize : true,
+						$this.$calendarObj = $this.$calendar
+								.fullCalendar({
+									slotDuration : '00:15:00', /*
+																 * If we want to
+																 * split day
+																 * time each
+																 * 15minutes
+																 */
+									minTime : '00:00:00',
+									maxTime : '23:59:59',
+									defaultView : 'month',
+									handleWindowResize : true,
 
-							header : {
-								left : 'prev,next today',
-								center : 'title',
-								right : 'month,agendaWeek,agendaDay'
-							},
-							events : defaultEvents,
-							editable : true,
-							droppable : true, // this allows things to be
-							// dropped onto the calendar !!!
-							eventLimit : true, // allow "more" link when too
-							// many events
-							selectable : true,
-							drop : function(date) {
-								$this.onDrop($(this), date);
-							},
-							select : function(start, end, allDay) {
-								$this.onSelect(start, end, allDay);
-							},
-							eventClick : function(calEvent, jsEvent, view) {
-								$this.onEventClick(calEvent, jsEvent, view);
-							}
+									header : {
+										left : 'prev,next today',
+										center : 'title',
+										right : 'month,agendaWeek,agendaDay'
+									},
+									events : defaultEvents,
+									editable : true,
+									droppable : true, // this allows things to
+									// be
+									// dropped onto the calendar !!!
+									eventLimit : true, // allow "more" link
+									// when too
+									// many events
+									selectable : true,
+									drop : function(date) {
+										$this.onDrop($(this), date);
+									},
+									select : function(start, end, allDay) {
+										$this.onSelect(start, end, allDay);
+									},
+									eventClick : function(calEvent, jsEvent,
+											view) {
+										// $("#eventInfo").html(event.description);
+										$("#slot_edit_link").attr('href',
+												calEvent.event_url);
+										$("#eventContent").dialog({
+											modal : true,
+											title : event.title,
+											width : 500,
+											height : 300
+										});
+										showSlotsInfo(calEvent.start._i,
+												calEvent.title);
+										// if (calEvent.url) {
+										// window.open(calEvent.url);
+										// return false;
+										// }
+									},
+									dayClick : function(date, jsEvent, view) {
 
-						});
+									}
+								});
 
 						// on new event
 						this.$saveCategoryBtn

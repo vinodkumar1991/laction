@@ -176,17 +176,51 @@ class SlotsController extends Controller
     private function modifySlots($arrSlots)
     {
         $arrResponse = [];
-        $i = 1;
         foreach ($arrSlots as $arrSlot) {
-            $arrResponse[$arrSlot['event_date'] . ' ' . $arrSlot['from_time']] = [
-                'title' => 'Slot -' . $i,
-                'start' => $arrSlot['event_date'] . ' ' . $arrSlot['from_time'],
-                'end' => $arrSlot['event_date'] . ' ' . $arrSlot['to_time'],
+            $arrResponse[$arrSlot['event_date']][$arrSlot['category_type']] = [
+                'title' => $arrSlot['category_type'],
+                'start' => $arrSlot['event_date'],
+                'end' => $arrSlot['event_date'],
+                'event_url' => Yii::getAlias('@web') . '/edit-slot/' . $arrSlot['event_date'] . '/' . $arrSlot['category_type'],
                 'className' => 'bg-danger'
             ];
-            $i ++;
         }
-        $arrResponse = array_values($arrResponse);
+        $arrModifiedResponse = [];
+        foreach ($arrResponse as $slot_type => $arrSlotDet) {
+            foreach ($arrSlotDet as $arrSlotInfo) {
+                $arrModifiedResponse[] = $arrSlotInfo;
+            }
+        }
+        unset($arrSlots, $arrResponse);
+        $arrResponse = array_values($arrModifiedResponse);
         return $arrResponse;
+    }
+
+    public function actionEditSlot()
+    {
+        $arrSlotTypes = CommonComponent::getSlotTypes();
+        $arrInputs = Yii::$app->request->get();
+        $arrSlotDetails = Slots::getSlots([
+            'event_date' => $arrInputs['slot_date'],
+            'slot_type' => $arrInputs['category_type']
+        ]);
+        return $this->render('/EditSlot', [
+            'slot_details' => $arrSlotDetails,
+            'slot_types' => $arrSlotTypes
+        ]);
+    }
+
+    public function actionGetSlot()
+    {
+        $arrResponse = [];
+        $arrInputs = Yii::$app->request->post();
+        if (! empty($arrInputs)) {
+            $arrResponse = Slots::getSlots([
+                'slot_type' => $arrInputs['category_type'],
+                'event_date' => $arrInputs['event_date']
+            ]);
+        }
+        unset($arrInputs);
+        echo JSON::encode($arrResponse);
     }
 }

@@ -33,8 +33,9 @@
 
 	<div class="container">
 		<div class="card card-container">
-			<img id="profile-img" class="profile-img-card"
-				src="<?php echo Yii::getAlias('@asset').'/img/avatar_2x.png';?>" />
+			<a href="<?php echo Yii::getAlias('@web'); ?>"><img id="profile-img"
+				class="profile-img-card"
+				src="<?php echo Yii::getAlias('@asset').'/img/avatar_2x.png';?>" /></a>
 			<p id="profile-name" class="profile-name-card"></p>
 			<form class="form-signin" method="post" action="">
 				<!-- Phone :: START -->

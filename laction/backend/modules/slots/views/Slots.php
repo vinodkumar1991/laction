@@ -1,3 +1,6 @@
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script>
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
 <link
 	href="<?php echo Yii::getAlias('@asset').'/fullcalendar/fullcalendar.css'?>"
 	rel="stylesheet" />
@@ -29,23 +32,21 @@
 			</div>
 			<!-- /.col -->
 		</div>
-		<!-- BEGIN MODAL -->
-		<div class="modal none-border" id="my-event">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-hidden="true">&times;</button>
-						<h4 class="modal-title">
-							<strong>Slot Details</strong>
-						</h4>
-					</div>
-					<div></div>
-					<div class="modal-footer">
-						<div class="panel-body"></div>
-					</div>
-				</div>
-			</div>
+		<!-- Popup :: Model -->
+		<div id="eventContent" title="Slot Details">
+			<table id="eventInfo" border="1">
+				<tr>
+					<th>Event Date</th>
+					<th>Slot Type</th>
+					<th>From Time</th>
+					<th>To Time</th>
+					<th>Amount</th>
+					<th>Status</th>
+				</tr>
+			</table>
+			<p>
+				<strong><a id="slot_edit_link" target="_blank">Edit Slot</a></strong>
+			</p>
 		</div>
 	</div>
 </div>
@@ -53,7 +54,8 @@
 
 
 <!--Calendar Scripts -->
-<script>
+<script type="text/javascript">
+$("#eventContent").hide();
 var my_slots = [];
 my_slots =<?php echo $all_slots; ?></script>
 <script
@@ -61,25 +63,35 @@ my_slots =<?php echo $all_slots; ?></script>
 <script
 	src="<?php echo Yii::getAlias('@asset').'/cal/assets/vendor_components/fullcalendar/dist/fullcalendar.min.js'?>"></script>
 <script src="<?php echo Yii::getAlias('@asset').'/cal/calendar.js'?>"></script>
+
 <script type="text/javascript">
 
-    $(document).ready(function() {
-
-	//here first get the contents of the div with name class copy-fields and add it to after "after-add-more" div class.
-      $(".add-more").click(function(){
-           
-          var html = $(".copy-fields").html();
-          $(".after-add-more").after(html);
-      });
-//here it will remove the current value of the remove button which has been pressed
-      $("body").on("click",".remove",function(){
-          $(this).parents(".control-group").remove();
-      });
-
-    });
-   $(".form_datetime").datetimepicker({
-
-        format: "dd MM yyyy - hh:ii"
-    });
-
+function showSlotsInfo(event_date, slot_type){
+	$("#eventContent").show();
+	var objSlot = {
+event_date : event_date,
+category_type : slot_type
+			};
+	$.post('<?php echo Yii::getAlias('@web').'/slots/slots/get-slot'; ?>',objSlot,function(response){
+		   if(response){
+			   $('#eventContent').dialog('option', 'title', 'Slot Details');
+			   $("#eventInfo").html("");
+			   var response = $.parseJSON(response);
+			   var tr;
+			   $.each(response, function( index, value ) {
+			            tr = $('<tr/>');
+			            tr.append("<td>" + value.slot_event_date + "</td>");
+			            tr.append("<td>" + value.category_type + "</td>");
+			            tr.append("<td>" + value.slot_from_time + "</td>");
+			            tr.append("<td>" + value.slot_to_time + "</td>");
+			            tr.append("<td>" + value.amount + "</td>");
+			            tr.append("<td>" + value.status + "</td>");
+			            $('#eventInfo').append(tr);
+			            var edit_slot_link = '';
+			            edit_slot_link = "<?php echo Yii::getAlias('@web'); ?>"+ '/edit-slot/'+value.event_date+'/'+value.category_type;
+				 });
+			   $("#slot_edit_link").value(edit_slot_link);
+			   }
+		});
+}
 </script>

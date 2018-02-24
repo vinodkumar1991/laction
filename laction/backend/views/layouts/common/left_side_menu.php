@@ -26,9 +26,9 @@
 				<ul class="list-unstyled">
 					<li class=""><a
 						href="<?php echo Yii::getAlias('@web').'/customers';?>">Customers<i
-							class="fa fa-puzzle-piece" aria-hidden="true"></i></a></li>
+							class="fa fa-group" aria-hidden="true"></i></a></li>
 					<li><a href="<?php echo Yii::getAlias('@web').'/bookings';?>">Bookings<i
-							class="fa fa-desktop" aria-hidden="true"></i></a></li>
+							class="fa fa-book" aria-hidden="true"></i></a></li>
 				</ul></li>
 			<li class="has-submenu"><a href="#"><i class="fa fa-bell"
 					aria-hidden="true"></i><span class="nav-label">Notifications</span><span

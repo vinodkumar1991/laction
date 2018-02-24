@@ -102,7 +102,11 @@ class Slots extends ActiveRecord
             's.from_time',
             's.to_time',
             's.amount',
-            's.status'
+            's.status',
+            'date_format(s.from_time,"%r") as slot_from_time',
+            'date_format(s.to_time,"%r") as slot_to_time',
+            'date_format(s.event_date,"%a %D %b %Y") as slot_event_date'
+        
         ]);
         $objQuery->from('slots as s');
         // Slot Type
@@ -139,6 +143,7 @@ class Slots extends ActiveRecord
         if (! empty($this->event_date)) {
             $arrSlot = self::getSlots([
                 'event_date' => $this->event_date,
+                'slot_type' => $this->category_type,
                 'id' => $this->id
             ]);
         }

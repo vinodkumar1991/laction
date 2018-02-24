@@ -64,6 +64,7 @@ class UsersController extends GoController
                 if (Yii::$app->getSecurity()->validatePassword($arrValidatedInputs['password'], $arrUser['password'])) {
                     $arrResponse['user'] = $arrUser;
                 } else {
+                    $arrResponse['fields']['phone'] = $arrValidatedInputs['phone'];
                     $arrResponse['errors']['password'] = [
                         'Invalid Password'
                     ];

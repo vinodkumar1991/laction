@@ -21,6 +21,7 @@ return [
     // Slots :: START
     'slots' => 'slots/slots/slots',
     'create-slot' => 'slots/slots/create-slot',
+    'edit-slot/<slot_date>/<category_type>' => 'slots/slots/edit-slot',
     // Slots :: END
     // Users :: START
     'users' => 'users/users/users',

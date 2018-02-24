@@ -1,27 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="shortcut icon"
+	href="<?php echo Yii::getAlias('@asset').'/img/favicon_1.ico';?>" />
+
+<title>L'Action Studios | Admin</title>
+
+<!-- Bootstrap core CSS -->
+<link
+	href="<?php echo Yii::getAlias('@asset').'/css/bootstrap.min.css'; ?>"
+	rel="stylesheet" />
+<link
+	href="<?php echo Yii::getAlias('@asset').'/css/bootstrap-reset.css'; ?>"
+	rel="stylesheet" />
+
+<!--Icon-fonts css-->
+<link
+	href="<?php echo Yii::getAlias('@asset').'/font-awesome/css/font-awesome.css'; ?>"
+	rel="stylesheet" />
+
+<!-- Custom styles for this template -->
+<link href="<?php echo Yii::getAlias('@asset').'/css/style.css';?>"
+	rel="stylesheet" />
+<link href="<?php echo Yii::getAlias('@asset').'/css/helper.css';?>"
+	rel="stylesheet" />
+
+
 <script src="<?php echo Yii::getAlias('@asset').'/js/jquery.js'?>"></script>
-<div id="otp_success_message"></div>
-<form method="post" action="">
-	Phone Number : <input type="text" name="phone" id="phone" value=""
-		maxlength="10" autocomplete="off" />
-	<div id="err_phone"></div>
+</head>
 
-	<input type="button" name="send_otp" id="send_otp" value="Get OTP" /> <br />
-	<div id="password_success_update"></div>
-	OTP : <input type="text" name="otp" id="otp" value="" maxlength="6" />
-	<div id="err_otp"></div>
+<body class="bg-login">
+	<div class="container">
+		<div class="card card-container">
+			<a href="<?php echo Yii::getAlias('@web'); ?>"><img id="profile-img"
+				class="profile-img-card"
+				src="<?php echo Yii::getAlias('@asset').'/img/avatar_2x.png';?>" /></a>
+			<p id="profile-name" class="profile-name-card"></p>
+			<div class="success_span1" id="otp_success_message"></div>
+			<form method="post" action="">
+				<input type="text" name="phone" id="phone" value="" maxlength="10"
+					autocomplete="off" placeholder="Phone Number" class="form-control" />
+				<div class="err_span" id="err_phone"></div>
 
-	New Password : <input type="password" name="newpassword"
-		id="newpassword" value="" maxlength="6" />
-	<div id="err_newpassword"></div>
+				<input type="button" name="send_otp" id="send_otp"
+					class="btn btn-lg btn-primary btn-block btn-signin marg-top"
+					value="Get OTP" /> <br />
+				<div class="success_span1" id="password_success_update"></div>
+				<input type="text" name="otp" id="otp"
+					class="form-control  marg-top" placeholder="OTP" value=""
+					maxlength="6" />
+				<div class="err_span" id="err_otp"></div>
 
-	Confirm Password : <input type="password" name="confirmpassword"
-		id="confirmpassword" value="" maxlength="6" />
-	<div id="err_confirmpassword"></div>
-	<input type="hidden" name="usr_id" id="usr_id" value="" /> <input
-		type="button" name="btn_save_password" id="btn_save_password"
-		value="Change Password" />
-</form>
+				<input type="password" name="newpassword" placeholder="New Password"
+					class="form-control marg-top" id="newpassword" value=""
+					maxlength="6" />
+				<div class="err_span" id="err_newpassword"></div>
 
+				<input type="password" name="confirmpassword"
+					placeholder="Confirm Password" class="form-control marg-top"
+					id="confirmpassword" value="" maxlength="6" />
+				<div class="err_span" id="err_confirmpassword"></div>
+				<input type="hidden" name="usr_id" id="usr_id" value="" /> <input
+					type="button" name="btn_save_password" id="btn_save_password"
+					class="btn btn-lg btn-primary btn-block btn-signin marg-top"
+					value="Change Password" />
+			</form>
+
+		</div>
+	</div>
+</body>
 <script type="text/javascript">
 makeHide();
   function makeHide(){

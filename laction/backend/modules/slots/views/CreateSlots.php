@@ -90,7 +90,8 @@
 												id="to_time1" class="timepicker form-styl input-sm" /> <span
 												id="err_to_time1"></span> <label class="control-label">From
 												Amount :</label> <input type="text" name="amount[]"
-												id="amount1" class=" form-styl" /> <span id="err_amount1"></span>
+												id="amount1" class=" form-styl" maxlength="6" /> <span
+												id="err_amount1"></span>
 
 										</div>
 									</div>
@@ -139,7 +140,7 @@ $(document).ready(function() {
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div class="my_slots"><label class="control-label">From Time : </label><input type="text" name="from_time[]" id="from_time'+x+'" class="timepicker form-styl input-sm " /><span id="err_from_time'+x+'"></span><label class="control-label">To Time : </label><input type="text" name="to_time[]" id="to_time'+x+'" class="timepicker form-styl input-sm" /><span id="err_to_time'+x+'"></span><label class="control-label">Amount : </label><input type="text" name="amount[]" id="amount'+x+'" class="form-styl"/><span id="err_amount'+x+'"></span> <a href="#" class="remove_field">Remove</a></div>');
+            $(wrapper).append('<div class="my_slots"><label class="control-label">From Time : </label><input type="text" name="from_time[]" id="from_time'+x+'" class="timepicker form-styl input-sm " /><span id="err_from_time'+x+'"></span><label class="control-label">To Time : </label><input type="text" name="to_time[]" id="to_time'+x+'" class="timepicker form-styl input-sm" /><span id="err_to_time'+x+'"></span><label class="control-label">Amount : </label><input type="text" name="amount[]" id="amount'+x+'" class="form-styl" maxlength="6"/><span id="err_amount'+x+'"></span> <a href="#" class="remove_field">Remove</a></div>');
         	           
         }
     });
