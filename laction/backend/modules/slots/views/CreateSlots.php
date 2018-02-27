@@ -218,9 +218,9 @@ function makeEmpty(){
 	$("#err_to_time1").html("");
 	$("#err_amount1").html("");
 	for(i=1;i<=z;i++){
-		$("#err_from_time"+z).html("");
-		$("#err_to_time"+z).html("");
-		$("#err_amount"+z).html("");
+		$("#err_from_time"+i).html("");
+		$("#err_to_time"+i).html("");
+		$("#err_amount"+i).html("");
 	}
 	return true;
 }
@@ -233,9 +233,9 @@ function makeEmptyFields(){
 	$("#to_time1").val("");
 	$("#amount1").val("");
 	for(i=1;i<=z;i++){
-		$("#from_time"+z).val("");
-		$("#to_time"+z).val("");
-		$("#amount"+z).val("");
+		$("#from_time"+i).val("");
+		$("#to_time"+i).val("");
+		$("#amount"+i).val("");
 	}
 	return true;
 }
