@@ -133,6 +133,18 @@ class Slots extends ActiveRecord
                 ':Status' => $arrInputs['status']
             ]);
         }
+        // From Time
+        if (isset($arrInputs['from_time']) && ! empty($arrInputs['from_time'])) {
+            $objQuery = $objQuery->andWhere('s.from_time=:fromTime', [
+                ':fromTime' => $arrInputs['from_time']
+            ]);
+        }
+        // To Time
+        if (isset($arrInputs['to_time']) && ! empty($arrInputs['to_time'])) {
+            $objQuery = $objQuery->andWhere('s.to_time=:toTime', [
+                ':toTime' => $arrInputs['to_time']
+            ]);
+        }
         $arrResponse = $objQuery->all();
         return $arrResponse;
     }
@@ -144,7 +156,9 @@ class Slots extends ActiveRecord
             $arrSlot = self::getSlots([
                 'event_date' => $this->event_date,
                 'slot_type' => $this->category_type,
-                'id' => $this->id
+                'id' => $this->id,
+                'from_time' => $this->from_time,
+                'to_time' => $this->to_time
             ]);
         }
         if (empty($arrSlot)) {
@@ -157,11 +171,13 @@ class Slots extends ActiveRecord
 
     public function getDefaults()
     {
-        return [
+        $arrDefaults = [];
+        $arrDefaults = [
             'created_date' => date('Y-m-d H:i:s'),
             'created_by' => Yii::$app->session['session_data']['user_id'],
             'last_modified_by' => Yii::$app->session['session_data']['user_id']
         ];
+        return $arrDefaults;
     }
 
     public static function create($arrInputs)
@@ -212,5 +228,14 @@ class Slots extends ActiveRecord
             $this->addError('to_time', 'To time should be less than from time');
             return false;
         }
+    }
+
+    public static function updateSlot($arrInputs, $arrWhere)
+    {
+        $objConnection = Yii::$app->db;
+        $intUpdate = $objConnection->createCommand()
+            ->update('slots', $arrInputs, $arrWhere)
+            ->execute();
+        return $intUpdate;
     }
 }

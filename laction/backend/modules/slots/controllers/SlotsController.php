@@ -153,20 +153,38 @@ class SlotsController extends Controller
                     if ($objSlot->validate()) {
                         $arrValidatedInputs = [];
                         $arrValidatedInputs = $objSlot->getAttributes();
-                        unset($arrValidatedInputs['id'], $arrValidatedInputs['last_modified_date']);
-                        $arrResponse['new'][] = $arrValidatedInputs;
+                        if (empty($arrValidatedInputs['id'])) {
+                            unset($arrValidatedInputs['id'], $arrValidatedInputs['last_modified_date']);
+                            $arrResponse['new'][] = $arrValidatedInputs;
+                        } else {
+                            unset($arrValidatedInputs['last_modified_date']);
+                            $arrResponse['update'][] = $arrValidatedInputs;
+                        }
                     } else {
                         $arrResponse['errors'][$i] = $objSlot->errors;
                     }
                     $i ++;
                 }
                 unset($arrSlots, $arrBasic);
-                $intInsert = ! isset($arrResponse['errors']) ? Slots::create($arrResponse['new']) : 0;
+                $intUpdate = 0;
+                if (isset($arrResponse['update'])) {
+                    $arrUpdatedSlots = [];
+                    $arrUpdatedSlots = $arrResponse['update'];
+                    foreach ($arrUpdatedSlots as $arrUpdateSlot) {
+                        unset($arrUpdateSlot['created_date'], $arrUpdateSlot['created_by']);
+                        Slots::updateSlot($arrUpdateSlot, [
+                            'id' => $arrUpdateSlot['id']
+                        ]);
+                        $intUpdate ++;
+                    }
+                    unset($arrResponse['update']);
+                }
+                $intInsert = (! isset($arrResponse['errors']) && isset($arrResponse['new'])) ? Slots::create($arrResponse['new']) : 0;
                 if ($intInsert > 0) {
                     unset($arrResponse['new']);
                     $arrResponse['inserted_count'] = $intInsert;
-                    $arrResponse['message'] = 'Slots created successfully';
                 }
+                ! empty($intUpdate) ? ($arrResponse['message'] = 'Slots Updated Successfully') : ($arrResponse['message'] = 'Slots Created Successfully');
             }
         }
         unset($arrInputs);
@@ -198,6 +216,7 @@ class SlotsController extends Controller
 
     public function actionEditSlot()
     {
+        $arrStatuses = CommonComponent::getSlotStatuses();
         $arrSlotTypes = CommonComponent::getSlotTypes();
         $arrInputs = Yii::$app->request->get();
         $arrSlotDetails = Slots::getSlots([
@@ -206,7 +225,8 @@ class SlotsController extends Controller
         ]);
         return $this->render('/EditSlot', [
             'slot_details' => $arrSlotDetails,
-            'slot_types' => $arrSlotTypes
+            'slot_types' => $arrSlotTypes,
+            'statuses' => $arrStatuses
         ]);
     }
 

@@ -168,4 +168,12 @@ class CommonComponent
             'email' => []
         ];
     }
+
+    public static function getSlotStatuses()
+    {
+        return [
+            'active' => 'Active',
+            'inactive' => 'Delete'
+        ];
+    }
 }

@@ -30,7 +30,7 @@
 		<div class="panel-body">
 			<div class="row">
 				<div class="row">
-					<div id="slots_success_message"></div>
+					<div id="slots_update_message"></div>
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<form method="post" action="">
 							<div>
@@ -83,14 +83,14 @@
 
 							<div class="input_fields_wrap">
 								<input type="button" class="field-styl btn btn-primary"
-									name="create_slot" id="create_slot" value="Create"
+									name="create_slot" id="create_slot" value="Update"
 									onclick="createSlot()" />
 								<button class="add_field_button field-styl  btn btn-success">
 									<i class="glyphicon glyphicon-plus"></i>ADD
 								</button>
 								<div class="row">
 									<div class="col-md-12">
-										<div class="my_slots">
+										
 										<?php
         
         if (! empty($slot_details)) {
@@ -98,8 +98,10 @@
             foreach ($slot_details as $arrSlot) {
                 
                 ?>
-											<label class="control-label">From Time : </label><input
-												type="text" name="from_time[]"
+                <div class="my_slots">
+											<input type="hidden" name="id[]" id="id<?php echo $i; ?>"
+												value="<?php echo $i; ?>" /> <label class="control-label">From
+												Time : </label><input type="text" name="from_time[]"
 												id="from_time<?php echo $i;?>"
 												class="timepicker form-styl input-sm"
 												value="<?php echo date('h:i A',strtotime($arrSlot['from_time'])); ?>" />
@@ -107,14 +109,27 @@
 												class="control-label">To Time :</label> <input type="text"
 												name="to_time[]" id="to_time<?php echo $i; ?>"
 												class="timepicker form-styl input-sm"
-												value="<?php echo $arrSlot['amount']; ?>" /> <span
-												id="err_to_time<?php echo $i; ?>"></span> <label
-												class="control-label">From Amount :</label> <input
-												type="text" name="amount[]" id="amount<?php echo $i; ?>"
+												value="<?php echo date('h:i A',strtotime($arrSlot['to_time'])); ?>" />
+											<span id="err_to_time<?php echo $i; ?>"></span> <label
+												class="control-label"> Amount :</label> <input type="text"
+												name="amount[]" id="amount<?php echo $i; ?>"
 												class=" form-styl" value="<?php echo $arrSlot['amount']; ?>"
 												maxlength="6" /> <span id="err_amount<?php echo $i; ?>"></span>
-<?php $i++; }} ?>
-										</div>
+											<label class="control-label"> Status :</label><select
+												id="status<?php echo $i; ?>" name="status[]">
+												<option value="">--Select Status--</option>
+												<?php
+                if (! empty($statuses)) {
+                    foreach ($statuses as $key => $value) {
+                        if ($key == $arrSlot['status']) {
+                            ?>
+												    <option value="<?php echo $key; ?>" selected><?php echo $value; ?></option>
+												<?php }else{ ?>
+												<option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+												<?php }}}?>
+											</select><span id="err_status<?php echo $i; ?>"></span>
+<?php $i++; ?></div><?php }} ?>
+										
 									</div>
 								</div>
 						
@@ -122,14 +137,14 @@
 
 					</div>
 
-					<button class="field-styl  btn btn-primary" onclick="createSlot()">Create</button>
+					<button class="field-styl  btn btn-primary" onclick="createSlot()">Update</button>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 <script type="text/javascript">
-
+//setTimepicker();
 $(document).ready(function () {
     $("#event_date").datepicker({
         minDate: 0
@@ -145,6 +160,7 @@ var formats = {
 		hoverState: 'hover-state',
 		title: 'Select Time',
 		 		};
+	
 var timepicker = $('.timepicker ').wickedpicker(formats);
 //Append Time Picker For Each Row :: START
 $('body').on('focus',".timepicker", function(){
@@ -161,8 +177,7 @@ $(document).ready(function() {
         e.preventDefault();
         if(x < max_fields){ //max input box allowed
             x++; //text box increment
-            $(wrapper).append('<div class="my_slots"><label class="control-label">From Time : </label><input type="text" name="from_time[]" id="from_time'+x+'" class="timepicker form-styl input-sm " /><span id="err_from_time'+x+'"></span><label class="control-label">To Time : </label><input type="text" name="to_time[]" id="to_time'+x+'" class="timepicker form-styl input-sm" /><span id="err_to_time'+x+'"></span><label class="control-label">Amount : </label><input type="text" name="amount[]" id="amount'+x+'" class="form-styl" maxlength="6"/><span id="err_amount'+x+'"></span> <a href="#" class="remove_field">Remove</a></div>');
-        	           
+            $(wrapper).append('<div class="my_slots"><label class="control-label"><input type="hidden" name="id[]" id="id'+x+'" value=""/>From Time : </label><input type="text" name="from_time[]" id="from_time'+x+'" class="timepicker form-styl input-sm " /><span id="err_from_time'+x+'"></span><label class="control-label">To Time : </label><input type="text" name="to_time[]" id="to_time'+x+'" class="timepicker form-styl input-sm" /><span id="err_to_time'+x+'"></span><label class="control-label">Amount : </label><input type="text" name="amount[]" id="amount'+x+'" class="form-styl" maxlength="6"/><span id="err_amount'+x+'"></span><label class="control-label"> Status :</label><select id="status'+x+'" name="status[]"><option value="">--Select Status--</option><option value="active">Active</option><option value="inactive">Delete</option></select><span id="err_status'+x+'"></span><a href="#" class="remove_field">Remove</a></div>');
         }
     });
     
@@ -208,12 +223,15 @@ function createSlot(){
         	  if(undefined != arrValue.amount && arrValue.amount.length > 0){
         		   $("#err_amount"+key).html(arrValue.amount);
         		   }
+        	//Status
+        	  if(undefined != arrValue.status && arrValue.status.length > 0){
+        		   $("#err_status"+key).html(arrValue.status);
+        		   }
           	}
       	});
  		   return false;
             }else{
-            	makeEmptyFields();
-              $("#slots_success_message").html(response.message);
+              $("#slots_update_message").html(response.message);
               return true;         
                 }
         });
@@ -222,42 +240,41 @@ function createSlot(){
 function gatherSlots(){
 	var response = [];
 	var z = $(".my_slots").length;
-		for(i=1;i<=z;i++){
-			response.push({from_time : $("#from_time"+i).val(),
+		for(i=1;i<=z;i++){  
+			response.push({
+				id : $("#id"+i).val(),
+				from_time : $("#from_time"+i).val(),
 					to_time : $("#to_time"+i).val(),
-					amount : $("#amount"+i).val(),status : 'active'});
+					amount : $("#amount"+i).val(),status : $("#status"+i).val()});
 		}
 return response;
 }
 
 function makeEmpty(){
 	var z = $(".my_slots").length;
-	$("#slots_success_message").empty();
+	$("#slots_update_message").empty();
 	$("#err_category_type").html("");
 	$("#err_event_date").html("");
 	$("#err_from_time1").html("");
 	$("#err_to_time1").html("");
 	$("#err_amount1").html("");
+	$("#err_status1").html("");
 	for(i=1;i<=z;i++){
-		$("#err_from_time"+z).html("");
-		$("#err_to_time"+z).html("");
-		$("#err_amount"+z).html("");
+		$("#err_from_time"+i).html("");
+		$("#err_to_time"+i).html("");
+		$("#err_amount"+i).html("");
+		$("#err_status"+i).html("");
 	}
 	return true;
 }
 
-function makeEmptyFields(){
-	var z = $(".my_slots").length;
-	$("#category_type").val("");
-	$("#event_date").val("");
-	$("#from_time1").val("");
-	$("#to_time1").val("");
-	$("#amount1").val("");
-	for(i=1;i<=z;i++){
-		$("#from_time"+z).val("");
-		$("#to_time"+z).val("");
-		$("#amount"+z).val("");
-	}
-	return true;
-}
+// function setTimepicker(){
+// 	$('.timepicker').each(function(index, element) {
+		 var slot_details_data = '<?php echo json_encode($slot_details); ?>';
+// 		 console.log(slot_details_data);
+// 	     var elementTime = '';
+// 	     elementTime = '12:00 AM';
+// 	     $(element).wickedpicker({now: elementTime});
+// 	});	
+// }
 </script>
