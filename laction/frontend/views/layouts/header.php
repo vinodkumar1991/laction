@@ -20,13 +20,15 @@
 		<div class="collapse navbar-collapse" id="main-nav-collapse">
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="index.html" class="active-laction">Home</a></li>
-				<li><a href="booking.html">Booking</a></li>
+				<li><a href="<?php echo Yii::getAlias('@fweb').'/home';?>"
+					class="active-laction">Home</a></li>
+				<li><a href="<?php echo Yii::getAlias('@fweb').'/booking';?>">Booking</a></li>
 				<!--<li><a href="#">Preview Booking</a></li>
         <li><a href="#">Audition Booking</a></li>-->
 				<li><a href="videos.html">Videos</a></li>
 				<li><a href="videos.html">Profile</a></li>
-				<li><a href=" profile.html">Contact Us</a></li>
+				<li><a href="<?php echo Yii::getAlias('@fweb').'/contact-us';?>">Contact
+						Us</a></li>
 				<li><a href="user-details.html"><i class="fa fa-user"></i></a></li>
 
 			</ul>

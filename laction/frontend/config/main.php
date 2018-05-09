@@ -16,6 +16,9 @@ return [
         ],
         'customers' => [
             'class' => 'app\modules\customers\customers_module'
+        ],
+        'booking' => [
+            'class' => 'app\modules\booking\booking_module'
         ]
     ],
     'components' => [
@@ -61,12 +64,13 @@ return [
                 // Home
                 'home' => 'home/home/home',
                 // Customers
-                // Login
                 'login' => 'customers/customers/login',
                 'register' => 'customers/customers/register',
                 'forgot-password' => 'customers/customers/forgot-password',
                 'policy' => 'customers/customers/policy',
-                'contact-us' => 'customers/customers/contact-us'
+                'contact-us' => 'customers/customers/contact-us',
+                // Booking
+                'booking' => 'booking/booking/home'
             ]
         ]
     ],
