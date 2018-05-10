@@ -716,7 +716,7 @@ background-image: -webkit-linear-gradient(45deg,#bf2231c2 20%,#fd7007bf 50%,#ecb
 Upcomming Styles
 ------------------------------------------------------*/
 .upcomming-section {
-	background-image: url(../../images/bg/home-bg-back.png) !important;
+	background-image: url(../img/bg/home-bg-back.png) !important;
 	background-position: top left;
 	background-repeat: repeat;
 	background-size: contain;
@@ -2240,7 +2240,7 @@ Login Page Styles
 ------------------------------------------------------*/
 .account-page {
       /*background: url(http://hunter.ucoz.ua/_ph/4/28043653.jpg);*/
-	   background: url(../../images/bg/login-bg.jpg);
+	   background: url(../img/bg/login-bg.jpg);
     background-attachment: fixed;
     background-size: cover;
 }
