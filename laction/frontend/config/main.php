@@ -22,19 +22,20 @@ return [
         ]
     ],
     'components' => [
+        'db' => require (__DIR__ . '/database.php'),
         'request' => [
             'class' => 'common\components\Request',
             'web' => '/frontend/web',
             'csrfParam' => '_csrf-frontend'
         ],
-        'user' => [
-            'identityClass' => 'common\models\User',
-            'enableAutoLogin' => true,
-            'identityCookie' => [
-                'name' => '_identity-frontend',
-                'httpOnly' => true
-            ]
-        ],
+        // 'user' => [
+        // 'identityClass' => 'common\models\User',
+        // 'enableAutoLogin' => true,
+        // 'identityCookie' => [
+        // 'name' => '_identity-frontend',
+        // 'httpOnly' => true
+        // ]
+        // ],
         'session' => [
             // this is the name of the session cookie used for login on the frontend
             'name' => 'advanced-frontend'
@@ -69,6 +70,7 @@ return [
                 'forgot-password' => 'customers/customers/forgot-password',
                 'policy' => 'customers/customers/policy',
                 'contact-us' => 'customers/customers/contact-us',
+                'logout' => 'customers/customers/logout',
                 // Booking
                 'booking' => 'booking/booking/home'
             ]

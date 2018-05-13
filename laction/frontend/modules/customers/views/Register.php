@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>L'Action Studios | Signup Page</title>
+<title>L'Action Studios | Customer Registration</title>
 <meta name="" content="">
 
 <!-- External CSS -->
@@ -55,38 +55,32 @@
 
 		<form class="accountform signupform">
 			<h3>Sign up, it's free..</h3>
+			<h3 id="customer_register_message"></h3>
 			<div class="basic-field">
-				<div class="row">
-					<div class="col-sm-6">
-						<label>First Name <br />
-							<p>
-								<input type="text" name="fname" required>
-							</p>
-						</label>
-					</div>
-					<div class="col-sm-6">
-						<label>Last Name <br />
-							<p>
-								<input type="text" name="lname" required>
-							</p>
-						</label>
-					</div>
-				</div>
-				<label>Username <br />
+				<label>Fullname <br />
 					<p>
-						<input type="text" name="username" required>
-					</p>
-				</label> <label>E-mail address <br />
+						<input type="text" name="fullname" id="fullname" value=""
+							autocomplete="off" maxlength="95" />
+					</p> <span id="err_fullname"></span>
+				</label> <label>Phone <br />
 					<p>
-						<input type="email" name="email" required>
-					</p>
+						<input type="text" name="phone" id="phone" value=""
+							autocomplete="off" maxlength="10" />
+					</p> <span id="err_phone"></span>
+				</label> <label>E-mail<br />
+					<p>
+						<input type="text" name="email" id="email" value=""
+							autocomplete="off" maxlength="40" />
+					</p> <span id="err_email"></span>
 				</label> <label>Password <br />
 					<p>
-						<input type="password" name="password" required>
-					</p>
+						<input type="password" name="password" id="password" value=""
+							autocomplete="off" maxlength="6" />
+					</p> <span id="err_password"></span>
 				</label>
 			</div>
-			<button type="submit">Login</button>
+			<input type="button" name="customer_register" id="customer_register"
+				value="Register" onclick="registerCustomer()" />
 			<p class="signup-recover">
 				Do you already have an account? <a
 					href="<?php echo Yii::getAlias('@web').'/login'; ?>">Login here</a>
@@ -114,3 +108,60 @@
 
 <!-- Mirrored from codepassenger.com/html/bigshow/signup.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Jan 2018 06:28:07 GMT -->
 </html>
+<script type="text/javascript">
+function registerCustomer(){
+    var objCustomer = {};
+    objCustomer = {
+           fullname : $("#fullname").val(),
+           phone : $("#phone").val(),
+           email : $("#email").val(),
+           password : $("#password").val(),
+           status : 'active'
+    	    };
+    $.post('<?php echo Yii::getAlias('@fweb').'/customers/customers/save-customer'; ?>',objCustomer,function(response){
+    	makeEmpty();
+    	var response = $.parseJSON(response);
+        if(response.hasOwnProperty('errors')){
+            //Fullname
+      	  if(undefined != response.errors.fullname && response.errors.fullname.length > 0){
+      		   $("#err_fullname").html(response.errors.fullname);
+      		   }
+      	 //Email
+      	  if(undefined != response.errors.email && response.errors.email.length > 0){
+      		   $("#err_email").html(response.errors.email);
+      		   }
+      	//Phone
+      	  if(undefined != response.errors.phone && response.errors.phone.length > 0){
+      		   $("#err_phone").html(response.errors.phone);
+      		   }
+      	//Password
+      	  if(undefined != response.errors.password && response.errors.password.length > 0){
+      		   $("#err_password").html(response.errors.password);
+      		   }
+ 		   return false;
+            }else{
+            	makeFieldsEmpty();
+              $("#customer_register_message").html(response.message);
+              return true;         
+                }
+        });
+}
+
+function makeEmpty(){
+	$("#customer_register_message").html("");
+	$("#err_fullname").html("");
+	$("#err_email").html("");
+	$("#err_phone").html("");
+	$("#err_password").html("");
+	return true;
+}
+
+function makeFieldsEmpty(){
+    $("#email").val("");
+    $("#phone").val("");
+    $("#password").val("");
+    $("#fullname").val("");
+	return true;
+}
+
+</script>

@@ -18,10 +18,21 @@
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-6  col-xs-6 topbar-right-btns">
 				<div class="">
+				<?php
+    
+    if (Yii::$app->session['customer_data']['fullname']) {
+        ?>
+        <span class="avtar_username">Welcome to <?php echo Yii::$app->session['customer_data']['fullname']; ?> &emsp;<a
+						href="<?php echo Yii::getAlias('@web').'/logout';?>"><i
+							class="fa fa-sign-out"></i></a></span>
+    <?php
+    } else {
+        ?>
 					<a class="btn" href="<?php echo Yii::getAlias('@fweb').'/login';?>"><i
 						class="fa fa-sign-in"></i><span> Log In</span></a> <a class="btn"
 						href="<?php echo Yii::getAlias('@fweb').'/register';?>"><i
 						class="fa fa-pencil-square-o"></i><span> Register</span></a>
+						<?php } ?>
 				</div>
 			</div>
 		</div>

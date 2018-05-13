@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>L'Action Studios | Login Page</title>
+<title>L'Action Studios | Forgot Password</title>
 <meta name="" content="">
 
 <!-- External CSS -->
@@ -57,16 +57,34 @@
 		<form class="accountform loginform">
 			<h3>Forgot Password</h3>
 			<div class="basic-field">
-				<label>Email Address <br />
+				<label>Phone <br />
 					<p>
-						<input type="text" name="username" required>
+						<input type="text" name="phone" id="phone" value="" maxlength="10"
+							autocomplete="off" />
+					</p>
+				</label> <label id="lotp">OTP <br />
+					<p>
+						<input type="text" name="otp" id="otp" value="" maxlength="6"
+							autocomplete="off" />
+					</p>
+				</label> <label id="lnewpassword">New Password <br />
+					<p>
+						<input type="password" name="newpassword" id="newpassword"
+							value="" maxlength="6" autocomplete="off" />
+					</p>
+				</label><label id="lconfirmpassword">Confirm Password <br />
+					<p>
+						<input type="password" name="confirmpassword" id="confirmpassword"
+							value="" maxlength="6" autocomplete="off" />
 					</p>
 				</label>
 			</div>
 			<!--  <label class="stay-login">
                 <input type="checkbox" name="stay-login"> Stay logged in
             </label> -->
-			<button type="submit">Submit</button>
+			<input type="button" name="get_otp" id="get_otp" value="Get OTP"
+				onclick="generatePwd()" /> <input type="button"
+				name="change_password" id="change_password" value="Change Password" />
 			<p class="signup-recover">
 				Check Your Email</a>
 			</p>
@@ -93,3 +111,26 @@
 
 <!-- Mirrored from codepasse~ger.com/html/bigshow/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Jan 2018 06:28:07 GMT -->
 </html>
+
+<script type="text/javascript">
+makeIt();
+function makeIt(){
+	$("#change_password").hide();
+	$("#lotp").hide();
+	$("#lnewpassword").hide();
+	$("#lconfirmpassword").hide();
+	return true;
+}
+
+function generatePwd(){
+    var objPhone = {};
+    objPhone = {
+    	    phone : $("#phone").val()
+    	    };
+    $.post('<?php echo Yii::getAlias('@fweb').'/customer/customer/generate-otp'; ?>',objPhone,function(response){
+        alert(response);
+        return false;
+        });
+	return true;
+}
+</script>
