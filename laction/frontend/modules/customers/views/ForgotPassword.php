@@ -56,38 +56,43 @@
 
 		<form class="accountform loginform">
 			<h3>Forgot Password</h3>
+			<h3 id="f_success_message"></h3>
 			<div class="basic-field">
-				<label>Phone <br />
+				<label id="lphone">Phone <br />
 					<p>
 						<input type="text" name="phone" id="phone" value="" maxlength="10"
 							autocomplete="off" />
 					</p>
-				</label> <label id="lotp">OTP <br />
+				</label><span id="err_phone"></span> <label id="lotp">OTP <br />
 					<p>
 						<input type="text" name="otp" id="otp" value="" maxlength="6"
 							autocomplete="off" />
 					</p>
-				</label> <label id="lnewpassword">New Password <br />
+				</label><span id="err_otp"></span> <label id="lnewpassword">New
+					Password <br />
 					<p>
 						<input type="password" name="newpassword" id="newpassword"
 							value="" maxlength="6" autocomplete="off" />
 					</p>
-				</label><label id="lconfirmpassword">Confirm Password <br />
+				</label><span id="err_newpassword"></span><label
+					id="lconfirmpassword">Confirm Password <br />
 					<p>
 						<input type="password" name="confirmpassword" id="confirmpassword"
 							value="" maxlength="6" autocomplete="off" />
 					</p>
-				</label>
+				</label><span id="err_confirmpassword"></span> <input type="hidden"
+					name="customer_id" id="customer_id" value="" />
 			</div>
 			<!--  <label class="stay-login">
                 <input type="checkbox" name="stay-login"> Stay logged in
             </label> -->
 			<input type="button" name="get_otp" id="get_otp" value="Get OTP"
 				onclick="generatePwd()" /> <input type="button"
-				name="change_password" id="change_password" value="Change Password" />
-			<p class="signup-recover">
-				Check Your Email</a>
-			</p>
+				name="change_password" id="change_password" value="Change Password"
+				onclick="updatePassword()" />
+			<!-- 			<p class="signup-recover"> -->
+			<!-- 				Check Your Email</a> -->
+			<!-- 			</p> -->
 		</form>
 	</div>
 
@@ -127,10 +132,86 @@ function generatePwd(){
     objPhone = {
     	    phone : $("#phone").val()
     	    };
-    $.post('<?php echo Yii::getAlias('@fweb').'/customer/customer/generate-otp'; ?>',objPhone,function(response){
-        alert(response);
-        return false;
+    $.post('<?php echo Yii::getAlias('@fweb').'/customers/customers/generate-otp'; ?>',objPhone,function(response){
+    	makeEmpty();
+    	var response = $.parseJSON(response);
+        if(response.hasOwnProperty('errors')){
+      	//Phone
+      	  if(undefined != response.errors.phone && response.errors.phone.length > 0){
+      		   $("#err_phone").html(response.errors.phone);
+      		   }
+ 		   return false;
+            }else{
+            	makeFieldsEmpty();
+            	$("#customer_id").val(response.customer_id);
+               $("#f_success_message").html(response.message);
+               setTimeout(makeActivate, 3000);
+               return true;         
+                }
         });
 	return true;
+}
+
+function makeEmpty(){
+	$("#f_success_message").html("");
+	$("#err_phone").html("");
+	$("#err_otp").html("");
+	$("#err_newpassword").html("");
+	$("#err_confirmpassword").html("");
+	return true;
+}
+
+function makeFieldsEmpty(){
+	$("#phone").val("");
+	$("#otp").val("");
+	$("#newpassword").val("");
+	$("#confirmpassword").val("");
+	return true;
+}
+
+function makeActivate(){
+	$("#f_success_message").html("");
+	$("#lphone").hide();
+	$("#get_otp").hide();
+	$("#change_password").show();
+	$("#lotp").show();
+	$("#lnewpassword").show();
+	$("#lconfirmpassword").show();
+	return true;
+}
+
+function updatePassword(){
+	var objPassword = {
+			id : $("#customer_id").val(),
+          otp : $("#otp").val(),
+          newpassword : $("#newpassword").val(),
+          confirmpassword : $("#confirmpassword").val()
+			};
+	$.post('<?php echo Yii::getAlias('@fweb').'/customers/customers/update-password'; ?>',objPassword,function(response){
+		makeEmpty();
+    	var response = $.parseJSON(response);
+        if(response.hasOwnProperty('errors')){
+      	//OTP
+      	  if(undefined != response.errors.otp && response.errors.otp.length > 0){
+      		   $("#err_otp").html(response.errors.otp);
+      		   }
+      	//New Password
+      	  if(undefined != response.errors.newpassword && response.errors.newpassword.length > 0){
+      		   $("#err_newpassword").html(response.errors.newpassword);
+      		   }
+      	//Confirm Password
+      	  if(undefined != response.errors.confirmpassword && response.errors.confirmpassword.length > 0){
+      		   $("#err_confirmpassword").html(response.errors.confirmpassword);
+      		   }
+ 		   return false;
+            }else{
+               makeFieldsEmpty();
+               $("#f_success_message").html(response.message); 
+               setTimeout(function(){window.location="<?php echo Yii::getAlias('@fweb').'/login';?>";},2000);        	
+               return true;         
+                }
+		});
+	
+return true;	
 }
 </script>

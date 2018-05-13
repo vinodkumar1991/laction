@@ -6,6 +6,9 @@ use frontend\controllers\GoController;
 use yii\helpers\Json;
 use frontend\modules\customers\models\Customers;
 use frontend\modules\customers\models\Login;
+use frontend\modules\customers\models\Token;
+use frontend\modules\customers\models\Sms;
+use common\components\CommonComponent;
 
 class CustomersController extends GoController
 {
@@ -125,19 +128,86 @@ class CustomersController extends GoController
         $this->redirect(Yii::getAlias('@web') . '/login');
     }
 
-    public function actionGenerateOTP()
+    public function actionGenerateOtp()
+    {
+        $arrResponse = [];
+        $arrInputs = Yii::$app->request->post();
+        if (isset($arrInputs['phone']) && ! empty($arrInputs['phone'])) {
+            $arrCustomer = Customers::getCustomer($arrInputs);
+            $arrResponse = ! empty($arrCustomer) ? $this->sendToken($arrCustomer[0]) : [
+                'errors' => [
+                    'phone' => 'Invalid Phone'
+                ]
+            ];
+            unset($arrInputs, $arrCustomer);
+        } else {
+            $arrResponse = [
+                'errors' => [
+                    'phone' => 'Phone is required'
+                ]
+            ];
+        }
+        echo Json::encode($arrResponse);
+    }
+
+    private function sendToken($arrInputs)
+    {
+        $arrResponse = [];
+        $objToken = new Token();
+        $arrInputs['category_type'] = 'forgotpassword';
+        $arrInputs['token'] = CommonComponent::getNumberToken();
+        $arrDefaults = $objToken->getDefaults();
+        $arrInputs = array_merge($arrInputs, $arrDefaults);
+        $objToken->attributes = $arrInputs;
+        if ($objToken->validate()) {
+            $objToken->save();
+            $arrNotificationCodes = CommonComponent::getNotificationCodes();
+            $arrSmsInputs[] = [
+                'customer_id' => $arrInputs['customer_id'],
+                'template_code' => $arrNotificationCodes['sms']['forgotpwd'],
+                'mobile_number' => $arrInputs['phone'],
+                'params' => Json::encode([
+                    'token' => $arrInputs['token']
+                ]),
+                'status' => 'notsend',
+                'created_date' => date("Y-m-d H:i:s"),
+                'created_by' => 1
+            ];
+            Sms::create($arrSmsInputs);
+            $arrResponse['customer_id'] = $arrInputs['customer_id'];
+            $arrResponse['token_id'] = $objToken->id;
+            $arrResponse['message'] = "OTP has been sent successfully.";
+        } else {
+            $arrResponse['errors'] = $objToken->errors;
+        }
+        unset($arrInputs, $arrDefaults);
+        return $arrResponse;
+    }
+
+    public function actionUpdatePassword()
     {
         $arrResponse = [];
         $arrInputs = Yii::$app->request->post();
         if (! empty($arrInputs)) {
-            $objCustomer = new Customers();
-            $objCustomer->scenario = '';
-            $objCustomer->attributes = $arrInputs;
-            if($objCustomer->validate()){
-                
+            $objLogin = new Login();
+            $objLogin->scenario = 'updatepassword';
+            $objLogin->attributes = $arrInputs;
+            if ($objLogin->validate()) {
+                $arrValidatedInputs = $arrInputs;
+                $arrValidatedInputs['password'] = Yii::$app->getSecurity()->generatePasswordHash($arrInputs['newpassword']);
+                $arrValidatedInputs['last_modified_by'] = $arrValidatedInputs['id'];
+                unset($arrValidatedInputs['confirmpassword'], $arrValidatedInputs['newpassword'], $arrValidatedInputs['otp']);
+                $arrResponse['is_updated'] = Customers::updateCustomer($arrValidatedInputs, [
+                    'id' => $arrValidatedInputs['id']
+                ]);
+                $arrResponse['message'] = 'Password changed successfully';
+                unset($arrValidatedInputs);
+            } else {
+                $arrResponse['errors'] = $objLogin->errors;
             }
-            
+            unset($arrInputs);
         }
         echo Json::encode($arrResponse);
+        exit();
     }
 }

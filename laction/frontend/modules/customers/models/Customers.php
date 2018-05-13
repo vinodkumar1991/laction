@@ -2,6 +2,7 @@
 namespace frontend\modules\customers\models;
 
 use yii\db\ActiveRecord;
+use Yii;
 use yii\db\Query;
 
 class Customers extends ActiveRecord
@@ -172,5 +173,14 @@ class Customers extends ActiveRecord
         }
         $arrResponse = $objQuery->all();
         return $arrResponse;
+    }
+
+    public static function updateCustomer($arrInputs, $arrWhere)
+    {
+        $objConnection = Yii::$app->db;
+        $intUpdate = $objConnection->createCommand()
+            ->update('customer', $arrInputs, $arrWhere)
+            ->execute();
+        return $intUpdate;
     }
 }
