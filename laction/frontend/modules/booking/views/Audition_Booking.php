@@ -205,34 +205,8 @@
 
 	</div>
 </section>
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
-	rel="stylesheet" />
-<script src="http://oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-<script>
 
-  $(function () {
-            $('#datetimePicker').datetimepicker({
-                
-                format: 'DD/MM/YYYY '
-            });
-        });
-</script>
-<script>
-$(document).ready(function(){
-$('.audition-open').click(function(){
-$('.audition-section-open').slideToggle();
-$('.preview-section-open').hide();
-});
-});
-</script>
-<script>
-$('.audition-close').click(function(){
-$('.audition-section-open').fadeOut('slow');
-});
-</script>
+
 
 <script type="text/javascript">
   function bookAudition(){

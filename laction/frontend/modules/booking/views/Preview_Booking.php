@@ -10,35 +10,33 @@
 							<div class="panel panel-primary book-prim">
 								<div class="panel-heading book-heading">Schedule an Preview
 									Booking</div>
-
-
 								<div class="panel-body">
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="control-label">Fullname</label> <input
-													type="text" class="form-control  book-form" name="fullname"
-													id="fullname" value="" />
+													type="text" class="form-control  book-form"
+													name="p_fullname" id="p_fullname" value="" />
 											</div>
-											<span id="err_fullname"></span>
+											<span id="err_pfullname"></span>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="control-label">Email</label> <input
-													type="text" class="form-control  book-form" name="email"
-													id="email" value="" />
+													type="text" class="form-control  book-form" name="p_email"
+													id="p_email" value="" />
 											</div>
-											<span id="err_email"></span>
+											<span id="err_pemail"></span>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="control-label">Phone</label> <input
-													type="text" class="form-control  book-form" name="phone"
-													id="phone" value="" />
+													type="text" class="form-control  book-form" name="p_phone"
+													id="p_phone" value="" />
 											</div>
-											<span id="err_phone"></span>
+											<span id="err_pphone"></span>
 										</div>
 
 										<div class="col-md-6">
@@ -85,8 +83,7 @@
                     <?php
                 }
             }
-            ?>
-												</select>
+            ?>								</select>
 											</div>
 											<span id="err_censor"></span>
 										</div>
@@ -98,7 +95,8 @@
 												<div class="dateContainer">
 													<div class="input-group date" id="datetimePickers">
 														<input type="text" class="form-control  book-form"
-															name="meeting" placeholder="DD/MM/YYYY" /> <span
+															name="event_date" id="event_date"
+															oninput="getSlots(this.value)" /> <span
 															class="input-group-addon"><span
 															class="glyphicon glyphicon-calendar"></span></span>
 													</div>
@@ -108,60 +106,9 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="control-label">Time</label> <select
-													class="form-control  book-form" name="etime" id="etime"
-													required="" placeholder="Select  Time"
-													onchange="display();">
-													<option value=""></option>
-
-													<option value="1:00 AM">12:00 AM</option>
-													<option value="1:00 AM">12:30 AM</option>
-													<option value="1:00 AM">1:00 AM</option>
-													<option value="1:30 AM">1:30 AM</option>
-													<option value="2:00 AM">2:00 AM</option>
-													<option value="2:00 AM">2:30 AM</option>
-													<option value="2:30 AM">3:00 AM</option>
-													<option value="3:30 AM">3:30 AM</option>
-													<option value="4:00 AM">4:00 AM</option>
-													<option value="4:30 AM">4:30 AM</option>
-													<option value="5:00 AM">5:00 AM</option>
-													<option value="5:30 AM">5:30 AM</option>
-													<option value="6:00 AM">6:00 AM</option>
-													<option value="6:30 AM">6:30 AM</option>
-													<option value="7:00 AM">7:00 AM</option>
-													<option value="7:30 AM">7:30 AM</option>
-													<option value="8:00 AM">8:00 AM</option>
-													<option value="8:30 AM">8:30 AM</option>
-													<option value="9:00 AM">9:00 AM</option>
-													<option value="9:30 AM">9:30 AM</option>
-													<option value="10:00 AM">10:00 AM</option>
-													<option value="10:30 AM">10:30 AM</option>
-													<option value="11:00 AM">11:00 AM</option>
-													<option value="11:30 AM">11:30 AM</option>
-													<option value="1:00 PM">1:00 PM</option>
-													<option value="1:30 PM">1:30 PM</option>
-													<option value="2:00 PM">2:00 PM</option>
-													<option value="2:30 PM">2:30 PM</option>
-													<option value="3:00 PM">3:00 PM</option>
-													<option value="3:30 PM">3:30 PM</option>
-													<option value="4:00 PM">4:00 PM</option>
-													<option value="4:30 PM">4:30 PM</option>
-													<option value="5:00 PM">5:00 PM</option>
-													<option value="5:30 PM">5:30 PM</option>
-													<option value="6:00 PM">6:00 PM</option>
-													<option value="6:30 PM">6:30 PM</option>
-													<option value="7:00 PM">7:00 PM</option>
-													<option value="7:30 PM">7:30 PM</option>
-													<option value="8:00 PM">8:00 PM</option>
-													<option value="8:30 PM">8:30 PM</option>
-													<option value="9:00 PM">9:00 PM</option>
-													<option value="9:30 PM">9:30 PM</option>
-													<option value="10:00 PM">10:00 PM</option>
-													<option value="10:30 PM">10:30 PM</option>
-													<option value="11:00 PM">11:00 PM</option>
-													<option value="11:30 PM">11:30 PM</option>
-													<option value="11:30 PM">12:00 PM</option>
-													<option value="11:30 PM">12:30 PM</option>
-
+													class="form-control  book-form" name="slot_time[]"
+													id="slot_time" multiple>
+													<option value="">--Select Time Slots--</option>
 												</select>
 											</div>
 										</div>
@@ -172,8 +119,8 @@
 											<div class="form-group">
 
 												<div class="checkbox">
-													<label> <input type="checkbox" name="agree" value="agree" />I
-														Agree with the terms and conditions
+													<label> <input type="checkbox" name="agree" value="agree"
+														id="agree" />I Agree with the terms and conditions
 													</label>
 												</div>
 											</div>
@@ -184,9 +131,6 @@
 										<input type="button" class="date-time-btm" value="Pay"
 											onclick="bookPreview()" />
 									</div>
-									<!--<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-<button type="submit" class="date-time-close audition-close" > Close</button>
-</div>-->
 								</div>
 							</div>
 						</form>
@@ -201,42 +145,50 @@
 
 	</div>
 </section>
-<link
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
-	rel="stylesheet" />
-<script src="http://oss.maxcdn.com/momentjs/2.8.2/moment.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-<script>
-  $(function () {
-            $('#datetimePickers').datetimepicker({
-                
-                format: 'DD/MM/YYYY'
-                	//format: 'DD/MM/YYYY h:m A'
-            });
-        });
-</script>
-<script>
-$(document).ready(function(){
-$('.preview-open').click(function(){
-$('.preview-section-open').slideToggle();
-$('.audition-section-open').hide();
-});
-});
-</script>
-<script>
-$('.preview-close').click(function(){
-$('.preview-section-open').fadeOut('slow');
-});
-</script>
 
 <script type="text/javascript">
+autoPopulate();
  function autoPopulate(){
-       
+       $("#p_fullname").val("<?php echo Yii::$app->session['customer_data']['fullname']; ?>");
+       $('#p_fullname').prop('readonly', true);
+       $("#p_email").val("<?php echo Yii::$app->session['customer_data']['email']; ?>");
+       $('#p_email').prop('readonly', true);
+       $("#p_phone").val("<?php echo Yii::$app->session['customer_data']['phone']; ?>");
+       $('#p_phone').prop('readonly', true);
+       return true;
 	 }
  function bookPreview()
  {
 	 var objPreview = {};
-	 objPreview = {};
+	 objPreview = {
+          category_type : 'preview',
+          booking_type : 'dummyorder',
+          fullname : $("#p_fullname").val(),
+          email : $("#p_email").val(),
+          phone : $("#p_phone").val(),
+          film_type : $("#film_type").val(),
+          film_name : $("#film_name").val(),
+          film_censor : $("#censor").val(),
+          event_date : $("#event_date").val(),
+          slot_time : $("#slot_time").val(),
+          agree : $('#agree').is(":checked")
+			 };
+	 $.post('<?php echo Yii::getAlias('@fweb'.'/booking/booking/book-preview'); ?>',objPreview,function(response){
+		 alert(response);
+		 return false;
+		 });
+	 }
+
+ function getSlots(event_date){
+	    var objEventDate = {};
+	    objEventDate = {
+	    	    event_date : event_date,
+	    	    category_type : 'preview'
+		    	    };
+	    $.post('<?php echo Yii::getAlias('@fweb').'/booking/booking/slots'; ?>',objEventDate,function(response){
+		       $("#slot_time").html("");
+		       $("#slot_time").html(response);
+		    });
+			    return true;
 	 }
 </script>

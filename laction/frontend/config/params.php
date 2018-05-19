@@ -10,5 +10,8 @@ return [
             'yt' => 'yt',
             'ht' => 'ht'
         ]
+    ],
+    'tax' => [
+        'cgst_per' => 15
     ]
 ];
