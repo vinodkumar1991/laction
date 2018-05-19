@@ -16,40 +16,49 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label">Enter Your Name</label> <input
-													type="text" class="form-control  book-form" name="fname"
-													id="fname">
+												<label class="control-label">Fullname</label> <input
+													type="text" class="form-control  book-form" name="fullname"
+													id="fullname" value="" />
 											</div>
+											<span id="err_fullname"></span>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label">Enter Your Email</label> <input
+												<label class="control-label">Email</label> <input
 													type="text" class="form-control  book-form" name="email"
-													id="email">
+													id="email" value="" />
 											</div>
+											<span id="err_email"></span>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label">Enter Phone Number</label> <input
-													type="text" class="form-control  book-form"
-													name="phonenumber" id="phonenumber">
+												<label class="control-label">Phone</label> <input
+													type="text" class="form-control  book-form" name="phone"
+													id="phone" value="" />
 											</div>
+											<span id="err_phone"></span>
 										</div>
 
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="control-label">Film Type</label> <select
-													class="form-control  book-form" name=" " id=" " required=""
-													onchange="display();">
-													<option value=" ">Select Film</option>
-													<option value=" ">Featured Film</option>
-													<option value=" ">Short Film</option>
-													<option value=" ">Personal</option>
-
+													class="form-control  book-form" name="film_type"
+													id="film_type">
+													<option value="">--Select Film Type--</option>
+													<?php
+            if (! empty($film_types)) {
+                foreach ($film_types as $key => $value) {
+                    ?>
+                    <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+                    <?php
+                }
+            }
+            ?>
 												</select>
 											</div>
+											<span id="err_film_type"></span>
 										</div>
 
 									</div>
@@ -57,19 +66,29 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="control-label">Film Name</label>
-												<textarea type="text" class="form-control  book-form"
-													name=" " id=" "></textarea>
+												<textarea class="form-control  book-form" name="film_name"
+													id="film_name"></textarea>
 											</div>
+											<span id="err_film_name"></span>
 										</div>
 
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label">Film Censored</label>
-												<div class="checkbox">
-													<input type="radio" name="agree" value="agree" /> yes</br>
-													<input type="radio" name="agree" value="agree" /> no
-												</div>
+												<label class="control-label">Film Censored</label> <select
+													class="form-control  book-form" name="censor" id="censor">
+													<option value="">--Is Film Censored--</option>
+													<?php
+            if (! empty($censor)) {
+                foreach ($censor as $key => $value) {
+                    ?>
+                    <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+                    <?php
+                }
+            }
+            ?>
+												</select>
 											</div>
+											<span id="err_censor"></span>
 										</div>
 									</div>
 									<div class="row">
@@ -162,7 +181,8 @@
 
 									</div>
 									<div class="col-lg-12 col-md-2 col-sm-12 col-xs-12">
-										<button type="submit" class="date-time-btm">Pay</button>
+										<input type="button" class="date-time-btm" value="Pay"
+											onclick="bookPreview()" />
 									</div>
 									<!--<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 <button type="submit" class="date-time-close audition-close" > Close</button>
@@ -208,4 +228,15 @@ $('.audition-section-open').hide();
 $('.preview-close').click(function(){
 $('.preview-section-open').fadeOut('slow');
 });
+</script>
+
+<script type="text/javascript">
+ function autoPopulate(){
+       
+	 }
+ function bookPreview()
+ {
+	 var objPreview = {};
+	 objPreview = {};
+	 }
 </script>

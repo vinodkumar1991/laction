@@ -23,6 +23,7 @@ return [
     ],
     'components' => [
         'db' => require (__DIR__ . '/database.php'),
+        'db2' => require (__DIR__ . '/database2.php'),
         'request' => [
             'class' => 'common\components\Request',
             'web' => '/frontend/web',

@@ -176,4 +176,31 @@ class CommonComponent
             'inactive' => 'Delete'
         ];
     }
+
+    public static function getFilmTypes()
+    {
+        return [
+            'featured' => 'Featured Film',
+            'short' => 'Short Film',
+            'personal' => 'Personal Film'
+        ];
+    }
+
+    public static function getGenders()
+    {
+        return [
+            'male' => 'Male',
+            'female' => 'Female',
+            'other' => 'Other'
+        ];
+    }
+
+    public static function censored()
+    {
+        return [
+            'none' => 'None',
+            'yes' => 'Yes',
+            'no' => 'No'
+        ];
+    }
 }

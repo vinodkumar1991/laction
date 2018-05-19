@@ -14,38 +14,42 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label">Enter Your Name</label> <input
-													type="text" class="form-control  book-form" name="fname"
-													id="fname">
+												<label class="control-label">Fullname</label> <input
+													type="text" class="form-control  book-form" name="fullname"
+													id="fullname" value="" />
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label">Enter Your Email</label> <input
+												<label class="control-label">Email</label> <input
 													type="text" class="form-control  book-form" name="email"
-													id="email">
+													id="email" value="" />
 											</div>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label">Enter Phone Number</label> <input
-													type="text" class="form-control  book-form"
-													name="phonenumber" id="phonenumber">
+												<label class="control-label">Phone</label> <input
+													type="text" class="form-control  book-form" name="phone"
+													id="phone" value="" />
 											</div>
 										</div>
 
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="control-label">Gender</label> <select
-													class="form-control  book-form" name=" " id=" " required=""
-													onchange="display();">
-													<option value=" ">Select Gender</option>
-													<option value=" ">Male</option>
-													<option value=" ">Female</option>
-
-												</select>
+													class="form-control  book-form" name="gender" id="gender">
+													<option value="">--Select Gender--</option>
+													<?php
+            if (! empty($genders)) {
+                foreach ($genders as $key => $value) {
+                    ?>
+                    <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+                    <?php
+                }
+            }
+            ?>								</select>
 											</div>
 										</div>
 
@@ -54,19 +58,28 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label">Enter Your Age</label> <input
-													type="text" class="form-control  book-form" name=" " id=" ">
+												<label class="control-label">Age</label> <input type="text"
+													class="form-control  book-form" name="age" id="age"
+													value="" />
 											</div>
 										</div>
 
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="control-label">Category</label> <select
-													class="form-control  book-form" name=" " id=" "
-													placeholder="Select Specialization" required=""
-													onchange="display();">
-													<option value=" "></option>
-													<option value=" ">Actor</option>
+													class="form-control  book-form" name="category"
+													id="category" onchange="getSubCategories(this.value)">
+													<option value="">--Select A Category--</option>
+													<?php
+            
+            if (! empty($categories)) {
+                foreach ($categories as $arrCategory) {
+                    ?>
+													        <option value="<?php echo $arrCategory['name']; ?>"><?php echo $arrCategory['name']; ?></option>
+													        <?php
+                }
+            }
+            ?>
 												</select>
 											</div>
 										</div>
@@ -74,19 +87,12 @@
 									</div>
 
 									<div class="row">
-
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="control-label">Sub Category</label> <select
-													class="form-control  book-form" name=" " id=" "
-													placeholder="Select Specialization" required=""
-													onchange="display();">
-													<option value=" "></option>
-													<option value=" ">Hero</option>
-													<option value=" ">Heroine</option>
-													<option value=" ">Comedian</option>
-													<option value=" ">Rowdy</option>
-
+													class="form-control  book-form" name="sub_category"
+													id="sub_category">
+													<option value="">--Select Sub Category--</option>
 												</select>
 											</div>
 										</div>
@@ -179,7 +185,8 @@
 
 									</div>
 									<div class="col-lg-12 col-md-2 col-sm-12 col-xs-12">
-										<button type="submit" class="date-time-btm">Pay</button>
+										<input type="button" class="date-time-btm" value="Book"
+											onclick="bookAudition()" />
 									</div>
 									<!--<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
          <button type="submit" class="date-time-close preview-close" > Close</button>
@@ -225,4 +232,23 @@ $('.preview-section-open').hide();
 $('.audition-close').click(function(){
 $('.audition-section-open').fadeOut('slow');
 });
+</script>
+
+<script type="text/javascript">
+  function bookAudition(){
+      var objAudition = {};
+      objAudition = {};
+      return true;
+	  }
+
+  function getSubCategories(category){
+	  var objCategory = {};
+	  objCategory = {
+			  category : category};
+	  $.post('<?php echo Yii::getAlias('@fweb').'/booking/booking/sub-categories'; ?>',objCategory,function(response){
+		  $("#sub_category").html("");
+		  $("#sub_category").html(response);
+		  });
+		  return true;
+	  }
 </script>
