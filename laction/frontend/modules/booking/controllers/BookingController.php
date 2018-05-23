@@ -9,6 +9,7 @@ use frontend\modules\booking\models\SubCategories;
 use frontend\modules\booking\models\Slots;
 use yii\helpers\Json;
 use frontend\modules\booking\models\Booking;
+use frontend\modules\booking\models\Billing;
 
 class BookingController extends GoController
 {
@@ -71,19 +72,34 @@ class BookingController extends GoController
     {
         $arrResponse = [];
         $arrInputs = Yii::$app->request->post();
-        if (! empty($arrInputs)) {
-            $ObjBooking = new Booking();
-            $ObjBooking->scenario = 'preview';
-            $arrInputs['booking_no'] = CommonComponent::getNumberToken(6);
-            $arrInputs = array_merge($arrInputs, $ObjBooking->getDefaults());
-            $ObjBooking->attributes = $arrInputs;
-            if ($ObjBooking->validate()) {
-                $arrBookingInputs = $ObjBooking->getAttributes();
-                print_r($arrBookingInputs);
-                die();
-            } else {
-                $arrResponse['errors'] = $ObjBooking->errors;
+        $arrModifiedInputs = $this->modifyInputs($arrInputs);
+        if (! isset($arrModifiedInputs['errors']) && ! empty($arrModifiedInputs)) {
+            $arrBilling = $arrModifiedInputs['billing_details'];
+            unset($arrModifiedInputs['billing_details']);
+            foreach ($arrModifiedInputs as $arrModifiedInput) {
+                $objBooking = new Booking();
+                $objBooking->scenario = 'preview';
+                $arrModifiedInput = array_merge($arrModifiedInput, $objBooking->getDefaults());
+                $objBooking->attributes = $arrModifiedInput;
+                if ($objBooking->validate()) {
+                    $arrValidatedInputs = [];
+                    $arrValidatedInputs = $objBooking->getAttributes();
+                    unset($arrValidatedInputs['id'], $arrValidatedInputs['last_modified_date'], $arrValidatedInputs['last_modified_by']);
+                    $arrResponse['slots'][] = $arrValidatedInputs;
+                } else {
+                    $arrResponse['errors'] = $objBooking->errors;
+                }
             }
+            if (! isset($arrResponse['errors'])) {
+                Booking::createPreview($arrResponse['slots']);
+                $arrResponse['billing_id'] = $this->doBilling($arrBilling);
+                Yii::$app->session['booking_data'] = null;
+                Yii::$app->session['booking_data'] = $arrResponse['slots'];
+                unset($arrResponse['slots'], $arrModifiedInputs, $arrBilling);
+                $arrResponse['message'] = "Successfully Booked Your Slot";
+            }
+        } else {
+            $arrResponse = $arrModifiedInputs;
         }
         echo Json::encode($arrResponse);
     }
@@ -93,23 +109,64 @@ class BookingController extends GoController
         $arrResponse = [];
         $arrSlotTimes = $arrInputs['slot_time'];
         unset($arrInputs['slot_time']);
+        $doubleAmount = 0.00;
         if (! empty($arrSlotTimes)) {
+            // Booking Number
+            $arrInputs['booking_no'] = 'LP' . CommonComponent::getNumberToken(6);
+            // Modify Event Date
+            $arrInputs['event_date'] = date('Y-m-d', strtotime($arrInputs['event_date']));
             foreach ($arrSlotTimes as $strSlotTime) {
+                $arrSlotDet = [];
                 $arrSlotDet = explode('-', $strSlotTime);
                 $arrResponse[] = array_merge($arrInputs, [
-                    'from_time' => $arrInputs['from_time'],
-                    'to_time' => $arrInputs['to_time'],
-                    ''
+                    'from_time' => $arrSlotDet[0],
+                    'to_time' => $arrSlotDet[1]
                 ]);
+                $doubleAmount = $doubleAmount + $arrSlotDet[2];
+            }
+            $arrResponse['billing_details'] = $this->getAmount([
+                'booking_no' => $arrResponse[0]['booking_no'],
+                'base_amount' => $doubleAmount
+            ]);
+        } else {
+            $objBooking = new Booking();
+            $objBooking->scenario = 'preview';
+            $objBooking->attributes = $arrInputs;
+            if ($objBooking->validate()) {} else {
+                $arrResponse['errors'] = $objBooking->errors;
             }
         }
+        unset($arrInputs);
         return $arrResponse;
     }
 
     private function getAmount($arrInputs)
     {
         $arrResponse = [];
-        //Get CGST PERCENTAGE   
+        $doubleCGSTPer = Yii::$app->params['tax']['cgst_per'];
+        $doubleCGSTAmount = $arrInputs['base_amount'] * ($doubleCGSTPer / 100);
+        $arrResponse['booking_no'] = $arrInputs['booking_no'];
+        $arrResponse['cgst_percentage'] = $doubleCGSTPer;
+        $arrResponse['cgst_amount'] = $doubleCGSTAmount;
+        $arrResponse['base_amount'] = $arrInputs['base_amount'];
+        $arrResponse['total_amount'] = $arrInputs['base_amount'] + $doubleCGSTAmount;
+        unset($arrInputs);
+        return $arrResponse;
+    }
+
+    private function doBilling($arrBilling)
+    {
+        $arrResponse = [];
+        $objBilling = new Billing();
+        $arrBillingData = array_merge($arrBilling, $objBilling->getDefaults());
+        $objBilling->attributes = $arrBillingData;
+        if ($objBilling->validate()) {
+            $arrValidatedData = $objBilling->getAttributes();
+            $arrResponse['billing_id'] = $objBilling->save();
+        } else {
+            $arrResponse['errors'] = $objBilling->errors;
+        }
+        unset($arrBilling, $arrBillingData);
         return $arrResponse;
     }
 }

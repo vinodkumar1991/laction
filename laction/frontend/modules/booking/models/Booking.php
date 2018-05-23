@@ -33,7 +33,6 @@ class Booking extends ActiveRecord
                     'event_date',
                     'from_time',
                     'to_time',
-                    'extra_minutes',
                     'booking_status',
                     'created_date',
                     'created_by',
@@ -75,6 +74,13 @@ class Booking extends ActiveRecord
                     'fullname'
                 ],
                 'trim'
+            ],
+            [
+                [
+                    'extra_minutes'
+                ],
+                'safe',
+                'on' => 'preview'
             ],
             [
                 'fullname',
@@ -189,6 +195,9 @@ class Booking extends ActiveRecord
             'fullname',
             'email',
             'phone',
+            'gender',
+            'sub_category_id',
+            'age',
             'film_type',
             'film_name',
             'film_censor',

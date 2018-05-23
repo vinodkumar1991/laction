@@ -4,7 +4,6 @@
 
 			<div class="col-lg-12 col-md-12 col-sm-12 cl-xs-12 booking-bg-mid">
 				<div class="row">
-
 					<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pull-right">
 						<form class="">
 							<div class="panel panel-primary book-prim">
@@ -12,6 +11,7 @@
 									Booking</div>
 								<div class="panel-body">
 									<div class="row">
+										<div id="preview_success"></div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="control-label">Fullname</label> <input
@@ -102,6 +102,7 @@
 													</div>
 												</div>
 											</div>
+											<span id="err_event_date"></span>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
@@ -111,6 +112,7 @@
 													<option value="">--Select Time Slots--</option>
 												</select>
 											</div>
+											<span id="err_slots"></span>
 										</div>
 									</div>
 
@@ -124,6 +126,7 @@
 													</label>
 												</div>
 											</div>
+											<span id="err_agree"></span>
 										</div>
 
 									</div>
@@ -174,9 +177,60 @@ autoPopulate();
           agree : $('#agree').is(":checked")
 			 };
 	 $.post('<?php echo Yii::getAlias('@fweb'.'/booking/booking/book-preview'); ?>',objPreview,function(response){
-		 alert(response);
-		 return false;
+		 makeEmpty();
+		 var response = $.parseJSON(response);
+	        if(response.hasOwnProperty('errors')){
+	      	//Film Type
+	      	  if(undefined != response.errors.film_type && response.errors.film_type.length > 0){
+	      		   $("#err_film_type").html(response.errors.film_type[0]);
+	      		   }
+	      	//Film Name
+	      	  if(undefined != response.errors.film_name && response.errors.film_name.length > 0){
+	      		   $("#err_film_name").html(response.errors.film_name[0]);
+	      		   }
+	      	//Film Censor
+	      	  if(undefined != response.errors.film_censor && response.errors.film_censor.length > 0){
+	      		   $("#err_censor").html(response.errors.film_censor[0]);
+	      		   }
+	      	//Event Date
+	      	  if(undefined != response.errors.event_date && response.errors.event_date.length > 0){
+	      		   $("#err_event_date").html(response.errors.event_date[0]);
+	      		   }
+	      	//Slot
+	      	  if(undefined != response.errors.from_time && response.errors.from_time.length > 0){
+	      		   $("#err_slots").html("Slot is required");
+	      		   }
+	      	//Agree
+	      	  if(undefined != response.errors.agree && response.errors.agree.length > 0){
+	      		   $("#err_agree").html(response.errors.agree[0]);
+	      		   }
+	 		   return false;
+	            }else{
+	              $("#preview_success").html(response.message);
+	              makeFieldsEmpty()       	
+	              return true;         
+	                }
 		 });
+	 }
+
+ function makeEmpty(){
+	 $("#err_agree").html("");
+	 $("#err_slots").html("");
+	 $("#err_event_date").html("");
+	 $("#err_censor").html("");
+	 $("#err_film_name").html("");
+	 $("#err_film_type").html("");
+return true;
+	 }
+
+ function makeFieldsEmpty(){
+	    $("#film_type").val("");
+        $("#film_name").val("");
+        $("#censor").val("");
+        $("#event_date").val("");
+        $("#slot_time").val("");
+        $('#agree').prop("checked",false);
+return true;
 	 }
 
  function getSlots(event_date){
