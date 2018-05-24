@@ -18,6 +18,7 @@
 													type="text" class="form-control  book-form" name="fullname"
 													id="fullname" value="" />
 											</div>
+											<span id="err_fullname"></span>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
@@ -25,6 +26,7 @@
 													type="text" class="form-control  book-form" name="email"
 													id="email" value="" />
 											</div>
+											<span id="err_email"></span>
 										</div>
 									</div>
 									<div class="row">
@@ -34,6 +36,7 @@
 													type="text" class="form-control  book-form" name="phone"
 													id="phone" value="" />
 											</div>
+											<span id="err_phone"></span>
 										</div>
 
 										<div class="col-md-6">
@@ -51,6 +54,7 @@
             }
             ?>								</select>
 											</div>
+											<span id="err_gender"></span>
 										</div>
 
 									</div>
@@ -62,6 +66,7 @@
 													class="form-control  book-form" name="age" id="age"
 													value="" />
 											</div>
+											<span id="err_age"></span>
 										</div>
 
 										<div class="col-md-6">
@@ -82,6 +87,7 @@
             ?>
 												</select>
 											</div>
+											<span id="err_category"></span>
 										</div>
 
 									</div>
@@ -95,6 +101,7 @@
 													<option value="">--Select Sub Category--</option>
 												</select>
 											</div>
+											<span id="err_sub_category"></span>
 										</div>
 										<div class='col-md-6'>
 											<div class="form-group">
@@ -102,11 +109,12 @@
 												<div class="dateContainer">
 													<div class="input-group date" id="datetimePicker">
 														<input type="text" class="form-control  book-form"
-															name="meeting" placeholder="DD/MM/YYYY " /> <span
-															class="input-group-addon"><span
+															name="a_event_date" placeholder="DD/MM/YYYY "
+															id="a_event_date" /> <span class="input-group-addon"><span
 															class="glyphicon glyphicon-calendar"></span></span>
 													</div>
 												</div>
+												<span id="err_a_event_date"></span>
 											</div>
 										</div>
 									</div>
@@ -115,74 +123,26 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="control-label">Time</label> <select
-													class="form-control  book-form" name="etime" id="etime"
-													placeholder="Select  Time" required=""
-													onchange="display();">
+													class="form-control  book-form" name="a_slot_time"
+													id="a_slot_time" multiple>
 													<option value=""></option>
-													<option value="1:00 AM">12:00 AM</option>
-													<option value="1:00 AM">12:30 AM</option>
-													<option value="1:00 AM">1:00 AM</option>
-													<option value="1:30 AM">1:30 AM</option>
-													<option value="2:00 AM">2:00 AM</option>
-													<option value="2:00 AM">2:30 AM</option>
-													<option value="2:30 AM">3:00 AM</option>
-													<option value="3:30 AM">3:30 AM</option>
-													<option value="4:00 AM">4:00 AM</option>
-													<option value="4:30 AM">4:30 AM</option>
-													<option value="5:00 AM">5:00 AM</option>
-													<option value="5:30 AM">5:30 AM</option>
-													<option value="6:00 AM">6:00 AM</option>
-													<option value="6:30 AM">6:30 AM</option>
-													<option value="7:00 AM">7:00 AM</option>
-													<option value="7:30 AM">7:30 AM</option>
-													<option value="8:00 AM">8:00 AM</option>
-													<option value="8:30 AM">8:30 AM</option>
-													<option value="9:00 AM">9:00 AM</option>
-													<option value="9:30 AM">9:30 AM</option>
-													<option value="10:00 AM">10:00 AM</option>
-													<option value="10:30 AM">10:30 AM</option>
-													<option value="11:00 AM">11:00 AM</option>
-													<option value="11:30 AM">11:30 AM</option>
-													<option value="1:00 PM">1:00 PM</option>
-													<option value="1:30 PM">1:30 PM</option>
-													<option value="2:00 PM">2:00 PM</option>
-													<option value="2:30 PM">2:30 PM</option>
-													<option value="3:00 PM">3:00 PM</option>
-													<option value="3:30 PM">3:30 PM</option>
-													<option value="4:00 PM">4:00 PM</option>
-													<option value="4:30 PM">4:30 PM</option>
-													<option value="5:00 PM">5:00 PM</option>
-													<option value="5:30 PM">5:30 PM</option>
-													<option value="6:00 PM">6:00 PM</option>
-													<option value="6:30 PM">6:30 PM</option>
-													<option value="7:00 PM">7:00 PM</option>
-													<option value="7:30 PM">7:30 PM</option>
-													<option value="8:00 PM">8:00 PM</option>
-													<option value="8:30 PM">8:30 PM</option>
-													<option value="9:00 PM">9:00 PM</option>
-													<option value="9:30 PM">9:30 PM</option>
-													<option value="10:00 PM">10:00 PM</option>
-													<option value="10:30 PM">10:30 PM</option>
-													<option value="11:00 PM">11:00 PM</option>
-													<option value="11:30 PM">11:30 PM</option>
-
 												</select>
 											</div>
+											<span id="err_a_slot_time"></span>
 										</div>
 									</div>
 
 									<div class="row">
 										<div class="col-md-12">
 											<div class="form-group">
-
 												<div class="checkbox">
-													<label> <input type="checkbox" name="agree" value="agree" />I
-														Agree with the terms and conditions
+													<label> <input type="checkbox" name="aagree" id="aagree"
+														value="agree" />I Agree with the terms and conditions
 													</label>
 												</div>
 											</div>
+											<span id="err_a_agree"></span>
 										</div>
-
 									</div>
 									<div class="col-lg-12 col-md-2 col-sm-12 col-xs-12">
 										<input type="button" class="date-time-btm" value="Book"
@@ -209,9 +169,34 @@
 
 
 <script type="text/javascript">
+autoPopulate();
+function autoPopulate(){
+      $("#fullname").val("<?php echo Yii::$app->session['customer_data']['fullname']; ?>");
+      $('#fullname').prop('readonly', true);
+      $("#email").val("<?php echo Yii::$app->session['customer_data']['email']; ?>");
+      $('#email').prop('readonly', true);
+      $("#phone").val("<?php echo Yii::$app->session['customer_data']['phone']; ?>");
+      $('#phone').prop('readonly', true);
+      return true;
+	 }
   function bookAudition(){
       var objAudition = {};
-      objAudition = {};
+      objAudition = {
+    		  category_type : 'audition',
+              booking_type : 'dummyorder',
+              fullname : $("#fullname").val(),
+              email : $("#email").val(),
+              phone : $("#phone").val(),
+              gender : $("#gender").val(),
+              age : $("#age").val(),
+              category : $("#category").val(),
+              subcategory : $("#sub_category").val(),
+              event_date : $("#a_event_date").val(),
+              slot_time : $("#a_slot_time").val(),
+              agree : $('#aagree').is(":checked")
+    	      };
+      console.log(objAudition);
+      //$.post();
       return true;
 	  }
 
