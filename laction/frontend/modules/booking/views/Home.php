@@ -75,7 +75,7 @@
         ?>
         <h3 class="audition-open">Audition Booking</h3>
         <?php }else{ ?>
-					<h3 class="audition-open">Audition Booking</h3>
+					<h3 class="" onclick="redirectToLogin()">Audition Booking</h3>
 					<?php } ?>
 				</div>
 			</div>
@@ -109,7 +109,7 @@ function redirectToLogin(){
 <script>
   $(function () {
             $('#datetimePicker').datetimepicker({
-                format: 'DD/MM/YYYY '
+                format: 'DD-MM-YYYY'
             });
         });
 

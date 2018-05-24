@@ -10,6 +10,8 @@ class Booking extends ActiveRecord
 
     public $agree;
 
+    public $category;
+
     public static function tableName()
     {
         return 'bookings';
@@ -52,12 +54,13 @@ class Booking extends ActiveRecord
                     'email',
                     'phone',
                     'gender',
+                    'category',
                     'sub_category_id',
                     'age',
                     'event_date',
                     'from_time',
                     'to_time',
-                    'extra_minutes',
+                    // 'extra_minutes',
                     'booking_status',
                     'created_date',
                     'created_by',
@@ -81,6 +84,13 @@ class Booking extends ActiveRecord
                 ],
                 'safe',
                 'on' => 'preview'
+            ],
+            [
+                [
+                    'extra_minutes'
+                ],
+                'safe',
+                'on' => 'audition'
             ],
             [
                 'fullname',
@@ -162,6 +172,7 @@ class Booking extends ActiveRecord
             'email',
             'phone',
             'gender',
+            'category',
             'sub_category_id',
             'age',
             'event_date',
@@ -227,6 +238,9 @@ class Booking extends ActiveRecord
             'gender',
             'sub_category_id',
             'age',
+            'film_type',
+            'film_name',
+            'film_censor',
             'event_date',
             'from_time',
             'to_time',

@@ -109,7 +109,7 @@
 												<label class="control-label">Time</label> <select
 													class="form-control  book-form" name="slot_time[]"
 													id="slot_time" multiple>
-													<option value="">--Select Time Slots--</option>
+													<option value=""></option>
 												</select>
 											</div>
 											<span id="err_slots"></span>
