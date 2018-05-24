@@ -214,6 +214,7 @@ autoPopulate();
 	 }
 
  function makeEmpty(){
+	 $("#preview_success").html("");
 	 $("#err_agree").html("");
 	 $("#err_slots").html("");
 	 $("#err_event_date").html("");
@@ -228,7 +229,7 @@ return true;
         $("#film_name").val("");
         $("#censor").val("");
         $("#event_date").val("");
-        $("#slot_time").val("");
+        $("#slot_time").html("");
         $('#agree').prop("checked",false);
 return true;
 	 }
