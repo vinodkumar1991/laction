@@ -52,6 +52,12 @@ class Slots extends ActiveRecord
                 $arrInputs['nfrom_time']
             ]);
         }
+        // Status
+        if (isset($arrInputs['status']) && ! empty($arrInputs['status'])) {
+            $objQuery->andWhere('s.status=:status', [
+                ':status' => $arrInputs['status']
+            ]);
+        }
         $arrResponse = $objQuery->all(self::getDb());
         return $arrResponse;
     }

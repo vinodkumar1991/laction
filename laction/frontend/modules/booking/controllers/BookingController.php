@@ -60,7 +60,8 @@ class BookingController extends GoController
             $arrBookedSlots = Booking::getSlots($arrInputs);
             $arrExistedSlots = $this->getBookedSlots($arrBookedSlots);
             $arrInputs = array_merge($arrInputs, [
-                'nfrom_time' => $arrExistedSlots
+                'nfrom_time' => $arrExistedSlots,
+                'status' => 'active'
             ]);
             $arrSlots = Slots::getSlots($arrInputs);
             if (! empty($arrSlots)) {
