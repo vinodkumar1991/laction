@@ -225,7 +225,7 @@ class Slots extends ActiveRecord
         if ($strToTime > $strFromTime) {
             return true;
         } else {
-            $this->addError('to_time', 'To time should be less than from time');
+            $this->addError('to_time', 'To time should be greater than from time');
             return false;
         }
     }

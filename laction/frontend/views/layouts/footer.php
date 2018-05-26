@@ -23,11 +23,15 @@
 						<h3 class="widget-title">Quick Links</h3>
 						<div class="widget-inner">
 							<ul class="widget-cat">
-								<li class="cat foot"><a href="index.html">Home </a></li>
-								<li class="cat foot"><a href="booking.html">Booking</a></li>
-								<li class="cat foot"><a href="videos.html">Videos </a></li>
-								<li class="cat foot"><a href="profile.html">Profile </a></li>
-								<li class="cat foot"><a href="contact-us.html">Contact Us </a></li>
+								<li class="cat foot"><a
+									href="<?php echo Yii::getAlias('@fweb').'/home'; ?>">Home </a></li>
+								<li class="cat foot"><a
+									href="<?php echo Yii::getAlias('@fweb').'/booking'; ?>">Booking</a></li>
+								<!-- 								<li class="cat foot"><a href="videos.html">Videos </a></li> -->
+								<!-- 								<li class="cat foot"><a href="profile.html">Profile </a></li> -->
+								<li class="cat foot"><a
+									href="<?php echo Yii::getAlias('@fweb').'/contact-us'; ?>">Contact
+										Us </a></li>
 							</ul>
 						</div>
 					</div>

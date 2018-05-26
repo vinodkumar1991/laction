@@ -222,7 +222,7 @@ function autoPopulate(){
 	      		   }
 	      	//Slot
 	      	  if(undefined != response.errors.from_time && response.errors.from_time.length > 0){
-	      		   $("#err_a_slot_time").html(response.errors.from_time[0]);
+	      		   $("#err_a_slot_time").html('Slot is required');
 	      		   }
 	      	//Agree
 	      	  if(undefined != response.errors.agree && response.errors.agree.length > 0){

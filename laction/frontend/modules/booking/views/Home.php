@@ -111,15 +111,19 @@ function redirectToLogin(){
             $('#datetimePicker').datetimepicker({
                 format: 'DD-MM-YYYY'
             });
-        });
-
-  
+            $('#datetimePicker').on("dp.change", function (e) {
+            	getASlots($("#a_event_date").val());      
+            });
+        });  
 </script>
 <script>
   $(function () {
             $('#datetimePickers').datetimepicker({
                 format: 'DD-MM-YYYY',
                 	//format: 'DD/MM/YYYY h:m A'
+            });
+            $("#datetimePickers").on("dp.change", function (e) {
+            	getSlots($("#event_date").val());       
             });
         });
 </script>

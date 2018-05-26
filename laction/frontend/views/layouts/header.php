@@ -25,11 +25,11 @@
 				<li><a href="<?php echo Yii::getAlias('@fweb').'/booking';?>">Booking</a></li>
 				<!--<li><a href="#">Preview Booking</a></li>
         <li><a href="#">Audition Booking</a></li>-->
-				<li><a href="videos.html">Videos</a></li>
-				<li><a href="videos.html">Profile</a></li>
-				<li><a href="<?php echo Yii::getAlias('@fweb').'/contact-us';?>">Contact
+				<!-- 				<li><a href="videos.html">Videos</a></li> -->
+				<!-- 				<li><a href="videos.html">Profile</a></li> -->
+				<li><a href="<?php //echo Yii::getAlias('@fweb').'/contact-us';?>">Contact
 						Us</a></li>
-				<li><a href="user-details.html"><i class="fa fa-user"></i></a></li>
+				<!-- 				<li><a href="user-details.html"><i class="fa fa-user"></i></a></li> -->
 
 			</ul>
 		</div>

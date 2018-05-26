@@ -253,19 +253,35 @@ class Booking extends ActiveRecord
         return $intInsert;
     }
 
-    // public static function getSlots($arrInputs = [])
-    // {
-    // $objQuery = new Query();
-    // $objQuery->select([
-    
-    // 'DATE_FORMAT(s.from_time, "%h:%i %p") as slot_start_time',
-    // 'DATE_FORMAT(s.to_time, "%h:%i %p") as slot_end_time'
-    // ]);
-    // $objQuery->from('bookings as b');
-    // $objQuery->innerJoin('booking_billing as bb', 'bb.booking_id = b.id');
-    // $arrResponse = $objQuery->all();
-    // return $arrResponse;
-    // }
+    public static function getSlots($arrInputs = [])
+    {
+        $objQuery = new Query();
+        $objQuery->select([
+            'b.category_type',
+            'b.from_time',
+            'b.to_time',
+            'b.booking_no',
+            'DATE_FORMAT(b.from_time, "%h:%i %p") as slot_start_time',
+            'DATE_FORMAT(b.to_time, "%h:%i %p") as slot_end_time'
+        ]);
+        $objQuery->from('bookings as b');
+        $objQuery->innerJoin('booking_billing as bb', 'bb.booking_no = b.booking_no');
+        // Category Type
+        if (isset($arrInputs['category_type']) && ! empty($arrInputs['category_type'])) {
+            $objQuery->andWhere('b.category_type=:categoryType', [
+                ':categoryType' => $arrInputs['category_type']
+            ]);
+        }
+        // Event Date
+        if (isset($arrInputs['event_date']) && ! empty($arrInputs['event_date'])) {
+            $objQuery->andWhere('b.event_date=:eventDate', [
+                ':eventDate' => $arrInputs['event_date']
+            ]);
+        }
+        $arrResponse = $objQuery->all();
+        return $arrResponse;
+    }
+
     public function getDefaults()
     {
         return [

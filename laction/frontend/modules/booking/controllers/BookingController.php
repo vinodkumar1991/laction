@@ -57,6 +57,11 @@ class BookingController extends GoController
         if (! empty($arrInputs)) {
             $arrDate = explode('-', $arrInputs['event_date']);
             $arrInputs['event_date'] = $arrDate['2'] . '-' . $arrDate[1] . '-' . $arrDate[0];
+            $arrBookedSlots = Booking::getSlots($arrInputs);
+            $arrExistedSlots = $this->getBookedSlots($arrBookedSlots);
+            $arrInputs = array_merge($arrInputs, [
+                'nfrom_time' => $arrExistedSlots
+            ]);
             $arrSlots = Slots::getSlots($arrInputs);
             if (! empty($arrSlots)) {
                 foreach ($arrSlots as $arrSlot) {
@@ -204,5 +209,17 @@ class BookingController extends GoController
             $arrResponse = $arrModifiedInputs;
         }
         echo Json::encode($arrResponse);
+    }
+
+    private function getBookedSlots($arrBookedSlots)
+    {
+        $arrResponse = [];
+        if (! empty($arrBookedSlots)) {
+            foreach ($arrBookedSlots as $arrBslot) {
+                $arrResponse[] = $arrBslot['from_time'];
+            }
+        }
+        unset($arrBookedSlots);
+        return $arrResponse;
     }
 }

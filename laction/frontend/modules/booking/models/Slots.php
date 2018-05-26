@@ -44,6 +44,14 @@ class Slots extends ActiveRecord
                 ':categoryType' => $arrInputs['category_type']
             ]);
         }
+        // From Time
+        if (isset($arrInputs['nfrom_time']) && ! empty($arrInputs['nfrom_time'])) {
+            $objQuery = $objQuery->andWhere([
+                'not in',
+                's.from_time',
+                $arrInputs['nfrom_time']
+            ]);
+        }
         $arrResponse = $objQuery->all(self::getDb());
         return $arrResponse;
     }
