@@ -75,7 +75,7 @@
 				</label> <label>Password <br />
 					<p>
 						<input type="password" name="password" id="password" value=""
-							autocomplete="off" maxlength="6" />
+							autocomplete="off" maxlength="25" />
 					</p> <span id="err_password"></span>
 				</label>
 			</div>
@@ -142,7 +142,8 @@ function registerCustomer(){
             }else{
             	makeFieldsEmpty();
               $("#customer_register_message").html(response.message);
-              return true;         
+              setTimeout(window.location.href="<?php echo Yii::getAlias('@fweb').'/home'; ?>",3000);
+              return true;
                 }
         });
 }

@@ -13,5 +13,6 @@ return [
     ],
     'tax' => [
         'cgst_per' => 15
-    ]
+    ],
+    'fweb' => 'http://localhost/laction/laction/'
 ];

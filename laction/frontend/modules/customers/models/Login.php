@@ -1,6 +1,7 @@
 <?php
 namespace frontend\modules\customers\models;
 
+use Yii;
 use yii\db\ActiveRecord;
 
 class Login extends ActiveRecord
@@ -54,6 +55,14 @@ class Login extends ActiveRecord
                 [
                     'phone'
                 ],
+                'required',
+                'on' => 'generateotp',
+                'message' => '{attribute} is required'
+            ],
+            [
+                [
+                    'phone'
+                ],
                 'trim'
             ],
             [
@@ -63,10 +72,16 @@ class Login extends ActiveRecord
                 'max' => 10
             ],
             [
+                'phone',
+                'match',
+                'pattern' => '/^[0-9]+$/',
+                'message' => 'Phone number allows only numerics'
+            ],
+            [
                 'password',
                 'string',
                 'min' => 6,
-                'max' => 6
+                'max' => 100
             ],
             [
                 [
@@ -75,7 +90,7 @@ class Login extends ActiveRecord
                 ],
                 'string',
                 'min' => 6,
-                'max' => 6
+                'max' => 100
             ],
             [
                 [
@@ -88,6 +103,11 @@ class Login extends ActiveRecord
                 'otp',
                 'validateOTP',
                 'on' => 'updatepassword'
+            ],
+            [
+                'phone',
+                'validatePhone',
+                'on' => 'generateotp'
             ]
         ];
     }
@@ -109,6 +129,9 @@ class Login extends ActiveRecord
             'confirmpassword',
             'otp',
             'id'
+        ];
+        $arrScenarios['generateotp'] = [
+            'phone'
         ];
         return $arrScenarios;
     }
@@ -133,6 +156,21 @@ class Login extends ActiveRecord
             return true;
         } else {
             $this->addError('otp', 'Invalid OTP is given');
+            return false;
+        }
+    }
+
+    public function validatePhone($attribute, $params)
+    {
+        $arrCustomer = Customers::getCustomer([
+            'phone' => $this->phone
+        
+        ]);
+        if (! empty($arrCustomer)) {
+            return true;
+        } else {
+            $strSignUPLink = '<a href="' . Yii::$app->params['fweb'] . 'register' . '">Sign UP</a>';
+            $this->addError('phone', 'The phone number is not registered, please use ' . $strSignUPLink);
             return false;
         }
     }

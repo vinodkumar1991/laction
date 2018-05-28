@@ -109,7 +109,9 @@ function redirectToLogin(){
 <script>
   $(function () {
             $('#datetimePicker').datetimepicker({
-                format: 'DD-MM-YYYY'
+            	minDate:new Date(),
+                format: 'DD-MM-YYYY',
+                
             });
             $('#datetimePicker').on("dp.change", function (e) {
             	getASlots($("#a_event_date").val());      
@@ -119,7 +121,9 @@ function redirectToLogin(){
 <script>
   $(function () {
             $('#datetimePickers').datetimepicker({
+            	minDate:new Date(),
                 format: 'DD-MM-YYYY',
+                
                 	//format: 'DD/MM/YYYY h:m A'
             });
             $("#datetimePickers").on("dp.change", function (e) {

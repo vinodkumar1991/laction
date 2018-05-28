@@ -72,13 +72,13 @@
 					Password <br />
 					<p>
 						<input type="password" name="newpassword" id="newpassword"
-							value="" maxlength="6" autocomplete="off" />
+							value="" maxlength="25" autocomplete="off" />
 					</p>
 				</label><span id="err_newpassword"></span><label
 					id="lconfirmpassword">Confirm Password <br />
 					<p>
 						<input type="password" name="confirmpassword" id="confirmpassword"
-							value="" maxlength="6" autocomplete="off" />
+							value="" maxlength="25" autocomplete="off" />
 					</p>
 				</label><span id="err_confirmpassword"></span> <input type="hidden"
 					name="customer_id" id="customer_id" value="" />

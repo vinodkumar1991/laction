@@ -65,7 +65,7 @@
 				</label> <label>Password <br />
 					<p>
 						<input type="password" name="password" id="password" value=""
-							maxlength="6" autocomplete="off" />
+							maxlength="25" autocomplete="off" />
 					</p> <span id="err_password"></span>
 				</label>
 			</div>

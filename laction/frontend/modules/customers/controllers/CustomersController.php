@@ -56,11 +56,15 @@ class CustomersController extends GoController
         if (! empty($arrInputs)) {
             $objCustomer = new Customers();
             $arrInputs = array_merge($arrInputs, $objCustomer->getDefaults());
-            $arrInputs['password'] = Yii::$app->getSecurity()->generatePasswordHash($arrInputs['password']);
+            if (! empty($arrInputs['password']) && strlen($arrInputs['password']) >= 6) {
+                $arrInputs['password'] = Yii::$app->getSecurity()->generatePasswordHash($arrInputs['password']);
+            }
             $objCustomer->attributes = $arrInputs;
             if ($objCustomer->validate()) {
+                $arrValidatedInputs = $objCustomer->getAttributes();
                 $objCustomer->save();
-                $arrResponse['customer_id'] = $objCustomer->id;
+                $arrResponse['customer_id'] = $arrValidatedInputs['customer_id'] = $objCustomer->id;
+                $this->setSession($arrValidatedInputs);
                 $arrResponse['message'] = 'Registered Successfully';
             } else {
                 $arrResponse['errors'] = $objCustomer->errors;
@@ -132,20 +136,16 @@ class CustomersController extends GoController
     {
         $arrResponse = [];
         $arrInputs = Yii::$app->request->post();
-        if (isset($arrInputs['phone']) && ! empty($arrInputs['phone'])) {
-            $arrCustomer = Customers::getCustomer($arrInputs);
-            $arrResponse = ! empty($arrCustomer) ? $this->sendToken($arrCustomer[0]) : [
-                'errors' => [
-                    'phone' => 'Invalid Phone'
-                ]
-            ];
-            unset($arrInputs, $arrCustomer);
-        } else {
-            $arrResponse = [
-                'errors' => [
-                    'phone' => 'Phone is required'
-                ]
-            ];
+        if (! empty($arrInputs)) {
+            $objLogin = new Login();
+            $objLogin->scenario = 'generateotp';
+            $objLogin->attributes = $arrInputs;
+            if ($objLogin->validate()) {
+                $arrCustomer = Customers::getCustomer($arrInputs);
+                $arrResponse = $this->sendToken($arrCustomer[0]);
+            } else {
+                $arrResponse['errors'] = $objLogin->errors;
+            }
         }
         echo Json::encode($arrResponse);
     }
