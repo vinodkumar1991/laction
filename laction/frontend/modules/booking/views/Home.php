@@ -109,22 +109,21 @@ function redirectToLogin(){
 <script>
   $(function () {
             $('#datetimePicker').datetimepicker({
-            	minDate:new Date(),
+                minDate: moment().subtract(1,'d'),
                 format: 'DD-MM-YYYY',
                 
             });
             $('#datetimePicker').on("dp.change", function (e) {
             	getASlots($("#a_event_date").val());      
             });
+
         });  
 </script>
 <script>
   $(function () {
             $('#datetimePickers').datetimepicker({
-            	minDate:new Date(),
+            	minDate: moment().subtract(1,'d'),
                 format: 'DD-MM-YYYY',
-                
-                	//format: 'DD/MM/YYYY h:m A'
             });
             $("#datetimePickers").on("dp.change", function (e) {
             	getSlots($("#event_date").val());       
@@ -132,10 +131,11 @@ function redirectToLogin(){
         });
 </script>
 <script>
+
 $(document).ready(function(){
 $('.preview-open').click(function(){
+	$('.audition-section-open').hide();
 $('.preview-section-open').slideToggle();
-$('.audition-section-open').hide();
 });
 });
 </script>
@@ -143,8 +143,8 @@ $('.audition-section-open').hide();
 <script>
 $(document).ready(function(){
 $('.audition-open').click(function(){
+	$('.preview-section-open').hide();
 $('.audition-section-open').slideToggle();
-$('.preview-section-open').hide();
 });
 });
 </script>
@@ -159,5 +159,27 @@ $('.preview-section-open').fadeOut('slow');
 $('.audition-close').click(function(){
 $('.audition-section-open').fadeOut('slow');
 });
+
+// var itype = 1;
+//var booking_type = '<?php //echo $booking_type['booking_type']; ?>';
+// if('preview' == booking_type && itype == 1){
+// 	$('.preview-open').click(automaticPreview());	
+// }else if('audit' == booking_type && itype == 1){
+// 	$('.audition-open').click(automaticAudit());
+// }
+// function automaticPreview(){
+// 	itype++;
+// 	alert('hhh');
+// 	$('.audition-section-open').hide();
+// 		$('.preview-section-open').slideToggle();
+// 	return true;
+// }
+
+// function automaticAudit(){
+// 	itype++;
+// 	$('.preview-section-open').hide();
+// 	$('.audition-section-open').slideToggle();
+// 	return true;
+// }
 </script>
 

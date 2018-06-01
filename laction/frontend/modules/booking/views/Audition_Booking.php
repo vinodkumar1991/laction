@@ -123,8 +123,13 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label">Time</label> <select
-													class="form-control  book-form" name="a_slot_time"
+												<!-- 												<label class="control-label">Time</label> <select multiple -->
+												<!-- 													style="width: 300px;"> -->
+
+												<!-- 													<option value="AK">12:00 PM to 02:30PM (Rs : 1000)</option> -->
+												<!-- 													<option value="HI">Hawaii</option> -->
+												<!-- 												</select> -->
+												<select class="form-control  book-form" name="a_slot_time"
 													id="a_slot_time" multiple>
 													<option value=""></option>
 												</select>

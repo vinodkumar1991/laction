@@ -31,9 +31,9 @@
 										magna. Vivamus finibus diam</p>
 									<div class="widget-inner">
 										<div class="tags-home">
-											<a href="<?php echo Yii::getAlias('@fweb').'/booking'; ?>"
+											<a href="<?php echo Yii::getAlias('@fweb').'/booking?booking_type=audit'; ?>"
 												class="tag-home" target="_blank">Audition Booking</a> <a
-												href="<?php echo Yii::getAlias('@fweb').'/booking'; ?>"
+												href="<?php echo Yii::getAlias('@fweb').'/booking?booking_type=preview'; ?>"
 												class="tag-home1" target="_blank">Preview Booking</a>
 
 										</div>

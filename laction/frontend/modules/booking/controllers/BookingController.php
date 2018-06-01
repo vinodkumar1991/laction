@@ -22,6 +22,7 @@ class BookingController extends GoController
 
     public function actionHome()
     {
+        $arrInputs = Yii::$app->request->get();
         $arrFilmTypes = CommonComponent::getFilmTypes();
         $arrGender = CommonComponent::getGenders();
         $arrCategories = Categories::getCategories();
@@ -30,7 +31,8 @@ class BookingController extends GoController
             'film_types' => $arrFilmTypes,
             'genders' => $arrGender,
             'categories' => $arrCategories,
-            'censored' => $arrCensored
+            'censored' => $arrCensored,
+            'booking_type' => $arrInputs
         ]);
     }
 
@@ -66,7 +68,7 @@ class BookingController extends GoController
             $arrSlots = Slots::getSlots($arrInputs);
             if (! empty($arrSlots)) {
                 foreach ($arrSlots as $arrSlot) {
-                    $strResponse .= '<option value="' . $arrSlot['from_time'] . '-' . $arrSlot['to_time'] . '-' . $arrSlot['slot_amount'] . '">' . $arrSlot['slot_start_time'] . ' To ' . $arrSlot['slot_end_time'] . '</option>';
+                    $strResponse .= '<option value="' . $arrSlot['from_time'] . '-' . $arrSlot['to_time'] . '-' . $arrSlot['slot_amount'] . '">' . $arrSlot['slot_start_time'] . ' - ' . $arrSlot['slot_end_time'] . '( Rs ' . $arrSlot['slot_amount'] . ')' . '</option>';
                 }
                 unset($arrInputs, $arrSlots);
             }
