@@ -73,7 +73,9 @@ return [
                 'contact-us' => 'customers/customers/contact-us',
                 'logout' => 'customers/customers/logout',
                 // Booking
-                'booking' => 'booking/booking/home'
+                'booking' => 'booking/booking/home',
+                'videos' => 'home/home/videos',
+                'profiles' => 'home/home/profiles'
             ]
         ]
     ],
