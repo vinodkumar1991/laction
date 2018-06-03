@@ -149,4 +149,7 @@ class UploadsController extends Controller
         unset($arrInputs);
         return $arrResponse;
     }
+
+    public function actionVideos()
+    {}
 }

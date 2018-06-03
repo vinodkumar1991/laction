@@ -69,13 +69,15 @@ return [
                 'login' => 'customers/customers/login',
                 'register' => 'customers/customers/register',
                 'forgot-password' => 'customers/customers/forgot-password',
-                'policy' => 'customers/customers/policy',
                 'contact-us' => 'customers/customers/contact-us',
                 'logout' => 'customers/customers/logout',
                 // Booking
-                'booking' => 'booking/booking/home',
+                'booking' => 'booking/booking/booking',
                 'videos' => 'home/home/videos',
-                'profiles' => 'home/home/profiles'
+                'profiles' => 'home/home/profiles',
+                'profile' => 'customers/customers/profile',
+                'policy' => 'home/home/policy',
+                'tnc' => 'home/home/tnc'
             ]
         ]
     ],

@@ -39,3 +39,6 @@
 	</div>
 </header>
 <!-- Top Header End -->
+<script type="text/javascript">
+makeActiveMenu();
+</script>

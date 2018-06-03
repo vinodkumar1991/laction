@@ -28,7 +28,8 @@ class Videos extends ActiveRecord
             'v.file as file_link',
             'v.description as file_description',
             'v.publish_on',
-            'v.rank'
+            'v.rank',
+            'DATE_FORMAT(v.created_date, "%d %b %Y") as release_on'
         ]);
         $objQuery->from('videos as v');
         // Status
@@ -37,10 +38,27 @@ class Videos extends ActiveRecord
                 ':status' => $arrInputs['status']
             ]);
         }
+        // Home
+        if (isset($arrInputs['home']) && ! empty($arrInputs['home'])) {
+            $objQuery->andWhere('v.rank!=:rank', [
+                ':rank' => ""
+            ]);
+        }
         // Order By
-        $objQuery->orderBy([
-            'v.rank' => SORT_ASC
-        ]);
+        if (isset($arrInputs['home']) && ! empty($arrInputs['home'])) {
+            $objQuery->orderBy([
+                'v.rank' => SORT_ASC
+            ]);
+        } else {
+            $objQuery->orderBy([
+                'v.created_date' => SORT_DESC
+            ]);
+        }
+        // Limit
+        if (isset($arrInputs['limit']) && ! empty($arrInputs['limit'])) {
+            $objQuery->limit($arrInputs['limit']);
+        }
+        
         $arrResponse = $objQuery->all(self::getDb());
         return $arrResponse;
     }

@@ -31,7 +31,8 @@
 										magna. Vivamus finibus diam</p>
 									<div class="widget-inner">
 										<div class="tags-home">
-											<a href="<?php echo Yii::getAlias('@fweb').'/booking?booking_type=audit'; ?>"
+											<a
+												href="<?php echo Yii::getAlias('@fweb').'/booking?booking_type=audit'; ?>"
 												class="tag-home" target="_blank">Audition Booking</a> <a
 												href="<?php echo Yii::getAlias('@fweb').'/booking?booking_type=preview'; ?>"
 												class="tag-home1" target="_blank">Preview Booking</a>
@@ -42,9 +43,6 @@
 							</div>
 						</div>
 					</div>
-
-
-
 				</div>
 			</div>
 		</div>
@@ -63,70 +61,57 @@
 			</div>
 		</div>
 		<div class="row">
+		  <?php
+    
+    if (isset($home_videos[0]) && ! empty($home_videos[0])) {
+        ?>   
+    
 			<div class="col-md-9">
 				<div class="upcomming-featured">
 					<img class="img-responsive"
-						src="<?php echo Yii::getAlias('@fimg').'/movies/upcomming-featured.png'; ?>"
+						src="<?php echo  Yii::getAlias('@video_images').'/'.$home_videos[0]['file_image']; ?>"
 						alt="Upcomming Featured"> <a class="play-video"
-						href="https://www.youtube.com/watch?v=dQrJkCKg390"><i
+						href="<?php echo $home_videos[0]['file_link']; ?>"><i
 						class="fa fa-play"></i></a>
 					<div class="upcomming-details">
 						<h4 class="video-title">
-							<a href="javascript:void(0)">L'Action Studios Auditions (2018)</a>
+							<a href="javascript:void(0)"><?php echo $home_videos[0]['file_name']; ?></a>
 						</h4>
-						<p class="video-release-on">12 Jul 2018</p>
+						<p class="video-release-on"><?php echo $home_videos[0]['release_on']; ?></p>
 					</div>
 				</div>
 			</div>
+			<?php
+    }
+    unset($home_videos[0]);
+    ?>
 			<div class="col-md-3 col-xs-12 sm-top-30">
+			<?php
+
+if (! empty($home_videos)) {
+    foreach ($home_videos as $arrHomeVideo) {
+        ?>
+			        
 				<div class="upcomming-item">
 					<img class="img-responsive"
-						src="<?php echo Yii::getAlias('@fimg').'/movies/upcomming-1.png'; ?>"
-						alt="Upcomming featured">
+						src="<?php echo Yii::getAlias('@video_images').'/'.$arrHomeVideo['file_image']; ?>"
+						alt="Upcomming featured" />
 					<div class="upcomming-details">
 						<h4 class="video-title">
-							<a href="javascript:void(0)">L'Action Studios</a>
+							<a href="javascript:void(0)"><?php echo $arrHomeVideo['file_name']; ?></a>
 						</h4>
-						<p class="video-release-on">26 Jul 2018</p>
+						<p class="video-release-on"><?php echo $arrHomeVideo['release_on']; ?></p>
 					</div>
 					<div class="upcomming-hover">
 						<a class="play-video"
-							href="https://www.youtube.com/watch?v=dQrJkCKg390"><i
+							href="<?php echo $arrHomeVideo['file_link']; ?>"><i
 							class="fa fa-play"></i></a>
 					</div>
 				</div>
-				<div class="upcomming-item">
-					<img class="img-responsive"
-						src="<?php echo Yii::getAlias('@fimg').'/movies/upcomming-2.png'; ?>"
-						alt="Upcomming">
-					<div class="upcomming-details">
-						<h4 class="video-title">
-							<a href="javascript:void(0)">L'Action Studios</a>
-						</h4>
-						<p class="video-release-on">27 Jul 2018</p>
-					</div>
-					<div class="upcomming-hover">
-						<a class="play-video"
-							href="https://www.youtube.com/watch?v=dQrJkCKg390"><i
-							class="fa fa-play"></i></a>
-					</div>
-				</div>
-				<div class="upcomming-item">
-					<img class="img-responsive"
-						src="<?php echo Yii::getAlias('@fimg').'/movies/upcomming-3.png'; ?>"
-						alt="upcomming">
-					<div class="upcomming-details">
-						<h4 class="video-title">
-							<a href="javascript:void(0)">L'Action Studios</a>
-						</h4>
-						<p class="video-release-on">28 Jul 2018</p>
-					</div>
-					<div class="upcomming-hover">
-						<a class="play-video"
-							href="https://www.youtube.com/watch?v=dQrJkCKg390"><i
-							class="fa fa-play"></i></a>
-					</div>
-				</div>
+<?php
+    }
+}
+?>
 			</div>
 		</div>
 	</div>

@@ -20,7 +20,7 @@ class BookingController extends GoController
         return parent::beforeAction($action);
     }
 
-    public function actionHome()
+    public function actionBooking()
     {
         $arrInputs = Yii::$app->request->get();
         $arrFilmTypes = CommonComponent::getFilmTypes();

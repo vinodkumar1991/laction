@@ -39,11 +39,6 @@ class CustomersController extends GoController
         return $this->render('/ForgotPassword', []);
     }
 
-    public function actionPolicy()
-    {
-        return $this->render('/Policy', []);
-    }
-
     public function actionContactUs()
     {
         return $this->render('/ContactUs', []);
@@ -209,5 +204,20 @@ class CustomersController extends GoController
         }
         echo Json::encode($arrResponse);
         exit();
+    }
+
+    public function actionProfile()
+    {
+        return $this->render('/Profile', []);
+    }
+
+    public function actionSaveQuery()
+    {
+        $arrResponse = [];
+        $arrInputs = Yii::$app->request->post();
+        if (! empty($arrInputs)) {
+            
+        }
+        echo Json::encode($arrResponse);
     }
 }

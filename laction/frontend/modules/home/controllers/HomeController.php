@@ -16,7 +16,14 @@ class HomeController extends GoController
 
     public function actionHome()
     {
-        return $this->render('/Home', []);
+        $arrVideos = Videos::getVideos([
+            'status' => 'active',
+            'home' => 'home',
+            'limit' => 4
+        ]);
+        return $this->render('/Home', [
+            'home_videos' => $arrVideos
+        ]);
     }
 
     public function actionVideos()
@@ -29,8 +36,23 @@ class HomeController extends GoController
         ]);
     }
 
+    // age
+    // city
+    // langauges known
+    // height
+    // category
     public function actionProfiles()
     {
         return $this->render('/Profiles', []);
+    }
+
+    public function actionPolicy()
+    {
+        return $this->render('/Policy', []);
+    }
+
+    public function actionTnc()
+    {
+        return $this->render('/TnC', []);
     }
 }

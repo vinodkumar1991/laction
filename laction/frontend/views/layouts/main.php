@@ -3,7 +3,9 @@ $strAction = Yii::$app->controller->action->id;
 $arrAllowed = [
     'login',
     'register',
-    'forgot-password'
+    'forgot-password',
+    'policy',
+    'tnc'
 ];
 if (! in_array($strAction, $arrAllowed)) {
     ?>
@@ -13,13 +15,14 @@ if (! in_array($strAction, $arrAllowed)) {
     <?php
     echo $this->render('metatags');
     echo $this->render('header_script');
-    
     ?>
 </head>
 <body>
 <?php
     echo $this->render('header_strip');
-    echo $this->render('header');
+    echo $this->render('header', [
+        'action_name' => $strAction
+    ]);
     ?>
 <div class="main-wrap">
   <?php

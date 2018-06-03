@@ -27,8 +27,11 @@
 									href="<?php echo Yii::getAlias('@fweb').'/home'; ?>">Home </a></li>
 								<li class="cat foot"><a
 									href="<?php echo Yii::getAlias('@fweb').'/booking'; ?>">Booking</a></li>
-								<!-- 								<li class="cat foot"><a href="videos.html">Videos </a></li> -->
-								<!-- 								<li class="cat foot"><a href="profile.html">Profile </a></li> -->
+								<li class="cat foot"><a
+									href="<?php echo Yii::getAlias('@fweb').'/videos'; ?>">Videos </a></li>
+								<li class="cat foot"><a
+									href="<?php echo Yii::getAlias('@fweb').'/profiles'; ?>">Profile
+								</a></li>
 								<li class="cat foot"><a
 									href="<?php echo Yii::getAlias('@fweb').'/contact-us'; ?>">Contact
 										Us </a></li>
@@ -43,19 +46,14 @@
 						<div class="widget-inner">
 							<div class="textwidget footer-bx">
 								<p>
-									<i class="fa fa-map-marker"></i> : Flat: 8-8-2/879, Hyderabad
-									-5000023
+									<i class="fa fa-map-marker"></i> : <?php echo Yii::$app->params['contact_details']['address']; ?>
 								</p>
 								<p>
-									<i class="fa fa-mobile"></i> : +91 9876 543 210
+									<i class="fa fa-mobile"></i> : <?php echo Yii::$app->params['contact_details']['phone']; ?>
 								</p>
 								<p>
 									<i class="fa fa-envelope"></i> : <a
-										href="mailto:contact@lactionstudios.com">contact@lactionstudios.com</a>
-								</p>
-								<p>
-									<i class="fa fa-envelope-o"></i> : <a
-										href="mailto:info@lactionstudios.com">info@lactionstudios.com</a>
+										href="mailto:<?php echo Yii::$app->params['contact_details']['email']; ?>"><?php echo Yii::$app->params['contact_details']['email']; ?></a>
 								</p>
 							</div>
 						</div>
@@ -69,13 +67,15 @@
 			<div class="row">
 				<div class="col-md-6 col-sm-6 col-xs-12 xs-text-center">
 					<ul class="footer-nav">
-						<li><a href="#">Privacy Policy</a></li>
+						<li><a href="<?php echo Yii::getAlias('@fweb').'/policy'; ?>"
+							target="_blank">Privacy Policy</a></li>
 					</ul>
 				</div>
 				<div class="col-md-6 col-sm-6 col-xs-12 xs-text-center">
 					<p class="copyright-text">
-						&copy; 2018 <a href="index.html">L'Action Studios</a>. All Rights
-						Reserved
+						&copy; <?php echo date('Y'); ?> <a
+							href="<?php echo Yii::getAlias('@fweb').'/tnc'; ?>"
+							target="_blank">L'Action Studios</a>. All Rights Reserved
 					</p>
 				</div>
 			</div>
