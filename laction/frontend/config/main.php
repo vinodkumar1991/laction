@@ -77,7 +77,9 @@ return [
                 'profiles' => 'home/home/profiles',
                 'profile' => 'customers/customers/profile',
                 'policy' => 'home/home/policy',
-                'tnc' => 'home/home/tnc'
+                'tnc' => 'home/home/tnc',
+                'profile' => 'customers/customers/profile',
+                'bookings' => 'booking/booking/bookings'
             ]
         ]
     ],

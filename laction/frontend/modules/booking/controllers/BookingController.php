@@ -225,4 +225,9 @@ class BookingController extends GoController
         unset($arrBookedSlots);
         return $arrResponse;
     }
+
+    public function actionBookings()
+    {
+        return $this->render('/Bookings', []);
+    }
 }

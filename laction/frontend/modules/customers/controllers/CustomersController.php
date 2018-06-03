@@ -9,6 +9,7 @@ use frontend\modules\customers\models\Login;
 use frontend\modules\customers\models\Token;
 use frontend\modules\customers\models\Sms;
 use common\components\CommonComponent;
+use frontend\modules\customers\models\ContactUs;
 
 class CustomersController extends GoController
 {
@@ -16,9 +17,9 @@ class CustomersController extends GoController
     public function beforeAction($action)
     {
         $objSession = Yii::$app->session;
-        if (isset($objSession['customer_data'])) {
-            $this->redirect(Yii::getAlias('@fweb') . '/home');
-        }
+        // if (isset($objSession['customer_data'])) {
+        // $this->redirect(Yii::getAlias('@fweb') . '/home');
+        // }
         $this->enableCsrfValidation = false;
         return parent::beforeAction($action);
     }
@@ -216,8 +217,19 @@ class CustomersController extends GoController
         $arrResponse = [];
         $arrInputs = Yii::$app->request->post();
         if (! empty($arrInputs)) {
-            
+            $objContactUs = new ContactUs();
+            $arrInputs = array_merge($arrInputs, $objContactUs->getDefaults());
+            $objContactUs->attributes = $arrInputs;
+            if ($objContactUs->validate()) {
+                $objContactUs->save();
+                $arrResponse['query_id'] = $objContactUs->id;
+                // Need To Send SMS
+                $arrResponse['message'] = 'Thanks for contact us. Our admin team will contact you soon';
+            } else {
+                $arrResponse['errors'] = $objContactUs->errors;
+            }
         }
+        unset($arrInputs);
         echo Json::encode($arrResponse);
     }
 }

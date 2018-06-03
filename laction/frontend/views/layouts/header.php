@@ -30,15 +30,6 @@
 					class="" id="menu_profile">Profile</a></li>
 				<li><a href="<?php echo Yii::getAlias('@fweb').'/contact-us';?>"
 					class="" id="menu_contact">Contact Us</a></li>
-					<?php
-    if (Yii::$app->session['customer_data']['customer_id']) {
-        ?>
-        <li><a href="<?php echo Yii::getAlias('@fweb').'/profile'; ?>"><i
-						class="fa fa-user"></i></a></li>
-        <?php
-    }
-    ?>
-				
 			</ul>
 		</div>
 	</div>

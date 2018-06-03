@@ -1,3 +1,5 @@
+<link href="<?php echo Yii::getAlias('@fasset').'/css/select2.css'; ?>"
+	rel="stylesheet" />
 <link
 	href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
 	rel="stylesheet" />
@@ -95,6 +97,7 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+<script src="<?php echo Yii::getAlias('@fasset').'/js/select2.js'; ?>"></script>
 <script>
 <!-- Date Picker Related Files :: END -->
 $('#myModal').modal('none');
@@ -181,5 +184,35 @@ $('.audition-section-open').fadeOut('slow');
 // 	$('.audition-section-open').slideToggle();
 // 	return true;
 // }
+
+var select = $('.slot_timings');
+
+function formatSelection(state) {
+    return state.text;   
+}
+
+function formatResult(state) {
+    console.log(state)
+    if (!state.id) return state.text; // optgroup
+    var id = 'state' + state.id.toLowerCase();
+    var label = $('<label></label>', { for: id })
+            .text(state.text);
+    var checkbox = $('<input type="checkbox">', { id: id });
+    
+    return checkbox.add(label);   
+}
+
+select.select2({
+    closeOnSelect: false,
+    formatResult: formatResult,
+    formatSelection: formatSelection,
+    escapeMarkup: function (m) {
+        return m;
+    },
+    matcher: function(term, text, opt){
+         return text.toUpperCase().indexOf(term.toUpperCase())>=0 || opt.parent("optgroup").attr("label").toUpperCase().indexOf(term.toUpperCase())>=0
+    }
+});
+
 </script>
 

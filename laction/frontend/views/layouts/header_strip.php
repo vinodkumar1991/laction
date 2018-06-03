@@ -22,9 +22,21 @@
     
     if (Yii::$app->session['customer_data']['fullname']) {
         ?>
-        <span class="avtar_username">Welcome to <?php echo Yii::$app->session['customer_data']['fullname']; ?> &emsp;<a
-						href="<?php echo Yii::getAlias('@web').'/logout';?>"><i
-							class="fa fa-sign-out"></i></a></span>
+        <ul class="nav pull-right">
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">Welcome, <?php echo Yii::$app->session['customer_data']['fullname']; ?> <b
+								class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="<?php echo Yii::getAlias('@fweb').'/profile'; ?>"><i
+										class="fa fa-user-o" aria-hidden="true"></i> Profile</a></li>
+								<li><a href="<?php echo Yii::getAlias('@fweb').'/bookings'; ?>"><i
+										class="fa fa-calendar-check-o" aria-hidden="true"></i>
+										Bookings</a></li>
+								<li class="divider"></li>
+								<li><a href="<?php echo Yii::getAlias('@fweb').'/logout'; ?>"><i
+										class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+							</ul></li>
+					</ul>
     <?php
     } else {
         ?>
@@ -39,6 +51,3 @@
 	</div>
 </header>
 <!-- Top Header End -->
-<script type="text/javascript">
-makeActiveMenu();
-</script>

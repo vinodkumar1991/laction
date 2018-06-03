@@ -46,31 +46,34 @@
 			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 				<div class="contact-right">
 					<h4>Write Your Message</h4>
+					<h4 id="c_success_message"></h4>
 					<form action="" class="contact-form" method="post">
 
 						<div class="form-group">
 							<input type="text" class="form-control contct-inpt"
 								id="c_fullname" name="c_fullname" placeholder="Fullname"
-								maxlength="100" /> <span id="err_c_fullname"></span>
+								maxlength="100" autocomplete="off" /> <span id="err_c_fullname"></span>
 						</div>
 
 
 						<div class="form-group form_left">
 							<input type="text" class="form-control contct-inpt" id="c_email"
-								name="c_email" placeholder="Email" maxlength="40" /> <span
-								id="err_c_email"></span>
+								name="c_email" placeholder="Email" maxlength="40"
+								autocomplete="off" /> <span id="err_c_email"></span>
 						</div>
 
 						<div class="form-group">
 							<input type="text" class="form-control contct-inpt" id="c_phone"
 								name="c_phone"
 								onkeypress="return event.charCode >= 48 &amp;&amp; event.charCode <= 57"
-								maxlength="10" placeholder="Phone" /> <span id="err_c_phone"></span>
+								maxlength="10" placeholder="Phone" autocomplete="off" /> <span
+								id="err_c_phone"></span>
 						</div>
 						<div class="form-group">
 							<textarea class="form-control textarea-contact contct-textarea"
 								rows="5" id="c_query" name="c_query"
-								placeholder="Enter your query" maxlength="100"></textarea>
+								placeholder="Enter your query" maxlength="62000"
+								autocomplete="off"></textarea>
 							<span id="err_c_query"></span>
 						</div>
 						<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -101,7 +104,48 @@ function submitQuery(){
         status : 'not solved'
 			};
 	$.post('<?php echo Yii::getAlias('@fweb').'/customers/customers/save-query'; ?>',objInput,function(response){
-		alert(response);
+		makeCEmpty();
+		 var response = $.parseJSON(response);
+	        if(response.hasOwnProperty('errors')){
+	      	//Fullname
+	      	  if(undefined != response.errors.fullname && response.errors.fullname.length > 0){
+	      		   $("#err_c_fullname").html(response.errors.fullname[0]);
+	      		   }
+	      	//Email
+	      	  if(undefined != response.errors.email && response.errors.email.length > 0){
+	      		   $("#err_c_email").html(response.errors.email[0]);
+	      		   }
+	      	//Phone
+	      	  if(undefined != response.errors.phone && response.errors.phone.length > 0){
+	      		   $("#err_c_phone").html(response.errors.phone[0]);
+	      		   }
+	      	//Query
+	      	  if(undefined != response.errors.description && response.errors.description.length > 0){
+	      		   $("#err_c_query").html(response.errors.description[0]);
+	      		   }
+	 		   return false;
+	            }else{
+	            	makeCFieldsEmpty();
+	               $("#c_success_message").html(response.message);
+	               return true;         
+	                }
 		});
+}
+
+function makeCEmpty(){
+	$("#err_c_fullname").html("");
+    $("#err_c_email").html("");
+    $("#err_c_phone").html("");
+    $("#err_c_query").html("");
+    $("#c_success_message").html("");
+	return true;
+}
+
+function makeCFieldsEmpty(){
+    $("#c_fullname").val("");
+    $("#c_email").val("");
+    $("#c_phone").val("");
+    $("#c_query").val("");
+	return true;
 }
 </script>
