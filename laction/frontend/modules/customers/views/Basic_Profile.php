@@ -186,7 +186,12 @@
         var languages = '<?php echo $profile_details['languages']; ?>';
         console.log(languages);
         var gender = '<?php echo $profile_details['gender']; ?>';
-        ('male' == gender) ? $('#p_male').attr('checked', true) : $('#p_female').attr('checked', true);
+        if ('male' == gender) {
+            $('#p_male').attr('checked', true)
+        }
+        if ('female' == gender) {
+            $('#p_female').attr('checked', true)
+        }
         return true;
     }
 
