@@ -296,4 +296,22 @@ class CustomersController extends GoController {
         echo Json::encode($arrResponse);
     }
 
+    public function actionUpdateSocialLinks() {
+        $arrResponse = [];
+        $arrInputs = Yii::$app->request->post();
+        if (!empty($arrInputs)) {
+            $objProfile = new Profile();
+            $objProfile->scenario = 'social_links';
+            $objProfile->attributes = $arrInputs;
+            if ($objProfile->validate()) {
+                $arrValidatedInputs = $arrInputs;
+                $arrResponse['is_updated'] = Customers::updateCustomer($arrValidatedInputs, ['id' => $arrValidatedInputs['id']]);
+                $arrResponse['message'] = 'Social Links Are Updated Successfully';
+            } else {
+                $arrResponse['errors'] = $objProfile->errors;
+            }
+        }
+        echo Json::encode($arrResponse);
+    }
+
 }

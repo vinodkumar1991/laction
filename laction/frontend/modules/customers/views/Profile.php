@@ -27,26 +27,7 @@
             <!-- Basic Profile :: END -->
 
             <!-- Social Media :: START -->
-            <div role="tabpanel" class="tab-pane" id="user_social_tab">
-                <form class="form-horizontal" role="form" style="margin: 30px 0 0;">
-                    <div class="field_wrapper">
-                        <div class="form-group">
-                            <label class="col-sm-2">Social Media Link</label>
-                            <div class="col-sm-8">
-                                <input type="text" name="field_name[]" value=""
-                                       class="form-control" />
-                            </div>
-                            <a href="javascript:void(0);" class="col-sm-2 add_button"
-                               title="Add field"><i class="fa fa-plus" aria-hidden="true"></i></a>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-6">
-                            <button type="submit" class="btn btn-info pull-right">Submit</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+            <?php echo $this->render('Profile_SocialMedia', ['profile_details' => $profile]); ?>
             <!-- Social Media Tab :: END -->
 
             <!-- Gallery Tab :: START -->
@@ -69,24 +50,24 @@
 <script type="text/javascript"
 src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
 <script type="text/javascript">
-                                           $(document).ready(function () {
-                                               var maxField = 10; //Input fields increment limitation
-                                               var addButton = $('.add_button'); //Add button selector
-                                               var wrapper = $('.field_wrapper'); //Input field wrapper
-                                               var fieldHTML = '<div class="form-group"><label class="col-sm-2">&nbsp;</label><div class="col-sm-8"><input type="text" name="field_name[]" value="" placeholder="Add Social Media Link" class="form-control"/></div><a href="javascript:void(0);" class="col-sm-2 remove_button" title="Remove field"><i class="fa fa-trash-o" aria-hidden="true"></i></a></div>'; //New input field html 
-                                               var x = 1; //Initial field counter is 1
-                                               $(addButton).click(function () { //Once add button is clicked
-                                                   if (x < maxField) { //Check maximum number of input fields
-                                                       x++; //Increment field counter
-                                                       $(wrapper).append(fieldHTML); // Add field html
-                                                   }
-                                               });
-                                               $(wrapper).on('click', '.remove_button', function (e) { //Once remove button is clicked
-                                                   e.preventDefault();
-                                                   $(this).parent('div').remove(); //Remove field html
-                                                   x--; //Decrement field counter
-                                               });
-                                           });
+//                                           $(document).ready(function () {
+//                                               var maxField = 10; //Input fields increment limitation
+//                                               var addButton = $('.add_button'); //Add button selector
+//                                               var wrapper = $('.field_wrapper'); //Input field wrapper
+//                                               var fieldHTML = '<div class="form-group"><label class="col-sm-2">&nbsp;</label><div class="col-sm-8"><input type="text" name="field_name[]" value="" placeholder="Add Social Media Link" class="form-control"/></div><a href="javascript:void(0);" class="col-sm-2 remove_button" title="Remove field"><i class="fa fa-trash-o" aria-hidden="true"></i></a></div>'; //New input field html 
+//                                               var x = 1; //Initial field counter is 1
+//                                               $(addButton).click(function () { //Once add button is clicked
+//                                                   if (x < maxField) { //Check maximum number of input fields
+//                                                       x++; //Increment field counter
+//                                                       $(wrapper).append(fieldHTML); // Add field html
+//                                                   }
+//                                               });
+//                                               $(wrapper).on('click', '.remove_button', function (e) { //Once remove button is clicked
+//                                                   e.preventDefault();
+//                                                   $(this).parent('div').remove(); //Remove field html
+//                                                   x--; //Decrement field counter
+//                                               });
+//                                           });
 
                                            function clearPasswordFields() {
                                                $("#p_current_password").val("");

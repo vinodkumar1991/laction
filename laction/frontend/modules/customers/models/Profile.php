@@ -15,6 +15,11 @@ class Profile extends ActiveRecord {
     public $current_password;
     public $new_password;
     public $confirm_password;
+    public $fb_link;
+    public $google_plus_link;
+    public $instagram_link;
+    public $linkedin_link;
+    public $twitter_link;
 
     public function rules() {
         return [
@@ -38,6 +43,18 @@ class Profile extends ActiveRecord {
                 'required',
                 'on' => 'update_password',
                 'message' => '{attribute} is required'
+            ],
+            [
+                [
+                    'fb_link',
+                    'google_plus_link',
+                    'instagram_link',
+                    'linkedin_link',
+                    'twitter_link',
+                    'id'
+                ],
+                'safe',
+                'on' => 'social_links',
             ],
             [
                 [
@@ -75,6 +92,11 @@ class Profile extends ActiveRecord {
                 'compare',
                 'compareAttribute' => 'new_password'
             ],
+            [['fb_link',
+            'google_plus_link',
+            'instagram_link',
+            'linkedin_link',
+            'twitter_link'], 'url', 'defaultScheme' => ''],
         ];
     }
 
@@ -97,6 +119,15 @@ class Profile extends ActiveRecord {
             'confirm_password',
             'id'
         ];
+        $arrScenarios['social_links'] = [
+            'fb_link',
+            'google_plus_link',
+            'instagram_link',
+            'linkedin_link',
+            'twitter_link',
+            'id'
+        ];
+
         return $arrScenarios;
     }
 

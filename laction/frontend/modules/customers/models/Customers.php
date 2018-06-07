@@ -144,7 +144,12 @@ class Customers extends ActiveRecord {
             'c.languages',
             'c.height',
             'c.biography',
-            'c.category_id'
+            'c.category_id',
+            'c.fb_link',
+            'c.google_plus_link',
+            'c.instagram_link',
+            'c.linkedin_link',
+            'c.twitter_link'
         ]);
         $objQuery->from('customer as c');
         // Phone
