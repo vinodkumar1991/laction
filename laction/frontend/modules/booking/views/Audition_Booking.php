@@ -123,14 +123,12 @@
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
-												<label class="control-label">Time</label> <select
-													style="width: 300px;" class="slot_timings"
+												<label class="control-label">Time</label>
+												<!-- class="slot_timings" -->
+												 <select
+													style="width: 400px;" 
 													name="a_slot_time" id="a_slot_time" multiple>
 												</select>
-												<!-- 												<select class="form-control  book-form" name="a_slot_time" -->
-												<!-- 													id="a_slot_time" multiple> -->
-												<!-- 													<option value=""></option> -->
-												<!-- 												</select> -->
 											</div>
 											<span id="err_a_slot_time"></span>
 										</div>

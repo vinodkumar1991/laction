@@ -1,4 +1,5 @@
 <?php
+
 namespace app\modules\customers\controllers;
 
 use Yii;
@@ -10,12 +11,13 @@ use frontend\modules\customers\models\Token;
 use frontend\modules\customers\models\Sms;
 use common\components\CommonComponent;
 use frontend\modules\customers\models\ContactUs;
+use frontend\modules\customers\models\Cities;
+use frontend\modules\booking\models\Categories;
+use frontend\modules\customers\models\Profile;
 
-class CustomersController extends GoController
-{
+class CustomersController extends GoController {
 
-    public function beforeAction($action)
-    {
+    public function beforeAction($action) {
         $objSession = Yii::$app->session;
         // if (isset($objSession['customer_data'])) {
         // $this->redirect(Yii::getAlias('@fweb') . '/home');
@@ -24,35 +26,30 @@ class CustomersController extends GoController
         return parent::beforeAction($action);
     }
 
-    public function actionLogin()
-    {
+    public function actionLogin() {
         return $this->render('/Login', []);
     }
 
-    public function actionRegister()
-    {
+    public function actionRegister() {
         $arrInputs = Yii::$app->request->post();
         return $this->render('/Register', []);
     }
 
-    public function actionForgotPassword()
-    {
+    public function actionForgotPassword() {
         return $this->render('/ForgotPassword', []);
     }
 
-    public function actionContactUs()
-    {
+    public function actionContactUs() {
         return $this->render('/ContactUs', []);
     }
 
-    public function actionSaveCustomer()
-    {
+    public function actionSaveCustomer() {
         $arrResponse = [];
         $arrInputs = Yii::$app->request->post();
-        if (! empty($arrInputs)) {
+        if (!empty($arrInputs)) {
             $objCustomer = new Customers();
             $arrInputs = array_merge($arrInputs, $objCustomer->getDefaults());
-            if (! empty($arrInputs['password']) && strlen($arrInputs['password']) >= 6) {
+            if (!empty($arrInputs['password']) && strlen($arrInputs['password']) >= 6) {
                 $arrInputs['password'] = Yii::$app->getSecurity()->generatePasswordHash($arrInputs['password']);
             }
             $objCustomer->attributes = $arrInputs;
@@ -69,21 +66,20 @@ class CustomersController extends GoController
         echo Json::encode($arrResponse);
     }
 
-    public function actionDoLogin()
-    {
+    public function actionDoLogin() {
         $arrResponse = [];
         $arrInputs = Yii::$app->request->post();
-        if (! empty($arrInputs)) {
+        if (!empty($arrInputs)) {
             $objLogin = new Login();
             $objLogin->scenario = 'login';
             $objLogin->attributes = $arrInputs;
             if ($objLogin->validate()) {
                 $arrValidatedInputs = $objLogin->getAttributes();
                 $arrCustomer = Customers::getCustomer([
-                    'phone' => $arrValidatedInputs['phone']
+                            'phone' => $arrValidatedInputs['phone']
                 ]);
                 $arrCustomer = isset($arrCustomer[0]) ? $arrCustomer[0] : [];
-                if (! empty($arrCustomer)) {
+                if (!empty($arrCustomer)) {
                     if (Yii::$app->getSecurity()->validatePassword($arrValidatedInputs['password'], $arrCustomer['password'])) {
                         $this->setSession($arrCustomer);
                     } else {
@@ -107,8 +103,7 @@ class CustomersController extends GoController
         exit();
     }
 
-    private function setSession($arrCustomer)
-    {
+    private function setSession($arrCustomer) {
         $objSession = Yii::$app->session;
         $arrSessionData = [
             'fullname' => $arrCustomer['fullname'],
@@ -121,18 +116,16 @@ class CustomersController extends GoController
         return true;
     }
 
-    public function actionLogout()
-    {
+    public function actionLogout() {
         $objSession = Yii::$app->session;
         $objSession->remove('customer_data');
         $this->redirect(Yii::getAlias('@web') . '/login');
     }
 
-    public function actionGenerateOtp()
-    {
+    public function actionGenerateOtp() {
         $arrResponse = [];
         $arrInputs = Yii::$app->request->post();
-        if (! empty($arrInputs)) {
+        if (!empty($arrInputs)) {
             $objLogin = new Login();
             $objLogin->scenario = 'generateotp';
             $objLogin->attributes = $arrInputs;
@@ -146,8 +139,7 @@ class CustomersController extends GoController
         echo Json::encode($arrResponse);
     }
 
-    private function sendToken($arrInputs)
-    {
+    private function sendToken($arrInputs) {
         $arrResponse = [];
         $objToken = new Token();
         $arrInputs['category_type'] = 'forgotpassword';
@@ -180,11 +172,10 @@ class CustomersController extends GoController
         return $arrResponse;
     }
 
-    public function actionUpdatePassword()
-    {
+    public function actionUpdatePassword() {
         $arrResponse = [];
         $arrInputs = Yii::$app->request->post();
-        if (! empty($arrInputs)) {
+        if (!empty($arrInputs)) {
             $objLogin = new Login();
             $objLogin->scenario = 'updatepassword';
             $objLogin->attributes = $arrInputs;
@@ -194,7 +185,7 @@ class CustomersController extends GoController
                 $arrValidatedInputs['last_modified_by'] = $arrValidatedInputs['id'];
                 unset($arrValidatedInputs['confirmpassword'], $arrValidatedInputs['newpassword'], $arrValidatedInputs['otp']);
                 $arrResponse['is_updated'] = Customers::updateCustomer($arrValidatedInputs, [
-                    'id' => $arrValidatedInputs['id']
+                            'id' => $arrValidatedInputs['id']
                 ]);
                 $arrResponse['message'] = 'Password changed successfully';
                 unset($arrValidatedInputs);
@@ -207,16 +198,28 @@ class CustomersController extends GoController
         exit();
     }
 
-    public function actionProfile()
-    {
-        return $this->render('/Profile', []);
+    public function actionProfile() {
+        $arrLanguages = CommonComponent::languages();
+        $arrCities = Cities::getCities([
+                    'status' => 'active'
+        ]);
+        $arrProfile = Customers::getCustomer([
+                    'customer_id' => Yii::$app->session['customer_data']['customer_id']
+        ]);
+        $arrProfile = isset($arrProfile[0]) ? $arrProfile[0] : [];
+        $arrCategories = Categories::getCategories();
+        return $this->render('/Profile', [
+                    'languages' => $arrLanguages,
+                    'cities' => $arrCities,
+                    'profile' => $arrProfile,
+                    'categories' => $arrCategories
+        ]);
     }
 
-    public function actionSaveQuery()
-    {
+    public function actionSaveQuery() {
         $arrResponse = [];
         $arrInputs = Yii::$app->request->post();
-        if (! empty($arrInputs)) {
+        if (!empty($arrInputs)) {
             $objContactUs = new ContactUs();
             $arrInputs = array_merge($arrInputs, $objContactUs->getDefaults());
             $objContactUs->attributes = $arrInputs;
@@ -232,4 +235,54 @@ class CustomersController extends GoController
         unset($arrInputs);
         echo Json::encode($arrResponse);
     }
+
+    public function actionUpdateUser() {
+        $arrResponse = [];
+        $arrInputs = Yii::$app->request->post();
+        if (!empty($arrInputs)) {
+            print_r($arrInputs);
+            die();
+        }
+        echo Json::encode($arrResponse);
+    }
+
+    public function actionUpdateProfile() {
+        $arrResponse = [];
+        $arrInputs = Yii::$app->request->post();
+        if (!empty($arrInputs)) {
+            $objProfile = new Profile();
+            $objProfile->scenario = 'basic';
+            $objProfile->attributes = $arrInputs;
+            if ($objProfile->validate()) {
+                $arrValidatedInputs = $objProfile->getAttributes();
+                $arrUpdateInputs = [
+                    'category_id' => $arrValidatedInputs['category_id'],
+                    'email' => $arrValidatedInputs['email'],
+                    'age' => $arrValidatedInputs['age'],
+                    'city' => $arrValidatedInputs['city'],
+                    'gender' => $arrValidatedInputs['gender'],
+                    //'languages' => $arrValidatedInputs['languages'],
+                    'height' => $arrValidatedInputs['height'],
+                    'biography' => $arrValidatedInputs['biography']
+                ];
+                $arrResponse['is_updated'] = Customers::updateCustomer($arrUpdateInputs, ['id' => $arrValidatedInputs['id']]);
+                $arrResponse['message'] = 'Details updated successfully';
+            } else {
+                $arrResponse['errors'] = $objProfile->errors;
+            }
+            unset($arrInputs);
+        }
+        echo Json::encode($arrResponse);
+    }
+
+    public function actionProfileChangePassword() {
+        $arrResponse = [];
+        $arrInputs = Yii::$app->request->post();
+        if (!empty($arrInputs)) {
+            print_r($arrInputs);
+            die();
+        }
+        echo Json::encode($arrResponse);
+    }
+
 }

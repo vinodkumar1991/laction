@@ -203,4 +203,14 @@ class CommonComponent
             'no' => 'No'
         ];
     }
+
+    public static function languages()
+    {
+        return [
+            'telugu' => 'Telugu',
+            'tamil' => 'Tamil',
+            'malayalam' => 'Malayalam',
+            'kannada' => 'Kannada'
+        ];
+    }
 }

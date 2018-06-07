@@ -105,6 +105,7 @@
 
 <script type="text/javascript">
 function doLogin(){
+	
 	var objLogin = {};
 	objLogin = {
          phone : $("#phone").val(),

@@ -1,7 +1,7 @@
 <?php
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=laction',
+    'dsn' => 'mysql:host=localhost;dbname=laction_backend',
     'username' => 'root',
     'password' => '',
     'charset' => 'utf8',

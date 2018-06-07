@@ -1,20 +1,18 @@
 <?php
+
 namespace frontend\modules\customers\models;
 
 use yii\db\ActiveRecord;
 use Yii;
 use yii\db\Query;
 
-class Customers extends ActiveRecord
-{
+class Customers extends ActiveRecord {
 
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'customer';
     }
 
-    public function rules()
-    {
+    public function rules() {
         return [
             [
                 [
@@ -79,7 +77,6 @@ class Customers extends ActiveRecord
                 'min' => 3,
                 'max' => 100
             ],
-            
             [
                 'fullname',
                 'match',
@@ -96,8 +93,7 @@ class Customers extends ActiveRecord
         ];
     }
 
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'fullname' => 'Fullname',
             'email' => 'Email',
@@ -107,27 +103,25 @@ class Customers extends ActiveRecord
         ];
     }
 
-    public function getDefaults()
-    {
+    public function getDefaults() {
         return [
             'created_date' => date('Y-m-d H:i:s'),
             'created_by' => 1 // Need to change
         ];
     }
 
-    public function isValidInput($attribute, $params)
-    {
+    public function isValidInput($attribute, $params) {
         $arrResponse = [];
-        if (! empty($this->email) && 'email' == $attribute) {
+        if (!empty($this->email) && 'email' == $attribute) {
             $arrResponse = self::getCustomer([
-                'email' => $this->email
+                        'email' => $this->email
             ]);
         } else {
             $arrResponse = self::getCustomer([
-                'phone' => $this->phone
+                        'phone' => $this->phone
             ]);
         }
-        if (! empty($arrResponse)) {
+        if (!empty($arrResponse)) {
             $this->addError($attribute, $attribute . ' already exists.');
             return false;
         } else {
@@ -135,8 +129,7 @@ class Customers extends ActiveRecord
         }
     }
 
-    public static function getCustomer($arrInputs = [])
-    {
+    public static function getCustomer($arrInputs = []) {
         $objQuery = new Query();
         $objQuery->select([
             'c.id as customer_id',
@@ -144,43 +137,56 @@ class Customers extends ActiveRecord
             'c.email',
             'c.phone',
             'c.password',
-            'c.status'
+            'c.status',
+            'c.age',
+            'c.city',
+            'c.gender',
+            'c.languages',
+            'c.height',
+            'c.biography',
+            'c.category_id'
         ]);
         $objQuery->from('customer as c');
         // Phone
-        if (isset($arrInputs['phone']) && ! empty($arrInputs['phone'])) {
+        if (isset($arrInputs['phone']) && !empty($arrInputs['phone'])) {
             $objQuery = $objQuery->andWhere('c.phone=:Phone', [
                 ':Phone' => $arrInputs['phone']
             ]);
         }
         // Email
-        if (isset($arrInputs['email']) && ! empty($arrInputs['email'])) {
+        if (isset($arrInputs['email']) && !empty($arrInputs['email'])) {
             $objQuery = $objQuery->andWhere('c.email=:Email', [
                 ':Email' => $arrInputs['email']
             ]);
         }
         // Id
-        if (isset($arrInputs['id']) && ! empty($arrInputs['id'])) {
+        if (isset($arrInputs['id']) && !empty($arrInputs['id'])) {
             $objQuery = $objQuery->andWhere('c.id!=:Id', [
                 ':Id' => $arrInputs['id']
             ]);
         }
         // Password
-        if (isset($arrInputs['password']) && ! empty($arrInputs['password'])) {
+        if (isset($arrInputs['password']) && !empty($arrInputs['password'])) {
             $objQuery = $objQuery->andWhere('c.password=:password', [
                 ':password' => $arrInputs['password']
+            ]);
+        }
+        // Customer Id
+        if (isset($arrInputs['customer_id']) && !empty($arrInputs['customer_id'])) {
+            $objQuery = $objQuery->andWhere('c.id=:customerId', [
+                ':customerId' => $arrInputs['customer_id']
             ]);
         }
         $arrResponse = $objQuery->all();
         return $arrResponse;
     }
 
-    public static function updateCustomer($arrInputs, $arrWhere)
-    {
+    public static function updateCustomer($arrInputs, $arrWhere) {
         $objConnection = Yii::$app->db;
         $intUpdate = $objConnection->createCommand()
-            ->update('customer', $arrInputs, $arrWhere)
-            ->execute();
+                ->update('customer', $arrInputs, $arrWhere)
+                ->execute();
         return $intUpdate;
     }
+
 }
