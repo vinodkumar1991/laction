@@ -1,4 +1,5 @@
 <?php
+
 namespace app\modules\booking\controllers;
 
 use Yii;
@@ -11,38 +12,34 @@ use yii\helpers\Json;
 use frontend\modules\booking\models\Booking;
 use frontend\modules\booking\models\Billing;
 
-class BookingController extends GoController
-{
+class BookingController extends GoController {
 
-    public function beforeAction($action)
-    {
+    public function beforeAction($action) {
         $this->enableCsrfValidation = false;
         return parent::beforeAction($action);
     }
 
-    public function actionBooking()
-    {
+    public function actionBooking() {
         $arrInputs = Yii::$app->request->get();
         $arrFilmTypes = CommonComponent::getFilmTypes();
         $arrGender = CommonComponent::getGenders();
         $arrCategories = Categories::getCategories();
         $arrCensored = CommonComponent::censored();
         return $this->render('/Home', [
-            'film_types' => $arrFilmTypes,
-            'genders' => $arrGender,
-            'categories' => $arrCategories,
-            'censored' => $arrCensored,
-            'booking_type' => $arrInputs
+                    'film_types' => $arrFilmTypes,
+                    'genders' => $arrGender,
+                    'categories' => $arrCategories,
+                    'censored' => $arrCensored,
+                    'booking_type' => $arrInputs
         ]);
     }
 
-    public function actionSubCategories()
-    {
+    public function actionSubCategories() {
         $strResponse = '<option vlaue="">--Select Subcategory--</option>';
         $arrInputs = Yii::$app->request->post();
-        if (! empty($arrInputs)) {
+        if (!empty($arrInputs)) {
             $arrSubCategories = SubCategories::getSubCategories($arrInputs);
-            if (! empty($arrSubCategories)) {
+            if (!empty($arrSubCategories)) {
                 foreach ($arrSubCategories as $arrSubCategory) {
                     $strResponse .= '<option value="' . $arrSubCategory['sub_category_id'] . '">' . $arrSubCategory['name'] . '</option>';
                 }
@@ -52,11 +49,10 @@ class BookingController extends GoController
         echo $strResponse;
     }
 
-    public function actionSlots()
-    {
+    public function actionSlots() {
         $strResponse = '--Select Slots--';
         $arrInputs = Yii::$app->request->post();
-        if (! empty($arrInputs)) {
+        if (!empty($arrInputs)) {
             $arrDate = explode('-', $arrInputs['event_date']);
             $arrInputs['event_date'] = $arrDate['2'] . '-' . $arrDate[1] . '-' . $arrDate[0];
             $arrBookedSlots = Booking::getSlots($arrInputs);
@@ -66,7 +62,7 @@ class BookingController extends GoController
                 'status' => 'active'
             ]);
             $arrSlots = Slots::getSlots($arrInputs);
-            if (! empty($arrSlots)) {
+            if (!empty($arrSlots)) {
                 foreach ($arrSlots as $arrSlot) {
                     $strResponse .= '<option value="' . $arrSlot['from_time'] . '-' . $arrSlot['to_time'] . '-' . $arrSlot['slot_amount'] . '">' . $arrSlot['slot_start_time'] . ' - ' . $arrSlot['slot_end_time'] . '( Rs ' . $arrSlot['slot_amount'] . ')' . '</option>';
                 }
@@ -76,12 +72,11 @@ class BookingController extends GoController
         echo $strResponse;
     }
 
-    public function actionBookPreview()
-    {
+    public function actionBookPreview() {
         $arrResponse = [];
         $arrInputs = Yii::$app->request->post();
         $arrModifiedInputs = $this->modifyInputs($arrInputs);
-        if (! isset($arrModifiedInputs['errors']) && ! empty($arrModifiedInputs)) {
+        if (!isset($arrModifiedInputs['errors']) && !empty($arrModifiedInputs)) {
             $arrBilling = $arrModifiedInputs['billing_details'];
             unset($arrModifiedInputs['billing_details']);
             foreach ($arrModifiedInputs as $arrModifiedInput) {
@@ -98,7 +93,7 @@ class BookingController extends GoController
                     $arrResponse['errors'] = $objBooking->errors;
                 }
             }
-            if (! isset($arrResponse['errors'])) {
+            if (!isset($arrResponse['errors'])) {
                 Booking::createPreview($arrResponse['slots']);
                 $arrResponse['billing_id'] = $this->doBilling($arrBilling);
                 Yii::$app->session['booking_data'] = null;
@@ -112,13 +107,12 @@ class BookingController extends GoController
         echo Json::encode($arrResponse);
     }
 
-    public function modifyInputs($arrInputs, $strScenario = 'preview')
-    {
+    public function modifyInputs($arrInputs, $strScenario = 'preview') {
         $arrResponse = [];
         $arrSlotTimes = $arrInputs['slot_time'];
         unset($arrInputs['slot_time']);
         $doubleAmount = 0.00;
-        if (! empty($arrSlotTimes)) {
+        if (!empty($arrSlotTimes)) {
             // Booking Number
             $arrInputs['booking_no'] = ('preview' == $strScenario) ? 'LP' : 'LA' . CommonComponent::getNumberToken(6);
             // Modify Event Date
@@ -140,7 +134,9 @@ class BookingController extends GoController
             $objBooking = new Booking();
             $objBooking->scenario = $strScenario;
             $objBooking->attributes = $arrInputs;
-            if ($objBooking->validate()) {} else {
+            if ($objBooking->validate()) {
+                
+            } else {
                 $arrResponse['errors'] = $objBooking->errors;
             }
         }
@@ -148,8 +144,7 @@ class BookingController extends GoController
         return $arrResponse;
     }
 
-    private function getAmount($arrInputs)
-    {
+    private function getAmount($arrInputs) {
         $arrResponse = [];
         $doubleCGSTPer = Yii::$app->params['tax']['cgst_per'];
         $doubleCGSTAmount = $arrInputs['base_amount'] * ($doubleCGSTPer / 100);
@@ -162,8 +157,7 @@ class BookingController extends GoController
         return $arrResponse;
     }
 
-    private function doBilling($arrBilling)
-    {
+    private function doBilling($arrBilling) {
         $arrResponse = [];
         $objBilling = new Billing();
         $arrBillingData = array_merge($arrBilling, $objBilling->getDefaults());
@@ -178,12 +172,11 @@ class BookingController extends GoController
         return $arrResponse;
     }
 
-    public function actionBookAudition()
-    {
+    public function actionBookAudition() {
         $arrResponse = [];
         $arrInputs = Yii::$app->request->post();
         $arrModifiedInputs = $this->modifyInputs($arrInputs, 'audition');
-        if (! isset($arrModifiedInputs['errors']) && ! empty($arrModifiedInputs)) {
+        if (!isset($arrModifiedInputs['errors']) && !empty($arrModifiedInputs)) {
             $arrBilling = $arrModifiedInputs['billing_details'];
             unset($arrModifiedInputs['billing_details']);
             foreach ($arrModifiedInputs as $arrModifiedInput) {
@@ -200,7 +193,7 @@ class BookingController extends GoController
                     $arrResponse['errors'] = $objBooking->errors;
                 }
             }
-            if (! isset($arrResponse['errors'])) {
+            if (!isset($arrResponse['errors'])) {
                 Booking::createAudition($arrResponse['slots']);
                 $arrResponse['billing_id'] = $this->doBilling($arrBilling);
                 Yii::$app->session['booking_data'] = null;
@@ -214,10 +207,9 @@ class BookingController extends GoController
         echo Json::encode($arrResponse);
     }
 
-    private function getBookedSlots($arrBookedSlots)
-    {
+    private function getBookedSlots($arrBookedSlots) {
         $arrResponse = [];
-        if (! empty($arrBookedSlots)) {
+        if (!empty($arrBookedSlots)) {
             foreach ($arrBookedSlots as $arrBslot) {
                 $arrResponse[] = $arrBslot['from_time'];
             }
@@ -226,8 +218,10 @@ class BookingController extends GoController
         return $arrResponse;
     }
 
-    public function actionBookings()
-    {
-        return $this->render('/Bookings', []);
+    public function actionBookings() {
+
+        $arrBookings = Booking::getSlots(['customer_id' => Yii::$app->session['customer_data']['customer_id']]);
+        return $this->render('/Bookings', ['bookings' => $arrBookings]);
     }
+
 }

@@ -283,14 +283,16 @@ class CustomersController extends GoController {
             $objProfile->scenario = 'update_password';
             $objProfile->attributes = $arrInputs;
             if ($objProfile->validate()) {
-                $arrValidatedInputs = $objProfile->getAttributes();
+                $arrValidatedInputs = $arrInputs;
                 $strPassword = Yii::$app->getSecurity()->generatePasswordHash($arrValidatedInputs['new_password']);
-                unset($arrValidatedInputs['new_password'], $arrValidatedInputs['confirm_password']);
-                Customers::updateCustomer(['password' => $strPassword, 'last_modified_by' => Yii::$app->session['customer_data']['customer_id']], ['id' => $arrValidatedInputs['customer_id']]);
+                $arrResponse['is_updated'] = Customers::updateCustomer(['password' => $strPassword, 'last_modified_by' => Yii::$app->session['customer_data']['customer_id']], ['id' => $arrValidatedInputs['id']]);
+                $arrResponse['message'] = 'Password updated successfully';
+                unset($arrValidatedInputs);
             } else {
                 $arrResponse['errors'] = $objProfile->errors;
             }
         }
+        unset($arrInputs);
         echo Json::encode($arrResponse);
     }
 

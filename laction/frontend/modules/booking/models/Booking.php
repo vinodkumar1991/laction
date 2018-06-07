@@ -1,24 +1,21 @@
 <?php
+
 namespace frontend\modules\booking\models;
 
 use yii\db\ActiveRecord;
 use Yii;
 use yii\db\Query;
 
-class Booking extends ActiveRecord
-{
+class Booking extends ActiveRecord {
 
     public $agree;
-
     public $category;
 
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'bookings';
     }
 
-    public function rules()
-    {
+    public function rules() {
         return [
             [
                 [
@@ -138,8 +135,7 @@ class Booking extends ActiveRecord
         ];
     }
 
-    public function scenarios()
-    {
+    public function scenarios() {
         $arrScenarios = parent::scenarios();
         $arrScenarios['preview'] = [
             'id',
@@ -187,74 +183,70 @@ class Booking extends ActiveRecord
         return $arrScenarios;
     }
 
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'id',
             'booking_no' => 'Order Number'
         ];
     }
 
-    public static function createPreview($arrInputs)
-    {
+    public static function createPreview($arrInputs) {
         $intInsert = Yii::$app->db->createCommand()
-            ->batchInsert('bookings', [
-            'category_type',
-            'booking_type',
-            'booking_no',
-            'customer_id',
-            'fullname',
-            'email',
-            'phone',
-            'gender',
-            'sub_category_id',
-            'age',
-            'film_type',
-            'film_name',
-            'film_censor',
-            'event_date',
-            'from_time',
-            'to_time',
-            'extra_minutes',
-            'booking_status',
-            'created_date',
-            'created_by'
-        ], $arrInputs)
-            ->execute();
+                ->batchInsert('bookings', [
+                    'category_type',
+                    'booking_type',
+                    'booking_no',
+                    'customer_id',
+                    'fullname',
+                    'email',
+                    'phone',
+                    'gender',
+                    'sub_category_id',
+                    'age',
+                    'film_type',
+                    'film_name',
+                    'film_censor',
+                    'event_date',
+                    'from_time',
+                    'to_time',
+                    'extra_minutes',
+                    'booking_status',
+                    'created_date',
+                    'created_by'
+                        ], $arrInputs)
+                ->execute();
         return $intInsert;
     }
 
-    public static function createAudition($arrInputs)
-    {
+    public static function createAudition($arrInputs) {
         $intInsert = Yii::$app->db->createCommand()
-            ->batchInsert('bookings', [
-            'category_type',
-            'booking_type',
-            'booking_no',
-            'customer_id',
-            'fullname',
-            'email',
-            'phone',
-            'gender',
-            'sub_category_id',
-            'age',
-            'film_type',
-            'film_name',
-            'film_censor',
-            'event_date',
-            'from_time',
-            'to_time',
-            'extra_minutes',
-            'booking_status',
-            'created_date',
-            'created_by'
-        ], $arrInputs)
-            ->execute();
+                ->batchInsert('bookings', [
+                    'category_type',
+                    'booking_type',
+                    'booking_no',
+                    'customer_id',
+                    'fullname',
+                    'email',
+                    'phone',
+                    'gender',
+                    'sub_category_id',
+                    'age',
+                    'film_type',
+                    'film_name',
+                    'film_censor',
+                    'event_date',
+                    'from_time',
+                    'to_time',
+                    'extra_minutes',
+                    'booking_status',
+                    'created_date',
+                    'created_by'
+                        ], $arrInputs)
+                ->execute();
         return $intInsert;
     }
 
-    public static function getSlots($arrInputs = [])
-    {
+    public static function getSlots($arrInputs = []) {
         $objQuery = new Query();
         $objQuery->select([
             'b.category_type',
@@ -262,28 +254,38 @@ class Booking extends ActiveRecord
             'b.to_time',
             'b.booking_no',
             'DATE_FORMAT(b.from_time, "%h:%i %p") as slot_start_time',
-            'DATE_FORMAT(b.to_time, "%h:%i %p") as slot_end_time'
+            'DATE_FORMAT(b.to_time, "%h:%i %p") as slot_end_time',
+            'bb.payment_type',
+            'bb.total_amount',
+            'b.event_date',
+            'DATE_FORMAT(b.event_date, "%D:%M %Y") as booked_date',
+            'b.booking_status'
         ]);
         $objQuery->from('bookings as b');
         $objQuery->innerJoin('booking_billing as bb', 'bb.booking_no = b.booking_no');
         // Category Type
-        if (isset($arrInputs['category_type']) && ! empty($arrInputs['category_type'])) {
+        if (isset($arrInputs['category_type']) && !empty($arrInputs['category_type'])) {
             $objQuery->andWhere('b.category_type=:categoryType', [
                 ':categoryType' => $arrInputs['category_type']
             ]);
         }
         // Event Date
-        if (isset($arrInputs['event_date']) && ! empty($arrInputs['event_date'])) {
+        if (isset($arrInputs['event_date']) && !empty($arrInputs['event_date'])) {
             $objQuery->andWhere('b.event_date=:eventDate', [
                 ':eventDate' => $arrInputs['event_date']
+            ]);
+        }
+        // Customer Id
+        if (isset($arrInputs['customer_id']) && !empty($arrInputs['customer_id'])) {
+            $objQuery->andWhere('b.customer_id=:customerId', [
+                ':customerId' => $arrInputs['customer_id']
             ]);
         }
         $arrResponse = $objQuery->all();
         return $arrResponse;
     }
 
-    public function getDefaults()
-    {
+    public function getDefaults() {
         return [
             'customer_id' => Yii::$app->session['customer_data']['customer_id'],
             'booking_status' => 'inprogress',
@@ -292,8 +294,7 @@ class Booking extends ActiveRecord
         ];
     }
 
-    public function isAgreed($attribute, $params)
-    {
+    public function isAgreed($attribute, $params) {
         if ($this->agree == 'true') {
             return true;
         } else {
@@ -301,4 +302,5 @@ class Booking extends ActiveRecord
             return false;
         }
     }
+
 }
