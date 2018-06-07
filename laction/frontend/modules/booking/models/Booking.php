@@ -258,7 +258,7 @@ class Booking extends ActiveRecord {
             'bb.payment_type',
             'bb.total_amount',
             'b.event_date',
-            'DATE_FORMAT(b.event_date, "%D:%M %Y") as booked_date',
+            'DATE_FORMAT(b.event_date, "%D %M %Y") as booked_date',
             'b.booking_status'
         ]);
         $objQuery->from('bookings as b');
