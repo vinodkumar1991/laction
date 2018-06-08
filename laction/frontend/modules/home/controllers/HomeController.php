@@ -56,4 +56,10 @@ class HomeController extends GoController {
         return $arrCustomers;
     }
 
+    public function actionProfileDetails() {
+        $arrInputs = Yii::$app->request->get();
+        $arrCustomers = Customers::getCustomer($arrInputs)[0];
+        return $this->render('/Profile_Details', ['customers' => $arrCustomers]);
+    }
+
 }

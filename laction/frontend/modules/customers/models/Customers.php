@@ -12,10 +12,6 @@ class Customers extends ActiveRecord {
         return 'customer';
     }
 
-    public static function getDb() {
-        return Yii::$app->db2;
-    }
-
     public function rules() {
         return [
             [
@@ -154,10 +150,12 @@ class Customers extends ActiveRecord {
             'c.instagram_link',
             'c.linkedin_link',
             'c.twitter_link',
-            'cs.name as category_name'
+            'cs.name as category_name',
+            'ct.name as city_name'
         ]);
         $objQuery->from('customer as c');
         $objQuery->leftJoin(Yii::$app->params['db2'] . '.categories as cs', 'cs.id = c.category_id');
+        $objQuery->leftJoin('cities as ct', 'ct.id = c.city');
         // Phone
         if (isset($arrInputs['phone']) && !empty($arrInputs['phone'])) {
             $objQuery = $objQuery->andWhere('c.phone=:Phone', [

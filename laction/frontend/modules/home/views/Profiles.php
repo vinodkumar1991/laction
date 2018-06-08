@@ -39,11 +39,11 @@
                                         echo!empty($arrCustomer['image']) ? Yii::getAlias('@f_images') . '/profiles/' . $arrCustomer['image'] : Yii::getAlias('@f_images') . '/profiles/default.png';
                                         ?>" alt="Celebrity Thumb">
                                         <div class="thumb-hover">
-                                            <a class="celebrity-link" href="profile-details.html"></a>
+                                            <a class="celebrity-link" href="<?php echo Yii::getAlias('@fweb') . '/home/home/profile-details?customer_id=' . $arrCustomer['customer_id']; ?>" target="_blank"></a>
                                         </div>
                                     </div>
                                     <div class="celebrity-details">
-                                        <h4 class="celebrity-name"><a href="<?php echo Yii::getAlias('@fweb') . '/home/home/profile-details?customer_id=' . $arrCustomer['customer_id']; ?>"><?php echo $arrCustomer['fullname']; ?></a></h4>
+                                        <h4 class="celebrity-name"><a href="<?php echo Yii::getAlias('@fweb') . '/home/home/profile-details?customer_id=' . $arrCustomer['customer_id']; ?>" target="_blank"><?php echo $arrCustomer['fullname']; ?></a></h4>
                                         <p class="celebrity-profession"><?php echo $arrCustomer['category_name']; ?></p>
                                     </div>
                                 </div>
