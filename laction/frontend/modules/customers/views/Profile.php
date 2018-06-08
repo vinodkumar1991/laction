@@ -12,7 +12,7 @@
             <li role="presentation" class="active"><a href="#user_profile_tab"
                                                       aria-controls="user_profile_tab" role="tab" data-toggle="tab">Profile</a></li>
             <li role="presentation"><a href="#user_social_tab"
-                                       aria-controls="user_social_tab" role="tab" data-toggle="tab">Social
+                                       aria-controls="user_social_tab" role="tab" data-toggle="tab" onclick="clearPasswordFields()">Social
                     Media</a></li>
             <li role="presentation"><a href="#user_gallery_tab"
                                        aria-controls="user_gallery_tab" role="tab" data-toggle="tab">Gallery</a></li>
@@ -70,12 +70,22 @@ src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
 //                                           });
 
                                            function clearPasswordFields() {
+                                               //Change Password :: START
                                                $("#p_current_password").val("");
                                                $("#p_new_password").val("");
                                                $("#p_confirm_password").val("");
                                                $("#err_p_current_password").html("");
                                                $("#err_p_new_password").html("");
                                                $("#err_p_confirm_password").html("");
+                                               //Change Password :: END
+                                               //Social Media :: START
+                                               $("#p_social_success").html("");
+                                               $("#err_p_fb_link").val("");
+                                               $("#err_p_tw_link").html("");
+                                               $("#err_p_google_link").html("");
+                                               $("#err_p_instagram_link").html("");
+                                               $("#err_p_linkdin_link").html("");
+                                               //Social Media :: END
                                                return true;
                                            }
 </script>

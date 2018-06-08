@@ -19,7 +19,7 @@
                             <div class="celebrity-thumb">
                                 <img src="<?php
                                 echo!empty($customers['image']) ? Yii::getAlias('@f_images') . '/profiles/' . $customers['image'] : Yii::getAlias('@f_images') . '/profiles/default.png';
-                                ?>" alt="Actress Pic">
+                                ?>" alt="Actress Pic"/>
                             </div>
                             <div class="celebrity-details">
                                 <div class="single-section">
@@ -35,9 +35,12 @@
                                     <div class="share-on">
                                         <label>Share: </label>
                                         <div class="share-social">
-                                            <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
-                                            <a href="https://twitter.com/login?lang=en"><i class="fa fa-twitter"></i></a>
-
+                                            <!--Please maintain same order only-->
+                                            <a href="<?php echo $customers['fb_link']; ?>" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                            <a href="<?php echo $customers['google_plus_link']; ?>" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                            <a href="<?php echo $customers['instagram_link']; ?>" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                            <a href="<?php echo $customers['linkedin_link']; ?>" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                            <a href="<?php echo $customers['twitter_link']; ?>" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
                                 </div>

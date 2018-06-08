@@ -36,9 +36,11 @@ class HomeController extends GoController {
     }
 
     public function actionProfiles() {
-        $arrCategories = Categories::getCategories(['status' => 'active']);
-        $arrCustomers = $this->getCustomers();
-        return $this->render('/Profiles', ['categories' => $arrCategories, 'customers' => $arrCustomers]);
+        $arrInputs = Yii::$app->request->get();
+        $arrInputs = !empty($arrInputs) ? array_merge(['status' => 'active'], $arrInputs) : $arrInputs;
+        $arrCategories = Categories::getCategories($arrInputs);
+        $arrCustomers = $this->getCustomers($arrInputs);
+        return $this->render('/Profiles', ['categories' => $arrCategories, 'customers' => $arrCustomers, 'inputs' => $arrInputs]);
     }
 
     public function actionPolicy() {

@@ -186,6 +186,22 @@ class Customers extends ActiveRecord {
                 ':customerId' => $arrInputs['customer_id']
             ]);
         }
+        // Category Id
+        if (isset($arrInputs['category']) && !empty($arrInputs['category'])) {
+            $objQuery = $objQuery->andWhere('c.category_id=:categoryId', [
+                ':categoryId' => $arrInputs['category']
+            ]);
+        }
+        // Status
+        if (isset($arrInputs['status']) && !empty($arrInputs['status'])) {
+            $objQuery = $objQuery->andWhere('c.status=:status', [
+                ':status' => $arrInputs['status']
+            ]);
+        }
+        //Fullname
+        if (isset($arrInputs['search_value']) && !empty($arrInputs['search_value'])) {
+            $objQuery = $objQuery->andWhere(['like', 'fullname', $arrInputs['search_value']]);
+        }
         $arrResponse = $objQuery->all();
         return $arrResponse;
     }

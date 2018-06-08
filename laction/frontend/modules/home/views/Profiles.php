@@ -15,15 +15,21 @@
                         <?php
                         if (!empty($categories)) {
                             foreach ($categories as $arrCategory) {
-                                ?>
-                                <option value="<?php echo $arrCategory['category_id']; ?>"><?php echo $arrCategory['name']; ?></option>
-                                <?php
+                                if (isset($inputs['category']) && ($inputs['category'] == $arrCategory['category_id'])) {
+                                    ?>
+                                    <option value="<?php echo $arrCategory['category_id']; ?>" selected="true"><?php echo $arrCategory['name']; ?></option>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <option value="<?php echo $arrCategory['category_id']; ?>"><?php echo $arrCategory['name']; ?></option>
+                                    <?php
+                                }
                             }
                         }
                         ?>
                     </select>
-                    <input type="search" name="searchinput" required>
-                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                    <input type="search" name="search_value" id="search_value" value="<?php echo isset($inputs['search_value']) ? $inputs['search_value'] : null; ?>"/>
+                    <button type="button" class="btn btn-default" onclick="getProfiles()"/><i class="fa fa-search"></i></button>
                 </form>
             </div>
             <div class="row">
@@ -50,6 +56,8 @@
                             </div>
                             <?php
                         }
+                    } else {
+                        echo 'No results are found';
                     }
                     ?>
 
@@ -58,3 +66,15 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    function getProfiles() {
+        var category = search_value = '';
+        category = $("#ps_category_type").val();
+        search_value = $("#search_value").val();
+        var profile_link = '<?php echo Yii::getAlias('@fweb') . '/profiles'; ?>';
+        profile_link = profile_link + '?category=' + category + '&search_value=' + search_value;
+        window.location.href = profile_link;
+        return true;
+    }
+</script>
