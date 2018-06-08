@@ -1,4 +1,5 @@
 <?php
+
 return [
     'adminEmail' => 'admin@example.com',
     'google_api_key' => 'AIzaSyAmiJjq5DIg_K9fv6RE72OY__p9jz0YTMI',
@@ -23,5 +24,6 @@ return [
     ],
     'google_apis' => [
         'url' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7612.569324584743!2d78.43960212212104!3d17.446084237507737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb90e76b6662c5%3A0x9ad96c95b077cb8e!2sSanjeeva+Reddy+Nagar%2C+Hyderabad%2C+Telangana+500038!5e0!3m2!1sen!2sin!4v1523276968455'
-    ]
+    ],
+    'db2' => 'laction_backend',
 ];
