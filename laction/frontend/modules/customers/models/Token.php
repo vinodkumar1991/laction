@@ -1,23 +1,21 @@
 <?php
+
 namespace frontend\modules\customers\models;
 
 use yii\db\ActiveRecord;
 use yii\db\Query;
 
-class Token extends ActiveRecord
-{
+class Token extends ActiveRecord {
 
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'tokens';
     }
 
-    public function rules()
-    {
+    public function rules() {
         return [
             [
                 [
-                    'customer_id',
+                    //'customer_id',
                     'category_type',
                     'token'
                 ],
@@ -26,15 +24,16 @@ class Token extends ActiveRecord
             [
                 [
                     'id',
-                    'created_date'
+                    'created_date',
+                    'customer_id',
+                    'phone'
                 ],
                 'safe'
             ]
         ];
     }
 
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'Id',
             'customer_id' => 'Customer',
@@ -43,31 +42,30 @@ class Token extends ActiveRecord
         ];
     }
 
-    public function getDefaults()
-    {
+    public function getDefaults() {
         return [
             'created_date' => date('Y-m-d H:i:s')
         ];
     }
 
-    public static function getToken($arrInputs = [])
-    {
+    public static function getToken($arrInputs = []) {
         $objQuery = new Query();
         $objQuery->select([
             't.id as token_id',
             't.category_type',
             't.customer_id',
-            't.token'
+            't.token',
+            't.phone'
         ]);
         $objQuery->from('tokens as t');
         // Customer
-        if (isset($arrInputs['customer_id']) && ! empty($arrInputs['customer_id'])) {
+        if (isset($arrInputs['customer_id']) && !empty($arrInputs['customer_id'])) {
             $objQuery = $objQuery->andWhere('t.customer_id=:customerId', [
                 ':customerId' => $arrInputs['customer_id']
             ]);
         }
         // Token
-        if (isset($arrInputs['token']) && ! empty($arrInputs['token'])) {
+        if (isset($arrInputs['token']) && !empty($arrInputs['token'])) {
             $objQuery = $objQuery->andWhere('t.token=:Token', [
                 ':Token' => $arrInputs['token']
             ]);
@@ -75,4 +73,5 @@ class Token extends ActiveRecord
         $arrResponse = $objQuery->all();
         return $arrResponse;
     }
+
 }

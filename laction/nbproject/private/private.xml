@@ -6,9 +6,14 @@
             <file>file:/C:/xampp/htdocs/laction/laction/frontend/modules/customers/views/Profile.php</file>
             <file>file:/C:/xampp/htdocs/laction/laction/frontend/modules/customers/views/Profile_ChangePassword.php</file>
             <file>file:/C:/xampp/htdocs/laction/laction/frontend/modules/customers/models/Profile.php</file>
+            <file>file:/C:/xampp/htdocs/laction/laction/frontend/modules/booking/models/Categories.php</file>
+            <file>file:/C:/xampp/htdocs/laction/laction/frontend/config/params-local.php</file>
             <file>file:/C:/xampp/htdocs/laction/laction/frontend/modules/customers/views/Profile_SocialMedia.php</file>
             <file>file:/C:/xampp/htdocs/laction/laction/frontend/modules/customers/controllers/CustomersController.php</file>
             <file>file:/C:/xampp/htdocs/laction/laction/frontend/modules/customers/models/Customers.php</file>
+            <file>file:/C:/xampp/htdocs/laction/laction/frontend/modules/home/controllers/HomeController.php</file>
+            <file>file:/C:/xampp/htdocs/laction/laction/frontend/modules/home/views/Profiles.php</file>
+            <file>file:/C:/xampp/htdocs/laction/laction/frontend/modules/home/views/Profile_Details.php</file>
         </group>
     </open-files>
 </project-private>

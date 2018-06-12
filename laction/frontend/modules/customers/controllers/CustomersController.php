@@ -127,11 +127,20 @@ class CustomersController extends GoController {
         $arrInputs = Yii::$app->request->post();
         if (!empty($arrInputs)) {
             $objLogin = new Login();
+            $strCategoryType = isset($arrInputs['category_type']) ? $arrInputs['category_type'] : 'forgotpwd';
             $objLogin->scenario = 'generateotp';
+            $objLogin->category_type = $strCategoryType;
             $objLogin->attributes = $arrInputs;
             if ($objLogin->validate()) {
-                $arrCustomer = Customers::getCustomer($arrInputs);
-                $arrResponse = $this->sendToken($arrCustomer[0]);
+                $strScenario = isset($arrInputs['category_type']) ? $arrInputs['category_type'] : 'forgotpassword';
+                switch ($strScenario) {
+                    case "registration":
+                        $arrCustomer[] = array_merge($arrInputs, ['customer_id' => '']);
+                        break;
+                    default:
+                        $arrCustomer = Customers::getCustomer($arrInputs);
+                }
+                $arrResponse = $this->sendToken($arrCustomer[0], $strCategoryType);
             } else {
                 $arrResponse['errors'] = $objLogin->errors;
             }
@@ -139,10 +148,10 @@ class CustomersController extends GoController {
         echo Json::encode($arrResponse);
     }
 
-    private function sendToken($arrInputs) {
+    private function sendToken($arrInputs, $strCategoryType) {
         $arrResponse = [];
         $objToken = new Token();
-        $arrInputs['category_type'] = 'forgotpassword';
+        $arrInputs['category_type'] = $strCategoryType;
         $arrInputs['token'] = CommonComponent::getNumberToken();
         $arrDefaults = $objToken->getDefaults();
         $arrInputs = array_merge($arrInputs, $arrDefaults);
@@ -152,7 +161,7 @@ class CustomersController extends GoController {
             $arrNotificationCodes = CommonComponent::getNotificationCodes();
             $arrSmsInputs[] = [
                 'customer_id' => $arrInputs['customer_id'],
-                'template_code' => $arrNotificationCodes['sms']['forgotpwd'],
+                'template_code' => $arrNotificationCodes['sms'][$strCategoryType],
                 'mobile_number' => $arrInputs['phone'],
                 'params' => Json::encode([
                     'token' => $arrInputs['token']

@@ -1,36 +1,32 @@
 <?php
+
 namespace common\components;
 
 use Yii;
 
-class CommonComponent
-{
+class CommonComponent {
 
-    public static function generatePassword($intLength = 10)
-    {
+    public static function generatePassword($intLength = 10) {
         $strPassword = Yii::$app->params['salt_key'] . bin2hex(openssl_random_pseudo_bytes($intLength));
         unset($intLength);
         return $strPassword;
     }
 
-    public static function getMessageTypes()
-    {
+    public static function getMessageTypes() {
         return [
             'sms' => 'SMS',
             'email' => 'E-MAIL'
         ];
     }
 
-    public static function getMessageCategoryTypes()
-    {
+    public static function getMessageCategoryTypes() {
         return [
             'transactional' => 'Transactional',
             'promotional' => 'Promotional'
         ];
     }
 
-    public static function getRoutes()
-    {
+    public static function getRoutes() {
         return [
             'sms' => [
                 'transactional' => 4,
@@ -39,16 +35,14 @@ class CommonComponent
         ];
     }
 
-    public static function getFileTypes()
-    {
+    public static function getFileTypes() {
         return [
             'image' => 'Image',
             'video' => 'Video'
         ];
     }
 
-    private static function cryptoRandSecure($intMin, $intMax)
-    {
+    private static function cryptoRandSecure($intMin, $intMax) {
         $intRanage = $intMax - $intMin;
         if ($intRanage < 1) {
             return $intMin;
@@ -64,10 +58,9 @@ class CommonComponent
         return ($intMin + $intRnd);
     }
 
-    private static function getToken($intLength, $strTokenSoliders = NULL)
-    {
+    private static function getToken($intLength, $strTokenSoliders = NULL) {
         $strToken = "";
-        if (! empty($strTokenSoliders)) {
+        if (!empty($strTokenSoliders)) {
             $strCodeAlphabet = $strTokenSoliders;
         } else {
             $strCodeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -82,39 +75,34 @@ class CommonComponent
         return $strToken;
     }
 
-    public static function getNumberToken($intLength = 6)
-    {
+    public static function getNumberToken($intLength = 6) {
         $strNumber = "0123456789";
         $strToken = self::getToken($intLength, $strNumber);
         unset($strNumber, $intLength);
         return $strToken;
     }
 
-    public static function getSamllAlphaToken($intLength = 12)
-    {
+    public static function getSamllAlphaToken($intLength = 12) {
         $strSmall = "abcdefghijklmnopqrstuvwxyz";
         $strToken = self::getToken($intLength, $strSmall);
         unset($strSmall, $intLength);
         return $strToken;
     }
 
-    public static function getBigAlphaToken($intLength = 12)
-    {
+    public static function getBigAlphaToken($intLength = 12) {
         $strBig = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         $strToken = self::getToken($intLength, $strBig);
         unset($strBig, $intLength);
         return $strToken;
     }
 
-    public static function getCustomToken($strCustomSolider, $intLength = 6)
-    {
+    public static function getCustomToken($strCustomSolider, $intLength = 6) {
         $strToken = self::getToken($intLength, $strCustomSolider);
         unset($strCustomSolider, $intLength);
         return $strToken;
     }
 
-    public static function getDateDifferences($strStartDate, $strEndDate)
-    {
+    public static function getDateDifferences($strStartDate, $strEndDate) {
         $strTimestampStartDate = strtotime($strStartDate);
         $strTimestampEndDate = strtotime($strEndDate);
         $doubleTimeInterval = abs($strTimestampStartDate - $strTimestampEndDate);
@@ -124,16 +112,14 @@ class CommonComponent
         return $arrDateDiffInfo;
     }
 
-    public static function getStatuses()
-    {
+    public static function getStatuses() {
         return [
             'active' => 'Active',
             'inactive' => 'Inactive'
         ];
     }
 
-    public static function getRoleIds()
-    {
+    public static function getRoleIds() {
         $arrRoles = [];
         $intRole = Yii::$app->session['session_data']['role_id'];
         switch ($intRole) {
@@ -151,34 +137,31 @@ class CommonComponent
         return $arrRoles;
     }
 
-    public static function getSlotTypes()
-    {
+    public static function getSlotTypes() {
         return [
             'audition' => 'Audition',
             'preview' => 'Preview'
         ];
     }
 
-    public static function getNotificationCodes()
-    {
+    public static function getNotificationCodes() {
         return [
             'sms' => [
-                'forgotpwd' => 'FGPWD'
+                'forgotpwd' => 'FGPWD',
+                'registration' => 'NEWREG'
             ],
             'email' => []
         ];
     }
 
-    public static function getSlotStatuses()
-    {
+    public static function getSlotStatuses() {
         return [
             'active' => 'Active',
             'inactive' => 'Delete'
         ];
     }
 
-    public static function getFilmTypes()
-    {
+    public static function getFilmTypes() {
         return [
             'featured' => 'Featured Film',
             'short' => 'Short Film',
@@ -186,8 +169,7 @@ class CommonComponent
         ];
     }
 
-    public static function getGenders()
-    {
+    public static function getGenders() {
         return [
             'male' => 'Male',
             'female' => 'Female',
@@ -195,8 +177,7 @@ class CommonComponent
         ];
     }
 
-    public static function censored()
-    {
+    public static function censored() {
         return [
             'none' => 'None',
             'yes' => 'Yes',
@@ -204,8 +185,7 @@ class CommonComponent
         ];
     }
 
-    public static function languages()
-    {
+    public static function languages() {
         return [
             'telugu' => 'Telugu',
             'tamil' => 'Tamil',
@@ -213,4 +193,5 @@ class CommonComponent
             'kannada' => 'Kannada'
         ];
     }
+
 }
