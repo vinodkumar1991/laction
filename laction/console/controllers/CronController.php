@@ -11,6 +11,8 @@ use yii\helpers\Json;
 use console\models\Fsms;
 
 //https://code.tutsplus.com/tutorials/how-to-program-with-yii2-running-cron-services--cms-27508
+//Run Cron Job For Every 5 Seconds
+//https://trinitytuts.com/run-php-script-every-5-second-using-bash-and-cron-job/
 class CronController extends Controller {
 
     private function prepareData($arrInputs) {
