@@ -27,10 +27,10 @@
                                     <p class="celebrity-profession"><?php echo $customers['category_name']; ?></p>
                                     <div class="celebrity-infos">
                                         <p class="birthdate"><label>Age : </label><?php echo $customers['age']; ?></p>
-                                        <p class="residence"><label>City :</label><?php echo $customers['city_name']; ?></p>
-                                        <p class="gender"><label>Gender: </label><?php echo $customers['gender']; ?></p>
-                                        <p class="language"><label>Language:</label> English, Telugu, Hindi</p>
-                                        <p class="height"><label>Height:</label><?php echo $customers['height']; ?></p>
+                                        <p class="residence"><label>City : </label><?php echo $customers['city_name']; ?></p>
+                                        <p class="gender"><label>Gender : </label><?php echo $customers['gender']; ?></p>
+                                        <p class="language"><label>Language : </label><?php echo $customers['languages']; ?></p>
+                                        <p class="height"><label>Height : </label><?php echo $customers['height']; ?></p>
                                     </div>
                                     <div class="share-on">
                                         <label>Share: </label>

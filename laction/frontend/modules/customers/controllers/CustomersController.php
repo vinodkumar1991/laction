@@ -270,7 +270,7 @@ class CustomersController extends GoController {
                     'age' => $arrValidatedInputs['age'],
                     'city' => $arrValidatedInputs['city'],
                     'gender' => $arrValidatedInputs['gender'],
-                    //'languages' => $arrValidatedInputs['languages'],
+                    'languages' => $arrValidatedInputs['languages'],
                     'height' => $arrValidatedInputs['height'],
                     'biography' => $arrValidatedInputs['biography']
                 ];
@@ -321,6 +321,25 @@ class CustomersController extends GoController {
             }
         }
         echo Json::encode($arrResponse);
+    }
+
+    public function actionSetLanguage() {
+        $strResponse = null;
+        $arrInputs = Yii::$app->request->post();
+        if (!empty($arrInputs)) {
+            $arrLanguages = CommonComponent::languages();
+            $arrProfileLanguages = !empty($arrInputs['lang']) ? explode(',', $arrInputs['lang']) : [];
+            foreach ($arrLanguages as $key => $value) {
+                if (in_array($key, $arrProfileLanguages)) {
+                    $strResponse .= '<option value="' . $key . '" selected>' . $value . '</option>';
+                } else {
+                    $strResponse .= '<option value="' . $key . '">' . $value . '</option>';
+                }
+            }
+        } else {
+            $strResponse = '<option value=""></option>';
+        }
+        echo $strResponse;
     }
 
 }

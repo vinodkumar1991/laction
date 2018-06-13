@@ -81,8 +81,8 @@
             <label class="col-sm-2" for="p_language">Languages Known As</label>
             <div class="col-sm-5">
                 <select class="form-control" multiple id="p_language"
-                        name="p_language">
-                    <option value="">--Select Languages--</option>
+                        name="p_language[]">
+                    <!--                    <option value="">--Select Languages--</option>-->
                     <?php
                     if (!empty($languages)) {
                         foreach ($languages as $key => $value) {
@@ -124,6 +124,7 @@
 
 <script type="text/javascript">
     setProfile();
+    setLanguages();
     function updateProfile() {
         var objInput = {};
         objInput = {
@@ -132,12 +133,11 @@
             city: $("#p_city").val(),
             category_id: $("#p_category").val(),
             gender: $('input:radio[name=p_gender]:checked').val(),
-            languages: $("#p_language").val(),
+            languages: $("#p_language").val().toString(), // Convert array to string
             height: $("#p_height").val(),
             biography: $("#p_biography").val(),
             id: '<?php echo Yii::$app->session['customer_data']['customer_id']; ?>'
         };
-
         $.post('<?php echo Yii::getAlias('@fweb') . '/customers/customers/update-profile'; ?>', objInput, function (response) {
             makeBEmpty();
             var response = $.parseJSON(response);
@@ -205,6 +205,18 @@
         $("#err_p_height").html("");
         $("#err_p_biography").html("");
         $("#p_change_success").html("");
+        return true;
+    }
+
+    function setLanguages() {
+        var objLangInputs = {};
+        objLangInputs = {
+            lang: '<?php echo $profile_details['languages']; ?>'
+        };
+        $.post('<?php echo Yii::getAlias('@fweb') . '/customers/customers/set-language'; ?>', objLangInputs, function (response) {
+            $("#p_language").html('<option value=""></option>');
+            $("#p_language").html(response);
+        });
         return true;
     }
 
