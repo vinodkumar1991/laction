@@ -70,6 +70,12 @@ class Token extends ActiveRecord {
                 ':Token' => $arrInputs['token']
             ]);
         }
+        //Category Type
+        if (isset($arrInputs['category_type']) && !empty($arrInputs['category_type'])) {
+            $objQuery = $objQuery->andWhere('t.category_type=:categoryType', [
+                ':categoryType' => $arrInputs['category_type']
+            ]);
+        }
         $arrResponse = $objQuery->all();
         return $arrResponse;
     }

@@ -5,8 +5,11 @@ namespace frontend\modules\customers\models;
 use yii\db\ActiveRecord;
 use Yii;
 use yii\db\Query;
+use frontend\modules\customers\models\Token;
 
 class Customers extends ActiveRecord {
+
+    public $otp;
 
     public static function tableName() {
         return 'customer';
@@ -19,7 +22,8 @@ class Customers extends ActiveRecord {
                     'fullname',
                     'password',
                     'phone',
-                    'status'
+                    'status',
+                    'otp',
                 ],
                 'required',
                 'message' => '{attribute} is required'
@@ -89,7 +93,8 @@ class Customers extends ActiveRecord {
                     'phone'
                 ],
                 'isValidInput'
-            ]
+            ],
+            ['otp', 'isValidOTP']
         ];
     }
 
@@ -99,7 +104,8 @@ class Customers extends ActiveRecord {
             'email' => 'Email',
             'phone' => 'Phone',
             'password' => 'password',
-            'status' => 'Status'
+            'status' => 'Status',
+            'otp' => 'OTP'
         ];
     }
 
@@ -212,6 +218,16 @@ class Customers extends ActiveRecord {
                 ->update('customer', $arrInputs, $arrWhere)
                 ->execute();
         return $intUpdate;
+    }
+
+    public function isValidOTP($attribute, $params) {
+        $arrToken = Token::getToken(['token' => $this->otp, 'category_type' => 'registration']);
+        if (!empty($arrToken)) {
+            return true;
+        } else {
+            $this->addError('otp', 'Invalid OTP given');
+            return false;
+        }
     }
 
 }

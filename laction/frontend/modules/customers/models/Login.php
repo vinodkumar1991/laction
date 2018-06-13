@@ -152,7 +152,8 @@ class Login extends ActiveRecord {
     public function validateOTP($attribute, $params) {
         $arrToken = Token::getToken([
                     'token' => $this->otp,
-                    'user_id' => $this->id
+                    'user_id' => $this->id,
+                    'category_type' => 'forgotpwd',
         ]);
         if (!empty($arrToken)) {
             return true;

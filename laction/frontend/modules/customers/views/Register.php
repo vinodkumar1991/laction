@@ -125,7 +125,8 @@
                                    phone: $("#phone").val(),
                                    email: $("#email").val(),
                                    password: $("#password").val(),
-                                   status: 'active'
+                                   status: 'active',
+                                   otp: $("#reg_otp").val(),
                                };
                                $.post('<?php echo Yii::getAlias('@fweb') . '/customers/customers/save-customer'; ?>', objCustomer, function (response) {
                                    makeEmpty();
@@ -147,6 +148,10 @@
                                        if (undefined != response.errors.password && response.errors.password.length > 0) {
                                            $("#err_password").html(response.errors.password);
                                        }
+                                       //OTP
+                                       if (undefined != response.errors.otp && response.errors.otp.length > 0) {
+                                           $("#err_reg_otp").html(response.errors.otp);
+                                       }
                                        return false;
                                    } else {
                                        makeFieldsEmpty();
@@ -163,6 +168,7 @@
                                $("#err_email").html("");
                                $("#err_phone").html("");
                                $("#err_password").html("");
+                               $("#err_otp").html("");
                                return true;
                            }
 
@@ -171,6 +177,7 @@
                                $("#phone").val("");
                                $("#password").val("");
                                $("#fullname").val("");
+                               $("#reg_otp").val("");
                                return true;
                            }
 
@@ -187,7 +194,18 @@
                                isValid = validateRegistration(otpInputs);
                                if (0 == isValid) {
                                    $.post('<?php echo Yii::getAlias('@fweb') . '/customers/customers/generate-otp'; ?>', otpInputs, function (response) {
-                                       alert(response);
+                                       makeEmpty();
+                                       var response = $.parseJSON(response);
+                                       if (response.hasOwnProperty('errors')) {
+                                           //Phone
+                                           if (undefined != response.errors.phone && response.errors.phone.length > 0) {
+                                               $("#err_phone").html(response.errors.phone);
+                                           }
+                                           return false;
+                                       } else {
+                                           enableIt();
+                                           return true;
+                                       }
                                    });
                                }
                                return true;
