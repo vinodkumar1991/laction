@@ -12,6 +12,7 @@ use yii\helpers\Json;
 use frontend\modules\booking\models\Booking;
 use frontend\modules\booking\models\Billing;
 use frontend\modules\customers\models\Sms;
+use frontend\modules\customers\models\Customers;
 
 class BookingController extends GoController {
 
@@ -26,12 +27,17 @@ class BookingController extends GoController {
         $arrGender = CommonComponent::getGenders();
         $arrCategories = Categories::getCategories();
         $arrCensored = CommonComponent::censored();
+        $arrCustomer = [];
+        if (Yii::$app->session['customer_data']['customer_id']) {
+            $arrCustomer = Customers::getCustomer(['customer_id' => Yii::$app->session['customer_data']['customer_id']])[0];
+        }
         return $this->render('/Home', [
                     'film_types' => $arrFilmTypes,
                     'genders' => $arrGender,
                     'categories' => $arrCategories,
                     'censored' => $arrCensored,
-                    'booking_type' => $arrInputs
+                    'booking_type' => $arrInputs,
+                    'customer_details' => $arrCustomer
         ]);
     }
 
@@ -115,7 +121,7 @@ class BookingController extends GoController {
         $doubleAmount = 0.00;
         if (!empty($arrSlotTimes)) {
             // Booking Number
-            $arrInputs['booking_no'] = ('preview' == $strScenario) ? 'LP' : 'LA' . CommonComponent::getNumberToken(6);
+            $arrInputs['booking_no'] = ('preview' == $strScenario) ? 'LP' . CommonComponent::getNumberToken(6) : 'LA' . CommonComponent::getNumberToken(6);
             // Modify Event Date
             $arrInputs['event_date'] = date('Y-m-d', strtotime($arrInputs['event_date']));
             foreach ($arrSlotTimes as $strSlotTime) {
@@ -233,12 +239,14 @@ class BookingController extends GoController {
             //Prepare Params :: START
             $arrParams['booking_no'] = $arrInputs[0]['booking_no'];
             $arrParams['total_amount'] = $arrBilling['total_amount'];
+            $arrParams['event_date'] = date('d M Y', strtotime($arrInputs[0]['event_date']));
             $strSlotDetails = null;
             $i = 1;
             foreach ($arrInputs as $arrInput) {
-                $strSlotDetails .= 'Slot -' . $i;
-                $strSlotDetails .= 'From Time : ' . $arrInput['from_time'];
-                $strSlotDetails .= 'To Time : ' . $arrInput['to_time'];
+                $strSlotDetails .= 'Slot - ' . $i;
+                $strSlotDetails .= ' From Time : ' . date('g:i A', strtotime($arrInput['from_time']));
+                $strSlotDetails .= ' To Time : ' . date('g:i A', strtotime($arrInput['to_time']));
+                $strSlotDetails .= '--------- ---------';
                 $i++;
             }
             $arrParams['slot_details'] = $strSlotDetails;

@@ -559,3 +559,213 @@ Stack trace:
     ]
     'argc' => 2
 ]
+2018-06-14 23:39:27 [-][-][-][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Undefined index: event_date' in C:\xampp\htdocs\laction\laction\console\controllers\CronController.php:39
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\console\controllers\CronController.php(39): yii\base\ErrorHandler->handleError(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 39, Array)
+#1 [internal function]: console\controllers\CronController->console\controllers\{closure}(Array)
+#2 C:\xampp\htdocs\laction\laction\console\controllers\CronController.php(40): preg_replace_callback('/{{(.+?)}}/', Object(Closure), 'Your Order Numb...')
+#3 C:\xampp\htdocs\laction\laction\console\controllers\CronController.php(30): console\controllers\CronController->bind_to_template(Array, 'Your Order Numb...')
+#4 C:\xampp\htdocs\laction\laction\console\controllers\CronController.php(51): console\controllers\CronController->prepareData(Array)
+#5 [internal function]: console\controllers\CronController->actionFsms()
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#7 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\console\Controller.php(128): yii\base\Controller->runAction('fsms', Array)
+#9 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\console\Controller->runAction('fsms', Array)
+#10 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction('cron/fsms', Array)
+#11 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('cron/fsms', Array)
+#12 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 C:\xampp\htdocs\laction\laction\yii(27): yii\base\Application->run()
+#14 {main}
+2018-06-14 23:39:27 [-][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\KING\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'KING-PC'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\KING'
+    'LOCALAPPDATA' => 'C:\\Users\\KING\\AppData\\Local'
+    'LOGONSERVER' => '\\\\KING-PC'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;E:\\Python27;E:\\Python27\\Scripts;C:\\Program Files\\PuTTY\\;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PHP_COMMAND' => 'php.exe'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 58 Stepping 9, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3a09'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KING\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KING\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'KING-PC'
+    'USERNAME' => 'KING'
+    'USERPROFILE' => 'C:\\Users\\KING'
+    'windir' => 'C:\\Windows'
+    'YII_PATH' => 'C:\\xampp\\htdocs\\laction\\laction\\'
+    'PHP_SELF' => 'C:\\xampp\\htdocs\\laction\\laction\\yii'
+    'SCRIPT_NAME' => 'C:\\xampp\\htdocs\\laction\\laction\\yii'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\laction\\laction\\yii'
+    'PATH_TRANSLATED' => 'C:\\xampp\\htdocs\\laction\\laction\\yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1529012367.598
+    'REQUEST_TIME' => 1529012367
+    'argv' => [
+        0 => 'C:\\xampp\\htdocs\\laction\\laction\\yii'
+        1 => 'cron/fsms'
+    ]
+    'argc' => 2
+]
+2018-06-14 23:39:33 [-][-][-][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Undefined index: event_date' in C:\xampp\htdocs\laction\laction\console\controllers\CronController.php:39
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\console\controllers\CronController.php(39): yii\base\ErrorHandler->handleError(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 39, Array)
+#1 [internal function]: console\controllers\CronController->console\controllers\{closure}(Array)
+#2 C:\xampp\htdocs\laction\laction\console\controllers\CronController.php(40): preg_replace_callback('/{{(.+?)}}/', Object(Closure), 'Your Order Numb...')
+#3 C:\xampp\htdocs\laction\laction\console\controllers\CronController.php(30): console\controllers\CronController->bind_to_template(Array, 'Your Order Numb...')
+#4 C:\xampp\htdocs\laction\laction\console\controllers\CronController.php(51): console\controllers\CronController->prepareData(Array)
+#5 [internal function]: console\controllers\CronController->actionFsms()
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#7 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\console\Controller.php(128): yii\base\Controller->runAction('fsms', Array)
+#9 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\console\Controller->runAction('fsms', Array)
+#10 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction('cron/fsms', Array)
+#11 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('cron/fsms', Array)
+#12 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 C:\xampp\htdocs\laction\laction\yii(27): yii\base\Application->run()
+#14 {main}
+2018-06-14 23:39:33 [-][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\KING\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'KING-PC'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\KING'
+    'LOCALAPPDATA' => 'C:\\Users\\KING\\AppData\\Local'
+    'LOGONSERVER' => '\\\\KING-PC'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;E:\\Python27;E:\\Python27\\Scripts;C:\\Program Files\\PuTTY\\;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PHP_COMMAND' => 'php.exe'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 58 Stepping 9, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3a09'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KING\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KING\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'KING-PC'
+    'USERNAME' => 'KING'
+    'USERPROFILE' => 'C:\\Users\\KING'
+    'windir' => 'C:\\Windows'
+    'YII_PATH' => 'C:\\xampp\\htdocs\\laction\\laction\\'
+    'PHP_SELF' => 'C:\\xampp\\htdocs\\laction\\laction\\yii'
+    'SCRIPT_NAME' => 'C:\\xampp\\htdocs\\laction\\laction\\yii'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\laction\\laction\\yii'
+    'PATH_TRANSLATED' => 'C:\\xampp\\htdocs\\laction\\laction\\yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1529012373.0496
+    'REQUEST_TIME' => 1529012373
+    'argv' => [
+        0 => 'C:\\xampp\\htdocs\\laction\\laction\\yii'
+        1 => 'cron/fsms'
+    ]
+    'argc' => 2
+]
+2018-06-14 23:40:54 [-][-][-][error][yii\base\ErrorException:8] exception 'yii\base\ErrorException' with message 'Undefined index: event_date' in C:\xampp\htdocs\laction\laction\console\controllers\CronController.php:39
+Stack trace:
+#0 C:\xampp\htdocs\laction\laction\console\controllers\CronController.php(39): yii\base\ErrorHandler->handleError(8, 'Undefined index...', 'C:\\xampp\\htdocs...', 39, Array)
+#1 [internal function]: console\controllers\CronController->console\controllers\{closure}(Array)
+#2 C:\xampp\htdocs\laction\laction\console\controllers\CronController.php(40): preg_replace_callback('/{{(.+?)}}/', Object(Closure), 'Your Order Numb...')
+#3 C:\xampp\htdocs\laction\laction\console\controllers\CronController.php(30): console\controllers\CronController->bind_to_template(Array, 'Your Order Numb...')
+#4 C:\xampp\htdocs\laction\laction\console\controllers\CronController.php(51): console\controllers\CronController->prepareData(Array)
+#5 [internal function]: console\controllers\CronController->actionFsms()
+#6 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#7 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Controller.php(156): yii\base\InlineAction->runWithParams(Array)
+#8 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\console\Controller.php(128): yii\base\Controller->runAction('fsms', Array)
+#9 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Module.php(523): yii\console\Controller->runAction('fsms', Array)
+#10 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\console\Application.php(180): yii\base\Module->runAction('cron/fsms', Array)
+#11 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\console\Application.php(147): yii\console\Application->runAction('cron/fsms', Array)
+#12 C:\xampp\htdocs\laction\laction\vendor\yiisoft\yii2\base\Application.php(380): yii\console\Application->handleRequest(Object(yii\console\Request))
+#13 C:\xampp\htdocs\laction\laction\yii(27): yii\base\Application->run()
+#14 {main}
+2018-06-14 23:40:54 [-][-][-][info][application] $_SERVER = [
+    'ALLUSERSPROFILE' => 'C:\\ProgramData'
+    'APPDATA' => 'C:\\Users\\KING\\AppData\\Roaming'
+    'CommonProgramFiles' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramFiles(x86)' => 'C:\\Program Files (x86)\\Common Files'
+    'CommonProgramW6432' => 'C:\\Program Files\\Common Files'
+    'COMPUTERNAME' => 'KING-PC'
+    'ComSpec' => 'C:\\Windows\\system32\\cmd.exe'
+    'FP_NO_HOST_CHECK' => 'NO'
+    'HOMEDRIVE' => 'C:'
+    'HOMEPATH' => '\\Users\\KING'
+    'LOCALAPPDATA' => 'C:\\Users\\KING\\AppData\\Local'
+    'LOGONSERVER' => '\\\\KING-PC'
+    'NUMBER_OF_PROCESSORS' => '4'
+    'OS' => 'Windows_NT'
+    'Path' => 'C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\TortoiseSVN\\bin;C:\\xampp\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\Program Files\\Git\\cmd;E:\\Python27;E:\\Python27\\Scripts;C:\\Program Files\\PuTTY\\;C:\\Users\\KING\\AppData\\Roaming\\Composer\\vendor\\bin'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'PHP_COMMAND' => 'php.exe'
+    'PROCESSOR_ARCHITECTURE' => 'x86'
+    'PROCESSOR_ARCHITEW6432' => 'AMD64'
+    'PROCESSOR_IDENTIFIER' => 'Intel64 Family 6 Model 58 Stepping 9, GenuineIntel'
+    'PROCESSOR_LEVEL' => '6'
+    'PROCESSOR_REVISION' => '3a09'
+    'ProgramData' => 'C:\\ProgramData'
+    'ProgramFiles' => 'C:\\Program Files (x86)'
+    'ProgramFiles(x86)' => 'C:\\Program Files (x86)'
+    'ProgramW6432' => 'C:\\Program Files'
+    'PROMPT' => '$P$G'
+    'PSModulePath' => 'C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules\\'
+    'PUBLIC' => 'C:\\Users\\Public'
+    'SESSIONNAME' => 'Console'
+    'SystemDrive' => 'C:'
+    'SystemRoot' => 'C:\\Windows'
+    'TEMP' => 'C:\\Users\\KING\\AppData\\Local\\Temp'
+    'TMP' => 'C:\\Users\\KING\\AppData\\Local\\Temp'
+    'USERDOMAIN' => 'KING-PC'
+    'USERNAME' => 'KING'
+    'USERPROFILE' => 'C:\\Users\\KING'
+    'windir' => 'C:\\Windows'
+    'YII_PATH' => 'C:\\xampp\\htdocs\\laction\\laction\\'
+    'PHP_SELF' => 'C:\\xampp\\htdocs\\laction\\laction\\yii'
+    'SCRIPT_NAME' => 'C:\\xampp\\htdocs\\laction\\laction\\yii'
+    'SCRIPT_FILENAME' => 'C:\\xampp\\htdocs\\laction\\laction\\yii'
+    'PATH_TRANSLATED' => 'C:\\xampp\\htdocs\\laction\\laction\\yii'
+    'DOCUMENT_ROOT' => ''
+    'REQUEST_TIME_FLOAT' => 1529012454.3454
+    'REQUEST_TIME' => 1529012454
+    'argv' => [
+        0 => 'C:\\xampp\\htdocs\\laction\\laction\\yii'
+        1 => 'cron/fsms'
+    ]
+    'argc' => 2
+]

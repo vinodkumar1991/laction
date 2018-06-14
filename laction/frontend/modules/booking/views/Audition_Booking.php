@@ -47,9 +47,15 @@
                                                     <?php
                                                     if (!empty($genders)) {
                                                         foreach ($genders as $key => $value) {
-                                                            ?>
-                                                            <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
-                                                            <?php
+                                                            if (isset($customer_details['gender']) && ($customer_details['gender'] == $key)) {
+                                                                ?>
+                                                                <option value="<?php echo $key; ?>" selected="true"><?php echo $value; ?></option>
+                                                                <?php
+                                                            } else {
+                                                                ?>  
+                                                                <option value="<?php echo $key; ?>"><?php echo $value; ?></option>
+                                                                <?php
+                                                            }
                                                         }
                                                     }
                                                     ?>								</select>
@@ -64,7 +70,7 @@
                                             <div class="form-group">
                                                 <label class="control-label">Age</label> <input type="text"
                                                                                                 class="form-control  book-form" name="age" id="age"
-                                                                                                value="" maxlength="3" />
+                                                                                                value="<?php echo isset($customer_details['age']) ? $customer_details['age'] : null; ?>" maxlength="3" />
                                             </div>
                                             <span id="err_age"></span>
                                         </div>
@@ -78,9 +84,16 @@
                                                     <?php
                                                     if (!empty($categories)) {
                                                         foreach ($categories as $arrCategory) {
-                                                            ?>
-                                                            <option value="<?php echo $arrCategory['name']; ?>"><?php echo $arrCategory['name']; ?></option>
-                                                            <?php
+                                                            if (isset($customer_details['category_name']) && ($customer_details['category_name'] == $arrCategory['name'])) {
+                                                                ?>
+                                                                <option value="<?php echo $arrCategory['name']; ?>" selected="true"><?php echo $arrCategory['name']; ?></option>
+                                                                <?php
+                                                            } else {
+                                                                ?>       
+
+                                                                <option value="<?php echo $arrCategory['name']; ?>"><?php echo $arrCategory['name']; ?></option>
+                                                                <?php
+                                                            }
                                                         }
                                                     }
                                                     ?>

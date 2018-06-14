@@ -85,7 +85,7 @@
 	</div>
 </div>
 
-<?php echo $this->render('Audition_Booking',['genders' => $genders,'categories' => $categories]);?>
+<?php echo $this->render('Audition_Booking',['genders' => $genders,'categories' => $categories,'customer_details' => $customer_details]);?>
 <?php echo $this->render('Preview_Booking',['film_types' => $film_types,'censor' => $censored]);?>
 
 <!-- Date Picker Related Files :: START -->
