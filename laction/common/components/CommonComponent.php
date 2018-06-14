@@ -148,7 +148,8 @@ class CommonComponent {
         return [
             'sms' => [
                 'forgotpwd' => 'FGPWD',
-                'registration' => 'NEWREG'
+                'registration' => 'NEWRE',
+                'booking' => 'NEWBK'
             ],
             'email' => []
         ];

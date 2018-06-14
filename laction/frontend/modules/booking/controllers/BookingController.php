@@ -11,6 +11,7 @@ use frontend\modules\booking\models\Slots;
 use yii\helpers\Json;
 use frontend\modules\booking\models\Booking;
 use frontend\modules\booking\models\Billing;
+use frontend\modules\customers\models\Sms;
 
 class BookingController extends GoController {
 
@@ -95,7 +96,7 @@ class BookingController extends GoController {
             }
             if (!isset($arrResponse['errors'])) {
                 Booking::createPreview($arrResponse['slots']);
-                $arrResponse['billing_id'] = $this->doBilling($arrBilling);
+                $arrResponse['billing_id'] = $this->doBilling($arrBilling, $arrResponse['slots']);
                 Yii::$app->session['booking_data'] = null;
                 Yii::$app->session['booking_data'] = $arrResponse['slots'];
                 unset($arrResponse['slots'], $arrModifiedInputs, $arrBilling);
@@ -157,7 +158,7 @@ class BookingController extends GoController {
         return $arrResponse;
     }
 
-    private function doBilling($arrBilling) {
+    private function doBilling($arrBilling, $arrSlotDetails) {
         $arrResponse = [];
         $objBilling = new Billing();
         $arrBillingData = array_merge($arrBilling, $objBilling->getDefaults());
@@ -165,6 +166,7 @@ class BookingController extends GoController {
         if ($objBilling->validate()) {
             $arrValidatedData = $objBilling->getAttributes();
             $arrResponse['billing_id'] = $objBilling->save();
+            $this->sendSms($arrSlotDetails, $arrBillingData);
         } else {
             $arrResponse['errors'] = $objBilling->errors;
         }
@@ -195,7 +197,7 @@ class BookingController extends GoController {
             }
             if (!isset($arrResponse['errors'])) {
                 Booking::createAudition($arrResponse['slots']);
-                $arrResponse['billing_id'] = $this->doBilling($arrBilling);
+                $arrResponse['billing_id'] = $this->doBilling($arrBilling, $arrResponse['slots']);
                 Yii::$app->session['booking_data'] = null;
                 Yii::$app->session['booking_data'] = $arrResponse['slots'];
                 unset($arrResponse['slots'], $arrModifiedInputs, $arrBilling);
@@ -222,6 +224,41 @@ class BookingController extends GoController {
 
         $arrBookings = Booking::getSlots(['customer_id' => Yii::$app->session['customer_data']['customer_id']]);
         return $this->render('/Bookings', ['bookings' => $arrBookings]);
+    }
+
+    private function sendSms($arrInputs, $arrBilling) {
+        $intResponse = null;
+        $arrParams = [];
+        if (!empty($arrInputs)) {
+            //Prepare Params :: START
+            $arrParams['booking_no'] = $arrInputs[0]['booking_no'];
+            $arrParams['total_amount'] = $arrBilling['total_amount'];
+            $strSlotDetails = null;
+            $i = 1;
+            foreach ($arrInputs as $arrInput) {
+                $strSlotDetails .= 'Slot -' . $i;
+                $strSlotDetails .= 'From Time : ' . $arrInput['from_time'];
+                $strSlotDetails .= 'To Time : ' . $arrInput['to_time'];
+                $i++;
+            }
+            $arrParams['slot_details'] = $strSlotDetails;
+            //Prepare Params :: END
+            //Insert Sms :: START
+            $strCategoryType = 'booking';
+            $arrNotificationCodes = CommonComponent::getNotificationCodes();
+            $arrSmsInputs[] = [
+                'customer_id' => $arrInputs[0]['customer_id'],
+                'template_code' => $arrNotificationCodes['sms'][$strCategoryType],
+                'mobile_number' => $arrInputs[0]['phone'],
+                'params' => Json::encode($arrParams),
+                'status' => 'notsend',
+                'created_date' => date("Y-m-d H:i:s"),
+                'created_by' => 1
+            ];
+            $intResponse = Sms::create($arrSmsInputs);
+            //Insert Sms :: END
+        }
+        return $intResponse;
     }
 
 }
