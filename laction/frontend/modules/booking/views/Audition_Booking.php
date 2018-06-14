@@ -184,6 +184,7 @@
 
 <script type="text/javascript">
     autoPopulate();
+    getSubCategories('<?php echo $customer_details['category_name']; ?>');
     function autoPopulate() {
         $("#fullname").val("<?php echo Yii::$app->session['customer_data']['fullname']; ?>");
         $('#fullname').prop('readonly', true);
